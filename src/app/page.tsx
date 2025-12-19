@@ -1,65 +1,201 @@
-import Image from "next/image";
+import Antigravity from '../components/Antigravity';
+
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
+      <div className="min-h-screen bg-black text-white dark:bg-black dark:text-zinc-50">
+        <main className="mx-auto max-w-6xl px-6">
+
+
+          {/* HERO */}
+          <section className="relative flex min-h-screen items-center overflow-hidden">
+            {/* Background */}
+            <div className="absolute inset-0 z-0 pointer-events-none">
+              <div className="relative h-full w-full">
+                <Antigravity
+                    count={220}
+                    magnetRadius={10}
+                    ringRadius={7}
+                    waveSpeed={0.4}
+                    waveAmplitude={0.6}
+                    particleSize={1.3}
+                    lerpSpeed={0.05}
+                    color="#5B7CFA"
+                    autoAnimate={true}
+                    particleVariance={1}
+                />
+              </div>
+            </div>
+
+            {/* Content */}
+            <div className="relative z-10 mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-12 px-6 md:grid-cols-2">
+
+              {/* LEFT – TEXT */}
+              <div>
+                <h1 className="text-5xl font-bold tracking-tight sm:text-7xl">
+                  Martin Koudela
+                </h1>
+
+                <p className="mt-6 max-w-xl text-lg text-zinc-400">
+                  Junior Full-stack developer focused on modern web experiences,
+                  performance and clean design.
+                </p>
+
+                <div className="mt-10 flex gap-4">
+                  <a
+                      href="#projects"
+                      className="rounded-full bg-white px-6 py-3 text-sm font-medium text-black"
+                  >
+                    View projects
+                  </a>
+
+                  <a
+                      href="#contact"
+                      className="rounded-full border border-zinc-600 px-6 py-3 text-sm font-medium"
+                  >
+                    Contact
+                  </a>
+                </div>
+              </div>
+
+              {/* RIGHT – IMAGE */}
+              <div className="flex justify-center md:justify-end">
+                <img
+                    src="/me.png"
+                    alt="Martin Koudela"
+                    className="
+          w-80
+          sm:w-88
+          shadow-lg
+        "
+                />
+              </div>
+
+            </div>
+          </section>
+
+          {/* ABOUT */}
+          <section id="about" className="py-32">
+            <div className="max-w-2xl">
+              <h2 className="text-sm font-medium uppercase tracking-widest text-[#5B7CFA]">
+                About
+              </h2>
+
+              <h3 className="mt-4 text-3xl font-semibold">
+                I build clean and modern web interfaces.
+              </h3>
+
+              <p className="mt-6 text-lg leading-relaxed text-zinc-400">
+                I’m a high school IT student with a strong focus on web development.
+                I enjoy working with modern frameworks, designing clean UI,
+                and building applications that are both performant and visually polished.
+              </p>
+            </div>
+          </section>
+
+
+          {/* SKILLS */}
+          <section id="skills" className="py-32">
+            <h2 className="text-sm font-medium uppercase tracking-widest text-[#5B7CFA]">
+              Skills
+            </h2>
+
+            <div className="mt-10 grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4">
+              {[
+                "Next.js",
+                "React",
+                "TypeScript",
+                "Tailwind CSS",
+                "Node.js",
+                "SQL",
+                "Git",
+                "REST APIs",
+              ].map((skill) => (
+                  <div
+                      key={skill}
+                      className="
+          rounded-xl
+          border border-white/10
+          bg-white/5
+          px-4 py-3
+          text-sm
+          text-zinc-300
+          backdrop-blur
+        "
+                  >
+                    {skill}
+                  </div>
+              ))}
+            </div>
+          </section>
+
+
+          {/* PROJECTS */}
+          <section id="projects" className="py-32">
+            <h2 className="text-sm font-medium uppercase tracking-widest text-[#5B7CFA]">
+              Projects
+            </h2>
+
+            <div className="mt-10 grid gap-8 sm:grid-cols-2">
+              <div className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur">
+                <h3 className="text-xl font-medium">
+                  Portfolio Website
+                </h3>
+
+                <p className="mt-3 text-zinc-400">
+                  One-page personal portfolio built with Next.js, Tailwind CSS
+                  and modern animation techniques.
+                </p>
+
+                <p className="mt-4 text-sm text-[#5B7CFA]">
+                  Next.js · Tailwind · Three.js
+                </p>
+              </div>
+
+              <div className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur">
+                <h3 className="text-xl font-medium">
+                  School Projects
+                </h3>
+
+                <p className="mt-3 text-zinc-400">
+                  Collection of smaller web and backend projects created during
+                  my IT studies.
+                </p>
+
+                <p className="mt-4 text-sm text-[#5B7CFA]">
+                  PHP · SQL · JavaScript
+                </p>
+              </div>
+            </div>
+          </section>
+
+
+          {/* CONTACT */}
+          <section id="contact" className="py-32">
+            <h2 className="text-sm font-medium uppercase tracking-widest text-[#5B7CFA]">
+              Contact
+            </h2>
+
+            <p className="mt-6 text-lg text-zinc-400">
+              Want to work together or just say hi?
+            </p>
+
             <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+                href="mailto:martin@example.com"
+                className="mt-6 inline-block text-lg font-medium text-white hover:text-[#5B7CFA] transition"
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+              koudela.m@icloud.com
+            </a>
+          </section>
+
+
+          {/* FOOTER */}
+          <footer className="py-12 text-sm text-zinc-500">
+            © {new Date().getFullYear()} Martin Koudela
+          </footer>
+
+
+        </main>
+      </div>
   );
 }
