@@ -1,4 +1,15 @@
 import Antigravity from '../components/Antigravity';
+import {
+  Code2,
+  Cpu,
+  Wifi,
+  Shield,
+  Braces,
+  Database,
+  GitBranch,
+  Layers,
+} from "lucide-react";
+
 
 
 export default function Home() {
@@ -102,18 +113,23 @@ export default function Home() {
 
             <div className="mt-10 grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4">
               {[
-                "Next.js",
-                "React",
-                "TypeScript",
-                "Tailwind CSS",
-                "Node.js",
-                "SQL",
-                "Git",
-                "REST APIs",
-              ].map((skill) => (
+                { name: "Python", icon: Code2 },
+                { name: "C / C++", icon: Code2 },
+                { name: "Embedded Systems", icon: Cpu },
+                { name: "Microcontrollers", icon: Cpu },
+                { name: "IoT Systems", icon: Wifi },
+                { name: "PenTesting", icon: Shield },
+                { name: "PHP / Laravel", icon: Braces },
+                { name: "Next.js", icon: Layers },
+                { name: "React", icon: Layers },
+                { name: "Tailwind CSS", icon: Layers },
+                { name: "MySQL / PostgreSQL", icon: Database },
+                { name: "Git", icon: GitBranch },
+              ].map(({ name, icon: Icon }) => (
                   <div
-                      key={skill}
+                      key={name}
                       className="
+          flex items-center gap-3
           rounded-xl
           border border-white/10
           bg-white/5
@@ -121,13 +137,22 @@ export default function Home() {
           text-sm
           text-zinc-300
           backdrop-blur
+          transition
+          hover:border-[#5B7CFA]/40
+          hover:text-white
         "
                   >
-                    {skill}
+                    <Icon
+                        size={16}
+                        strokeWidth={1.8}
+                        className="text-[#5B7CFA]"
+                    />
+                    <span>{name}</span>
                   </div>
               ))}
             </div>
           </section>
+
 
 
           {/* PROJECTS */}
