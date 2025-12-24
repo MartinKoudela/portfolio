@@ -1,226 +1,410 @@
+"use client";
+import React, { useState, useEffect } from 'react';
 import Antigravity from '../components/Antigravity';
+import ProjectCarousel from '../components/ProjectCarousel';
+import { motion } from "framer-motion";
 import {
-  Code2,
-  Cpu,
-  Wifi,
-  Shield,
-  Braces,
-  Database,
-  GitBranch,
-  Layers,
+    Code2,
+    Cpu,
+    Wifi,
+    Shield,
+    Braces,
+    Database,
+    GitBranch,
+    Layers,
+    Instagram,
+    Facebook,
+    Linkedin,
+    Github,
+    Coffee,
 } from "lucide-react";
 
-
-
+/**
+ * Home Page Component
+ * 
+ * This is the main landing page of the portfolio. It includes:
+ * - Animated background with grid and glowing accents
+ * - Hero section with Antigravity background and CTA buttons
+ * - About section with a brief introduction and philosophy
+ * - Skills section with a staggered grid of technology icons
+ * - Projects section featuring a draggable carousel
+ * - Contact section with social links and email CTA
+ */
 export default function Home() {
-  return (
-      <div className="min-h-screen bg-black text-white dark:bg-black dark:text-zinc-50">
-        <main className="mx-auto max-w-6xl px-6">
-
-
-          {/* HERO */}
-          <section className="relative flex min-h-screen items-center overflow-hidden">
-            {/* Background */}
-            <div className="absolute inset-0 z-0 pointer-events-none">
-              <div className="relative h-full w-full">
-                <Antigravity
-                    count={220}
-                    magnetRadius={10}
-                    ringRadius={7}
-                    waveSpeed={0.4}
-                    waveAmplitude={0.6}
-                    particleSize={1.3}
-                    lerpSpeed={0.05}
-                    color="#5B7CFA"
-                    autoAnimate={true}
-                    particleVariance={1}
+    return (
+        <div className="relative min-h-screen bg-[#050505] text-white selection:bg-[#5B7CFA]/30">
+            {/*
+                Global Background Accents
+                These elements are fixed to the viewport and provide the base atmosphere.
+            */}
+            <div className="fixed inset-0 pointer-events-none z-0">
+                {/*
+                    The Grid Pattern
+                    Two radial gradients create a repeating dot grid that gives a technical/blueprint feel.
+                */}
+                <div
+                    className="absolute inset-0 opacity-[0.15]"
+                    style={{
+                        backgroundImage: `radial-gradient(#5B7CFA 0.5px, transparent 0.5px), radial-gradient(#5B7CFA 0.5px, #050505 0.5px)`,
+                        backgroundSize: '40px 40px',
+                        backgroundPosition: '0 0, 20px 20px'
+                    }}
                 />
-              </div>
+
+                {/*
+                    Large Moving Glows
+                    Animated blobs of color that create dynamic lighting in the background.
+                */}
+                <motion.div
+                    animate={{
+                        scale: [1, 1.1, 1],
+                        opacity: [2, 1.5, 2],
+                    }}
+                    transition={{
+                        duration: 8,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                    }}
+                    className="absolute  top-[-10%] left-[-10%] h-[600px] w-[600px] rounded-full bg-[#5B7CFA]/15 blur-[120px] "/>
+
+                <motion.div
+                    animate={{
+                        scale: [1, 1.2, 1],
+                        opacity: [2, 1.5, 2],
+                    }}
+                    transition={{
+                        duration: 12,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                    }}
+                    className="absolute top-[20%] right-[-10%] h-[500px] w-[500px] rounded-full bg-[#5B7CFA]/6 blur-[100px] "
+                />
+
+                {/* Static glow for visual balance */}
+                <div
+                    className="absolute bottom-[10%] right-[-5%] h-[500px] w-[500px] rounded-full bg-blue-600/5 blur-[100px]"/>
             </div>
 
-            {/* Content */}
-            <div className="relative z-10 mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-12 px-6 md:grid-cols-2">
-
-              {/* LEFT – TEXT */}
-              <div>
-                <h1 className="text-5xl font-bold tracking-tight sm:text-7xl">
-                  Martin Koudela
-                </h1>
-
-                <p className="mt-6 max-w-xl text-lg text-zinc-400">
-                  Junior Full-stack developer focused on modern web experiences,
-                  performance and clean design.
-                </p>
-
-                <div className="mt-10 flex gap-4">
-                  <a
-                      href="#projects"
-                      className="rounded-full bg-white px-6 py-3 text-sm font-medium text-black"
-                  >
-                    View projects
-                  </a>
-
-                  <a
-                      href="#contact"
-                      className="rounded-full border border-zinc-600 px-6 py-3 text-sm font-medium"
-                  >
-                    Contact
-                  </a>
+            {/*
+                HERO SECTION
+                The primary landing view with main branding and profile image.
+            */}
+            <section className="relative flex min-h-screen items-center overflow-hidden z-10">
+                {/* Hero-specific background with Antigravity particles */}
+                <div className="absolute inset-0 -z-10 pointer-events-none">
+                    <div className="relative h-full w-full pointer-events-none opacity-40">
+                        <Antigravity
+                            count={220}
+                            magnetRadius={10}
+                            ringRadius={7}
+                            waveSpeed={0.4}
+                            waveAmplitude={0.6}
+                            particleSize={1.3}
+                            lerpSpeed={0.05}
+                            color="#5B7CFA"
+                            autoAnimate={true}
+                            particleVariance={1}
+                        />
+                    </div>
                 </div>
-              </div>
 
-              {/* RIGHT – IMAGE */}
-              <div className="flex justify-center md:justify-end">
-                <img
-                    src="/me.png"
-                    alt="Martin Koudela"
-                    className="
-          w-80
-          sm:w-88
-          shadow-lg
-        "
-                />
-              </div>
+                {/* Hero Content */}
+                <div
+                    className="relative z-20 mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-12 px-6 md:grid-cols-2">
 
-            </div>
-          </section>
+                    {/* Left Column: Text Content */}
+                    <motion.div 
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8, delay: 0.2 }}
+                        className="space-y-8"
+                    >
+                        <div>
+                            <h1 className="text-6xl font-bold tracking-tight sm:text-8xl bg-clip-text text-transparent bg-gradient-to-b from-white to-white/40">
+                                Martin Koudela
+                            </h1>
+                            <p className="mt-8 max-w-xl text-xl text-zinc-400 leading-relaxed">
+                                Junior <span className="text-white">Full-stack developer</span> focused on modern web
+                                experiences,
+                                performance and clean design.
+                            </p>
+                        </div>
 
-          {/* ABOUT */}
-          <section id="about" className="py-32">
-            <div className="max-w-2xl">
-              <h2 className="text-sm font-medium uppercase tracking-widest text-[#5B7CFA]">
-                About
-              </h2>
+                        {/* Primary Call to Action Buttons */}
+                        <div className="flex flex-wrap gap-4">
+                            <a
+                                href="#projects"
+                                className="group relative rounded-full bg-white px-8 py-4 text-sm font-bold text-black transition-all hover:scale-105 hover:bg-zinc-200"
+                            >
+                                <div className="absolute inset-0 rounded-full bg-white/20 blur-lg opacity-0 group-hover:opacity-100 transition-opacity" />
+                                <span className="relative">View projects</span>
+                            </a>
 
-              <h3 className="mt-4 text-3xl font-semibold">
-                I build clean and modern web interfaces.
-              </h3>
+                            <a
+                                href="#contact"
+                                className="group relative rounded-full border border-white/10 bg-white/5 px-8 py-4 text-sm font-bold transition-all hover:border-white/20 hover:bg-white/10 backdrop-blur-sm"
+                            >
+                                <div className="absolute inset-0 rounded-full bg-[#5B7CFA]/10 blur-lg opacity-0 group-hover:opacity-100 transition-opacity" />
+                                <span className="relative">Contact me</span>
+                            </a>
+                        </div>
+                    </motion.div>
 
-              <p className="mt-6 text-lg leading-relaxed text-zinc-400">
-                I’m a high school IT student with a strong focus on web development.
-                I enjoy working with modern frameworks, designing clean UI,
-                and building applications that are both performant and visually polished.
-              </p>
-            </div>
-          </section>
+                    {/* Right Column: Profile Image */}
+                    <motion.div 
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8, delay: 0.4 }}
+                        className="flex justify-center md:justify-end relative"
+                    >
+                        {/* Soft glow behind the image */}
+                        <div
+                            className="absolute inset-0 bg-[#5B7CFA]/20 blur-[100px] rounded-full scale-75 animate-pulse"/>
+                        <img
+                            src="/me.png"
+                            alt="Martin Koudela"
+                            className="w-80 sm:w-88 drop-shadow-2xl grayscale hover:grayscale-0 transition-all duration-1000 rounded-[32px] object-cover"
+                        />
+                    </motion.div>
+                </div>
+            </section>
 
+            {/* Main Content Area */}
+            <main className="relative z-30 mx-auto max-w-6xl px-6">
 
-          {/* SKILLS */}
-          <section id="skills" className="py-32">
-            <h2 className="text-sm font-medium uppercase tracking-widest text-[#5B7CFA]">
-              Skills
-            </h2>
+                {/* 
+                    ABOUT SECTION 
+                    Introduction and background information.
+                */}
+                <motion.section 
+                    id="about" 
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                    className="relative py-32"
+                >
+                    {/* Subtle section glow */}
+                    <div
+                        className="absolute -left-20 top-1/2 -z-10 h-64 w-64 -translate-y-1/2 rounded-full bg-[#5B7CFA]/5 blur-[80px]"/>
+                    
+                    <div className="max-w-3xl">
+                        <div className="flex items-center gap-4 mb-8">
+                            <h2 className="text-sm font-bold uppercase tracking-[0.2em] text-[#5B7CFA]">
+                                About me
+                            </h2>
+                        </div>
 
-            <div className="mt-10 grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4">
-              {[
-                { name: "Python", icon: Code2 },
-                { name: "C / C++", icon: Code2 },
-                { name: "Embedded Systems", icon: Cpu },
-                { name: "Microcontrollers", icon: Cpu },
-                { name: "IoT Systems", icon: Wifi },
-                { name: "PenTesting", icon: Shield },
-                { name: "PHP / Laravel", icon: Braces },
-                { name: "Next.js", icon: Layers },
-                { name: "React", icon: Layers },
-                { name: "Tailwind CSS", icon: Layers },
-                { name: "MySQL / PostgreSQL", icon: Database },
-                { name: "Git", icon: GitBranch },
-              ].map(({ name, icon: Icon }) => (
-                  <div
-                      key={name}
-                      className="
-          flex items-center gap-3
-          rounded-xl
-          border border-white/10
-          bg-white/5
-          px-4 py-3
-          text-sm
-          text-zinc-300
-          backdrop-blur
-          transition
-          hover:border-[#5B7CFA]/40
-          hover:text-white
-        "
-                  >
-                    <Icon
-                        size={16}
-                        strokeWidth={1.8}
-                        className="text-[#5B7CFA]"
-                    />
-                    <span>{name}</span>
-                  </div>
-              ))}
-            </div>
-          </section>
+                        <h3 className="text-4xl font-bold leading-tight sm:text-6xl text-white">
+                            I build clean and <br/>
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#5B7CFA] to-blue-400">modern web interfaces.</span>
+                        </h3>
 
+                        <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-12">
+                            <p className="text-xl leading-relaxed text-zinc-400">
+                                I’m a high school IT student with a strong focus on web development.
+                                I enjoy working with modern frameworks, designing clean UI,
+                                and building applications that are both <span
+                                className="text-white">performant</span> and visually <span
+                                className="text-white">polished</span>.
+                            </p>
+                            
+                            {/* Detailed Info Blocks */}
+                            <div className="space-y-6 border-l border-white/5 pl-8">
+                                <div>
+                                    <h4 className="text-white font-bold mb-2">Philosophy</h4>
+                                    <p className="text-zinc-500 text-sm">Minimalism in design, complexity in
+                                        performance. Every pixel should serve a purpose.</p>
+                                </div>
+                                <div>
+                                    <h4 className="text-white font-bold mb-2">Education</h4>
+                                    <p className="text-zinc-500 text-sm">IT focused High School student, constantly
+                                        learning through real-world projects.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </motion.section>
 
+                {/* 
+                    SKILLS SECTION 
+                    Displaying technical stack with a grid of icons.
+                */}
+                <section id="skills" className="py-32">
+                    <motion.div 
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="flex items-center gap-4 mb-16"
+                    >
+                        <h2 className="text-sm font-bold uppercase tracking-[0.2em] text-[#5B7CFA]">
+                            Skills
+                        </h2>
+                    </motion.div>
 
-          {/* PROJECTS */}
-          <section id="projects" className="py-32">
-            <h2 className="text-sm font-medium uppercase tracking-widest text-[#5B7CFA]">
-              Projects
-            </h2>
+                    {/* Technology Grid */}
+                    <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+                        {[
+                            {name: "Python", icon: Code2},
+                            {name: "C / C++", icon: Code2},
+                            {name: "Embedded", icon: Cpu},
+                            {name: "IoT Systems", icon: Wifi},
+                            {name: "Security", icon: Shield},
+                            {name: "Laravel", icon: Braces},
+                            {name: "Next.js", icon: Layers},
+                            {name: "React", icon: Layers},
+                            {name: "Tailwind", icon: Layers},
+                            {name: "PostgreSQL", icon: Database},
+                            {name: "Git", icon: GitBranch},
+                            {name: "Linux", icon: Cpu},
+                        ].map(({name, icon: Icon}, index) => (
+                            <motion.div
+                                key={name}
+                                initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                                whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.5, delay: index * 0.1 }}
+                                className="
+                                    group relative
+                                    flex flex-col items-center justify-center gap-4
+                                    rounded-2xl
+                                    border border-white/5
+                                    bg-gradient-to-b from-white/[0.03] to-transparent
+                                    aspect-square
+                                    transition-all duration-500
+                                    hover:border-[#5B7CFA]/30
+                                    hover:bg-white/[0.05]
+                                    hover:-translate-y-2
+                                    hover:shadow-[0_20px_40px_rgba(91,124,250,0.1)]
+                                "
+                            >
+                                {/* Hover Glow Effect */}
+                                <div className="absolute inset-0 bg-[#5B7CFA]/0 group-hover:bg-[#5B7CFA]/5 blur-2xl transition-all duration-500 rounded-2xl" />
+                                
+                                <div
+                                    className="relative rounded-full bg-white/5 p-3 transition-colors group-hover:bg-[#5B7CFA]/10">
+                                    <Icon
+                                        size={24}
+                                        strokeWidth={1.5}
+                                        className="text-[#5B7CFA] transition-transform group-hover:scale-110"
+                                    />
+                                </div>
+                                <span
+                                    className="text-xs font-bold uppercase tracking-wider text-zinc-500 group-hover:text-white transition-colors">
+                                    {name}
+                                </span>
+                            </motion.div>
+                        ))}
+                    </div>
+                </section>
 
-            <div className="mt-10 grid gap-8 sm:grid-cols-2">
-              <div className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur">
-                <h3 className="text-xl font-medium">
-                  Portfolio Website
-                </h3>
+                {/* 
+                    PROJECTS SECTION 
+                    Horizontal scrollable carousel showing recent work.
+                */}
+                <motion.section 
+                    id="projects" 
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                    className="py-32 overflow-hidden"
+                >
+                    <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 px-2">
+                        <div className="space-y-4">
+                            <h2 className="text-sm font-bold uppercase tracking-[0.2em] text-[#5B7CFA]">
+                                Selected Projects
+                            </h2>
+                        </div>
+                        
+                        {/* Interaction hint for desktop */}
+                        <div className="mt-8 md:mt-0 flex items-center gap-3 text-zinc-500">
+                            <div className="h-[1px] w-8 bg-zinc-800"/>
+                            <p className="text-xs uppercase tracking-widest font-medium">
+                                Drag to explore
+                            </p>
+                        </div>
+                    </div>
 
-                <p className="mt-3 text-zinc-400">
-                  One-page personal portfolio built with Next.js, Tailwind CSS
-                  and modern animation techniques.
-                </p>
+                    <ProjectCarousel/>
+                </motion.section>
 
-                <p className="mt-4 text-sm text-[#5B7CFA]">
-                  Next.js · Tailwind · Three.js
-                </p>
-              </div>
+                {/* 
+                    CONTACT SECTION 
+                    Call to action for collaboration and social links.
+                */}
+                <motion.section 
+                    id="contact" 
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                    className="py-32 relative"
+                >
+                    {/* Background glow behind contact card */}
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[500px] bg-[#5B7CFA]/10 blur-[120px] rounded-full -z-10 animate-pulse" />
+                    
+                    <div
+                        className="relative rounded-3xl border border-white/5 bg-gradient-to-b from-white/[0.02] to-transparent p-8 md:p-16 text-center overflow-hidden backdrop-blur-sm">
+                        
+                        {/* Decorative internal animated glows */}
+                        <div className="absolute -top-24 -right-24 h-64 w-64 bg-blue-500/10 blur-[80px] rounded-full animate-pulse" style={{ animationDuration: '8s' }} />
+                        <div className="absolute -bottom-24 -left-24 h-64 w-64 bg-indigo-500/10 blur-[80px] rounded-full animate-pulse" style={{ animationDuration: '10s' }} />
+                        
+                        <h2 className="text-sm font-bold uppercase tracking-[0.2em] text-[#5B7CFA]">
+                            Get in touch
+                        </h2>
 
-              <div className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur">
-                <h3 className="text-xl font-medium">
-                  School Projects
-                </h3>
+                        <h3 className="mt-8 text-4xl font-bold sm:text-6xl">
+                            Let's build something <br/><span className="text-zinc-500">extraordinary.</span>
+                        </h3>
 
-                <p className="mt-3 text-zinc-400">
-                  Collection of smaller web and backend projects created during
-                  my IT studies.
-                </p>
+                        <p className="mx-auto mt-8 max-w-lg text-lg text-zinc-400 leading-relaxed">
+                            Currently available for new projects and collaborations.
+                            Feel free to reach out for a chat.
+                        </p>
 
-                <p className="mt-4 text-sm text-[#5B7CFA]">
-                  PHP · SQL · JavaScript
-                </p>
-              </div>
-            </div>
-          </section>
+                        <div className="mt-12 flex flex-col items-center gap-8">
+                            {/* Primary Email CTA */}
+                            <a
+                                href="mailto:koudela.m@icloud.com"
+                                className="inline-flex items-center gap-3 rounded-full bg-white px-10 py-5 text-lg font-bold text-black transition-all hover:scale-105 hover:bg-zinc-200"
+                            >
+                                Send an email
+                            </a>
 
+                            {/* Social Media Links */}
+                            <div className="flex gap-4">
+                                {[
+                                    { icon: Github, href: "https://github.com/martinkoudela", label: "GitHub" },
+                                    { icon: Linkedin, href: "https://www.linkedin.com/in/martin-koudela-a5b645343/", label: "LinkedIn" },
+                                    { icon: Instagram, href: "https://www.instagram.com/koudy_martin/", label: "Instagram" },
+                                    { icon: Facebook, href: "https://www.facebook.com/koudela.martin.9?locale=cs_CZ", label: "Facebook" },
+                                    { icon: Coffee, href: "https://buymeacoffee.com/martinkoudela", label: "Buy me a coffee" },
+                                ].map(({ icon: Icon, href, label }) => (
+                                    <a
+                                        key={label}
+                                        href={href}
+                                        aria-label={label}
+                                        className="group relative flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/5 transition-all hover:border-[#5B7CFA]/30 hover:bg-[#5B7CFA]/5"
+                                    >
+                                        <div className="absolute inset-0 rounded-full bg-[#5B7CFA]/10 blur-md opacity-0 group-hover:opacity-100 transition-opacity" />
+                                        <Icon size={20} className="relative text-zinc-400 transition-colors group-hover:text-[#5B7CFA]" />
+                                    </a>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </motion.section>
 
-          {/* CONTACT */}
-          <section id="contact" className="py-32">
-            <h2 className="text-sm font-medium uppercase tracking-widest text-[#5B7CFA]">
-              Contact
-            </h2>
+                {/* FOOTER */}
+                <footer className="py-12 text-sm text-zinc-500">
+                    © {new Date().getFullYear()} Martin Koudela
+                </footer>
 
-            <p className="mt-6 text-lg text-zinc-400">
-              Want to work together or just say hi?
-            </p>
-
-            <a
-                href="mailto:martin@example.com"
-                className="mt-6 inline-block text-lg font-medium text-white hover:text-[#5B7CFA] transition"
-            >
-              koudela.m@icloud.com
-            </a>
-          </section>
-
-
-          {/* FOOTER */}
-          <footer className="py-12 text-sm text-zinc-500">
-            © {new Date().getFullYear()} Martin Koudela
-          </footer>
-
-
-        </main>
-      </div>
-  );
+            </main>
+        </div>
+    );
 }
