@@ -39,7 +39,7 @@ const projects = [
 
 /**
  * ProjectCarousel Component
- * 
+ *
  * A horizontal, draggable slider for showcasing portfolio projects.
  * Uses Framer Motion for smooth dragging and transitions.
  */
@@ -63,7 +63,7 @@ export default function ProjectCarousel() {
     // Re-run after short delays to account for late layout shifts and image loading
     const timer = setTimeout(updateConstraints, 500);
     const timer2 = setTimeout(updateConstraints, 2000);
-    
+
     window.addEventListener('resize', updateConstraints);
     return () => {
       window.removeEventListener('resize', updateConstraints);
@@ -108,7 +108,7 @@ export default function ProjectCarousel() {
 
 /**
  * ProjectCard Component
- * 
+ *
  * Individual project tile featuring a spotlight effect on hover,
  * project metadata, and a preview image.
  */
@@ -127,14 +127,14 @@ function ProjectCard({ project, index }) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+        initial={{ scale: 1, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
       onMouseMove={handleMouseMove}
       className="group relative h-[420px] w-[300px] flex-shrink-0 overflow-hidden rounded-[32px] border border-white/5 bg-white/[0.02] p-1 transition-all duration-500 hover:border-[#5B7CFA]/30 hover:bg-white/[0.04] sm:w-[380px]"
     >
-      {/* 
+      {/*
           Spotlight effect 
           A subtle radial gradient that follows the mouse when hovered.
       */}
@@ -176,8 +176,8 @@ function ProjectCard({ project, index }) {
         <div className="mt-auto pt-6 border-t border-white/5">
           <div className="flex flex-wrap gap-2">
             {project.tags.map(tag => (
-              <span 
-                key={tag} 
+              <span
+                key={tag}
                 className="
                   flex items-center gap-1.5
                   text-[10px] uppercase tracking-wider text-zinc-400 font-bold 

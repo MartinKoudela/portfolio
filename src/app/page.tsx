@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import Antigravity from '../components/Antigravity';
 import ProjectCarousel from '../components/ProjectCarousel';
-import { motion } from "framer-motion";
+import {motion, scale} from "framer-motion";
 import {
     Code2,
     Cpu,
@@ -17,6 +17,7 @@ import {
     Linkedin,
     Github,
     Coffee,
+    Heart,
 } from "lucide-react";
 
 /**
@@ -152,7 +153,7 @@ export default function Home() {
                     </motion.div>
 
                     {/* Right Column: Profile Image */}
-                    <motion.div 
+                    <motion.div
                         initial={{ opacity: 0, scale: 0.9 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
@@ -165,7 +166,8 @@ export default function Home() {
                         <img
                             src="/me.png"
                             alt="Martin Koudela"
-                            className="w-80 sm:w-88 drop-shadow-2xl grayscale hover:grayscale-0 transition-all duration-1000 rounded-[32px] object-cover"
+                            draggable="false"
+                            className="w-80 sm:w-88 drop-shadow-2xl  grayscale hover:grayscale-0 transition-all duration-1000 rounded-[32px] object-cover"
                         />
                     </motion.div>
                 </div>
@@ -174,22 +176,22 @@ export default function Home() {
             {/* Main Content Area */}
             <main className="relative z-30 mx-auto max-w-6xl px-6">
 
-                {/* 
-                    ABOUT SECTION 
+                {/*
+                    ABOUT SECTION
                     Introduction and background information.
                 */}
-                <motion.section 
-                    id="about" 
-                    initial={{ opacity: 0, y: 30 }}
+                <motion.section
+                    id="about"
+                    initial={{ opacity: 0, y: 80 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.8 }}
+                    transition={{ duration: 1, delay: 0.5 }}
                     className="relative py-32"
                 >
                     {/* Subtle section glow */}
                     <div
                         className="absolute -left-20 top-1/2 -z-10 h-64 w-64 -translate-y-1/2 rounded-full bg-[#5B7CFA]/5 blur-[80px]"/>
-                    
+
                     <div className="max-w-3xl">
                         <div className="flex items-center gap-4 mb-8">
                             <h2 className="text-sm font-bold uppercase tracking-[0.2em] text-[#5B7CFA]">
@@ -210,7 +212,7 @@ export default function Home() {
                                 className="text-white">performant</span> and visually <span
                                 className="text-white">polished</span>.
                             </p>
-                            
+
                             {/* Detailed Info Blocks */}
                             <div className="space-y-6 border-l border-white/5 pl-8">
                                 <div>
@@ -228,12 +230,12 @@ export default function Home() {
                     </div>
                 </motion.section>
 
-                {/* 
-                    SKILLS SECTION 
+                {/*
+                    SKILLS SECTION
                     Displaying technical stack with a grid of icons.
                 */}
                 <section id="skills" className="py-32">
-                    <motion.div 
+                    <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
@@ -262,10 +264,10 @@ export default function Home() {
                         ].map(({name, icon: Icon}, index) => (
                             <motion.div
                                 key={name}
-                                initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                                initial={{ scale: 0.95, y: 30 }}
                                 whileInView={{ opacity: 1, scale: 1, y: 0 }}
                                 viewport={{ once: true }}
-                                transition={{ duration: 0.5, delay: index * 0.1 }}
+                                transition={{ duration: 0.7, delay: index * 0.1 }}
                                 className="
                                     group relative
                                     flex flex-col items-center justify-center gap-4
@@ -280,9 +282,7 @@ export default function Home() {
                                     hover:shadow-[0_20px_40px_rgba(91,124,250,0.1)]
                                 "
                             >
-                                {/* Hover Glow Effect */}
-                                <div className="absolute inset-0 bg-[#5B7CFA]/0 group-hover:bg-[#5B7CFA]/5 blur-2xl transition-all duration-500 rounded-2xl" />
-                                
+
                                 <div
                                     className="relative rounded-full bg-white/5 p-3 transition-colors group-hover:bg-[#5B7CFA]/10">
                                     <Icon
@@ -300,16 +300,16 @@ export default function Home() {
                     </div>
                 </section>
 
-                {/* 
-                    PROJECTS SECTION 
+                {/*
+                    PROJECTS SECTION
                     Horizontal scrollable carousel showing recent work.
                 */}
-                <motion.section 
-                    id="projects" 
+                <motion.section
+                    id="projects"
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.8 }}
+                    transition={{ duration: 0.8, delay: 1 }}
                     className="py-32 overflow-hidden"
                 >
                     <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 px-2">
@@ -318,7 +318,7 @@ export default function Home() {
                                 Selected Projects
                             </h2>
                         </div>
-                        
+
                         {/* Interaction hint for desktop */}
                         <div className="mt-8 md:mt-0 flex items-center gap-3 text-zinc-500">
                             <div className="h-[1px] w-8 bg-zinc-800"/>
@@ -331,16 +331,16 @@ export default function Home() {
                     <ProjectCarousel/>
                 </motion.section>
 
-                {/* 
-                    CONTACT SECTION 
+                {/*
+                    CONTACT SECTION
                     Call to action for collaboration and social links.
                 */}
-                <motion.section 
-                    id="contact" 
+                <motion.section
+                    id="contact"
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.8 }}
+                    transition={{ duration: 1, delay: 1 }}
                     className="py-32 relative"
                 >
                     {/* Background glow behind contact card */}
@@ -378,13 +378,14 @@ export default function Home() {
                             {/* Social Media Links */}
                             <div className="flex gap-4">
                                 {[
-                                    { icon: Github, href: "https://github.com/martinkoudela", label: "GitHub" },
+                                    { icon: Github, href: "https://github.com/martinkoudela", label: "GitHub"},
                                     { icon: Linkedin, href: "https://www.linkedin.com/in/martin-koudela-a5b645343/", label: "LinkedIn" },
                                     { icon: Instagram, href: "https://www.instagram.com/koudy_martin/", label: "Instagram" },
                                     { icon: Facebook, href: "https://www.facebook.com/koudela.martin.9?locale=cs_CZ", label: "Facebook" },
                                     { icon: Coffee, href: "https://buymeacoffee.com/martinkoudela", label: "Buy me a coffee" },
                                 ].map(({ icon: Icon, href, label }) => (
                                     <a
+                                        target={"_blank"}
                                         key={label}
                                         href={href}
                                         aria-label={label}
@@ -400,9 +401,11 @@ export default function Home() {
                 </motion.section>
 
                 {/* FOOTER */}
-                <footer className="py-12 text-sm text-zinc-500">
+                <footer className="py-12 text-sm text-zinc-500 flex items-center gap-2">
                     © {new Date().getFullYear()} Martin Koudela
+                    <Heart size={15} className="text-zinc-400" />
                 </footer>
+
 
             </main>
         </div>
