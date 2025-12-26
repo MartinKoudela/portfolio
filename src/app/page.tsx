@@ -1,5 +1,4 @@
 "use client";
-import React, {useState, useEffect} from 'react';
 import Antigravity from '../components/Antigravity';
 import ProjectCarousel from '../components/ProjectCarousel';
 import {motion, scale} from "framer-motion";

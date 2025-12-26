@@ -2,6 +2,7 @@
 
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { useMemo, useRef } from 'react';
+import { useEffect, useState } from "react";
 import * as THREE from 'three';
 
 /**
@@ -202,11 +203,22 @@ const AntigravityInner = ({
  * Particles react to mouse movement, creating a magnetic field effect.
  */
 const Antigravity = props => {
+  const [ready, setReady] = useState(false);
+
+  useEffect(() => {
+    requestAnimationFrame(() => {
+      setReady(true);
+    });
+  }, []);
+
+  if (!ready) return null;
+
   return (
-    <Canvas camera={{ position: [0, 0, 50], fov: 35 }}>
-      <AntigravityInner {...props} />
-    </Canvas>
+      <Canvas camera={{ position: [0, 0, 50], fov: 35 }}>
+        <AntigravityInner {...props} />
+      </Canvas>
   );
 };
+
 
 export default Antigravity;
