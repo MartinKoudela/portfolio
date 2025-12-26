@@ -116,20 +116,18 @@ export default function HomeClient() {
                 {/* Hero-specific background with Antigravity particles */}
                 <div className="absolute inset-0 -z-10 pointer-events-none">
                     <div className="relative h-full w-full pointer-events-none opacity-40">
-                        {showParticles && (
-                            <Antigravity
-                                count={220}
-                                magnetRadius={10}
-                                ringRadius={7}
-                                waveSpeed={0.4}
-                                waveAmplitude={0.6}
-                                particleSize={1.3}
-                                lerpSpeed={0.05}
-                                color="#5B7CFA"
-                                autoAnimate={true}
-                                particleVariance={1}
-                            />
-                        )}
+                        <Antigravity
+                            count={220}
+                            magnetRadius={10}
+                            ringRadius={7}
+                            waveSpeed={0.4}
+                            waveAmplitude={0.6}
+                            particleSize={1.3}
+                            lerpSpeed={0.05}
+                            color="#5B7CFA"
+                            autoAnimate={true}
+                            particleVariance={1}
+                        />
                     </div>
                 </div>
 
