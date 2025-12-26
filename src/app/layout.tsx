@@ -37,7 +37,7 @@ export const metadata: Metadata = {
 
     openGraph: {
         title: "Martin Koudela | Full-stack Developer",
-        description: "Junior Full-stack developer focused on modern web experiences.",
+        description: "Junior Full-stack developer focused on modern software solutions.",
         url: "https://martinkoudela.com",
         siteName: "Martin Koudela",
         type: "website",
@@ -48,12 +48,54 @@ export const metadata: Metadata = {
             },
         ],
     },
+    twitter: {
+        card: "summary_large_image",
+        title: "Martin Koudela | Full-stack Developer",
+        description: "Junior Full-stack developer focused on modern software solutions.",
+        images: ["/og-image.png"],
+    },
+
+
+    keywords: [
+        "Martin Koudela",
+        "Full-stack developer",
+        "Web developer",
+        "Laravel developer",
+        "Next.js developer",
+        "Software engineer",
+    ],
+
+    authors: [{ name: "Martin Koudela", url: "https://martinkoudela.com" }],
+    creator: "Martin Koudela",
+    publisher: "Martin Koudela",
+
+    themeColor: "#050505",
+
+    alternates: {
+        canonical: "https://martinkoudela.com",
+    },
 
     viewport: {
         width: "device-width",
         initialScale: 1,
     },
 };
+
+const personStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "Martin Koudela",
+    url: "https://martinkoudela.com",
+    jobTitle: "Full-stack Developer",
+    description: "Junior Full-stack developer focused on modern software solutions.",
+    image: "https://martinkoudela.com/og-image.png",
+    sameAs: [
+        "https://www.linkedin.com/in/martin-koudela-a5b645343/",
+        "https://github.com/martinkoudela",
+        "https://www.instagram.com/koudy_martin/",
+    ],
+};
+
 
 export default function RootLayout({
                                        children,
@@ -63,6 +105,13 @@ export default function RootLayout({
     return (
         <html lang="en">
         <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+
+        <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+                __html: JSON.stringify(personStructuredData),
+            }}
+        />
         {children}
 
         {/* Vercel analytics */}
