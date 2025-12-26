@@ -44,9 +44,9 @@ const projects = [
     },
     {
         title: "Football Photogallery",
-        description: "A custom-built football photogallery platform with a photographer-focused dashboard, featured highlights, and a comprehensive match-based photo archive, branded under the client’s identity.",
+        description: "A custom-built football photogallery platform with a photographer-focused dashboard, featured highlights, and a comprehensive match-based photo archive, branded under the client’s identity. Currently in development.",
         tags: ["Laravel", "MySQL", "Tailwind"],
-        image: "#",
+        image: "/photogallery.png",
     },
 ];
 
@@ -176,7 +176,7 @@ function ProjectCard({project, index}) {
 
                 {/* Text Content */}
                 <div className="flex-1 space-y-3">
-                    <h3 className="text-xl font-bold text-white transition-colors group-hover:text-[#5B7CFA]">
+                    <h3 className="text-xl font-bold text-white transition-colors group-hover:text-[#5B7CFA]" translate="no">
                         {project.title}
                     </h3>
                     <p className="text-sm leading-relaxed text-zinc-500  group-hover:text-zinc-400 transition-colors">
