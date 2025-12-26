@@ -38,9 +38,15 @@ export const metadata: Metadata = {
     openGraph: {
         title: "Martin Koudela | Full-stack Developer",
         description: "Junior Full-stack developer focused on modern web experiences.",
-        url: "https://martinkoudela.com", // ← nahraď reálnou doménou
+        url: "https://martinkoudela.com",
         siteName: "Martin Koudela",
         type: "website",
+        images: [
+            {
+                url: "/og-image.png",
+                alt: "Martin Koudela – Full-stack Developer",
+            },
+        ],
     },
 
     viewport: {
