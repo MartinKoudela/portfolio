@@ -8,33 +8,46 @@ import { motion, useMotionValue, useSpring } from "framer-motion";
  */
 const projects = [
   {
+    title: "Portable ESP32-S3 Pentesting & Research Tool",
+    description: "A custom handheld pentesting and RF research device built on ESP32-S3, designed for ethical hacking, wireless security testing, and IoT experimentation. It combines Wi-Fi, Bluetooth LE, Sub-GHz RF, NFC/RFID, infrared control, and a custom UI in a battery-powered, modular form. Currently in development.",
+    tags: [
+      "C++",
+      "ESP32-S3",
+      "Embedded Systems",
+      "Cybersecurity",
+      "Pentesting",
+      "IoT Security"
+    ],
+  },
+  {
     title: "Trackee.",
-    description: "A lightweight team collaboration app for groups, tasks, and chats.",
-    tags: ["Laravel", "Tailwind", "MySQL"],
+    description: "A modern team collaboration platform enabling users to create teams and projects, manage tasks, calendars, and deadlines, customize profiles, and collaborate with others. Currently in development.",
+    tags: ["Laravel", "Tailwind", "MySQL", "JS"],
     image: "/trackee1.png",
   },
   {
+    title: "Raspberry Pi Camera",
+    description: "A Raspberry Pi 4 surveillance and vision system integrating a camera and motion sensor with real-time human, face, and object detection using OpenCV, YOLO, and MediaPipe.",
+    tags: ["Python", "Raspberry Pi 4", "OpenCV", "YOLO", "MediaPipe"],
+  },
+  {
     title: "Cafecheck",
-    description: "Platform for reviewing and discovering local coffee shops.",
+    description: "A personal non-public website for sharing subjective reviews and photos of local coffee shops in Zlín and nearby areas.",
     tags: ["JS", "Bootstrap", "EmailJS"],
     image: "/cafecheck1.png",
   },
   {
-    title: "Raspberry Pi Camera",
-    description: "Intelligent camera system using AI for real-time object detection.",
-    tags: ["Python", "OpenCV", "YOLO"],
-  },
-  {
-    title: "ESP32 Pentesting tool",
-    description: "Versatile cybersecurity hardware tool for network analysis and auditing.",
-    tags: ["C++", "ESP32", "Cybersecurity"],
-  },
-  {
     title: "Filmio",
-    description: "A sleek landing page for a fictional film production club.",
+    description: "A school project film club web application with user authentication, shared movie watch sessions, and an admin dashboard for managing films and members.",
     tags: ["PHP", "MySQL", "Tailwind"],
     image: "/filmio1.png",
-  }
+  },
+  {
+    title: "Football Photogallery",
+    description: "A custom-built football photogallery platform with a photographer-focused dashboard, featured highlights, and a comprehensive match-based photo archive, branded under the client’s identity.",
+    tags: ["Laravel", "MySQL", "Tailwind"],
+    image: "#",
+  },
 ];
 
 /**
@@ -132,7 +145,7 @@ function ProjectCard({ project, index }) {
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
       onMouseMove={handleMouseMove}
-      className="group relative h-[420px] w-[300px] flex-shrink-0 overflow-hidden rounded-[32px] border border-white/5 bg-white/[0.02] p-1 transition-all duration-500 hover:border-[#5B7CFA]/30 hover:bg-white/[0.04] sm:w-[380px]"
+      className="group relative h-[500px] w-[300px] flex-shrink-0 overflow-hidden rounded-[32px] border border-white/5 bg-white/[0.02] p-1 transition-all duration-500 hover:border-[#5B7CFA]/30 hover:bg-white/[0.04] sm:w-[380px]"
     >
       {/*
           Spotlight effect 
@@ -146,35 +159,33 @@ function ProjectCard({ project, index }) {
       />
 
       <div className="relative h-full overflow-hidden rounded-[28px] bg-[#050505]/40 p-6 flex flex-col backdrop-blur-sm">
-        {/* Project Image / Placeholder */}
-        <div className="relative h-44 w-full overflow-hidden rounded-2xl mb-6 bg-white/[0.03]">
-          {project.image ? (
-            <img
-              src={project.image}
-              alt={project.title}
-              draggable="false"
-              className="h-full w-full object-cover opacity-60 grayscale transition-all duration-700 group-hover:opacity-100 group-hover:grayscale-0 group-hover:scale-105"
-            />
-          ) : (
-            <div className="flex h-full w-full items-center justify-center border border-white/5 rounded-2xl">
-              <span className="text-zinc-600 text-[10px] uppercase tracking-[0.2em] font-bold">Concept</span>
+        {/* Project Image */}
+        {project.image && (
+            <div className="relative h-44 w-full overflow-hidden rounded-2xl mb-6 bg-white/[0.03]">
+              <img
+                  src={project.image}
+                  alt={project.title}
+                  draggable="false"
+                  className="h-full w-full object-cover opacity-60 grayscale transition-all duration-700
+                 group-hover:opacity-100 group-hover:grayscale-0 group-hover:scale-105"
+              />
             </div>
-          )}
-        </div>
+        )}
+
 
         {/* Text Content */}
         <div className="flex-1 space-y-3">
           <h3 className="text-xl font-bold text-white transition-colors group-hover:text-[#5B7CFA]">
             {project.title}
           </h3>
-          <p className="text-sm leading-relaxed text-zinc-500 line-clamp-2 group-hover:text-zinc-400 transition-colors">
+          <p className="text-sm leading-relaxed text-zinc-500  group-hover:text-zinc-400 transition-colors">
             {project.description}
           </p>
         </div>
 
         {/* Tags / Technology Stack */}
         <div className="mt-auto pt-6 border-t border-white/5">
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-2" translate="no">
             {project.tags.map(tag => (
               <span
                 key={tag}

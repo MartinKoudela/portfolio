@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import Antigravity from '../components/Antigravity';
 import ProjectCarousel from '../components/ProjectCarousel';
 import {motion, scale} from "framer-motion";
@@ -7,7 +7,6 @@ import {
     Code2,
     Cpu,
     Wifi,
-    Shield,
     Braces,
     Database,
     GitBranch,
@@ -22,7 +21,7 @@ import {
 
 /**
  * Home Page Component
- * 
+ *
  * This is the main landing page of the portfolio. It includes:
  * - Animated background with grid and glowing accents
  * - Hero section with Antigravity background and CTA buttons
@@ -114,11 +113,11 @@ export default function Home() {
                     className="relative z-20 mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-12 px-6 md:grid-cols-2">
 
                     {/* Left Column: Text Content */}
-                    <motion.div 
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
+                    <motion.div
+                        initial={{opacity: 0, x: -20}}
+                        whileInView={{opacity: 1, x: 0}}
+                        viewport={{once: true}}
+                        transition={{duration: 0.8, delay: 0.2}}
                         className="space-y-8"
                     >
                         <div>
@@ -126,9 +125,9 @@ export default function Home() {
                                 Martin Koudela
                             </h1>
                             <p className="mt-8 max-w-xl text-xl text-zinc-400 leading-relaxed">
-                                Junior <span className="text-white">Full-stack developer</span> focused on modern web
-                                experiences,
-                                performance and clean design.
+                                <span translate="no">Junior</span> <span className="text-white">Full-stack Developer</span> focused on software
+                                development and embedded systems.
+
                             </p>
                         </div>
 
@@ -138,7 +137,8 @@ export default function Home() {
                                 href="#projects"
                                 className="group relative rounded-full bg-white px-8 py-4 text-sm font-bold text-black transition-all hover:scale-105 hover:bg-zinc-200"
                             >
-                                <div className="absolute inset-0 rounded-full bg-white/20 blur-lg opacity-0 group-hover:opacity-100 transition-opacity" />
+                                <div
+                                    className="absolute inset-0 rounded-full bg-white/20 blur-lg opacity-0 group-hover:opacity-100 transition-opacity"/>
                                 <span className="relative">View projects</span>
                             </a>
 
@@ -146,7 +146,8 @@ export default function Home() {
                                 href="#contact"
                                 className="group relative rounded-full border border-white/10 bg-white/5 px-8 py-4 text-sm font-bold transition-all hover:border-white/20 hover:bg-white/10 backdrop-blur-sm"
                             >
-                                <div className="absolute inset-0 rounded-full bg-[#5B7CFA]/10 blur-lg opacity-0 group-hover:opacity-100 transition-opacity" />
+                                <div
+                                    className="absolute inset-0 rounded-full bg-[#5B7CFA]/10 blur-lg opacity-0 group-hover:opacity-100 transition-opacity"/>
                                 <span className="relative">Contact me</span>
                             </a>
                         </div>
@@ -154,10 +155,10 @@ export default function Home() {
 
                     {/* Right Column: Profile Image */}
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.8, delay: 0.4 }}
+                        initial={{opacity: 0, scale: 0.9}}
+                        whileInView={{opacity: 1, scale: 1}}
+                        viewport={{once: true}}
+                        transition={{duration: 0.8, delay: 0.4}}
                         className="flex justify-center md:justify-end relative"
                     >
                         {/* Soft glow behind the image */}
@@ -182,10 +183,10 @@ export default function Home() {
                 */}
                 <motion.section
                     id="about"
-                    initial={{ opacity: 0, y: 80 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1, delay: 0.5 }}
+                    initial={{opacity: 0, y: 80}}
+                    whileInView={{opacity: 1, y: 0}}
+                    viewport={{once: true}}
+                    transition={{duration: 1, delay: 0.5}}
                     className="relative py-32"
                 >
                     {/* Subtle section glow */}
@@ -201,28 +202,29 @@ export default function Home() {
 
                         <h3 className="text-4xl font-bold leading-tight sm:text-6xl text-white">
                             I build clean and <br/>
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#5B7CFA] to-blue-400">modern web interfaces.</span>
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#5B7CFA] to-blue-400">modern experiences.</span>
                         </h3>
 
                         <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-12">
                             <p className="text-xl leading-relaxed text-zinc-400">
-                                I’m a high school IT student with a strong focus on web development.
-                                I enjoy working with modern frameworks, designing clean UI,
-                                and building applications that are both <span
-                                className="text-white">performant</span> and visually <span
-                                className="text-white">polished</span>.
+                                I’m a high school IT student focused on software development,
+                                working with modern frameworks and building <span className="text-white">clean</span>, <span className="text-white"> reliable</span> applications,
+                                while also developing embedded and hardware-based systems with an emphasis on{" "}
+                                <span className="text-white">performance</span> and{" "}
+                                <span className="text-white">clarity</span>.
                             </p>
+
 
                             {/* Detailed Info Blocks */}
                             <div className="space-y-6 border-l border-white/5 pl-8">
                                 <div>
                                     <h4 className="text-white font-bold mb-2">Philosophy</h4>
-                                    <p className="text-zinc-500 text-sm">Minimalism in design, complexity in
-                                        performance. Every pixel should serve a purpose.</p>
+                                    <p className="text-zinc-500 text-sm">Minimalism in design, depth in performance.
+                                        Every pixel should serve a purpose.</p>
                                 </div>
                                 <div>
                                     <h4 className="text-white font-bold mb-2">Education</h4>
-                                    <p className="text-zinc-500 text-sm">IT focused High School student, constantly
+                                    <p className="text-zinc-500 text-sm">IT-focused high school student, continuously
                                         learning through real-world projects.</p>
                                 </div>
                             </div>
@@ -236,9 +238,9 @@ export default function Home() {
                 */}
                 <section id="skills" className="py-32">
                     <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
+                        initial={{opacity: 0, y: 20}}
+                        whileInView={{opacity: 1, y: 0}}
+                        viewport={{once: true}}
                         className="flex items-center gap-4 mb-16"
                     >
                         <h2 className="text-sm font-bold uppercase tracking-[0.2em] text-[#5B7CFA]">
@@ -249,25 +251,26 @@ export default function Home() {
                     {/* Technology Grid */}
                     <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
                         {[
-                            {name: "Python", icon: Code2},
+                            {name: "PYTHON", icon: Code2},
                             {name: "C / C++", icon: Code2},
-                            {name: "Embedded", icon: Cpu},
-                            {name: "IoT Systems", icon: Wifi},
-                            {name: "Security", icon: Shield},
-                            {name: "Laravel", icon: Braces},
-                            {name: "Next.js", icon: Layers},
-                            {name: "React", icon: Layers},
-                            {name: "Tailwind", icon: Layers},
-                            {name: "PostgreSQL", icon: Database},
-                            {name: "Git", icon: GitBranch},
-                            {name: "Linux", icon: Cpu},
+                            {name: "PHP / LARAVEL", icon: Braces},
+                            {name: "JS / TS", icon: Braces},
+                            {name: "REACT", icon: Layers},
+                            {name: "NEXT.JS", icon: Layers},
+                            {name: "SQL DBs", icon: Database},
+                            {name: "TAILWIND css", icon: Layers},
+                            {name: "BOOTSTRAP css", icon: Layers},
+                            {name: "EMBEDDED (MCUs)", icon: Cpu},
+                            {name: "IoT", icon: Wifi},
+                            {name: "GIT", icon: GitBranch},
+
                         ].map(({name, icon: Icon}, index) => (
                             <motion.div
                                 key={name}
-                                initial={{ scale: 0.95, y: 30 }}
-                                whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.7, delay: index * 0.1 }}
+                                initial={{scale: 0.95, y: 30}}
+                                whileInView={{opacity: 1, scale: 1, y: 0}}
+                                viewport={{once: true}}
+                                transition={{duration: 0.7, delay: index * 0.1}}
                                 className="
                                     group relative
                                     flex flex-col items-center justify-center gap-4
@@ -292,7 +295,7 @@ export default function Home() {
                                     />
                                 </div>
                                 <span
-                                    className="text-xs font-bold uppercase tracking-wider text-zinc-500 group-hover:text-white transition-colors">
+                                    className="text-xs font-bold  tracking-wider text-zinc-500 group-hover:text-white transition-colors" translate="no">
                                     {name}
                                 </span>
                             </motion.div>
@@ -306,10 +309,10 @@ export default function Home() {
                 */}
                 <motion.section
                     id="projects"
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8, delay: 1 }}
+                    initial={{opacity: 0, y: 30}}
+                    whileInView={{opacity: 1, y: 0}}
+                    viewport={{once: true}}
+                    transition={{duration: 0.8, delay: 1}}
                     className="py-32 overflow-hidden"
                 >
                     <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 px-2">
@@ -337,22 +340,27 @@ export default function Home() {
                 */}
                 <motion.section
                     id="contact"
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1, delay: 1 }}
+                    initial={{opacity: 0, y: 30}}
+                    whileInView={{opacity: 1, y: 0}}
+                    viewport={{once: true}}
+                    transition={{duration: 1, delay: 1}}
                     className="py-32 relative"
                 >
                     {/* Background glow behind contact card */}
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[500px] bg-[#5B7CFA]/10 blur-[120px] rounded-full -z-10 animate-pulse" />
-                    
+                    <div
+                        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[500px] bg-[#5B7CFA]/10 blur-[120px] rounded-full -z-10 animate-pulse"/>
+
                     <div
                         className="relative rounded-3xl border border-white/5 bg-gradient-to-b from-white/[0.02] to-transparent p-8 md:p-16 text-center overflow-hidden backdrop-blur-sm">
-                        
+
                         {/* Decorative internal animated glows */}
-                        <div className="absolute -top-24 -right-24 h-64 w-64 bg-blue-500/10 blur-[80px] rounded-full animate-pulse" style={{ animationDuration: '8s' }} />
-                        <div className="absolute -bottom-24 -left-24 h-64 w-64 bg-indigo-500/10 blur-[80px] rounded-full animate-pulse" style={{ animationDuration: '10s' }} />
-                        
+                        <div
+                            className="absolute -top-24 -right-24 h-64 w-64 bg-blue-500/10 blur-[80px] rounded-full animate-pulse"
+                            style={{animationDuration: '8s'}}/>
+                        <div
+                            className="absolute -bottom-24 -left-24 h-64 w-64 bg-indigo-500/10 blur-[80px] rounded-full animate-pulse"
+                            style={{animationDuration: '10s'}}/>
+
                         <h2 className="text-sm font-bold uppercase tracking-[0.2em] text-[#5B7CFA]">
                             Get in touch
                         </h2>
@@ -378,12 +386,28 @@ export default function Home() {
                             {/* Social Media Links */}
                             <div className="flex gap-4">
                                 {[
-                                    { icon: Github, href: "https://github.com/martinkoudela", label: "GitHub"},
-                                    { icon: Linkedin, href: "https://www.linkedin.com/in/martin-koudela-a5b645343/", label: "LinkedIn" },
-                                    { icon: Instagram, href: "https://www.instagram.com/koudy_martin/", label: "Instagram" },
-                                    { icon: Facebook, href: "https://www.facebook.com/koudela.martin.9?locale=cs_CZ", label: "Facebook" },
-                                    { icon: Coffee, href: "https://buymeacoffee.com/martinkoudela", label: "Buy me a coffee" },
-                                ].map(({ icon: Icon, href, label }) => (
+                                    {icon: Github, href: "https://github.com/martinkoudela", label: "GitHub"},
+                                    {
+                                        icon: Linkedin,
+                                        href: "https://www.linkedin.com/in/martin-koudela-a5b645343/",
+                                        label: "LinkedIn"
+                                    },
+                                    {
+                                        icon: Instagram,
+                                        href: "https://www.instagram.com/koudy_martin/",
+                                        label: "Instagram"
+                                    },
+                                    {
+                                        icon: Facebook,
+                                        href: "https://www.facebook.com/koudela.martin.9?locale=cs_CZ",
+                                        label: "Facebook"
+                                    },
+                                    {
+                                        icon: Coffee,
+                                        href: "https://buymeacoffee.com/martinkoudela",
+                                        label: "Buy me a coffee"
+                                    },
+                                ].map(({icon: Icon, href, label}) => (
                                     <a
                                         target={"_blank"}
                                         key={label}
@@ -391,8 +415,10 @@ export default function Home() {
                                         aria-label={label}
                                         className="group relative flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/5 transition-all hover:border-[#5B7CFA]/30 hover:bg-[#5B7CFA]/5"
                                     >
-                                        <div className="absolute inset-0 rounded-full bg-[#5B7CFA]/10 blur-md opacity-0 group-hover:opacity-100 transition-opacity" />
-                                        <Icon size={20} className="relative text-zinc-400 transition-colors group-hover:text-[#5B7CFA]" />
+                                        <div
+                                            className="absolute inset-0 rounded-full bg-[#5B7CFA]/10 blur-md opacity-0 group-hover:opacity-100 transition-opacity"/>
+                                        <Icon size={20}
+                                              className="relative text-zinc-400 transition-colors group-hover:text-[#5B7CFA]"/>
                                     </a>
                                 ))}
                             </div>
@@ -403,7 +429,7 @@ export default function Home() {
                 {/* FOOTER */}
                 <footer className="py-12 text-sm text-zinc-500 flex items-center gap-2">
                     © {new Date().getFullYear()} Martin Koudela
-                    <Heart size={15} className="text-zinc-400" />
+                    <Heart size={15} className="text-zinc-400"/>
                 </footer>
 
 
