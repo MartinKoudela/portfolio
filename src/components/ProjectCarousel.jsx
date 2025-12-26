@@ -13,10 +13,9 @@ const projects = [
     tags: [
       "C++",
       "ESP32-S3",
-      "Embedded Systems",
+      "Embedded",
       "Cybersecurity",
-      "Pentesting",
-      "IoT Security"
+      "IoT"
     ],
   },
   {
