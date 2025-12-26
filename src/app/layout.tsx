@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport} from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -71,16 +71,16 @@ export const metadata: Metadata = {
     creator: "Martin Koudela",
     publisher: "Martin Koudela",
 
-    themeColor: "#050505",
-
     alternates: {
         canonical: "https://martinkoudela.com",
     },
 
-    viewport: {
-        width: "device-width",
-        initialScale: 1,
-    },
+};
+
+export const viewport: Viewport = {
+    width: "device-width",
+    initialScale: 1,
+    themeColor: "#050505",
 };
 
 const personStructuredData = {
