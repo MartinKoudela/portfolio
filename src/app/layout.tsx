@@ -63,6 +63,8 @@ export const metadata: Metadata = {
         "Laravel developer",
         "Next.js developer",
         "Software engineer",
+        "Coder",
+
     ],
 
     authors: [{ name: "Martin Koudela", url: "https://martinkoudela.com" }],

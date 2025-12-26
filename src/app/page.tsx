@@ -17,6 +17,7 @@ import {
     Github,
     Coffee,
     Heart,
+    ChevronsRight
 } from "lucide-react";
 
 /**
@@ -312,7 +313,7 @@ export default function Home() {
                     initial={{opacity: 0, y: 30}}
                     whileInView={{opacity: 1, y: 0}}
                     viewport={{once: true}}
-                    transition={{duration: 0.8, delay: 1}}
+                    transition={{duration: 0.8, delay: 0.6}}
                     className="py-32 overflow-hidden"
                 >
                     <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 px-2">
@@ -328,6 +329,8 @@ export default function Home() {
                             <p className="text-xs uppercase tracking-widest font-medium">
                                 Drag to explore
                             </p>
+                            <ChevronsRight size={25} className="text-zinc-500"/>
+
                         </div>
                     </div>
 
