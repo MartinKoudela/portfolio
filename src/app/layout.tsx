@@ -16,7 +16,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-    title: "Martin Koudela | Full-stack Developer",
+    metadataBase: new URL("https://martinkoudela.com"),
+
+    title: {
+        default: "Martin Koudela | Full-stack Developer",
+        template: "%s | Martin Koudela",
+    },
     description: "Junior Full-stack developer focused on modern software solutions.",
 
     robots: {
@@ -64,6 +69,15 @@ export const metadata: Metadata = {
         "Next.js developer",
         "Software engineer",
         "Coder",
+        "IT",
+        "Web developer",
+        "it",
+        "Python",
+        "Python developer",
+        "JS",
+        "C",
+        "C++",
+        "PHP",
 
     ],
 
