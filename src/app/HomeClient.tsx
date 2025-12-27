@@ -191,6 +191,7 @@ export default function HomeClient() {
                         <Image
                             src="/me.png"
                             alt="Martin Koudela"
+                            draggable="false"
                             width={320}
                             height={420}
                             priority
