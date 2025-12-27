@@ -140,7 +140,7 @@ export default function HomeClient() {
                         initial={{opacity: 0, x: -20}}
                         whileInView={{opacity: 1, x: 0}}
                         viewport={{once: true}}
-                        transition={{duration: 0.8, delay: 0.2}}
+                        transition={{duration: 0.8}}
                         className="space-y-8"
                     >
                         <div>
@@ -182,7 +182,7 @@ export default function HomeClient() {
                         initial={{opacity: 0, scale: 0.9}}
                         whileInView={{opacity: 1, scale: 1}}
                         viewport={{once: true}}
-                        transition={{duration: 0.8, delay: 0.4}}
+                        transition={{duration: 0.8}}
                         className="flex justify-center md:justify-end relative"
                     >
                         {/* Soft glow behind the image */}
