@@ -8,6 +8,19 @@ import {motion, useMotionValue, useSpring} from "framer-motion";
  */
 const projects = [
     {
+        title: "Raspberry Pi Camera",
+        description: "A Raspberry Pi 4 surveillance and vision system integrating a camera and motion sensor with real-time human, face, and object detection using OpenCV, YOLO, and MediaPipe.",
+        tags: ["Python", "Raspberry Pi 4", "OpenCV", "YOLO", "MediaPipe"],
+        image: "/rpi.jpg",
+
+    },
+    {
+        title: "Trackee.",
+        description: "A modern team collaboration platform enabling users to create teams and projects, manage tasks, calendars, and deadlines, customize profiles, and collaborate with others. Currently in development.",
+        tags: ["Laravel", "Tailwind", "MySQL", "JS"],
+        image: "/trackee1.png",
+    },
+    {
         title: "Portable ESP32-S3 Pentesting & Research Tool",
         description: "A custom handheld pentesting and RF research device built on ESP32-S3, designed for ethical hacking, wireless security testing, and IoT experimentation. It combines Wi-Fi, Bluetooth LE, Sub-GHz RF, NFC/RFID, infrared control, and a custom UI in a battery-powered, modular form. Currently in development.",
         tags: [
@@ -18,17 +31,6 @@ const projects = [
             "Pentesting",
             "IoT"
         ],
-    },
-    {
-        title: "Trackee.",
-        description: "A modern team collaboration platform enabling users to create teams and projects, manage tasks, calendars, and deadlines, customize profiles, and collaborate with others. Currently in development.",
-        tags: ["Laravel", "Tailwind", "MySQL", "JS"],
-        image: "/trackee1.png",
-    },
-    {
-        title: "Raspberry Pi Camera",
-        description: "A Raspberry Pi 4 surveillance and vision system integrating a camera and motion sensor with real-time human, face, and object detection using OpenCV, YOLO, and MediaPipe.",
-        tags: ["Python", "Raspberry Pi 4", "OpenCV", "YOLO", "MediaPipe"],
     },
     {
         title: "Cafecheck",
