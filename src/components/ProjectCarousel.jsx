@@ -9,7 +9,7 @@ import {motion, useMotionValue, useSpring} from "framer-motion";
 const projects = [
     {
         title: "Raspberry Pi Camera",
-        description: "A Raspberry Pi 4 surveillance and vision system integrating a camera and motion sensor with real-time human, face, and object detection using OpenCV, YOLO, and MediaPipe.",
+        description: "A Raspberry Pi 4 surveillance and vision system integrating a camera module and motion sensor with real-time human, face, and object detection using artificial intelligence.",
         tags: ["Python", "Raspberry Pi 4", "OpenCV", "YOLO", "MediaPipe"],
         image: "/rpi.jpg",
 
