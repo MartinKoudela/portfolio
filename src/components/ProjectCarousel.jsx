@@ -10,7 +10,7 @@ const projects = [
     {
         title: "Raspberry Pi Camera",
         description: "A Raspberry Pi 4 surveillance and vision system integrating a camera and motion sensor with real-time human, face, and object detection using artificial intelligence.",
-        tags: ["Python", "RasPi-4", "OpenCV", "YOLO", "MediaPipe"],
+        tags: ["Python", "Raspberry Pi 4", "OpenCV", "YOLO", "MediaPipe"],
         image: "/rpi.jpg",
 
     },
