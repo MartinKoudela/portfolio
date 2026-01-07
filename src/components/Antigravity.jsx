@@ -1,13 +1,43 @@
 'use client';
 
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { useMemo, useRef } from 'react';
-import { useEffect, useState } from "react";
+import { useMemo, useRef, useEffect, useState } from 'react';
 import * as THREE from 'three';
 
 /**
+ * Device capability detection for performance optimization
+ */
+function getDeviceCapabilities() {
+  if (typeof window === 'undefined') {
+    return { particleCount: 150, prefersReducedMotion: false, tier: 'medium' };
+  }
+
+  const prefersReducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+  const isMobile = window.innerWidth < 768 || /Android|iPhone|iPad|iPod|webOS|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  const cpuCores = navigator.hardwareConcurrency || 4;
+  const deviceMemory = navigator.deviceMemory || null;
+
+  let tier = 'high';
+  if (prefersReducedMotion) {
+    tier = 'low';
+  } else if (isMobile) {
+    tier = cpuCores <= 4 || (deviceMemory !== null && deviceMemory < 4) ? 'low' : 'medium';
+  } else {
+    if (cpuCores <= 2 || (deviceMemory !== null && deviceMemory < 4)) {
+      tier = 'low';
+    } else if (cpuCores <= 4 || (deviceMemory !== null && deviceMemory < 8)) {
+      tier = 'medium';
+    }
+  }
+
+  const particleCount = { high: 300, medium: 150, low: 80 }[tier];
+
+  return { particleCount, prefersReducedMotion, tier };
+}
+
+/**
  * AntigravityInner Component
- * 
+ *
  * The core logic for the particle field. It handles:
  * - Particle initialization and state
  * - Mouse interaction (magnetism)
@@ -29,7 +59,8 @@ const AntigravityInner = ({
   depthFactor = 1,
   pulseSpeed = 3,
   particleShape = 'capsule',
-  fieldStrength = 10
+  fieldStrength = 10,
+  deviceTier = 'high'
 }) => {
   const meshRef = useRef(null);
   const { viewport } = useThree();
@@ -39,6 +70,9 @@ const AntigravityInner = ({
   const lastMousePos = useRef({ x: 0, y: 0 });
   const lastMouseMoveTime = useRef(0);
   const virtualMouse = useRef({ x: 0, y: 0 });
+
+  // Pre-calculate squared magnet radius for optimization
+  const magnetRadiusSq = magnetRadius * magnetRadius;
 
   // Initialize particles with random properties
   const particles = useMemo(() => {
@@ -68,13 +102,13 @@ const AntigravityInner = ({
         xFactor,
         yFactor,
         zFactor,
-        mx: x, // Main X (base position)
-        my: y, // Main Y
-        mz: z, // Main Z
-        cx: x, // Current X (animated position)
+        mx: x,
+        my: y,
+        mz: z,
+        cx: x,
         cy: y,
         cz: z,
-        vx: 0, // Velocity X
+        vx: 0,
         vy: 0,
         vz: 0,
         randomRadiusOffset
@@ -83,6 +117,9 @@ const AntigravityInner = ({
     return temp;
   }, [count, viewport.width, viewport.height]);
 
+  // Adjust lerp speed based on device tier
+  const adjustedLerpSpeed = deviceTier === 'low' ? lerpSpeed * 1.5 : lerpSpeed;
+
   // Animation loop
   useFrame(state => {
     const mesh = meshRef.current;
@@ -90,10 +127,12 @@ const AntigravityInner = ({
 
     const { viewport: v, pointer: m } = state;
 
-    // Detect mouse movement
-    const mouseDist = Math.sqrt(Math.pow(m.x - lastMousePos.current.x, 2) + Math.pow(m.y - lastMousePos.current.y, 2));
+    // Detect mouse movement using squared distance (avoid sqrt)
+    const mdx = m.x - lastMousePos.current.x;
+    const mdy = m.y - lastMousePos.current.y;
+    const mouseDistSq = mdx * mdx + mdy * mdy;
 
-    if (mouseDist > 0.001) {
+    if (mouseDistSq > 0.000001) {
       lastMouseMoveTime.current = Date.now();
       lastMousePos.current = { x: m.x, y: m.y };
     }
@@ -120,7 +159,9 @@ const AntigravityInner = ({
     const globalRotation = state.clock.getElapsedTime() * rotationSpeed;
 
     // Update each particle's position and orientation
-    particles.forEach((particle, i) => {
+    const len = particles.length;
+    for (let i = 0; i < len; i++) {
+      const particle = particles[i];
       let { t, speed, mx, my, mz, cz, randomRadiusOffset } = particle;
 
       t = particle.t += speed / 2;
@@ -132,12 +173,14 @@ const AntigravityInner = ({
 
       const dx = mx - projectedTargetX;
       const dy = my - projectedTargetY;
-      const dist = Math.sqrt(dx * dx + dy * dy);
+      const distSq = dx * dx + dy * dy;
 
-      let targetPos = { x: mx, y: my, z: mz * depthFactor };
+      let targetPosX = mx;
+      let targetPosY = my;
+      let targetPosZ = mz * depthFactor;
 
       // Magnetism logic: If particle is near target, pull it into a ring formation
-      if (dist < magnetRadius) {
+      if (distSq < magnetRadiusSq) {
         const angle = Math.atan2(dy, dx) + globalRotation;
 
         // Add wave and randomness to the ring
@@ -146,15 +189,15 @@ const AntigravityInner = ({
 
         const currentRingRadius = ringRadius + wave + deviation;
 
-        targetPos.x = projectedTargetX + currentRingRadius * Math.cos(angle);
-        targetPos.y = projectedTargetY + currentRingRadius * Math.sin(angle);
-        targetPos.z = mz * depthFactor + Math.sin(t) * (1 * waveAmplitude * depthFactor);
+        targetPosX = projectedTargetX + currentRingRadius * Math.cos(angle);
+        targetPosY = projectedTargetY + currentRingRadius * Math.sin(angle);
+        targetPosZ = mz * depthFactor + Math.sin(t) * waveAmplitude * depthFactor;
       }
 
       // Smoothly interpolate current position toward target position
-      particle.cx += (targetPos.x - particle.cx) * lerpSpeed;
-      particle.cy += (targetPos.y - particle.cy) * lerpSpeed;
-      particle.cz += (targetPos.z - particle.cz) * lerpSpeed;
+      particle.cx += (targetPosX - particle.cx) * adjustedLerpSpeed;
+      particle.cy += (targetPosY - particle.cy) * adjustedLerpSpeed;
+      particle.cz += (targetPosZ - particle.cz) * adjustedLerpSpeed;
 
       // Update the dummy object and apply its matrix to the instanced mesh
       dummy.position.set(particle.cx, particle.cy, particle.cz);
@@ -164,29 +207,26 @@ const AntigravityInner = ({
       dummy.rotateX(Math.PI / 2);
 
       // Scale particles based on distance to the ring for a "focus" effect
-      const currentDistToMouse = Math.sqrt(
-        Math.pow(particle.cx - projectedTargetX, 2) + Math.pow(particle.cy - projectedTargetY, 2)
-      );
+      const cdx = particle.cx - projectedTargetX;
+      const cdy = particle.cy - projectedTargetY;
+      const currentDistToMouse = Math.sqrt(cdx * cdx + cdy * cdy);
 
       const distFromRing = Math.abs(currentDistToMouse - ringRadius);
       let scaleFactor = 1 - distFromRing / 10;
-
       scaleFactor = Math.max(0, Math.min(1, scaleFactor));
 
       const finalScale = scaleFactor * (0.8 + Math.sin(t * pulseSpeed) * 0.2 * particleVariance) * particleSize;
       dummy.scale.set(finalScale, finalScale, finalScale);
 
       dummy.updateMatrix();
-
       mesh.setMatrixAt(i, dummy.matrix);
-    });
+    }
 
     mesh.instanceMatrix.needsUpdate = true;
   });
 
   return (
     <instancedMesh ref={meshRef} args={[undefined, undefined, count]}>
-      {/* Dynamic geometry selection */}
       {particleShape === 'capsule' && <capsuleGeometry args={[0.1, 0.4, 4, 8]} />}
       {particleShape === 'sphere' && <sphereGeometry args={[0.2, 16, 16]} />}
       {particleShape === 'box' && <boxGeometry args={[0.3, 0.3, 0.3]} />}
@@ -198,27 +238,42 @@ const AntigravityInner = ({
 
 /**
  * Antigravity Component
- * 
+ *
  * High-performance 3D particle background using React Three Fiber.
  * Particles react to mouse movement, creating a magnetic field effect.
+ * Automatically adjusts particle count based on device capabilities.
  */
 const Antigravity = props => {
   const [ready, setReady] = useState(false);
+  const [deviceCaps, setDeviceCaps] = useState({ particleCount: 150, prefersReducedMotion: false, tier: 'medium' });
 
   useEffect(() => {
-    requestAnimationFrame(() => {
-      setReady(true);
-    });
+    const caps = getDeviceCapabilities();
+    setDeviceCaps(caps);
+
+    // Skip rendering if user prefers reduced motion
+    if (!caps.prefersReducedMotion) {
+      requestAnimationFrame(() => {
+        setReady(true);
+      });
+    }
   }, []);
 
-  if (!ready) return null;
+  // Don't render if user prefers reduced motion
+  if (deviceCaps.prefersReducedMotion || !ready) return null;
+
+  // Use device-appropriate particle count unless explicitly overridden
+  const effectiveCount = props.count || deviceCaps.particleCount;
 
   return (
-      <Canvas camera={{ position: [0, 0, 50], fov: 35 }}>
-        <AntigravityInner {...props} />
-      </Canvas>
+    <Canvas camera={{ position: [0, 0, 50], fov: 35 }}>
+      <AntigravityInner
+        {...props}
+        count={effectiveCount}
+        deviceTier={deviceCaps.tier}
+      />
+    </Canvas>
   );
 };
-
 
 export default Antigravity;

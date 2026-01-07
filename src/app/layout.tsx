@@ -1,5 +1,5 @@
-import type { Metadata, Viewport} from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Geist } from "next/font/google";
 import "./globals.css";
 
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -8,11 +8,7 @@ import { Analytics } from "@vercel/analytics/next";
 const geistSans = Geist({
     variable: "--font-geist-sans",
     subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-    variable: "--font-geist-mono",
-    subsets: ["latin"],
+    display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -50,6 +46,8 @@ export const metadata: Metadata = {
             {
                 url: "/og-image.png",
                 alt: "Martin Koudela – Full-stack Developer",
+                width: 1200,
+                height: 630,
             },
         ],
     },
@@ -68,17 +66,10 @@ export const metadata: Metadata = {
         "Laravel developer",
         "Next.js developer",
         "Software engineer",
-        "Coder",
-        "IT",
-        "Web developer",
-        "it",
-        "Python",
         "Python developer",
-        "JS",
-        "C",
-        "C++",
+        "Embedded systems",
+        "React",
         "PHP",
-
     ],
 
     authors: [{ name: "Martin Koudela", url: "https://martinkoudela.com" }],
@@ -102,6 +93,7 @@ const personStructuredData = {
     "@type": "Person",
     name: "Martin Koudela",
     url: "https://martinkoudela.com",
+    email: "koudela.m@icloud.com",
     jobTitle: "Full-stack Developer",
     description: "Junior Full-stack developer focused on modern software solutions.",
     image: "https://martinkoudela.com/og-image.png",
@@ -120,7 +112,7 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en">
-        <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <body className={`${geistSans.variable} antialiased`}>
 
         <script
             type="application/ld+json"

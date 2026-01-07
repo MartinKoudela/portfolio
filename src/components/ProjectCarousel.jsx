@@ -46,7 +46,7 @@ const projects = [
     },
     {
         title: "Football Photogallery",
-        description: "A custom-built football photogallery platform with a photographer-focused dashboard, featured highlights, and a comprehensive match-based photo archive, branded under the client’s identity. Currently in development.",
+        description: "A custom-built football photogallery platform with a photographer-focused dashboard, featured highlights, and a comprehensive match-based photo archive, branded under the client's identity. Currently in development.",
         tags: ["Laravel", "MySQL", "Tailwind"],
         image: "/photogallery.png",
     },
@@ -150,7 +150,7 @@ function ProjectCard({project, index}) {
             className="group relative h-[500px] w-[300px] flex-shrink-0 overflow-hidden rounded-[32px] border border-white/5 bg-white/[0.02] p-1 transition-all duration-500 hover:border-[#5B7CFA]/30 hover:bg-white/[0.04] sm:w-[380px]"
         >
             {/*
-          Spotlight effect 
+          Spotlight effect
           A subtle radial gradient that follows the mouse when hovered.
       */}
             <motion.div
@@ -194,11 +194,11 @@ function ProjectCard({project, index}) {
                                 key={tag}
                                 className="
                   flex items-center gap-1.5
-                  text-[10px] uppercase tracking-wider text-zinc-400 font-bold 
-                  px-3 py-1.5 
-                  rounded-full 
-                  bg-white/[0.03] 
-                  border border-white/5 
+                  text-[10px] uppercase tracking-wider text-zinc-400 font-bold
+                  px-3 py-1.5
+                  rounded-full
+                  bg-white/[0.03]
+                  border border-white/5
                   transition-all duration-300
                   group-hover:bg-[#5B7CFA]/5
                   group-hover:border-[#5B7CFA]/20
