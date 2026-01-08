@@ -39,10 +39,6 @@ const ScrollProgress = dynamic(() => import("../components/ScrollProgress"), {
     ssr: false,
 });
 
-const CustomCursor = dynamic(() => import("../components/CustomCursor"), {
-    ssr: false,
-});
-
 const TypingText = dynamic(() => import("../components/TypingText"), {
     ssr: false,
 });
@@ -76,8 +72,6 @@ export default function HomeClient() {
 
     return (
         <div className="relative min-h-screen bg-[#050505] text-white selection:bg-[#5B7CFA]/30">
-            {/* Custom Cursor */}
-            <CustomCursor />
 
             {/* Scroll Progress Bar */}
             <ScrollProgress />
