@@ -69,7 +69,7 @@ export default function HomeClient() {
     const scrollToTop = useCallback(() => {
         window.scrollTo({ top: 0, behavior: "smooth" });
     }, []);
-
+ 
     return (
         <div className="relative min-h-screen bg-[#050505] text-white selection:bg-[#5B7CFA]/30">
 
@@ -138,7 +138,7 @@ export default function HomeClient() {
                             initial={{ opacity: 0, y: -10 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.5 }}
-                            className="inline-flex items-center gap-2 rounded-full border border-[#5B7CFA]/30 bg-[#5B7CFA]/10 px-4 py-2 text-sm text-[#5B7CFA]"
+                            className="inline-flex items-center gap-2 rounded-full border border-[#5B7CFA]/30 bg-[#5B7CFA]/10 px-4 py-2 mt-10 text-sm text-[#5B7CFA]"
                         >
                             <span className="relative flex h-2 w-2">
                                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#5B7CFA] opacity-75" />
