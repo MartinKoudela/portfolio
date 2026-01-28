@@ -8,15 +8,24 @@ import {motion, useMotionValue, useSpring} from "framer-motion";
  */
 const projects = [
     {
+        title: "Football Photogallery",
+        description: "A bespoke football photogallery platform developed for a client,\n" +
+            "   featuring a photographer-focused dashboard, curated highlights section, and a\n" +
+            "   comprehensive match-based photo archive.",
+        tags: ["Laravel", "MySQL", "Tailwind"],
+        image: "/photogallery.png",
+        url: "https://www.slavicinfotky.cz/"
+    },
+    {
         title: "Raspberry Pi Camera",
         description: "A Raspberry Pi 4 surveillance and vision system integrating a camera and motion sensor with real-time human, face, and object detection using artificial intelligence.",
-        tags: ["Python", "Raspberry Pi 4", "OpenCV", "YOLO", "MediaPipe"],
+        tags: ["Python", "FastAPI", "OpenCV", "YOLOv8", "Raspberry Pi 4"],
         image: "/rpi.jpg",
 
     },
     {
         title: "Trackee.",
-        description: "A modern team collaboration platform enabling users to create teams and projects, manage tasks, calendars, and deadlines, customize profiles, and collaborate with others. Currently in development.",
+        description: "A modern team collaboration platform enabling users to create teams and projects, manage tasks, calendars, and deadlines, customize profiles, and collaborate with others.",
         tags: ["Laravel", "Tailwind", "MySQL", "JS"],
         image: "/trackee1.png",
     },
@@ -43,12 +52,6 @@ const projects = [
         description: "A school project film club web application with user authentication, shared movie watch sessions, and an admin dashboard for managing films and members.",
         tags: ["PHP", "MySQL", "Tailwind"],
         image: "/filmio1.png",
-    },
-    {
-        title: "Football Photogallery",
-        description: "A custom-built football photogallery platform with a photographer-focused dashboard, featured highlights, and a comprehensive match-based photo archive, branded under the client's identity. Currently in development.",
-        tags: ["Laravel", "MySQL", "Tailwind"],
-        image: "/photogallery.png",
     },
 ];
 
@@ -147,7 +150,7 @@ function ProjectCard({project, index}) {
             viewport={{once: true}}
             transition={{duration: 0.5, delay: index * 0.1}}
             onMouseMove={handleMouseMove}
-            className="group relative h-[500px] w-[300px] flex-shrink-0 overflow-hidden rounded-[32px] border border-white/5 bg-white/[0.02] p-1 transition-all duration-500 hover:border-[#5B7CFA]/30 hover:bg-white/[0.04] sm:w-[380px]"
+            className="group relative h-[550px] w-[400px] flex-shrink-0 overflow-hidden rounded-[32px] border border-white/5 bg-white/[0.02] p-1 transition-all duration-500 hover:border-[#5B7CFA]/30 hover:bg-white/[0.04] sm:w-[380px]"
         >
             {/*
           Spotlight effect
@@ -178,12 +181,18 @@ function ProjectCard({project, index}) {
 
                 {/* Text Content */}
                 <div className="flex-1 space-y-3">
-                    <h3 className="text-xl font-bold text-white transition-colors group-hover:text-[#5B7CFA]" translate="no">
+                    <h3 className="text-xl font-bold text-white transition-colors group-hover:text-[#5B7CFA]"
+                        translate="no">
                         {project.title}
                     </h3>
                     <p className="text-sm leading-relaxed text-zinc-500  group-hover:text-zinc-400 transition-colors">
                         {project.description}
                     </p>
+                    <span>
+                        <a href={project.url} target="_blank" rel="noreferrer" className="text-[#5B7CFA] hover:underline" translate="no">
+                        {project.url}
+                        </a>
+                    </span>
                 </div>
 
                 {/* Tags / Technology Stack */}
