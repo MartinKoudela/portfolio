@@ -45,17 +45,18 @@ export default function ProjectCarousel() {
             <div
                 className="relative w-full overflow-hidden"
                 style={{
-                    maskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)',
-                    WebkitMaskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)'
+                    maskImage: 'linear-gradient(to right, transparent, black 5%, black 95%, transparent)',
+                    WebkitMaskImage: 'linear-gradient(to right, transparent, black 5%, black 95%, transparent)'
                 }}
             >
                 <motion.div
                     ref={containerRef}
                     drag="x"
                     dragConstraints={constraints}
-                    dragElastic={0.2}
-                    dragTransition={{power: 0.2, timeConstant: 200}}
-                    style={{touchAction: 'none'}}
+                    dragElastic={0.1}
+                    dragMomentum={true}
+                    dragTransition={{bounceStiffness: 300, bounceDamping: 30}}
+                    style={{touchAction: 'pan-y'}}
                     className="flex w-max gap-6 cursor-grab active:cursor-grabbing px-6 py-4"
                 >
                     {projects.map((project, index) => (
@@ -113,7 +114,7 @@ function ProjectCard({project, index}) {
             />
 
             <div
-                className="relative h-full overflow-hidden rounded-[28px] bg-[#050505]/40 p-6 flex flex-col backdrop-blur-sm">
+                className="relative h-full overflow-hidden rounded-[28px] bg-[#0a0a0a] p-6 flex flex-col">
                 {/* Project Image */}
                 {project.image && (
                     <div className="relative h-44 w-full overflow-hidden rounded-2xl mb-6 bg-white/[0.03]">
