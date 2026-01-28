@@ -1,59 +1,8 @@
 "use client";
 import React, {useRef, useState, useEffect} from "react";
-import {motion, useMotionValue, useSpring} from "framer-motion";
-
-/**
- * Project Data
- * Each project includes a title, description, tags, and an optional preview image.
- */
-const projects = [
-    {
-        title: "Football Photogallery",
-        description: "A bespoke football photogallery platform developed for a client,\n" +
-            "   featuring a photographer-focused dashboard, curated highlights section, and a\n" +
-            "   comprehensive match-based photo archive.",
-        tags: ["Laravel", "MySQL", "Tailwind"],
-        image: "/photogallery.png",
-        url: "https://www.slavicinfotky.cz/"
-    },
-    {
-        title: "Raspberry Pi Camera",
-        description: "A Raspberry Pi 4 surveillance and vision system integrating a camera and motion sensor with real-time human, face, and object detection using artificial intelligence.",
-        tags: ["Python", "FastAPI", "OpenCV", "YOLOv8", "Raspberry Pi 4"],
-        image: "/rpi.jpg",
-
-    },
-    {
-        title: "Trackee.",
-        description: "A modern team collaboration platform enabling users to create teams and projects, manage tasks, calendars, and deadlines, customize profiles, and collaborate with others.",
-        tags: ["Laravel", "Tailwind", "MySQL", "JS"],
-        image: "/trackee1.png",
-    },
-    {
-        title: "Portable ESP32-S3 Pentesting & Research Tool",
-        description: "A custom handheld pentesting and RF research device built on ESP32-S3, designed for ethical hacking, wireless security testing, and IoT experimentation. It combines Wi-Fi, Bluetooth LE, Sub-GHz RF, NFC/RFID, infrared control, and a custom UI in a battery-powered, modular form. Currently in development.",
-        tags: [
-            "C++",
-            "ESP32-S3",
-            "Embedded",
-            "Cybersecurity",
-            "Pentesting",
-            "IoT"
-        ],
-    },
-    {
-        title: "Cafecheck",
-        description: "A personal non-public website for sharing subjective reviews and photos of local coffee shops in Zlín and nearby areas.",
-        tags: ["JS", "Bootstrap", "EmailJS"],
-        image: "/cafecheck1.png",
-    },
-    {
-        title: "Filmio",
-        description: "A school project film club web application with user authentication, shared movie watch sessions, and an admin dashboard for managing films and members.",
-        tags: ["PHP", "MySQL", "Tailwind"],
-        image: "/filmio1.png",
-    },
-];
+import {motion, useMotionValue} from "framer-motion";
+import Link from "next/link";
+import {projects} from "@/data/projects";
 
 /**
  * ProjectCarousel Component
@@ -185,14 +134,22 @@ function ProjectCard({project, index}) {
                         translate="no">
                         {project.title}
                     </h3>
-                    <p className="text-sm leading-relaxed text-zinc-500  group-hover:text-zinc-400 transition-colors">
+                    <p className="text-sm leading-relaxed text-zinc-500 group-hover:text-zinc-400 transition-colors line-clamp-3">
                         {project.description}
                     </p>
                     <span>
-                        <a href={project.url} target="_blank" rel="noreferrer" className="text-[#5B7CFA] hover:underline" translate="no">
+                        <a href={project.url} target="_blank" rel="noreferrer"
+                           className="text-[#5B7CFA] hover:underline" translate="no">
                         {project.url}
                         </a>
                     </span>
+                    <br/>
+                    <Link
+                        href={`/project/${project.slug}`}
+                        className="inline-block text-sm text-[#5B7CFA] hover:underline mt-2"
+                    >
+                        View details →
+                    </Link>
                 </div>
 
                 {/* Tags / Technology Stack */}
