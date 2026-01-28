@@ -99,7 +99,7 @@ function ProjectCard({project, index}) {
             viewport={{once: true}}
             transition={{duration: 0.5, delay: index * 0.1}}
             onMouseMove={handleMouseMove}
-            className="group relative h-[550px] w-[400px] flex-shrink-0 overflow-hidden rounded-[32px] border border-white/5 bg-white/[0.02] p-1 transition-all duration-500 hover:border-[#5B7CFA]/30 hover:bg-white/[0.04] sm:w-[380px]"
+            className="group relative h-[550px] w-[300px] flex-shrink-0 overflow-hidden rounded-[32px] border border-white/5 bg-white/[0.02] p-1 transition-all duration-500 hover:border-[#5B7CFA]/30 hover:bg-white/[0.04] sm:w-[380px]"
         >
             {/*
           Spotlight effect
