@@ -39,6 +39,7 @@ export const metadata: Metadata = {
     openGraph: {
         title: "Martin Koudela | Full-stack Developer",
         description: "Junior Full-stack developer focused on modern software solutions.",
+        locale: "en_US",
         url: "https://martinkoudela.com",
         siteName: "Martin Koudela",
         type: "website",
@@ -95,6 +96,7 @@ const personStructuredData = {
     url: "https://martinkoudela.com",
     email: "koudela.m@icloud.com",
     jobTitle: "Full-stack Developer",
+    knowsAbout: ["Python", "C", "Laravel", "PHP", "C++", "TypeScript", "JavaScript", "IoT", "Embedded"],
     description: "Junior Full-stack developer focused on modern software solutions.",
     image: "https://martinkoudela.com/og-image.png",
     sameAs: [
@@ -102,6 +104,14 @@ const personStructuredData = {
         "https://github.com/martinkoudela",
         "https://www.instagram.com/koudy_martin/",
     ],
+};
+
+const websiteStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    url: "https://martinkoudela.com",
+    name: "Martin Koudela | Full-stack Developer",
+    alternateName: "Martin Koudela",
 };
 
 
@@ -112,14 +122,16 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en">
+        <head>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify([websiteStructuredData, personStructuredData]),
+                }}
+            />
+        </head>
         <body className={`${geistSans.variable} antialiased`}>
 
-        <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-                __html: JSON.stringify(personStructuredData),
-            }}
-        />
         {children}
 
         {/* Vercel analytics */}
