@@ -1,6 +1,5 @@
 "use client";
 
-// SVG icons for technologies
 export const PythonIcon = ({ className = "" }: { className?: string }) => (
   <svg viewBox="0 0 128 128" className={className}>
     <linearGradient id="python-a" x1="70.252%" x2="17.549%" y1="12.176%" y2="34.804%">

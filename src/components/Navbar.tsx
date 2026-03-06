@@ -20,7 +20,6 @@ export default function Navbar() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
 
-      // Detect active section
       const sections = navItems.map((item) => item.href.slice(1));
       for (const section of sections.reverse()) {
         const element = document.getElementById(section);
@@ -64,7 +63,6 @@ export default function Navbar() {
               : "border-white/5 bg-white/5 backdrop-blur-sm"
           }`}
         >
-          {/* Logo/Initials */}
           <a
             href="#"
             onClick={(e) => {
@@ -76,7 +74,6 @@ export default function Navbar() {
             MK
           </a>
 
-          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-1 ml-2">
             {navItems.map((item) => (
               <a
@@ -101,7 +98,6 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="flex md:hidden h-10 w-10 items-center justify-center rounded-full text-zinc-400 hover:text-white hover:bg-white/10 transition-colors ml-2"
@@ -112,7 +108,6 @@ export default function Navbar() {
         </div>
       </motion.nav>
 
-      {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div

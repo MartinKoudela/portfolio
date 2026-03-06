@@ -66,15 +66,12 @@ const AntigravityInner = ({
   const { viewport } = useThree();
   const dummy = useMemo(() => new THREE.Object3D(), []);
 
-  // Track mouse state for interactivity
   const lastMousePos = useRef({ x: 0, y: 0 });
   const lastMouseMoveTime = useRef(0);
   const virtualMouse = useRef({ x: 0, y: 0 });
 
-  // Pre-calculate squared magnet radius for optimization
   const magnetRadiusSq = magnetRadius * magnetRadius;
 
-  // Initialize particles with random properties
   const particles = useMemo(() => {
     const temp = [];
     const width = viewport.width || 100;
@@ -88,7 +85,6 @@ const AntigravityInner = ({
       const yFactor = -50 + Math.random() * 100;
       const zFactor = -50 + Math.random() * 100;
 
-      // Initial positions
       const x = (Math.random() - 0.5) * width;
       const y = (Math.random() - 0.5) * height;
       const z = (Math.random() - 0.5) * 20;
@@ -117,17 +113,14 @@ const AntigravityInner = ({
     return temp;
   }, [count, viewport.width, viewport.height]);
 
-  // Adjust lerp speed based on device tier
   const adjustedLerpSpeed = deviceTier === 'low' ? lerpSpeed * 1.5 : lerpSpeed;
 
-  // Animation loop
   useFrame(state => {
     const mesh = meshRef.current;
     if (!mesh) return;
 
     const { viewport: v, pointer: m } = state;
 
-    // Detect mouse movement using squared distance (avoid sqrt)
     const mdx = m.x - lastMousePos.current.x;
     const mdy = m.y - lastMousePos.current.y;
     const mouseDistSq = mdx * mdx + mdy * mdy;
@@ -137,18 +130,15 @@ const AntigravityInner = ({
       lastMousePos.current = { x: m.x, y: m.y };
     }
 
-    // Determine target coordinates for the virtual "magnet"
     let destX = (m.x * v.width) / 2;
     let destY = (m.y * v.height) / 2;
 
-    // If no mouse move for 2s, switch to autonomous circular motion
     if (autoAnimate && Date.now() - lastMouseMoveTime.current > 2000) {
       const time = state.clock.getElapsedTime();
       destX = Math.sin(time * 0.5) * (v.width / 4);
       destY = Math.cos(time * 0.5 * 2) * (v.height / 4);
     }
 
-    // Smoothly transition the virtual mouse position
     const smoothFactor = 0.05;
     virtualMouse.current.x += (destX - virtualMouse.current.x) * smoothFactor;
     virtualMouse.current.y += (destY - virtualMouse.current.y) * smoothFactor;
@@ -158,7 +148,6 @@ const AntigravityInner = ({
 
     const globalRotation = state.clock.getElapsedTime() * rotationSpeed;
 
-    // Update each particle's position and orientation
     const len = particles.length;
     for (let i = 0; i < len; i++) {
       const particle = particles[i];
@@ -166,7 +155,6 @@ const AntigravityInner = ({
 
       t = particle.t += speed / 2;
 
-      // Perspective-aware target projection
       const projectionFactor = 1 - cz / 50;
       const projectedTargetX = targetX * projectionFactor;
       const projectedTargetY = targetY * projectionFactor;
@@ -179,11 +167,9 @@ const AntigravityInner = ({
       let targetPosY = my;
       let targetPosZ = mz * depthFactor;
 
-      // Magnetism logic: If particle is near target, pull it into a ring formation
       if (distSq < magnetRadiusSq) {
         const angle = Math.atan2(dy, dx) + globalRotation;
 
-        // Add wave and randomness to the ring
         const wave = Math.sin(t * waveSpeed + angle) * (0.5 * waveAmplitude);
         const deviation = randomRadiusOffset * (5 / (fieldStrength + 0.1));
 
@@ -194,19 +180,15 @@ const AntigravityInner = ({
         targetPosZ = mz * depthFactor + Math.sin(t) * waveAmplitude * depthFactor;
       }
 
-      // Smoothly interpolate current position toward target position
       particle.cx += (targetPosX - particle.cx) * adjustedLerpSpeed;
       particle.cy += (targetPosY - particle.cy) * adjustedLerpSpeed;
       particle.cz += (targetPosZ - particle.cz) * adjustedLerpSpeed;
 
-      // Update the dummy object and apply its matrix to the instanced mesh
       dummy.position.set(particle.cx, particle.cy, particle.cz);
 
-      // Make particles face the magnet center
       dummy.lookAt(projectedTargetX, projectedTargetY, particle.cz);
       dummy.rotateX(Math.PI / 2);
 
-      // Scale particles based on distance to the ring for a "focus" effect
       const cdx = particle.cx - projectedTargetX;
       const cdy = particle.cy - projectedTargetY;
       const currentDistToMouse = Math.sqrt(cdx * cdx + cdy * cdy);
@@ -251,7 +233,6 @@ const Antigravity = props => {
     const caps = getDeviceCapabilities();
     setDeviceCaps(caps);
 
-    // Skip rendering if user prefers reduced motion
     if (!caps.prefersReducedMotion) {
       requestAnimationFrame(() => {
         setReady(true);
@@ -259,10 +240,8 @@ const Antigravity = props => {
     }
   }, []);
 
-  // Don't render if user prefers reduced motion
   if (deviceCaps.prefersReducedMotion || !ready) return null;
 
-  // Use device-appropriate particle count unless explicitly overridden
   const effectiveCount = props.count || deviceCaps.particleCount;
 
   return (

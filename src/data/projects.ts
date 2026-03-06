@@ -15,6 +15,13 @@ export const projects = [
         image: "/rpi.jpg",
     },
     {
+        slug: "l0k1-game",
+        title: "L0k1 Game",
+        description: "An immersive browser-based 3D horror game set in a hacker's apartment, built with Three.js. Players navigate a detailed cyberpunk room filled with interactive objects — a laptop that opens a fully functional in-game OS with a terminal, file manager, and hacking tools. The game features a dynamic atmosphere with positional audio (distant gunshots, sirens, creaking floors), toggleable lighting, and enemy AI systems including creatures like the Strangler and Shade that stalk the player. The environment is richly decorated with 60+ GLTF models including servers, monitors, graffiti, and surveillance cameras, creating a tense and atmospheric experience.",
+        tags: ["Three.js", "TypeScript", "Vite", "WebGL", "GLTF"],
+        image: "/l0k1.png",
+    },
+    {
         slug: "trackee",
         title: "Trackee.",
         description: "A modern team collaboration and project management platform designed to streamline workflow and boost productivity. Users can create and join teams, set up projects with detailed task breakdowns, and track progress through intuitive kanban boards. The platform includes a shared calendar system for scheduling deadlines and meetings, customizable user profiles, and real-time collaboration features. Team members can assign tasks, set priorities, add comments, and receive notifications about updates. The clean, minimalist interface ensures users stay focused on what matters most - getting work done.",

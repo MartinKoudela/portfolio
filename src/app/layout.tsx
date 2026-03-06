@@ -126,7 +126,13 @@ export default function RootLayout({
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{
-                    __html: JSON.stringify([websiteStructuredData, personStructuredData]),
+                    __html: JSON.stringify(websiteStructuredData),
+                }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify(personStructuredData),
                 }}
             />
         </head>

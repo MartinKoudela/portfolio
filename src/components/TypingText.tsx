@@ -20,7 +20,10 @@ export default function TypingText({ words, className = "" }: TypingTextProps) {
   }, [words.length]);
 
   return (
-    <span className={`inline-block relative ${className}`}>
+    <span className={`inline-grid relative ${className}`}>
+      <span className="invisible col-start-1 row-start-1">
+        {words.reduce((a, b) => (a.length >= b.length ? a : b))}
+      </span>
       <AnimatePresence mode="wait">
         <motion.span
           key={currentIndex}
@@ -28,7 +31,7 @@ export default function TypingText({ words, className = "" }: TypingTextProps) {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
           transition={{ duration: 0.3 }}
-          className="inline-block"
+          className="col-start-1 row-start-1"
         >
           {words[currentIndex]}
         </motion.span>

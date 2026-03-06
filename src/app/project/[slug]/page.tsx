@@ -25,9 +25,7 @@ export default function ProjectPage() {
 
     return (
         <div className="relative min-h-screen bg-[#050505] text-white selection:bg-[#5B7CFA]/30">
-            {/* Background */}
             <div className="fixed inset-0 pointer-events-none z-0">
-                {/* Grid Pattern */}
                 <div
                     className="absolute inset-0 opacity-[0.15]"
                     style={{
@@ -37,7 +35,6 @@ export default function ProjectPage() {
                     }}
                 />
 
-                {/* Glows */}
                 <div
                     className="absolute top-[-10%] left-[-10%] h-[600px] w-[600px] rounded-full bg-[#5B7CFA]/15 blur-[120px] animate-pulse"
                     style={{ animationDuration: "8s" }}
@@ -48,9 +45,7 @@ export default function ProjectPage() {
                 />
             </div>
 
-            {/* Content */}
             <main className="relative z-10 mx-auto max-w-4xl px-6 py-12">
-                {/* Back Button */}
                 <motion.div
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
@@ -65,7 +60,6 @@ export default function ProjectPage() {
                     </Link>
                 </motion.div>
 
-                {/* Project Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -80,7 +74,6 @@ export default function ProjectPage() {
                     </h1>
                 </motion.div>
 
-                {/* Project Image */}
                 {project.image && (
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
@@ -97,7 +90,6 @@ export default function ProjectPage() {
                     </motion.div>
                 )}
 
-                {/* Tags */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -115,7 +107,6 @@ export default function ProjectPage() {
                     ))}
                 </motion.div>
 
-                {/* Description Card */}
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -132,7 +123,6 @@ export default function ProjectPage() {
                     </p>
                 </motion.div>
 
-                {/* External Link */}
                 {project.url && (
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}

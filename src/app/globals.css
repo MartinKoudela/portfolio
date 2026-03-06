@@ -1,7 +1,4 @@
-/* 
-  Global Stylesheet 
-  Using Tailwind CSS v4 with custom theme configuration.
-*/
+
 
 @import "tailwindcss";
 @import "tw-animate-css";
@@ -15,11 +12,6 @@ body {
   position: relative;
 }
 
-/*
-  Film Grain / Noise Overlay
-  Creates a subtle texture over the entire site to enhance the "premium" feel.
-  Optimized for performance with fewer animation steps and GPU acceleration.
-*/
 body::before {
   content: "";
   position: fixed;
@@ -35,7 +27,6 @@ body::before {
   animation: noise-move 8s steps(3) infinite;
 }
 
-/* Animates the noise - reduced to 3 steps for better performance */
 @keyframes noise-move {
   0% { transform: translate(0, 0); }
   33% { transform: translate(-5%, -5%); }
@@ -43,7 +34,6 @@ body::before {
   100% { transform: translate(0, 0); }
 }
 
-/* Disable animation for users who prefer reduced motion */
 @media (prefers-reduced-motion: reduce) {
   body::before {
     animation: none;
@@ -52,10 +42,6 @@ body::before {
 
 @custom-variant dark (&:is(.dark *));
 
-/* 
-  Tailwind v4 Theme Configuration 
-  Defining custom colors and variables for the design system.
-*/
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);

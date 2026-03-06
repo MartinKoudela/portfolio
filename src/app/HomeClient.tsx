@@ -43,7 +43,6 @@ const TypingText = dynamic(() => import("../components/TypingText"), {
     ssr: false,
 });
 
-// Typing animation words
 const roleWords = ["Developer", "Creator", "Engineer", "Builder"];
 
 export default function HomeClient() {
@@ -69,16 +68,13 @@ export default function HomeClient() {
     const scrollToTop = useCallback(() => {
         window.scrollTo({ top: 0, behavior: "smooth" });
     }, []);
- 
+
     return (
         <div className="relative min-h-screen bg-[#050505] text-white selection:bg-[#5B7CFA]/30">
 
-            {/* Scroll Progress Bar */}
             <ScrollProgress />
 
-            {/* Global Background Accents */}
             <div className="fixed inset-0 pointer-events-none z-0">
-                {/* The Grid Pattern */}
                 <div
                     className="absolute inset-0 opacity-[0.15]"
                     style={{
@@ -88,7 +84,6 @@ export default function HomeClient() {
                     }}
                 />
 
-                {/* Large Moving Glows */}
                 <div
                     className="absolute top-[-10%] left-[-10%] h-[600px] w-[600px] rounded-full bg-[#5B7CFA]/15 blur-[120px] animate-pulse"
                     style={{ animationDuration: "8s" }}
@@ -99,13 +94,10 @@ export default function HomeClient() {
                     style={{ animationDuration: "12s" }}
                 />
 
-                {/* Static glow for visual balance */}
                 <div className="absolute bottom-[10%] right-[-5%] h-[500px] w-[500px] rounded-full bg-blue-600/5 blur-[100px]" />
             </div>
 
-            {/* HERO SECTION */}
             <section className="relative flex min-h-screen items-center overflow-hidden z-10">
-                {/* Hero-specific background with Antigravity particles */}
                 <div className="absolute inset-0 -z-10 pointer-events-none">
                     <div className="relative h-full w-full pointer-events-none opacity-40">
                         <Antigravity
@@ -123,9 +115,7 @@ export default function HomeClient() {
                     </div>
                 </div>
 
-                {/* Hero Content */}
                 <div className="relative z-20 mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-12 px-6 md:grid-cols-2">
-                    {/* Left Column: Text Content */}
                     <motion.div
                         initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -133,7 +123,6 @@ export default function HomeClient() {
                         transition={{ duration: 0.8 }}
                         className="space-y-8"
                     >
-                        {/* Availability Badge */}
                         <motion.div
                             initial={{ opacity: 0, y: -10 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -160,7 +149,6 @@ export default function HomeClient() {
                             </p>
                         </div>
 
-                        {/* Primary Call to Action Buttons */}
                         <div className="flex flex-wrap gap-4">
                             <a
                                 href="#projects"
@@ -186,7 +174,6 @@ export default function HomeClient() {
                         </div>
                     </motion.div>
 
-                    {/* Right Column: Profile Image - ORIGINAL */}
                     <motion.div
                         initial={{ opacity: 0, scale: 0.9 }}
                         whileInView={{ opacity: 1, scale: 1 }}
@@ -194,7 +181,6 @@ export default function HomeClient() {
                         transition={{ duration: 0.8 }}
                         className="flex justify-center md:justify-end relative"
                     >
-                        {/* Soft glow behind the image */}
                         <div className="absolute inset-0 bg-[#5B7CFA]/20 blur-[100px] rounded-full scale-75 animate-pulse" />
                         <Image
                             src="/me.png"
@@ -209,9 +195,7 @@ export default function HomeClient() {
                 </div>
             </section>
 
-            {/* Main Content Area */}
             <main className="relative z-30 mx-auto max-w-6xl px-6">
-                {/* ABOUT SECTION */}
                 <motion.section
                     id="about"
                     initial={{ opacity: 0, y: 80 }}
@@ -247,7 +231,6 @@ export default function HomeClient() {
                                 <span className="text-white">clarity</span>.
                             </p>
 
-                            {/* Detailed Info Blocks */}
                             <div className="space-y-6 border-l border-white/5 pl-8">
                                 <div>
                                     <h4 className="text-white font-bold mb-2">Philosophy</h4>
@@ -268,7 +251,6 @@ export default function HomeClient() {
                     </div>
                 </motion.section>
 
-                {/* SKILLS SECTION - ORIGINAL */}
                 <section id="skills" className="py-32">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -281,18 +263,15 @@ export default function HomeClient() {
                         </h2>
                     </motion.div>
 
-                    {/* Technology Grid - ORIGINAL with Lucide icons */}
-                    <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+                    <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-5">
                         {[
                             { name: "PYTHON", icon: Code2 },
                             { name: "C / C++", icon: Code2 },
                             { name: "PHP / LARAVEL", icon: Braces },
                             { name: "JS / TS", icon: Braces },
-                            { name: "REACT", icon: Layers },
-                            { name: "NEXT.JS", icon: Layers },
+                            { name: "THREE.js / WebGL", icon: Layers },
                             { name: "SQL DBs", icon: Database },
                             { name: "TAILWIND css", icon: Layers },
-                            { name: "BOOTSTRAP css", icon: Layers },
                             { name: "EMBEDDED (MCUs)", icon: Cpu },
                             { name: "IoT", icon: Wifi },
                             { name: "GIT", icon: GitBranch },
@@ -328,7 +307,6 @@ export default function HomeClient() {
                     </div>
                 </section>
 
-                {/* PROJECTS SECTION */}
                 <motion.section
                     id="projects"
                     initial={{ opacity: 0, y: 30 }}
@@ -344,7 +322,6 @@ export default function HomeClient() {
                             </h2>
                         </div>
 
-                        {/* Interaction hint for desktop */}
                         <div className="mt-8 md:mt-0 flex items-center gap-3 text-zinc-500">
                             <div className="h-[1px] w-8 bg-zinc-800" />
                             <p className="text-xs uppercase tracking-widest font-medium">
@@ -357,7 +334,6 @@ export default function HomeClient() {
                     <ProjectCarousel />
                 </motion.section>
 
-                {/* CONTACT SECTION */}
                 <motion.section
                     id="contact"
                     initial={{ opacity: 0, y: 30 }}
@@ -366,11 +342,9 @@ export default function HomeClient() {
                     transition={{ duration: 0.7, delay: 0.2 }}
                     className="py-32 relative"
                 >
-                    {/* Background glow */}
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[500px] bg-[#5B7CFA]/10 blur-[120px] rounded-full -z-10 animate-pulse" />
 
                     <div className="relative rounded-3xl border border-white/5 bg-gradient-to-b from-white/[0.02] to-transparent p-8 md:p-16 text-center overflow-hidden backdrop-blur-sm">
-                        {/* Decorative glows */}
                         <div
                             className="absolute -top-24 -right-24 h-64 w-64 bg-blue-500/10 blur-[80px] rounded-full animate-pulse"
                             style={{ animationDuration: "8s" }}
@@ -394,14 +368,12 @@ export default function HomeClient() {
                             to reach out for a chat.
                         </p>
 
-                        {/* Response time indicator */}
                         <div className="flex items-center justify-center gap-2 mt-4 text-sm text-zinc-500">
                             <Clock size={14} />
                             <span>Usually responds within 24 hours</span>
                         </div>
 
                         <div className="mt-12 flex flex-col items-center gap-6">
-                            {/* Email buttons */}
                             <div className="flex flex-wrap justify-center gap-4">
                                 <a
                                     href="mailto:koudela.m@icloud.com"
@@ -429,7 +401,6 @@ export default function HomeClient() {
                                 </button>
                             </div>
 
-                            {/* Social Media Links */}
                             <div className="flex gap-4 mt-4">
                                 {[
                                     {
@@ -483,16 +454,13 @@ export default function HomeClient() {
                     </div>
                 </motion.section>
 
-                {/* FOOTER */}
                 <footer className="py-12 border-t border-white/5">
                     <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-                        {/* Left side */}
                         <div className="flex items-center gap-2 text-sm text-zinc-500">
                             <span>© {new Date().getFullYear()} Martin Koudela</span>
                             <Heart size={14} className="text-red-500 animate-pulse" />
                         </div>
 
-                        {/* Back to top */}
                         <button
                             onClick={scrollToTop}
                             className="group flex items-center gap-2 text-sm text-zinc-500 hover:text-white transition-colors"
