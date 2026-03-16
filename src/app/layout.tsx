@@ -94,7 +94,7 @@ const personStructuredData = {
     "@type": "Person",
     name: "Martin Koudela",
     url: "https://martinkoudela.com",
-    email: "koudela.m@icloud.com",
+    email: "mk@martinkoudela.com",
     jobTitle: "Full-stack Developer",
     knowsAbout: ["Python", "C", "Laravel", "PHP", "C++", "TypeScript", "JavaScript", "IoT", "Embedded"],
     description: "Junior Full-stack developer focused on modern software solutions.",

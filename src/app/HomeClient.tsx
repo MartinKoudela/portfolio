@@ -376,7 +376,7 @@ export default function HomeClient() {
                         <div className="mt-12 flex flex-col items-center gap-6">
                             <div className="flex flex-wrap justify-center gap-4">
                                 <a
-                                    href="mailto:koudela.m@icloud.com"
+                                    href="mailto:mk@martinkoudela.com"
                                     className="inline-flex items-center gap-3 rounded-full bg-white px-10 py-5 text-lg font-bold text-black transition-all hover:scale-105 hover:bg-zinc-200"
                                 >
                                     Send an email
