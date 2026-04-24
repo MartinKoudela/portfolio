@@ -126,11 +126,19 @@ function ProjectCard({project, index}) {
                     <p className="text-sm leading-relaxed text-zinc-500 group-hover:text-zinc-400 transition-colors line-clamp-3">
                         {project.description}
                     </p>
-                    <span>
-                        <a href={project.url} target="_blank" rel="noreferrer"
-                           className="text-[#5B7CFA] hover:underline" translate="no">
-                        {project.url}
-                        </a>
+                    <span className="flex flex-col gap-1">
+                        {project.url && (
+                            <a href={project.url} target="_blank" rel="noreferrer"
+                               className="text-[#5B7CFA] hover:underline" translate="no">
+                                {project.url}
+                            </a>
+                        )}
+                        {project.github && (
+                            <a href={project.github} target="_blank" rel="noreferrer"
+                               className="text-zinc-500 hover:text-[#5B7CFA] hover:underline text-sm" translate="no">
+                                github ↗
+                            </a>
+                        )}
                     </span>
                     <br/>
                     <Link

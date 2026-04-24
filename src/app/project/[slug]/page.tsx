@@ -4,7 +4,7 @@ import { useParams } from "next/navigation";
 import { projects } from "@/data/projects";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowLeft, ArrowUpRight } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, Github } from "lucide-react";
 
 export default function ProjectPage() {
     const params = useParams();
@@ -105,21 +105,33 @@ export default function ProjectPage() {
                 </motion.div>
 
                 {/* CTA */}
-                {project.url && (
+                {(project.url || project.github) && (
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 0.5, delay: 0.35 }}
-                        className="mb-24"
+                        className="flex flex-wrap gap-3 mb-24"
                     >
-                        <a
-                            href={project.url}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="inline-flex items-center gap-2 px-6 py-3 bg-[#E8E8E2] text-[#0D0D0C] text-sm font-bold hover:bg-white transition-colors"
-                        >
-                            Visit project <ArrowUpRight size={14} />
-                        </a>
+                        {project.url && (
+                            <a
+                                href={project.url}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="inline-flex items-center gap-2 px-6 py-3 bg-[#E8E8E2] text-[#0D0D0C] text-sm font-bold hover:bg-white transition-colors"
+                            >
+                                Visit project <ArrowUpRight size={14} />
+                            </a>
+                        )}
+                        {project.github && (
+                            <a
+                                href={project.github}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="inline-flex items-center gap-2 px-6 py-3 border border-white/[0.1] text-[#E8E8E2] text-sm font-bold hover:border-white/30 hover:bg-white/[0.04] transition-colors"
+                            >
+                                <Github size={14} /> GitHub
+                            </a>
+                        )}
                     </motion.div>
                 )}
 

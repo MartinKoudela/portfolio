@@ -1,5 +1,23 @@
 export const projects = [
     {
+        slug: "laravix-cms",
+        title: "Laravix CMS",
+        description: "An open-source headless content management system built on Laravel, designed to give developers and agencies full control over multiple websites from a single unified admin panel. Laravix supports a flexible field system with 12+ content field types, dynamic theme switching, built-in SEO tools with automatic sitemap and robots.txt generation, and role-based user management per site. The platform features a modern admin interface powered by Filament and Livewire, complete with activity logging and full multi-tenant architecture. The core is free and open-source, with premium plugins planned for extended functionality.",
+        tags: ["Laravel", "PHP", "Filament", "Livewire", "Tailwind", "MySQL"],
+        image: "/laravix.png",
+        github: "https://github.com/MartinKoudela/laravix-cms",
+        url: "https://laravix.com"
+    },
+    {
+        slug: "orbis-projects",
+        title: "Orbis Projects",
+        description: "A student project showcase platform built for ORBIS Zlín, designed to give students a professional stage to present their work. The platform features a unique theme system where students design and build their own custom Blade templates using Tailwind CSS, maintaining full creative control over how their projects are displayed. Administrators manage project data, taxonomies, and media through a modern Filament dashboard, while a REST API enables dynamic filtering and browsing. Built as a personal initiative during my studies — not a school assignment, but a real tool built to fill a real need.",
+        tags: ["Laravel", "PHP", "Filament", "Tailwind", "REST API", "Blade"],
+        image: "/orbis-projects.png",
+        github: "https://github.com/MartinKoudela/orbis-projects",
+        url: "https://orbis.cz"
+    },
+    {
         slug: "football-photogallery",
         title: "Football Photogallery",
         description: "A bespoke football photogallery platform developed for a client, designed to showcase match photography in an elegant and organized way. The platform features a photographer-focused dashboard for easy photo uploads and management, a curated highlights section displaying the best shots, and a comprehensive match-based photo archive where visitors can browse galleries organized by individual games. Built with performance in mind, the site handles large image collections efficiently while maintaining a clean, modern user interface.",
@@ -8,11 +26,13 @@ export const projects = [
         url: "https://www.slavicinfotky.cz/"
     },
     {
-        slug: "raspberry-pi-camera",
+        slug: "https://github.com/MartinKoudela/rpi-cam",
         title: "Raspberry Pi Camera",
         description: "A comprehensive Raspberry Pi 4 surveillance and computer vision system built from the ground up. The project integrates a Pi Camera Module 3 NoIR with a PIR motion sensor for intelligent monitoring. The system features real-time object detection powered by YOLOv8 AI model, capable of identifying humans, animals, and vehicles. It includes a modern web interface built with FastAPI and vanilla JavaScript, allowing users to view live streams, capture photos, record videos, and apply visual filters. Additional features include Telegram bot integration for instant notifications with snapshots, multiple color format support, and a responsive dashboard for complete camera control.",
         tags: ["Python", "FastAPI", "OpenCV", "YOLOv8", "Raspberry Pi 4", "WebSockets", "Tailwind"],
         image: "/rpi.jpg",
+        github: "https://github.com/MartinKoudela/laravix-cms",
+
     },
     {
         slug: "l0k1-game",
@@ -20,6 +40,8 @@ export const projects = [
         description: "An immersive browser-based 3D horror game set in a hacker's apartment, built with Three.js. Players navigate a detailed cyberpunk room filled with interactive objects — a laptop that opens a fully functional in-game OS with a terminal, file manager, and hacking tools. The game features a dynamic atmosphere with positional audio (distant gunshots, sirens, creaking floors), toggleable lighting, and enemy AI systems including creatures like the Strangler and Shade that stalk the player. The environment is richly decorated with 60+ GLTF models including servers, monitors, graffiti, and surveillance cameras, creating a tense and atmospheric experience.",
         tags: ["Three.js", "TypeScript", "Vite", "WebGL", "GLTF"],
         image: "/l0k1.png",
+        github: "https://github.com/MartinKoudela/L0k1-game",
+
     },
     {
         slug: "trackee",
@@ -50,4 +72,4 @@ export const projects = [
     },
 ];
 
-export type Project = typeof projects[number];
+export type Project = typeof projects[number] & { github?: string };
