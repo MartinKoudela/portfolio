@@ -4,84 +4,85 @@ import { useParams } from "next/navigation";
 import { projects } from "@/data/projects";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowLeft, ExternalLink } from "lucide-react";
+import { ArrowLeft, ArrowUpRight } from "lucide-react";
 
 export default function ProjectPage() {
     const params = useParams();
-    const project = projects.find(p => p.slug === params.slug);
+    const project = projects.find((p) => p.slug === params.slug);
 
     if (!project) {
         return (
-            <div className="min-h-screen bg-[#050505] text-white flex items-center justify-center">
-                <div className="text-center">
-                    <h1 className="text-4xl font-bold mb-4">Project not found</h1>
-                    <Link href="/#projects" className="text-[#5B7CFA] hover:underline">
-                        ← Back to projects
+            <div className="min-h-screen bg-[#0D0D0C] text-[#E8E8E2] flex items-center justify-center">
+                <div>
+                    <p className="text-[10px] tracking-[0.3em] text-[#3D3D38] uppercase mb-4">404</p>
+                    <h1 className="text-3xl font-bold mb-6">Project not found.</h1>
+                    <Link
+                        href="/#projects"
+                        className="inline-flex items-center gap-2 text-sm text-[#6B6B65] hover:text-[#E8E8E2] transition-colors"
+                    >
+                        <ArrowLeft size={14} /> Back to work
                     </Link>
                 </div>
             </div>
         );
     }
 
+    const projectIndex = projects.indexOf(project);
+    const next = projects[(projectIndex + 1) % projects.length];
+
     return (
-        <div className="relative min-h-screen bg-[#050505] text-white selection:bg-[#5B7CFA]/30">
-            <div className="fixed inset-0 pointer-events-none z-0">
-                <div
-                    className="absolute inset-0 opacity-[0.15]"
-                    style={{
-                        backgroundImage: `radial-gradient(#5B7CFA 0.5px, transparent 0.5px), radial-gradient(#5B7CFA 0.5px, #050505 0.5px)`,
-                        backgroundSize: "40px 40px",
-                        backgroundPosition: "0 0, 20px 20px",
-                    }}
-                />
+        <div className="min-h-screen bg-[#0D0D0C] text-[#E8E8E2]">
 
-                <div
-                    className="absolute top-[-10%] left-[-10%] h-[600px] w-[600px] rounded-full bg-[#5B7CFA]/15 blur-[120px] animate-pulse"
-                    style={{ animationDuration: "8s" }}
-                />
-                <div
-                    className="absolute bottom-[-10%] right-[-10%] h-[500px] w-[500px] rounded-full bg-[#5B7CFA]/10 blur-[100px] animate-pulse"
-                    style={{ animationDuration: "12s" }}
-                />
-            </div>
-
-            <main className="relative z-10 mx-auto max-w-4xl px-6 py-12">
-                <motion.div
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5 }}
-                >
+            {/* Nav bar */}
+            <header className="fixed top-0 left-0 right-0 z-50 border-b border-white/[0.06] bg-[#0D0D0C]/90 backdrop-blur-xl">
+                <div className="max-w-5xl mx-auto px-6 md:px-12 h-16 flex items-center justify-between">
                     <Link
                         href="/#projects"
-                        className="inline-flex items-center gap-2 text-zinc-400 hover:text-white transition-colors mb-12 group"
+                        className="inline-flex items-center gap-2 text-[11px] tracking-[0.2em] text-[#6B6B65] uppercase hover:text-[#E8E8E2] transition-colors"
                     >
-                        <ArrowLeft size={18} className="transition-transform group-hover:-translate-x-1" />
-                        Back to projects
+                        <ArrowLeft size={12} /> Back
                     </Link>
-                </motion.div>
+                    <p className="text-[11px] tracking-[0.2em] text-[#3D3D38] uppercase" translate="no">
+                        {String(projectIndex + 1).padStart(2, "0")} / {String(projects.length).padStart(2, "0")}
+                    </p>
+                </div>
+            </header>
 
+            <main className="max-w-5xl mx-auto px-6 md:px-12 pt-32 pb-24">
+
+                {/* Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.1 }}
-                    className="mb-8"
+                    transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                    className="mb-16"
                 >
-                    <h2 className="text-sm font-bold uppercase tracking-[0.2em] text-[#5B7CFA] mb-4">
-                        Project
-                    </h2>
-                    <h1 className="text-4xl sm:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-white to-white/60">
+                    <p className="text-[10px] tracking-[0.3em] text-[#3D3D38] uppercase mb-5">Project</p>
+                    <h1 className="font-bold leading-[0.9] tracking-[-0.03em] mb-8" style={{ fontSize: "clamp(42px, 6vw, 88px)" }} translate="no">
                         {project.title}
                     </h1>
+
+                    <div className="flex flex-wrap gap-3">
+                        {project.tags.map((tag) => (
+                            <span
+                                key={tag}
+                                className="text-[10px] tracking-[0.2em] text-[#3D3D38] uppercase border-b border-white/[0.06] pb-0.5"
+                                translate="no"
+                            >
+                                {tag}
+                            </span>
+                        ))}
+                    </div>
                 </motion.div>
 
+                {/* Image */}
                 {project.image && (
                     <motion.div
-                        initial={{ opacity: 0, y: 30 }}
+                        initial={{ opacity: 0, y: 24 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.2 }}
-                        className="relative mb-12 rounded-3xl overflow-hidden border border-white/5 bg-white/[0.02]"
+                        transition={{ duration: 0.7, delay: 0.1 }}
+                        className="mb-16 overflow-hidden rounded-2xl border border-white/[0.06]"
                     >
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent z-10" />
                         <img
                             src={project.image}
                             alt={project.title}
@@ -90,56 +91,54 @@ export default function ProjectPage() {
                     </motion.div>
                 )}
 
+                {/* Content */}
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 16 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.3 }}
-                    className="flex flex-wrap gap-2 mb-10"
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                    className="grid md:grid-cols-[160px_1fr] gap-12 md:gap-20 mb-16"
                 >
-                    {project.tags.map(tag => (
-                        <span
-                            key={tag}
-                            className="flex items-center gap-1.5 text-xs uppercase tracking-wider text-zinc-400 font-bold px-4 py-2 rounded-full bg-white/[0.03] border border-white/5 hover:border-[#5B7CFA]/30 hover:text-[#5B7CFA] transition-all"
-                        >
-                            <span className="w-1.5 h-1.5 rounded-full bg-[#5B7CFA]/40" />
-                            {tag}
-                        </span>
-                    ))}
-                </motion.div>
-
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.4 }}
-                    className="relative rounded-3xl border border-white/5 bg-gradient-to-b from-white/[0.03] to-transparent p-8 md:p-10 mb-10 backdrop-blur-sm"
-                >
-                    <div className="absolute -top-20 -right-20 h-40 w-40 bg-[#5B7CFA]/10 blur-[60px] rounded-full" />
-
-                    <h3 className="text-sm font-bold uppercase tracking-[0.2em] text-[#5B7CFA] mb-6">
-                        About this project
-                    </h3>
-                    <p className="text-lg leading-relaxed text-zinc-400">
+                    <p className="text-[10px] tracking-[0.3em] text-[#3D3D38] uppercase pt-1">Overview</p>
+                    <p className="text-[#6B6B65] leading-relaxed text-lg">
                         {project.description}
                     </p>
                 </motion.div>
 
+                {/* CTA */}
                 {project.url && (
                     <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.5 }}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.5, delay: 0.35 }}
+                        className="mb-24"
                     >
                         <a
                             href={project.url}
                             target="_blank"
                             rel="noreferrer"
-                            className="group inline-flex items-center gap-3 rounded-full bg-white px-8 py-4 text-sm font-bold text-black transition-all hover:scale-105 hover:bg-zinc-200"
+                            className="inline-flex items-center gap-2 px-6 py-3 bg-[#E8E8E2] text-[#0D0D0C] text-sm font-bold hover:bg-white transition-colors"
                         >
-                            <span>Visit project</span>
-                            <ExternalLink size={16} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                            Visit project <ArrowUpRight size={14} />
                         </a>
                     </motion.div>
                 )}
+
+                {/* Next project */}
+                <div className="border-t border-white/[0.06] pt-12">
+                    <p className="text-[10px] tracking-[0.3em] text-[#3D3D38] uppercase mb-6">Next project</p>
+                    <Link
+                        href={`/project/${next.slug}`}
+                        className="group flex items-center justify-between gap-4 hover:text-[#5B7CFA] transition-colors"
+                    >
+                        <h2 className="text-2xl md:text-3xl font-bold transition-colors" translate="no">
+                            {next.title}
+                        </h2>
+                        <ArrowUpRight
+                            size={20}
+                            className="text-[#3D3D38] group-hover:text-[#5B7CFA] transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 flex-shrink-0"
+                        />
+                    </Link>
+                </div>
             </main>
         </div>
     );
