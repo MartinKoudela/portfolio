@@ -26,12 +26,12 @@ export const projects = [
         url: "https://www.slavicinfotky.cz/"
     },
     {
-        slug: "https://github.com/MartinKoudela/rpi-cam",
+        slug: "rpi-cam",
         title: "Raspberry Pi Camera",
         description: "A comprehensive Raspberry Pi 4 surveillance and computer vision system built from the ground up. The project integrates a Pi Camera Module 3 NoIR with a PIR motion sensor for intelligent monitoring. The system features real-time object detection powered by YOLOv8 AI model, capable of identifying humans, animals, and vehicles. It includes a modern web interface built with FastAPI and vanilla JavaScript, allowing users to view live streams, capture photos, record videos, and apply visual filters. Additional features include Telegram bot integration for instant notifications with snapshots, multiple color format support, and a responsive dashboard for complete camera control.",
         tags: ["Python", "FastAPI", "OpenCV", "YOLOv8", "Raspberry Pi 4", "WebSockets", "Tailwind"],
         image: "/rpi.jpg",
-        github: "https://github.com/MartinKoudela/laravix-cms",
+        github: "https://github.com/MartinKoudela/rpi-cam",
 
     },
     {
