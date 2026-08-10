@@ -4,6 +4,7 @@ import "./globals.css";
 
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
+import MotionProvider from "@/components/MotionProvider";
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -86,7 +87,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
     width: "device-width",
     initialScale: 1,
-    themeColor: "#050505",
+    themeColor: "#0D0D0C",
 };
 
 const personStructuredData = {
@@ -138,7 +139,7 @@ export default function RootLayout({
         </head>
         <body className={`${geistSans.variable} antialiased`}>
 
-        {children}
+        <MotionProvider>{children}</MotionProvider>
 
         {/* Vercel analytics */}
         <Analytics />

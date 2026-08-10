@@ -1,10 +1,32 @@
-export const projects = [
+export type Project = {
+    slug: string;
+    title: string;
+    description: string;
+    tags: string[];
+    image?: string;
+    images?: string[];
+    github?: string;
+    url?: string;
+};
+
+export const projects: Project[] = [
     {
         slug: "laravix-cms",
         title: "Laravix CMS",
-        description: "An open-source headless content management system built on Laravel, designed to give developers and agencies full control over multiple websites from a single unified admin panel. Laravix supports a flexible field system with 12+ content field types, dynamic theme switching, built-in SEO tools with automatic sitemap and robots.txt generation, and role-based user management per site. The platform features a modern admin interface powered by Filament and Livewire, complete with activity logging and full multi-tenant architecture. The core is free and open-source, with premium plugins planned for extended functionality.",
-        tags: ["Laravel", "PHP", "Filament", "Livewire", "Tailwind", "MySQL"],
+        description: "An open-source CMS that runs any number of websites from a \n" +
+            "  single admin panel. Every site is a fully isolated tenant with its own \n" +
+            "  content, users, media, and theme — and each one independently chooses how it's\n" +
+            "  delivered: rendered by a Blade theme, or served headless through a \n" +
+            "  token-authenticated REST API. Content is assembled in a split-screen GrapesJS \n" +
+            "  visual builder with 45+ blocks, each one a PHP class you can extend or \n" +
+            "  replace, backed by custom content types, revision history, scheduled \n" +
+            "  publishing, Meilisearch full-text search, and tenant-aware SEO. Registries for\n" +
+            "  blocks, fields, taxonomies, navigation and routes let plugins hook into every\n" +
+            "  layer — the docs and changelog on laravix.com are plugins built on that same \n" +
+            "  API.",
+        tags: ["Laravel", "PHP", "Filament", "Livewire", "Tailwind", "GrapesJS"],
         image: "/laravix.png",
+        images: ["/laravix2.png", "/laravix3.png"],
         github: "https://github.com/MartinKoudela/laravix-cms",
         url: "https://laravix.com"
     },
@@ -22,7 +44,8 @@ export const projects = [
         title: "Football Photogallery",
         description: "A bespoke football photogallery platform developed for a client, designed to showcase match photography in an elegant and organized way. The platform features a photographer-focused dashboard for easy photo uploads and management, a curated highlights section displaying the best shots, and a comprehensive match-based photo archive where visitors can browse galleries organized by individual games. Built with performance in mind, the site handles large image collections efficiently while maintaining a clean, modern user interface.",
         tags: ["Laravel", "MySQL", "Tailwind", "PHP", "Blade"],
-        image: "/photogallery.png",
+        image: "/fotbal.png",
+        images: ["/fotbal2.png", "/fotbal3.png", "/fotbal4.png"],
         url: "https://www.slavicinfotky.cz/"
     },
     {
@@ -31,6 +54,7 @@ export const projects = [
         description: "A comprehensive Raspberry Pi 4 surveillance and computer vision system built from the ground up. The project integrates a Pi Camera Module 3 NoIR with a PIR motion sensor for intelligent monitoring. The system features real-time object detection powered by YOLOv8 AI model, capable of identifying humans, animals, and vehicles. It includes a modern web interface built with FastAPI and vanilla JavaScript, allowing users to view live streams, capture photos, record videos, and apply visual filters. Additional features include Telegram bot integration for instant notifications with snapshots, multiple color format support, and a responsive dashboard for complete camera control.",
         tags: ["Python", "FastAPI", "OpenCV", "YOLOv8", "Raspberry Pi 4", "WebSockets", "Tailwind"],
         image: "/rpi.jpg",
+        images: ["/rpi2.png", "/rpi3.png", "/rpi4.jpg"],
         github: "https://github.com/MartinKoudela/rpi-cam",
 
     },
@@ -49,6 +73,7 @@ export const projects = [
         description: "A modern team collaboration and project management platform designed to streamline workflow and boost productivity. Users can create and join teams, set up projects with detailed task breakdowns, and track progress through intuitive kanban boards. The platform includes a shared calendar system for scheduling deadlines and meetings, customizable user profiles, and real-time collaboration features. Team members can assign tasks, set priorities, add comments, and receive notifications about updates. The clean, minimalist interface ensures users stay focused on what matters most - getting work done.",
         tags: ["Laravel", "Tailwind", "MySQL", "JavaScript", "Blade", "REST API"],
         image: "/trackee1.png",
+        images: ["/trackee2.png"],
     },
     {
         slug: "esp32-pentesting-tool",
@@ -62,6 +87,7 @@ export const projects = [
         description: "A personal passion project for documenting and sharing experiences at local coffee shops in Zlín and surrounding areas. The website features subjective reviews covering atmosphere, coffee quality, food options, and overall vibe of each location. Each review includes personal photos capturing the unique character of the cafes, along with practical information like opening hours and location. Built as a non-public platform for personal use and sharing with friends who share the same appreciation for good coffee and cozy spaces.",
         tags: ["JavaScript", "Bootstrap", "EmailJS", "HTML", "CSS"],
         image: "/cafecheck1.png",
+        images: ["/cafecheck2.png"],
     },
     {
         slug: "filmio",
@@ -69,7 +95,12 @@ export const projects = [
         description: "A school project that evolved into a fully functional film club web application. The platform allows movie enthusiasts to create accounts, join the club community, and participate in shared movie watching sessions. Members can browse the film catalog, vote on upcoming screenings, and discuss movies with other members. The admin dashboard provides complete control over the film database, user management, and scheduling of watch sessions. Features include user authentication with role-based access, a rating and review system, and a clean interface optimized for easy navigation.",
         tags: ["PHP", "MySQL", "Tailwind", "HTML", "Authentication"],
         image: "/filmio1.png",
+        images: ["/filmio2.png"],
     },
 ];
 
-export type Project = typeof projects[number] & { github?: string };
+export function projectImages(project: Project): string[] {
+    return [project.image, ...(project.images ?? [])].filter(
+        (src): src is string => Boolean(src)
+    );
+}

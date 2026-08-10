@@ -16,10 +16,15 @@ const roleWords = ["Developer", "Creator", "Engineer", "Builder"];
 export default function HomeClient() {
     const [emailCopied, setEmailCopied] = useState(false);
 
-    const copyEmail = useCallback(() => {
-        navigator.clipboard.writeText("mk@martinkoudela.com");
-        setEmailCopied(true);
-        setTimeout(() => setEmailCopied(false), 2000);
+    const copyEmail = useCallback(async () => {
+        try {
+            await navigator.clipboard.writeText("mk@martinkoudela.com");
+            setEmailCopied(true);
+            setTimeout(() => setEmailCopied(false), 2000);
+        } catch {
+            // Clipboard API is unavailable (insecure context, older Safari) — fall back to mailto.
+            window.location.href = "mailto:mk@martinkoudela.com";
+        }
     }, []);
 
     return (
@@ -31,15 +36,8 @@ export default function HomeClient() {
 
                     {/* Left */}
                     <div className="flex flex-col justify-between md:pr-16 md:border-r border-white/[0.06]">
-                        <div>
-                            <motion.div
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                transition={{ duration: 0.5 }}
-                                className="inline-flex items-center gap-2 text-[11px] tracking-[0.25em] text-[#5B7CFA] uppercase mb-10"
-                            >
-                            </motion.div>
-
+                        {/* pt-10 preserves the spacing an empty decorative element used to hold */}
+                        <div className="pt-10">
                             <motion.h1
                                 initial={{ opacity: 0, y: 24 }}
                                 animate={{ opacity: 1, y: 0 }}
@@ -123,20 +121,6 @@ export default function HomeClient() {
                             className="w-full grayscale hover:grayscale-0 transition-all duration-1000 mt-8"
                         />
                     </motion.div>
-                </div>
-
-                {/* Bottom bar */}
-                <div className="max-w-7xl mx-auto w-full px-6 md:px-12 pb-8">
-                    <div className="border-t border-white/[0.06] pt-5 flex items-center justify-between">
-                        <p className="text-[10px] tracking-[0.3em] text-[#3D3D38] uppercase">Portfolio 2026</p>
-                        <motion.p
-                            animate={{ opacity: [1, 0.35, 1] }}
-                            transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-                            className="text-[10px] tracking-[0.3em] text-[#3D3D38] uppercase"
-                        >
-                            Scroll ↓
-                        </motion.p>
-                    </div>
                 </div>
             </section>
 
@@ -417,9 +401,13 @@ function ProjectRow({ project, index }: { project: Project; index: number }) {
                     animate={{ opacity: hovered ? 1 : 0, scale: hovered ? 1 : 0.94 }}
                     transition={{ duration: 0.15 }}
                 >
-                    <img
+                    <Image
                         src={project.image}
-                        alt={project.title}
+                        alt=""
+                        width={208}
+                        height={144}
+                        loading="lazy"
+                        draggable={false}
                         className="w-full h-full object-cover grayscale"
                     />
                 </motion.div>
