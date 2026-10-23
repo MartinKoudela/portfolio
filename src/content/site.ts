@@ -832,7 +832,7 @@ export const projects: Project[] = [
         shortName: "Laravix",
         category: "software",
         descriptor: "Laravel · multi-tenant CMS",
-        metaDescription: "Open-source multi-tenant CMS: each site is an isolated tenant, delivered through a Blade theme or a token-authenticated REST API. In active development.",
+        metaDescription: "Open-source multi-tenant CMS: each site is an isolated tenant, delivered through a Blade theme or a token-authenticated REST API.",
         summary:
             "Open-source multi-tenant CMS. Each site is an isolated tenant with its own content, users, media and theme, delivered through a Blade theme or a token-authenticated REST API.",
         status: "In active development",
@@ -908,7 +908,6 @@ export const projects: Project[] = [
             },
         ],
         specs: [
-            { label: "Type", value: "Open-source multi-tenant CMS" },
             { label: "Stack", value: "Laravel, PHP, Filament" },
             { label: "Builder", value: "GrapesJS, 45+ extendable blocks" },
             { label: "Search", value: "Meilisearch" },
@@ -959,8 +958,9 @@ export const projects: Project[] = [
         name: "Backlog",
         shortName: "Backlog",
         category: "software",
+        descriptor: "Swift · SwiftUI · iOS",
         summary:
-            "iOS app that puts projects, tasks and reminders in one data model. Swift and SwiftUI, Liquid Glass design. Finished.",
+            "iOS app that puts projects, tasks and reminders in one data model. Swift and SwiftUI, Liquid Glass design.",
         status: "Finished",
         links: {},
         layout: "media-specs",
