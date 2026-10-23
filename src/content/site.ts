@@ -831,9 +831,10 @@ export const projects: Project[] = [
         name: "Laravix",
         shortName: "Laravix",
         category: "software",
+        descriptor: "Laravel · multi-tenant CMS",
         metaDescription: "Open-source multi-tenant CMS: each site is an isolated tenant, delivered through a Blade theme or a token-authenticated REST API. In active development.",
         summary:
-            "Open-source multi-tenant CMS. Each site is an isolated tenant with its own content, users, media and theme, delivered through a Blade theme or a token-authenticated REST API. In active development.",
+            "Open-source multi-tenant CMS. Each site is an isolated tenant with its own content, users, media and theme, delivered through a Blade theme or a token-authenticated REST API.",
         status: "In active development",
         links: { source: "https://github.com/MartinKoudela/laravix-cms", website: "https://laravix.com" },
         icon: "/laravix-icon.png",
@@ -841,7 +842,7 @@ export const projects: Project[] = [
         figures: [
             {
                 id: "fig-8",
-                label: "Fig. 6a",
+                label: "Fig. 6",
                 caption: "Laravix tenancy and delivery",
                 media: {
                     kind: "diagram",
@@ -903,19 +904,6 @@ export const projects: Project[] = [
                             ],
                         },
                     ],
-                },
-            },
-            {
-                id: "fig-8b",
-                label: "Fig. 6b",
-                caption: "Visual page builder (GrapesJS): editing the homepage hero, style manager on the right",
-                homeOnly: true,
-                media: {
-                    kind: "image",
-                    src: "/laravix-builder.png",
-                    width: 2856,
-                    height: 1712,
-                    alt: "Laravix visual page builder with the homepage hero headline selected for editing, a text toolbar above it and a style manager panel with layout, spacing, typography and background sections on the right",
                 },
             },
         ],
