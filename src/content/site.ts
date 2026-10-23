@@ -251,7 +251,7 @@ export const sections: Section[] = [
         label: "Security",
         title: "Security",
         summary:
-            "RF hardware for recon and testing, plus phishing analysis.",
+            "Lab testing with standard offensive tools, regular phishing analysis, and an RF handheld in design.",
     },
     {
         id: "eth4",
@@ -1301,27 +1301,14 @@ export const projects: Project[] = [
     },
 ];
 
-export const analysis: PlainTable = {
+export const tooling: PlainTable & { note: string; noteFn: FootnoteKey } = {
     label: "Table 4",
-    caption: "Analysis",
-    columns: ["Work", "Scope", "Tools"],
-    rows: [
-        [
-            "Phishing analysis",
-            "Regular: suspicious emails (headers, DNS, WHOIS) and phishing websites",
-            "URLScan, VirusTotal",
-        ],
-    ],
-    monoColumn: 2,
-};
-
-export const offensiveTooling: PlainTable & { note: string; noteFn: FootnoteKey } = {
-    label: "Table 5",
-    caption: "Offensive tooling",
-    note: "Own network and lab only",
+    caption: "Tooling",
+    note: "Offensive tools: own network and lab only",
     noteFn: "authorised",
     columns: ["Tool", "Use"],
     rows: [
+        ["URLScan, VirusTotal", "Phishing analysis: suspicious emails (headers, DNS, WHOIS) and phishing websites"],
         ["nmap", "Port and service scanning"],
         ["Burp Suite", "Web application testing"],
         ["Gobuster, ffuf", "Content and directory discovery"],
@@ -1334,7 +1321,7 @@ export const offensiveTooling: PlainTable & { note: string; noteFn: FootnoteKey 
     monoColumn: 0,
 };
 
-export const otherSoftware = { label: "Table 6", caption: "Other software", columns: ["Name", "Description", "Stack", "Link"] };
+export const otherSoftware = { label: "Table 5", caption: "Other software", columns: ["Name", "Description", "Stack", "Link"] };
 
 export function projectsIn(category: Category): Project[] {
     return projects.filter((p) => p.category === category);
@@ -1404,7 +1391,7 @@ export function neighbours(project: Project): { previous: Project; next: Project
 
 export const specifications = {
     title: "Specifications",
-    label: "Table 7",
+    label: "Table 6",
     caption: "Skills and tools",
     columns: ["Parameter", "Values"],
     rows: [
@@ -1421,7 +1408,7 @@ export const specifications = {
 
 export const revisions = {
     title: "Revision history",
-    label: "Table 8",
+    label: "Table 7",
     caption: "Milestones",
     columns: ["Rev", "Date", "Change"],
     rows: [
@@ -1436,7 +1423,7 @@ export const revisions = {
 
 export const ordering = {
     availability: "Open to networking, security, hardware and backend projects. Web projects selectively.",
-    label: "Table 9",
+    label: "Table 8",
     caption: "Ordering channels",
     columns: ["Channel", "Address"],
     channels: [
