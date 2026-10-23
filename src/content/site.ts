@@ -1304,7 +1304,7 @@ export const projects: Project[] = [
 export const tooling: PlainTable & { note: string; noteFn: FootnoteKey } = {
     label: "Table 4",
     caption: "Tooling",
-    note: "Offensive tools: own network and lab only",
+    note: "Offensive tools: own devices\u00a0only",
     noteFn: "authorised",
     columns: ["Tool", "Use"],
     rows: [

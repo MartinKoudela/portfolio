@@ -1,4 +1,5 @@
 import { footnotes, homeFootnoteNumbers, identity, intro } from "@/content/site";
+import FootnoteRef from "../FootnoteRef";
 import Footnotes from "../Footnotes";
 
 export default function Intro() {
@@ -13,7 +14,7 @@ export default function Intro() {
                 <p className="intro-name">{identity.name}</p>
                 <p className="intro-tagline">
                     {intro.tagline}
-                    <sup>{fn}</sup>
+                    <FootnoteRef n={fn} />
                 </p>
             </div>
 

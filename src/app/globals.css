@@ -480,6 +480,14 @@ a.plain {
   margin-top: 36px;
 }
 
+.fn-ref {
+  color: inherit;
+}
+
+.fn .cap[id] {
+  scroll-margin-top: 40vh;
+}
+
 .fn .cap + .cap {
   margin-top: 8px;
 }

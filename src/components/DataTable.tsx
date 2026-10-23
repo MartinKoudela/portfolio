@@ -1,6 +1,7 @@
 import type { CSSProperties, ReactNode } from "react";
 import type { SpecRow } from "@/content/site";
 import { cx } from "@/lib/cx";
+import FootnoteRef from "./FootnoteRef";
 import { rich } from "./Rich";
 
 export type Column = { label: string; width?: string; mobileWidth?: string; srOnly?: boolean };
@@ -24,7 +25,7 @@ export function specRows(rows: SpecRow[], columns: number, footnote: (row: SpecR
     return rows.map((row) => {
         if (row.group) return { group: row.label };
         const n = footnote(row);
-        const sup = n ? <sup>{n}</sup> : null;
+        const sup = n ? <FootnoteRef n={n} /> : null;
         const value: Cell = {
             content: (
                 <>

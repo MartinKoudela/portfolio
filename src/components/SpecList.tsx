@@ -1,5 +1,6 @@
 import type { SpecRow } from "@/content/site";
 import { cx } from "@/lib/cx";
+import FootnoteRef from "./FootnoteRef";
 import { rich } from "./Rich";
 
 type Props = { rows: SpecRow[]; columns?: 1 | 2; footnote: (row: SpecRow) => number | undefined };
@@ -14,7 +15,7 @@ export default function SpecList({ rows, columns = 1, footnote }: Props) {
                         <dt>{row.label}</dt>
                         <dd>
                             {row.href ? <a href={row.href}>{row.value}</a> : rich(row.value)}
-                            {n && <sup>{n}</sup>}
+                            {n && <FootnoteRef n={n} />}
                         </dd>
                     </div>
                 );

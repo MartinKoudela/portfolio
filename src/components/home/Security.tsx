@@ -1,6 +1,7 @@
 import { footnotes, homeFootnoteNumbers, projectsIn, section, tooling } from "@/content/site";
 import Caption from "../Caption";
 import DataTable, { cell } from "../DataTable";
+import FootnoteRef from "../FootnoteRef";
 import Footnotes from "../Footnotes";
 import AppNote from "./AppNote";
 import SectionHead from "./SectionHead";
@@ -25,9 +26,7 @@ export default function Security() {
                     note={
                         <>
                             {tooling.note}
-                            <sup>
-                                <a href={`#fn-${noteFn}`}>{noteFn}</a>
-                            </sup>
+                            <FootnoteRef n={noteFn} />
                         </>
                     }
                     rail
