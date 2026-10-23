@@ -1502,17 +1502,11 @@ a.plain {
   row-gap: 40px;
 }
 
-.an-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 24px;
-}
-
 .an-icon {
-  flex: none;
+  display: block;
   width: auto;
-  height: 96px;
+  height: 52px;
+  margin-top: 6px;
 }
 
 .an-nav {

@@ -119,19 +119,17 @@ export default async function ProjectPage({ params }: { params: Promise<Params> 
                     <section aria-labelledby="an-title" className="row an-hero">
                         <div className="rail">
                             <p className="an-kick">Application note</p>
+                            {project.icon && (
+                                <Image src={project.icon} alt="" width={52} height={52} className="an-icon" />
+                            )}
                             {project.family && <p className="mono family">{project.family}</p>}
                             {project.descriptor && <p className="mono family">{project.descriptor}</p>}
                         </div>
                         <div className="main">
-                            <div className="an-head">
-                                <h1 id="an-title" className="an-title">
-                                    {project.name}
-                                    {project.preliminary && <span className="prelim">Preliminary</span>}
-                                </h1>
-                                {project.icon && (
-                                    <Image src={project.icon} alt="" width={96} height={96} className="an-icon" />
-                                )}
-                            </div>
+                            <h1 id="an-title" className="an-title">
+                                {project.name}
+                                {project.preliminary && <span className="prelim">Preliminary</span>}
+                            </h1>
                             <p className="an-sum">{summaryOf(project)}</p>
                         </div>
                     </section>
