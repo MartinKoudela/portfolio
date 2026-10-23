@@ -1,6 +1,6 @@
 "use client";
 
-import { useId, useSyncExternalStore } from "react";
+import { useId, useState, useSyncExternalStore } from "react";
 import { cx } from "@/lib/cx";
 import { currentTheme, setTheme, subscribeTheme, type Theme } from "@/lib/theme";
 
@@ -14,10 +14,17 @@ export default function ThemeSwitch({ compact = false }: { compact?: boolean }) 
     const theme = useSyncExternalStore(subscribeTheme, currentTheme, () => "auto" as Theme);
     const id = useId();
     const labelId = `${id}-label`;
+    const [pointer, setPointer] = useState(false);
 
     return (
         <div className={cx("sw", compact && "sw--compact")}>
-            <div role="radiogroup" aria-labelledby={labelId} className="sw-group">
+            <div
+                role="radiogroup"
+                aria-labelledby={labelId}
+                className={cx("sw-group", pointer && "sw-group--pointer")}
+                onPointerDown={() => setPointer(true)}
+                onKeyDown={() => setPointer(false)}
+            >
                 {positions.map((p) => (
                     <label key={p.value} className={cx("sw-pos", theme === p.value && "on")}>
                         <input

@@ -1685,7 +1685,7 @@ a.plain {
   background: var(--ink);
 }
 
-.sw-pos input:focus-visible + .sw-seg {
+.sw-group:not(.sw-group--pointer) .sw-pos input:focus-visible + .sw-seg {
   outline: 2px solid var(--ink);
   outline-offset: 2px;
 }
