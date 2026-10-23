@@ -4,7 +4,6 @@ import "./globals.css";
 
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
-import MotionProvider from "@/components/MotionProvider";
 
 const archivo = Archivo({
     variable: "--font-archivo",
@@ -150,7 +149,7 @@ export default function RootLayout({
         </head>
         <body>
 
-        <MotionProvider>{children}</MotionProvider>
+        {children}
 
         {/* Vercel analytics */}
         <Analytics />
