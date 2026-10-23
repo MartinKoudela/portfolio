@@ -387,7 +387,7 @@ export const projects: Project[] = [
         descriptor: "Raspberry Pi 5 · person detection and description",
         endOfLife: true,
         summary:
-            "Vision unit I built for the [Unitree G1](/project/unitree-g1): a Raspberry Pi 5 detected and tracked people, and a cloud vision-language model generated natural-language descriptions and responses, sent as JSON to the G1 robot SDK. Used at public events; since replaced on the robot by a different system.",
+            "Vision unit I built for the [Unitree G1](/project/unitree-g1): a Raspberry Pi 5 detected and tracked people, and a cloud vision-language model generated natural-language descriptions and responses, sent as JSON to the G1 robot SDK.",
         links: {},
         layout: "diagram-specs",
         figures: [
