@@ -647,7 +647,6 @@ export const projects: Project[] = [
                 { label: "Web UI", value: "Vanilla JS" },
                 { label: "Remote access", value: "Tailscale", note: "No ports exposed to the internet" },
                 { label: "Schematic", value: "KiCad", note: "Fig. 3" },
-                { label: "Operating temperature", value: "0 to 50 °C", note: "Board rating", fn: "pi4Brief" },
                 { label: "Status", value: "Completed", note: "Annual school project" },
             ],
             howItWorks: [
