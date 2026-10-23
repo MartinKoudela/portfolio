@@ -1,14 +1,22 @@
 import type { Metadata, Viewport } from "next";
-import { Geist } from "next/font/google";
+import { Archivo, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
 import MotionProvider from "@/components/MotionProvider";
 
-const geistSans = Geist({
-    variable: "--font-geist-sans",
-    subsets: ["latin"],
+const archivo = Archivo({
+    variable: "--font-archivo",
+    subsets: ["latin", "latin-ext"],
+    axes: ["wdth"],
+    display: "swap",
+});
+
+const plexMono = IBM_Plex_Mono({
+    variable: "--font-plex-mono",
+    subsets: ["latin", "latin-ext"],
+    weight: ["400", "500"],
     display: "swap",
 });
 
@@ -87,7 +95,10 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
     width: "device-width",
     initialScale: 1,
-    themeColor: "#0D0D0C",
+    themeColor: [
+        { media: "(prefers-color-scheme: light)", color: "#F5F2EB" },
+        { media: "(prefers-color-scheme: dark)", color: "#161513" },
+    ],
 };
 
 const personStructuredData = {
@@ -122,7 +133,7 @@ export default function RootLayout({
     children: React.ReactNode;
 }) {
     return (
-        <html lang="en">
+        <html lang="en" className={`${archivo.variable} ${plexMono.variable}`}>
         <head>
             <script
                 type="application/ld+json"
@@ -137,7 +148,7 @@ export default function RootLayout({
                 }}
             />
         </head>
-        <body className={`${geistSans.variable} antialiased`}>
+        <body>
 
         <MotionProvider>{children}</MotionProvider>
 
