@@ -987,6 +987,91 @@ a.plain {
   margin-top: 56px;
 }
 
+/* Request trace */
+
+.rt-path {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.rt-step {
+  display: flex;
+  flex: 1 1 0;
+  align-items: center;
+  min-width: 0;
+}
+
+.rt-node {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 10px 12px;
+  border: 1px solid var(--ink);
+  background: var(--paper);
+  font-size: 13px;
+  line-height: 18px;
+}
+
+.rt-val {
+  font-size: 12px;
+}
+
+.rt-arr {
+  flex: none;
+  margin: 0 8px;
+  overflow: visible;
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 1.5;
+}
+
+.rt-head {
+  fill: var(--ink);
+  stroke: none;
+}
+
+.rt-foot .cap {
+  margin-top: 8px;
+}
+
+.rt-btn {
+  min-height: 32px;
+  margin-left: 8px;
+  padding: 0 10px;
+  border: 1px solid var(--rule);
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  cursor: pointer;
+}
+
+.rt-btn:disabled {
+  color: var(--grey);
+  cursor: default;
+}
+
+@media (max-width: 767.98px) {
+  .rt-path,
+  .rt-step {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .rt-node {
+    width: 100%;
+  }
+
+  .rt-fig .main {
+    flex: none;
+  }
+
+  .rt-arr {
+    margin: 22px auto;
+    transform: rotate(90deg);
+  }
+}
+
 .mdl-title {
   margin: 40px 0 8px;
   font-size: 13px;

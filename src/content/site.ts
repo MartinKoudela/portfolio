@@ -162,6 +162,25 @@ export type Section = {
     summary?: string;
 };
 
+export const networking = {
+    features: {
+        requestTrace: true,
+    },
+};
+
+const netFeatures = networking.features;
+let netTables = 0;
+
+export const networkLabels = {
+    traceFigure: "Fig. 1",
+    traceTable: netFeatures.requestTrace ? `Table ${++netTables}` : "",
+    diagnostics: `Table ${++netTables}`,
+};
+
+const netFigures = netFeatures.requestTrace ? 1 : 0;
+const fig = (n: number, suffix = ""): string => `Fig. ${n + netFigures}${suffix}`;
+const table = (n: number): string => `Table ${n + netTables}`;
+
 export const identity = {
     device: "MK-01",
     name: "Martin Koudela",
@@ -326,7 +345,7 @@ export const intro = {
 
 export const network = {
     diagnostics: {
-        label: "Table 1",
+        label: networkLabels.diagnostics,
         caption: "Diagnostics",
         columns: ["Function", "Tools"],
         rows: [
@@ -353,7 +372,7 @@ export const projects: Project[] = [
         figures: [
             {
                 id: "fig-3",
-                label: "Fig. 1",
+                label: fig(1),
                 caption: "Unitree G1 EDU humanoid robot",
                 media: {
                     kind: "image",
@@ -385,7 +404,7 @@ export const projects: Project[] = [
         figures: [
             {
                 id: "fig-4",
-                label: "Fig. 2",
+                label: fig(2),
                 caption: "Data flow. Shaded block runs on the Pi.",
                 mobileCaption: "Data flow, simplified. Shaded block runs on the Pi.",
                 media: {
@@ -458,7 +477,7 @@ export const projects: Project[] = [
         links: { source: "https://github.com/MartinKoudela/rpi-cam" },
         layout: "table-media",
         specTable: {
-            label: "Table 2",
+            label: table(1),
             caption: "RaspiVision specifications",
             columns: ["Parameter", "Value", "Note"],
             minWidth: 600,
@@ -473,13 +492,13 @@ export const projects: Project[] = [
             { label: "Live view", value: "MJPEG", note: "FastAPI backend, vanilla JS web UI" },
             { label: "Alerts", value: "Telegram", note: "With snapshot" },
             { label: "Remote access", value: "Tailscale", note: "No ports exposed to the internet" },
-            { label: "Schematic", value: "KiCad", note: "Fig. 3b" },
+            { label: "Schematic", value: "KiCad", note: fig(3, "b") },
             { label: "Status", value: "Completed", note: "Annual school project" },
         ],
         figures: [
             {
                 id: "fig-5a",
-                label: "Fig. 3a",
+                label: fig(3, "a"),
                 caption: "Raspberry Pi 4 in its case during assembly; CSI ribbon to the camera, PIR wired to GPIO",
                 media: {
                     kind: "image",
@@ -491,7 +510,7 @@ export const projects: Project[] = [
             },
             {
                 id: "fig-5b",
-                label: "Fig. 3b",
+                label: fig(3, "b"),
                 caption: "KiCad schematic: Raspberry Pi 4 GPIO header, Camera Module 3 NoIR via 15-pin CSI ribbon, HW-416 PIR sensor",
                 media: {
                     kind: "image",
@@ -709,7 +728,7 @@ export const projects: Project[] = [
         figures: [
             {
                 id: "fig-6",
-                label: "Fig. 4",
+                label: fig(4),
                 caption:
                     "hey-l0k1 schematic: ESP32-S3, ReSpeaker mic array, GC9A01 round touch display, MAX98357 amplifier, IP5306 power",
                 media: {
@@ -748,11 +767,11 @@ export const projects: Project[] = [
         status: "Schematic complete (Rev v0.1)",
         links: {},
         layout: "media-table",
-        specTable: { label: "Table 3", caption: "Interfaces and build", columns: ["Interface", "Function"], minWidth: 380 },
+        specTable: { label: table(2), caption: "Interfaces and build", columns: ["Interface", "Function"], minWidth: 380 },
         figures: [
             {
                 id: "fig-7",
-                label: "Fig. 5",
+                label: fig(5),
                 caption: "Root sheet: ESP32-S3 with ten subsystem sheets. Rev v0.1, schematic stage.",
                 noteCaption: "Root sheet: ESP32-S3 and subsystem hierarchy",
                 media: {
@@ -824,7 +843,7 @@ export const projects: Project[] = [
         figures: [
             {
                 id: "fig-8",
-                label: "Fig. 6a",
+                label: fig(6, "a"),
                 caption: "Laravix tenancy and delivery",
                 media: {
                     kind: "diagram",
@@ -890,7 +909,7 @@ export const projects: Project[] = [
             },
             {
                 id: "fig-8b",
-                label: "Fig. 6b",
+                label: fig(6, "b"),
                 caption: "Visual page builder (GrapesJS): editing the homepage hero, style manager on the right",
                 homeOnly: true,
                 media: {
@@ -962,7 +981,7 @@ export const projects: Project[] = [
         figures: [
             {
                 id: "fig-9a",
-                label: "Fig. 7a",
+                label: fig(7, "a"),
                 caption: "Today: overdue tasks, progress, tasks grouped by project",
                 media: {
                     kind: "image",
@@ -974,7 +993,7 @@ export const projects: Project[] = [
             },
             {
                 id: "fig-9b",
-                label: "Fig. 7b",
+                label: fig(7, "b"),
                 caption: "Projects: recent pages and project list",
                 media: {
                     kind: "image",
@@ -986,7 +1005,7 @@ export const projects: Project[] = [
             },
             {
                 id: "fig-9c",
-                label: "Fig. 7c",
+                label: fig(7, "c"),
                 caption: "Project: pages and tasks in one view",
                 media: {
                     kind: "image",
@@ -1077,7 +1096,7 @@ export const projects: Project[] = [
         figures: [
             {
                 id: "fig-10",
-                label: "Fig. 8",
+                label: fig(8),
                 caption: "In-game OS terminal",
                 media: {
                     kind: "image",
@@ -1280,7 +1299,7 @@ export const projects: Project[] = [
 ];
 
 export const analysis: PlainTable = {
-    label: "Table 4",
+    label: table(3),
     caption: "Analysis",
     columns: ["Work", "Scope", "Tools"],
     rows: [
@@ -1294,7 +1313,7 @@ export const analysis: PlainTable = {
 };
 
 export const offensiveTooling: PlainTable & { note: string; noteFn: FootnoteKey } = {
-    label: "Table 5",
+    label: table(4),
     caption: "Offensive tooling",
     note: "Own network and lab only",
     noteFn: "authorised",
@@ -1312,7 +1331,7 @@ export const offensiveTooling: PlainTable & { note: string; noteFn: FootnoteKey 
     monoColumn: 0,
 };
 
-export const otherSoftware = { label: "Table 6", caption: "Other software", columns: ["Name", "Description", "Stack", "Link"] };
+export const otherSoftware = { label: table(5), caption: "Other software", columns: ["Name", "Description", "Stack", "Link"] };
 
 export function projectsIn(category: Category): Project[] {
     return projects.filter((p) => p.category === category);
@@ -1382,7 +1401,7 @@ export function neighbours(project: Project): { previous: Project; next: Project
 
 export const specifications = {
     title: "Specifications",
-    label: "Table 7",
+    label: table(6),
     caption: "Skills and tools",
     columns: ["Parameter", "Values"],
     rows: [
@@ -1399,7 +1418,7 @@ export const specifications = {
 
 export const revisions = {
     title: "Revision history",
-    label: "Table 8",
+    label: table(7),
     caption: "Milestones",
     columns: ["Rev", "Date", "Change"],
     rows: [
@@ -1414,7 +1433,7 @@ export const revisions = {
 
 export const ordering = {
     availability: "Open to networking, security, hardware and backend projects. Web projects selectively.",
-    label: "Table 9",
+    label: table(8),
     caption: "Ordering channels",
     columns: ["Channel", "Address"],
     channels: [

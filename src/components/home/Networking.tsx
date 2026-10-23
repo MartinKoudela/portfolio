@@ -1,6 +1,7 @@
-import { network, section } from "@/content/site";
+import { network, networking, section } from "@/content/site";
 import Caption from "../Caption";
 import DataTable, { cell } from "../DataTable";
+import RequestTrace from "./RequestTrace";
 import SectionHead from "./SectionHead";
 
 export default function Networking() {
@@ -11,6 +12,8 @@ export default function Networking() {
     return (
         <section id={s.id} aria-labelledby={`h-${s.id}`} className="eth">
             <SectionHead section={s} />
+
+            {networking.features.requestTrace && <RequestTrace />}
 
             <div className="row tbl-row hide-m">
                 <Caption id={diagId} label={diag.label} text={diag.caption} rail className="rail" />
