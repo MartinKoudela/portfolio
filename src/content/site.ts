@@ -371,10 +371,6 @@ export const projects: Project[] = [
             { label: "Employer", value: "SYNOT ICT, Uherské Hradiště" },
             { label: "Role", value: "Programming, development, public demonstrations" },
             { label: "Events", value: "10+ public demonstrations, incl. Barum Czech Rally Zlín" },
-            {
-                label: "Stack",
-                value: "Python; built the original [vision unit](/project/rpi-ai-vision) (Raspberry Pi 5, YOLO with ByteTrack, MediaPipe, OpenCV, FastAPI, cloud VLM), since retired",
-            },
             { label: "Since", value: "06/2026" },
         ],
     },
