@@ -27,6 +27,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
         kicker: `Application note · ${s.code} · ${s.title}`,
         title: project.name,
         titleSize: titleSize(project.name),
+        subtitle: project.descriptor,
         line: project.summary,
         active: s.id,
     });

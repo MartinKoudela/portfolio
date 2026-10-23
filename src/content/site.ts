@@ -119,6 +119,7 @@ export type Project = {
     shortName: string;
     category: Category;
     family?: string;
+    descriptor?: string;
     summary: string;
     description?: string;
     status?: string;
@@ -378,7 +379,7 @@ export const network = {
                 { x: 264, y: 288, w: 176, h: 72, title: "RaspiVision", lines: ["Raspberry Pi 4"] },
                 { x: 504, y: 288, w: 176, h: 72, title: "G1 vision unit", lines: ["remote access at events"] },
                 { x: 744, y: 288, w: 232, h: 72, title: "NAS / home server", lines: ["OpenMediaVault or TrueNAS"], planned: true },
-                { x: 24, y: 496, w: 208, h: 56, title: "ESP32-S3 handheld" },
+                { x: 24, y: 496, w: 208, h: 56, title: "l0k1", lines: ["ESP32-S3 pentesting handheld"] },
                 { x: 312, y: 496, w: 456, h: 56, lines: ["Wi-Fi · BLE · Sub-GHz 433 / 868 / 915 MHz · NFC / RFID"], center: true },
             ],
             texts: [
@@ -438,7 +439,10 @@ export const network = {
                     nodes: [
                         {
                             t: "card",
-                            card: { title: "ESP32-S3 handheld", lines: ["Wi-Fi · BLE · Sub-GHz 433 / 868 / 915 MHz · NFC / RFID"] },
+                            card: {
+                                title: "l0k1",
+                                lines: ["ESP32-S3 pentesting handheld", "Wi-Fi · BLE · Sub-GHz 433 / 868 / 915 MHz · NFC / RFID"],
+                            },
                         },
                     ],
                 },
@@ -453,7 +457,7 @@ export const network = {
             { label: "Public DNS", value: "Cloudflare", note: "martinkoudela.com, laravix.com" },
             { label: "Mail", value: "iCloud Mail", note: "Custom domain; MX, SPF, DKIM" },
             { label: "Overlay", value: "Tailscale", note: "Remote access to RaspiVision and the G1 vision unit at events" },
-            { label: "RF", value: "ESP32-S3 handheld", note: "Wi-Fi, BLE, Sub-GHz and NFC recon" },
+            { label: "RF", value: "l0k1", note: "Wi-Fi, BLE, Sub-GHz and NFC recon" },
             { label: "Storage", value: "NAS / home server", note: "Next revision; OpenMediaVault or TrueNAS", muted: true },
         ],
     } satisfies SpecTable,
@@ -808,9 +812,9 @@ export const projects: Project[] = [
         },
     },
     {
-        slug: "l0k1",
-        name: "l0k1 (Loki)",
-        shortName: "l0k1",
+        slug: "hey-l0k1",
+        name: "hey-l0k1",
+        shortName: "hey-l0k1",
         category: "hardware",
         family: "l0k1 family · Assistant",
         summary:
@@ -847,9 +851,11 @@ export const projects: Project[] = [
     },
     {
         slug: "esp32-pentesting-tool",
-        name: "ESP32-S3 handheld",
-        shortName: "ESP32-S3 handheld",
+        name: "l0k1",
+        shortName: "l0k1",
         category: "security",
+        family: "l0k1 family · Hardware",
+        descriptor: "ESP32-S3 pentesting handheld",
         summary:
             "Battery-powered, modular RF handheld with a built-in display and custom GUI, written in C++. Covers Wi-Fi, BLE, Sub-GHz, NFC/RFID and IR. In active development.",
         status: "In active development",
@@ -860,7 +866,7 @@ export const projects: Project[] = [
             {
                 id: "fig-7",
                 label: "Fig. 7",
-                caption: "ESP32-S3 handheld",
+                caption: "l0k1",
                 media: { kind: "placeholder", label: "[PLACEHOLDER: photo, handheld front]", aspect: "3 / 4" },
             },
         ],

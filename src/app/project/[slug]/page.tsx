@@ -118,6 +118,7 @@ export default async function ProjectPage({ params }: { params: Promise<Params> 
                         <div className="rail">
                             <p className="an-kick">Application note</p>
                             {project.family && <p className="mono family">{project.family}</p>}
+                            {project.descriptor && <p className="mono family">{project.descriptor}</p>}
                         </div>
                         <div className="main">
                             <h1 id="an-title" className="an-title">

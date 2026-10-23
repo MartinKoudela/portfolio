@@ -96,6 +96,7 @@ export default function AppNote({ project }: { project: Project }) {
             <div className="rail">
                 <p className="kick">Application note</p>
                 {project.family && <p className="mono family">{project.family}</p>}
+                {project.descriptor && <p className="mono family">{project.descriptor}</p>}
             </div>
             <div className="main">
                 <h3 className="an">{project.name}</h3>
