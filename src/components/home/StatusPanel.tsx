@@ -15,7 +15,13 @@ const NOTES = {
     load: "The status data could not be loaded in your browser.",
 };
 
-type NoteKey = keyof typeof NOTES;
+type NoteKey = keyof typeof NOTES | `setup:${string}`;
+
+function noteText(key: NoteKey, services: ServiceCheck[] | undefined): string {
+    if (!key.startsWith("setup:")) return NOTES[key as keyof typeof NOTES];
+    const s = services?.find((x) => x.host === key.slice(6));
+    return `${s?.host}: time to first byte on an established connection. Connection setup (DNS, TCP and TLS) took a further ${s?.setupMs} ms and is not included.`;
+}
 
 function formatTime(iso: string): string {
     return `${iso.slice(0, 10)} ${iso.slice(11, 16)} UTC`;
@@ -37,14 +43,11 @@ export default function StatusPanel() {
     }, []);
 
     const notes: NoteKey[] = [];
-    const na = (key: NoteKey): ReactNode => {
+    const mark = (key: NoteKey): ReactNode => {
         if (!notes.includes(key)) notes.push(key);
-        return (
-            <>
-                n/a<sup>{String.fromCharCode(97 + notes.indexOf(key))}</sup>
-            </>
-        );
+        return <sup>{String.fromCharCode(97 + notes.indexOf(key))}</sup>;
     };
+    const na = (key: NoteKey): ReactNode => <>n/a{mark(key)}</>;
 
     const loading = !data && !failed;
     const cells = (host: string): ReactNode[] => {
@@ -54,7 +57,13 @@ export default function StatusPanel() {
         if (!s) return [na("load"), na("load"), na("load"), na("load")];
         return [
             s.up ? "UP" : <span className="st-down">DOWN</span>,
-            s.responseMs !== null ? `${s.responseMs} ms` : na(s.error ?? "connection"),
+            s.ttfbMs !== null ? (
+                <>
+                    {s.ttfbMs} ms{s.setupMs !== null && mark(`setup:${s.host}`)}
+                </>
+            ) : (
+                na(s.error ?? "connection")
+            ),
             s.certValidTo ? s.certValidTo.slice(0, 10) : na("cert"),
             formatTime(data.checkedAt),
         ];
@@ -64,13 +73,13 @@ export default function StatusPanel() {
     const rows: Row[] = results.map(({ host, values }) => ({
         cells: [{ content: host }, ...values.map((content) => ({ content, mono: true }))],
     }));
-    const columns = ["Status", "Response time", "TLS certificate valid until", "Checked at"];
+    const columns = ["Status", "TTFB", "TLS certificate valid until", "Checked at"];
     const captionId = "table-status-caption";
     const caption = "Service status. Checked from the server every 5 minutes.";
 
     const footnotes = notes.map((key, i) => (
         <p key={key} className="cap">
-            <sup>{String.fromCharCode(97 + i)}</sup> {NOTES[key]}
+            <sup>{String.fromCharCode(97 + i)}</sup> {noteText(key, data?.services)}
         </p>
     ));
 

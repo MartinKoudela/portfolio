@@ -11,7 +11,8 @@ const TIMEOUT = 10_000;
 export type ServiceCheck = {
     host: string;
     up: boolean;
-    responseMs: number | null;
+    ttfbMs: number | null;
+    setupMs: number | null;
     httpStatus: number | null;
     certValidTo: string | null;
     error: "timeout" | "connection" | null;
@@ -20,18 +21,32 @@ export type ServiceCheck = {
 
 export type StatusPayload = { checkedAt: string; services: ServiceCheck[] };
 
-function checkHttp(host: string): Promise<Pick<ServiceCheck, "up" | "responseMs" | "httpStatus" | "error">> {
+function checkHttp(host: string): Promise<Pick<ServiceCheck, "up" | "ttfbMs" | "setupMs" | "httpStatus" | "error">> {
     return new Promise((resolve) => {
         const start = performance.now();
-        const req = https.request({ host, path: "/", method: "GET", timeout: TIMEOUT }, (res) => {
-            const responseMs = Math.round(performance.now() - start);
+        let connected: number | null = null;
+        const req = https.request({ host, path: "/", method: "GET", timeout: TIMEOUT, agent: false }, (res) => {
+            const now = performance.now();
             const httpStatus = res.statusCode ?? null;
             res.destroy();
-            resolve({ up: httpStatus !== null && httpStatus < 400, responseMs, httpStatus, error: null });
+            resolve({
+                up: httpStatus !== null && httpStatus < 400,
+                ttfbMs: connected === null ? null : Math.round(now - connected),
+                setupMs: connected === null ? null : Math.round(connected - start),
+                httpStatus,
+                error: null,
+            });
         });
+        req.on("socket", (socket) => socket.once("secureConnect", () => (connected = performance.now())));
         req.on("timeout", () => req.destroy(new Error("timeout")));
         req.on("error", (err) =>
-            resolve({ up: false, responseMs: null, httpStatus: null, error: err.message === "timeout" ? "timeout" : "connection" })
+            resolve({
+                up: false,
+                ttfbMs: null,
+                setupMs: null,
+                httpStatus: null,
+                error: err.message === "timeout" ? "timeout" : "connection",
+            })
         );
         req.end();
     });
