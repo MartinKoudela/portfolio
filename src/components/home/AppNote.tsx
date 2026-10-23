@@ -3,6 +3,7 @@ import { homeFootnoteNumbers, type Figure, type Project, type SpecRow } from "@/
 import Caption from "../Caption";
 import DataTable, { specRows } from "../DataTable";
 import FigureView from "../FigureView";
+import { rich } from "../Rich";
 import SpecList from "../SpecList";
 
 const homeFootnote = (row: SpecRow) => (row.fn ? homeFootnoteNumbers[row.fn] : undefined);
@@ -128,7 +129,7 @@ export default function AppNote({ project }: { project: Project }) {
                     {project.name}
                     {project.preliminary && <span className="prelim">Preliminary</span>}
                 </h3>
-                <p className="sum">{project.summary}</p>
+                <p className="sum">{rich(project.summary)}</p>
                 <Body project={project} />
                 <p className="more">
                     <Link href={`/project/${project.slug}`}>Application note: {project.shortName}</Link>

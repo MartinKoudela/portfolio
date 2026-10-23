@@ -369,18 +369,22 @@ export const projects: Project[] = [
             { label: "Platform", value: "Unitree G1 EDU humanoid" },
             { label: "Employer", value: "SYNOT ICT, Uherské Hradiště" },
             { label: "Role", value: "Programming, development, public demonstrations" },
-            { label: "Events", value: "Barum Czech Rally Zlín, others" },
-            { label: "Stack", value: "[PLACEHOLDER]" },
-            { label: "Since", value: "[DATE]" },
+            { label: "Events", value: "10+ public demonstrations, incl. Barum Czech Rally Zlín" },
+            {
+                label: "Stack",
+                value: "Python; Raspberry Pi 5 [vision unit](/project/rpi-ai-vision): YOLO with ByteTrack, MediaPipe, OpenCV, FastAPI, cloud vision-language model",
+            },
+            { label: "Since", value: "06/2026" },
         ],
     },
     {
         slug: "rpi-ai-vision",
-        name: "RPi AI vision & response",
-        shortName: "RPi AI vision & response",
+        name: "G1 vision unit",
+        shortName: "G1 vision unit",
         category: "hardware",
+        descriptor: "Raspberry Pi 5 · person detection and description",
         summary:
-            "Raspberry Pi 5 system that detects and tracks people, then generates natural-language descriptions and responses through a cloud vision-language model. Output is JSON for a robot SDK.",
+            "Vision unit for the [Unitree G1](/project/unitree-g1): a Raspberry Pi 5 detects and tracks people, then a cloud vision-language model generates natural-language descriptions and responses. Output is JSON for the G1 robot SDK.",
         links: {},
         layout: "diagram-specs",
         figures: [
@@ -401,8 +405,8 @@ export const projects: Project[] = [
                         arrowRight(432, 248),
                     ],
                     cards: [
-                        { x: 224, y: 0, w: 208, h: 72, title: "Cloud vision-language model", lines: ["descriptions, responses"] },
-                        { x: 0, y: 180, w: 144, h: 72, title: "Camera" },
+                        { x: 224, y: 0, w: 208, h: 72, title: "OpenAI Vision", lines: ["descriptions, responses"] },
+                        { x: 0, y: 176, w: 144, h: 80, title: "Camera", lines: ["Camera Module 3 NoIR"] },
                         {
                             x: 224,
                             y: 152,
@@ -412,7 +416,7 @@ export const projects: Project[] = [
                             lines: ["YOLO + ByteTrack", "MediaPipe, OpenCV", "FastAPI"],
                             tint: true,
                         },
-                        { x: 512, y: 160, w: 168, h: 56, title: "Robot SDK" },
+                        { x: 512, y: 160, w: 168, h: 56, title: "G1 robot SDK" },
                         { x: 512, y: 224, w: 168, h: 56, title: "Browser", lines: ["FastAPI stream"] },
                     ],
                     texts: [
@@ -420,17 +424,17 @@ export const projects: Project[] = [
                         { x: 712, y: 168, w: 152, text: "Remote access at events over Tailscale.", size: [12, 17] },
                     ],
                     mobile: [
-                        { t: "narrow", nodes: [{ t: "card", card: { title: "Camera" } }, { t: "arrow" }] },
+                        { t: "narrow", nodes: [{ t: "card", card: { title: "Camera", lines: ["Camera Module 3 NoIR"] } }, { t: "arrow" }] },
                         {
                             t: "pair",
                             left: { title: "Raspberry Pi 5", lines: ["YOLO + ByteTrack", "MediaPipe, OpenCV", "FastAPI"], tint: true },
-                            right: { title: "Cloud VLM", lines: ["descriptions, responses"] },
+                            right: { title: "OpenAI Vision", lines: ["descriptions, responses"] },
                         },
                         { t: "narrow", nodes: [{ t: "arrow" }] },
                         {
                             t: "grid",
                             cards: [
-                                { title: "Robot SDK", lines: ["JSON"], mono: true },
+                                { title: "G1 robot SDK", lines: ["JSON"], mono: true },
                                 { title: "Browser", lines: ["FastAPI stream"] },
                             ],
                         },
@@ -440,10 +444,12 @@ export const projects: Project[] = [
         ],
         specs: [
             { label: "Board", value: "Raspberry Pi 5; BCM2712, 4× Cortex-A76 @ 2.4 GHz", fn: "piBriefs" },
+            { label: "Language", value: "Python" },
+            { label: "Camera", value: "Raspberry Pi Camera Module 3 NoIR" },
+            { label: "VLM", value: "OpenAI Vision, with a context prompt system" },
             { label: "Detection", value: "YOLO; tracking with ByteTrack" },
+            { label: "Output", value: "JSON for the G1 robot SDK; FastAPI stream" },
             { label: "Vision libraries", value: "MediaPipe, OpenCV" },
-            { label: "Language", value: "Cloud vision-language model" },
-            { label: "Output", value: "JSON for a robot SDK; FastAPI stream" },
             { label: "Remote access", value: "Tailscale, at events" },
         ],
     },
@@ -1406,7 +1412,7 @@ export const revisions = {
     rows: [
         ["1", "[DATE]", "Cambridge B2 First (FCE)"],
         ["2", "[DATE]", "Two-week internship at MarketSoul, web development"],
-        ["3", "[DATE]", "Part-time robotics programmer at SYNOT ICT (Unitree G1)"],
+        ["3", "06/2026", "Part-time robotics programmer at SYNOT ICT (Unitree G1)"],
         ["4", "[DATE]", "RaspiVision completed as annual school project"],
         ["5", "[DATE]", "Backlog iOS app finished"],
         ["6", "[DATE]", "Laravix in active development"],

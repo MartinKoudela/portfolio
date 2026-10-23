@@ -20,7 +20,7 @@ import Caption from "@/components/Caption";
 import DataTable, { specRows } from "@/components/DataTable";
 import FigureView from "@/components/FigureView";
 import Footnotes from "@/components/Footnotes";
-import { rich } from "@/components/Rich";
+import { plain, rich } from "@/components/Rich";
 
 type Params = { slug: string };
 
@@ -52,7 +52,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
 
     if (!project) return { title: "Project not found" };
 
-    const description = project.metaDescription ?? excerpt(summaryOf(project));
+    const description = project.metaDescription ?? excerpt(plain(summaryOf(project)));
     const url = `/project/${project.slug}`;
 
     return {
@@ -130,7 +130,7 @@ export default async function ProjectPage({ params }: { params: Promise<Params> 
                                 {project.name}
                                 {project.preliminary && <span className="prelim">Preliminary</span>}
                             </h1>
-                            <p className="an-sum">{summaryOf(project)}</p>
+                            <p className="an-sum">{rich(summaryOf(project))}</p>
                         </div>
                     </section>
 

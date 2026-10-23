@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { categorySection, projects, section } from "@/content/site";
+import { plain } from "@/components/Rich";
 import { ogContentType, ogImage, ogSize } from "@/lib/og";
 
 export const alt = "MK-01 application note";
@@ -28,7 +29,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
         title: project.name,
         titleSize: titleSize(project.name),
         subtitle: project.descriptor,
-        line: project.summary,
+        line: plain(project.summary),
         active: s.id,
     });
 }
