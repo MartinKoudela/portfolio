@@ -595,19 +595,19 @@ export const projects: Project[] = [
             {
                 id: "fig-5a",
                 label: "Fig. 5a",
-                caption: "Raspberry Pi 4 in its case during assembly; CSI ribbon to the camera, PIR wired to GPIO.",
+                caption: "Raspberry Pi 4 in its case during assembly; CSI ribbon to the camera, PIR wired to GPIO",
                 media: {
                     kind: "image",
                     src: "/raspivision-unit.jpg",
                     width: 1932,
-                    height: 1087,
+                    height: 1207,
                     alt: "Raspberry Pi 4 in a black case with the lid off, a flat CSI ribbon cable attached to the camera connector",
                 },
             },
             {
                 id: "fig-5b",
                 label: "Fig. 5b",
-                caption: "KiCad schematic: Raspberry Pi 4 GPIO header, Camera Module 3 NoIR via 15-pin CSI ribbon, HW-416 PIR sensor.",
+                caption: "KiCad schematic: Raspberry Pi 4 GPIO header, Camera Module 3 NoIR via 15-pin CSI ribbon, HW-416 PIR sensor",
                 media: {
                     kind: "image",
                     src: "/raspivision-schematic.svg",
@@ -624,7 +624,7 @@ export const projects: Project[] = [
                 width: 2576,
                 height: 1449,
                 alt: "Camera snapshot of a desk with a monitor, a laptop and posters on the wall, date and time stamped in the top-left corner",
-                caption: "Snapshot from the camera with timestamp overlay.",
+                caption: "Snapshot from the camera with timestamp overlay",
             },
             {
                 kind: "image",
@@ -632,7 +632,7 @@ export const projects: Project[] = [
                 width: 2916,
                 height: 1735,
                 alt: "RaspiVision web UI in live view: camera stream of a desk with date, 42 FPS and 640×420 in the overlay, Snapshot and Record buttons on the right",
-                caption: "Web UI, live view: MJPEG stream, 640×420 at 42 FPS, snapshot and record controls.",
+                caption: "Web UI, live view: MJPEG stream, 640×420 at 42 FPS, snapshot and record controls",
             },
             {
                 kind: "image",
@@ -771,7 +771,7 @@ export const projects: Project[] = [
                     {
                         id: "an-fig-2",
                         label: "Fig. 2",
-                        caption: "Front plate during assembly: Camera Module 3 NoIR and HW-416 PIR sensor.",
+                        caption: "Front plate during assembly: Camera Module 3 NoIR and HW-416 PIR sensor",
                         media: {
                             kind: "image",
                             src: "/raspivision-front-plate.jpg",
@@ -783,7 +783,7 @@ export const projects: Project[] = [
                     {
                         id: "an-fig-3",
                         label: "Fig. 3",
-                        caption: "KiCad schematic: Raspberry Pi 4 GPIO header, Camera Module 3 NoIR via 15-pin CSI ribbon, HW-416 PIR sensor.",
+                        caption: "KiCad schematic: Raspberry Pi 4 GPIO header, Camera Module 3 NoIR via 15-pin CSI ribbon, HW-416 PIR sensor",
                         media: {
                             kind: "image",
                             src: "/raspivision-schematic.svg",
