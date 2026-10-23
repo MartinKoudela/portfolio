@@ -646,7 +646,7 @@ export const projects: Project[] = [
                 },
                 {
                     title: "Recording",
-                    text: "Footage goes into a circular H264 buffer, so the most recent stretch is always kept. Clips are saved from the buffer and can be browsed in a web gallery. Buffer length: [PLACEHOLDER].",
+                    text: "Footage goes into a circular H264 buffer, so the most recent stretch is always kept. Clips are saved from the buffer and can be browsed in a web gallery.",
                 },
                 {
                     title: "Live view",
