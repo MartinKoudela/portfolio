@@ -9,9 +9,9 @@ import ThemeSwitch from "./ThemeSwitch";
 type Props = { home: true } | { home?: false; current?: SectionId };
 
 export default function SiteHeader(props: Props) {
-    const [observed, setObserved] = useState<SectionId>("eth1");
+    const [observed, setObserved] = useState<SectionId | null>(null);
     const [open, setOpen] = useState(false);
-    const active = props.home ? observed : props.current;
+    const active = props.home ? (observed ?? undefined) : props.current;
     const prefix = props.home ? "" : "/";
 
     useEffect(() => {
@@ -29,7 +29,7 @@ export default function SiteHeader(props: Props) {
                 return;
             }
             const line = window.innerHeight * 0.3;
-            let current: SectionId = "eth1";
+            let current: SectionId | null = null;
             for (const el of targets) {
                 if (el.getBoundingClientRect().top <= line) current = el.id as SectionId;
             }

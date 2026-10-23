@@ -306,7 +306,7 @@ export const intro = {
     features: [
         {
             lead: "Networking.",
-            text: "Tailscale mesh across own devices; DNS on Vercel (martinkoudela.com) and Cloudflare (laravix.com); custom-domain mail with MX, SPF and DKIM.",
+            text: "Networks designed in Cisco Packet Tracer; analysis with Wireshark, tcpdump, dig and netcat; own setup exposes no ports to the internet.",
         },
         {
             lead: "Hardware & IoT.",
@@ -318,7 +318,7 @@ export const intro = {
         },
         {
             lead: "Security.",
-            text: "ESP32-S3 RF handheld for Wi-Fi, BLE, Sub-GHz and NFC; phishing analysis.",
+            text: "l0k1 RF handheld (schematic stage); phishing analysis; lab testing with nmap, Burp Suite and Metasploit.",
         },
         { lead: "Backend.", text: "FastAPI and Laravel services, REST APIs." },
         { lead: "Apps.", text: "Laravix multi-tenant CMS, Backlog iOS app, client websites." },
