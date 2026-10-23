@@ -461,9 +461,9 @@ export const projects: Project[] = [
         shortName: "RaspiVision",
         category: "hardware",
         descriptor: "Raspberry Pi 4 · security camera",
-        metaDescription: "Security camera on a Raspberry Pi 4: detects people, animals and vehicles with YOLOv8, streams live MJPEG and sends Telegram alerts with snapshots.",
+        metaDescription: "Raspberry Pi 4 security camera: a PIR sensor triggers YOLOv8 detection, clips from a circular H264 buffer go to a web gallery, plus a live MJPEG stream.",
         summary:
-            "Security camera on a Raspberry Pi 4. Detects people, animals and vehicles with YOLOv8, streams live MJPEG to a browser and sends Telegram alerts with snapshots.",
+            "Security camera on a Raspberry Pi 4. A PIR sensor detects motion and triggers YOLOv8 detection of people, animals and objects; clips are saved from a circular H264 buffer and browsable in a web gallery, with a live MJPEG stream.",
         status: "Completed",
         context: "Annual school project",
         links: { source: "https://github.com/MartinKoudela/rpi-cam" },
@@ -478,8 +478,8 @@ export const projects: Project[] = [
         specs: [
             { label: "Board", value: "Raspberry Pi 4 Model B", note: "BCM2711, 4× Cortex-A72 @ 1.8 GHz", fn: "piBriefs" },
             { label: "Camera", value: "Camera Module 3 NoIR", note: "12 MP Sony IMX708, no IR filter; CSI-2 via 15-pin ribbon" },
-            { label: "Detection", value: "YOLOv8", note: "People, animals, vehicles" },
-            { label: "Alerts", value: "Telegram", note: "With snapshot" },
+            { label: "Detection", value: "YOLOv8", note: "People, animals and objects; runs when the PIR sensor detects motion" },
+            { label: "Recording", value: "Circular H264 buffer", note: "Web gallery" },
             { label: "Remote access", value: "Tailscale", note: "No ports exposed to the internet" },
             { label: "Status", value: "Completed", note: "Annual school project" },
         ],
@@ -546,7 +546,7 @@ export const projects: Project[] = [
         ],
         note: {
             summary:
-                "Security camera on a Raspberry Pi 4. Detects people, animals and vehicles with YOLOv8, streams live MJPEG to a browser and sends Telegram alerts with snapshots. Remote access runs over Tailscale.",
+                "Security camera on a Raspberry Pi 4. A PIR sensor detects motion and triggers YOLOv8 detection of people, animals and objects; clips are saved from a circular H264 buffer and browsable in a web gallery, with a live MJPEG stream.",
             diagram: {
                 id: "an-fig-1",
                 label: "Fig. 1",
@@ -572,13 +572,13 @@ export const projects: Project[] = [
                             w: 176,
                             h: 200,
                             title: "Raspberry Pi 4",
-                            lines: ["YOLOv8 detection:", "people, animals, vehicles", "", "Circular H264 buffer", "", "FastAPI"],
+                            lines: ["YOLOv8 detection:", "people, animals, objects", "", "Circular H264 buffer", "", "FastAPI"],
                             tint: true,
                         },
                         { x: 488, y: 40, w: 152, h: 72, title: "Live view", lines: ["MJPEG stream"] },
-                        { x: 488, y: 168, w: 152, h: 72, title: "Alert", lines: ["Telegram + snapshot"] },
+                        { x: 488, y: 168, w: 152, h: 72, title: "Recordings", lines: ["clips from buffer"] },
                         { x: 720, y: 40, w: 144, h: 72, title: "Web UI", lines: ["vanilla JS"] },
-                        { x: 720, y: 168, w: 144, h: 72, title: "Client", lines: ["Telegram"] },
+                        { x: 720, y: 168, w: 144, h: 72, title: "Gallery", lines: ["in the web UI"] },
                     ],
                     texts: [
                         { x: 160, y: 176, w: 64, text: "motion", label: true, center: true },
@@ -597,7 +597,7 @@ export const projects: Project[] = [
                             t: "card",
                             card: {
                                 title: "Raspberry Pi 4",
-                                lines: ["YOLOv8 detection:", "people, animals, vehicles", "", "Circular H264 buffer", "", "FastAPI"],
+                                lines: ["YOLOv8 detection:", "people, animals, objects", "", "Circular H264 buffer", "", "FastAPI"],
                                 tint: true,
                             },
                         },
@@ -606,7 +606,7 @@ export const projects: Project[] = [
                             t: "grid",
                             cards: [
                                 { title: "Live view", lines: ["MJPEG stream"] },
-                                { title: "Alert", lines: ["Telegram + snapshot"] },
+                                { title: "Recordings", lines: ["clips from buffer"] },
                             ],
                         },
                         { t: "arrow" },
@@ -614,7 +614,7 @@ export const projects: Project[] = [
                             t: "grid",
                             cards: [
                                 { title: "Web UI", lines: ["vanilla JS"] },
-                                { title: "Client", lines: ["Telegram"] },
+                                { title: "Gallery", lines: ["in the web UI"] },
                             ],
                         },
                     ],
@@ -625,12 +625,11 @@ export const projects: Project[] = [
                 { label: "Memory", value: "4 GB" },
                 { label: "Camera", value: "Camera Module 3 NoIR", note: "12 MP Sony IMX708, no IR filter; CSI-2 via 15-pin ribbon" },
                 { label: "Motion sensor", value: "HW-416 PIR" },
-                { label: "Detection", value: "YOLOv8", note: "People, animals, vehicles" },
+                { label: "Detection", value: "YOLOv8", note: "People, animals and objects; runs when the PIR sensor detects motion" },
                 { label: "Recording", value: "Circular H264 buffer" },
                 { label: "Live view", value: "MJPEG", note: "FastAPI backend" },
                 { label: "Stream", value: "640×420, 42 FPS", note: "Live view overlay" },
                 { label: "Web UI", value: "Vanilla JS" },
-                { label: "Alerts", value: "Telegram", note: "With snapshot" },
                 { label: "Remote access", value: "Tailscale", note: "No ports exposed to the internet" },
                 { label: "Schematic", value: "KiCad", note: "Fig. 3" },
                 { label: "Operating temperature", value: "0 to 50 °C", note: "Board rating", fn: "pi4Brief" },
@@ -643,17 +642,16 @@ export const projects: Project[] = [
                 },
                 {
                     title: "Detection",
-                    text: "YOLOv8 runs on the Pi 4 and sorts detections into three classes: people, animals and vehicles.",
+                    text: "When the PIR sensor detects motion, YOLOv8 runs on the Pi 4 and detects people, animals and objects.",
                 },
                 {
                     title: "Recording",
-                    text: "Footage goes into a circular H264 buffer, so the most recent stretch is always kept. Buffer length: [PLACEHOLDER].",
+                    text: "Footage goes into a circular H264 buffer, so the most recent stretch is always kept. Clips are saved from the buffer and can be browsed in a web gallery. Buffer length: [PLACEHOLDER].",
                 },
                 {
                     title: "Live view",
                     text: "A FastAPI backend serves a live MJPEG stream to a web UI written in vanilla JavaScript.",
                 },
-                { title: "Alerts", text: "Detections send a Telegram message with a snapshot attached." },
                 {
                     title: "Remote access",
                     text: "The web UI is reached over Tailscale. No ports are exposed to the internet.",
