@@ -9,8 +9,8 @@
   --accent: #BF3F0B;
   --led: #F06418;
 
-  --font-text: var(--font-text-symbols), var(--font-archivo), system-ui, sans-serif;
-  --font-code: var(--font-mono-symbols), var(--font-plex-mono), ui-monospace, monospace;
+  --font-text: var(--font-text-symbols), var(--font-archivo-latin), var(--font-archivo-latin-ext), system-ui, sans-serif;
+  --font-code: var(--font-mono-symbols), var(--font-plex-mono-latin), var(--font-plex-mono-latin-ext), ui-monospace, monospace;
 
   --container: 1200px;
   --gutter: 48px;

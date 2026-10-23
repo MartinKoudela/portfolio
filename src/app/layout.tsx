@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from "next";
-import { Archivo, IBM_Plex_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import { identity, siteMeta } from "@/content/site";
@@ -8,18 +7,62 @@ import { themeScript } from "@/lib/theme";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
 
-const archivo = Archivo({
-    variable: "--font-archivo",
-    subsets: ["latin", "latin-ext"],
-    axes: ["wdth"],
+const archivoLatin = localFont({
+    src: [{ path: "../fonts/archivo-latin.woff2", weight: "100 900", style: "normal" }],
+    variable: "--font-archivo-latin",
     display: "swap",
+    adjustFontFallback: false,
+    declarations: [
+        { prop: "font-stretch", value: "62% 125%" },
+        {
+            prop: "unicode-range",
+            value: "U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD",
+        },
+    ],
 });
 
-const plexMono = IBM_Plex_Mono({
-    variable: "--font-plex-mono",
-    subsets: ["latin", "latin-ext"],
-    weight: ["400", "500"],
+const archivoLatinExt = localFont({
+    src: [{ path: "../fonts/archivo-latin-ext.woff2", weight: "100 900", style: "normal" }],
+    variable: "--font-archivo-latin-ext",
     display: "swap",
+    declarations: [
+        { prop: "font-stretch", value: "62% 125%" },
+        {
+            prop: "unicode-range",
+            value: "U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF",
+        },
+    ],
+});
+
+const plexMonoLatin = localFont({
+    src: [
+        { path: "../fonts/plex-mono-400-latin.woff2", weight: "400", style: "normal" },
+        { path: "../fonts/plex-mono-500-latin.woff2", weight: "500", style: "normal" },
+    ],
+    variable: "--font-plex-mono-latin",
+    display: "swap",
+    adjustFontFallback: false,
+    declarations: [
+        {
+            prop: "unicode-range",
+            value: "U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD",
+        },
+    ],
+});
+
+const plexMonoLatinExt = localFont({
+    src: [
+        { path: "../fonts/plex-mono-400-latin-ext.woff2", weight: "400", style: "normal" },
+        { path: "../fonts/plex-mono-500-latin-ext.woff2", weight: "500", style: "normal" },
+    ],
+    variable: "--font-plex-mono-latin-ext",
+    display: "swap",
+    declarations: [
+        {
+            prop: "unicode-range",
+            value: "U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF",
+        },
+    ],
 });
 
 const textSymbols = localFont({
@@ -129,7 +172,7 @@ export default function RootLayout({
     children: React.ReactNode;
 }) {
     return (
-        <html lang="en" className={`${archivo.variable} ${plexMono.variable} ${textSymbols.variable} ${monoSymbols.variable}`} suppressHydrationWarning>
+        <html lang="en" className={`${archivoLatin.variable} ${archivoLatinExt.variable} ${plexMonoLatin.variable} ${plexMonoLatinExt.variable} ${textSymbols.variable} ${monoSymbols.variable}`} suppressHydrationWarning>
         <head>
             <script dangerouslySetInnerHTML={{ __html: themeScript }} />
             <script
