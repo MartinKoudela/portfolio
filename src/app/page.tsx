@@ -1,6 +1,7 @@
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import Intro from "@/components/home/Intro";
+import Networking from "@/components/home/Networking";
 
 export default function Page() {
     return (
@@ -9,6 +10,7 @@ export default function Page() {
             <div className="page">
                 <main>
                     <Intro />
+                    <Networking />
                 </main>
                 <SiteFooter />
             </div>

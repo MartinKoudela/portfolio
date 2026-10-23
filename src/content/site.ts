@@ -90,6 +90,8 @@ export type SpecRow = {
 
 export type Fact = { label: string; value: string; href?: string };
 
+export type SpecTable = { label: string; caption: string; columns: string[]; rows: SpecRow[] };
+
 export type Section = {
     id: SectionId;
     code: string;
@@ -234,6 +236,125 @@ export const intro = {
             ],
         },
     } satisfies Figure,
+};
+
+export const network = {
+    topology: {
+        id: "fig-2",
+        label: "Fig. 2",
+        caption:
+            "Network topology. Solid: in service. Dashed: next revision. The mesh is drawn as a bus; every node reaches every other node directly.",
+        mobileCaption: "Network topology, simplified for small screens. Dashed: next revision.",
+        captionGap: 12,
+        media: {
+            kind: "diagram",
+            width: 1104,
+            height: 576,
+            frames: [
+                { x: 0, y: 0, w: 1104, h: 216 },
+                { x: 0, y: 248, w: 1104, h: 176, tint: true },
+                { x: 0, y: 456, w: 1104, h: 120 },
+            ],
+            arrows: [
+                { x: 176, y: 112, w: 79, h: 8, d: "M 0 4 L 76 4", head: true },
+                { x: 448, y: 68, w: 79, h: 8, d: "M 0 4 L 76 4", head: true },
+                { x: 448, y: 156, w: 79, h: 8, d: "M 0 4 L 76 4", head: true },
+                { x: 108, y: 360, w: 8, h: 32, d: "M 4 0 L 4 32", thin: true },
+                { x: 348, y: 360, w: 8, h: 32, d: "M 4 0 L 4 32", thin: true },
+                { x: 588, y: 360, w: 8, h: 32, d: "M 4 0 L 4 32", thin: true },
+                { x: 856, y: 360, w: 8, h: 32, d: "M 4 0 L 4 32", thin: true, muted: true, dashed: true },
+                { x: 112, y: 388, w: 480, h: 8, d: "M 0 4 L 480 4", thin: true },
+                { x: 592, y: 388, w: 268, h: 8, d: "M 0 4 L 268 4", thin: true, muted: true, dashed: true },
+                { x: 232, y: 520, w: 80, h: 8, d: "M 0 4 L 80 4", thin: true },
+            ],
+            cards: [
+                { x: 24, y: 80, w: 152, h: 72, title: "Internet" },
+                { x: 256, y: 40, w: 192, h: 152, title: "Cloudflare", lines: ["DNS for martinkoudela.com and laravix.com"] },
+                { x: 528, y: 40, w: 240, h: 64, title: "Websites", lines: ["martinkoudela.com, laravix.com"] },
+                { x: 528, y: 128, w: 240, h: 64, title: "iCloud Mail", lines: ["custom domain: MX, SPF, DKIM"] },
+                { x: 24, y: 288, w: 176, h: 72, title: "Own devices" },
+                { x: 264, y: 288, w: 176, h: 72, title: "RaspiVision", lines: ["Raspberry Pi 4"] },
+                { x: 504, y: 288, w: 176, h: 72, title: "G1 vision unit", lines: ["remote access at events"] },
+                { x: 744, y: 288, w: 232, h: 72, title: "NAS / home server", lines: ["OpenMediaVault or TrueNAS"], planned: true },
+                { x: 24, y: 496, w: 208, h: 56, title: "ESP32-S3 handheld" },
+                { x: 312, y: 496, w: 456, h: 56, lines: ["Wi-Fi · BLE · Sub-GHz 433 / 868 / 915 MHz · NFC / RFID"], center: true },
+            ],
+            texts: [
+                { x: 16, y: 12, w: 200, text: "Public · DNS and mail", label: true },
+                { x: 16, y: 260, w: 200, text: "Overlay · Tailscale mesh", label: true },
+                { x: 16, y: 468, w: 200, text: "RF segment", label: true },
+                { x: 472, y: 132, w: 32, text: "MX", label: true, center: true },
+                { x: 760, y: 264, w: 216, text: "next revision", label: true },
+                {
+                    x: 832,
+                    y: 48,
+                    w: 240,
+                    text: "Home devices expose no ports to the internet. Remote access goes through the overlay below.",
+                },
+                { x: 832, y: 500, w: 240, text: "Recon and testing. Details under ETH3." },
+            ],
+            mobileGap: 12,
+            mobile: [
+                {
+                    t: "band",
+                    label: "Public · DNS and mail",
+                    nodes: [
+                        { t: "card", card: { title: "Internet" } },
+                        { t: "arrow" },
+                        { t: "card", card: { title: "Cloudflare", lines: ["DNS for martinkoudela.com and laravix.com"], inline: true } },
+                        { t: "arrow" },
+                        {
+                            t: "grid",
+                            cards: [
+                                { title: "Websites", lines: ["both domains"] },
+                                { title: "iCloud Mail", lines: ["MX, SPF, DKIM"] },
+                            ],
+                        },
+                    ],
+                    note: "Home devices expose no ports to the internet.",
+                },
+                {
+                    t: "band",
+                    label: "Overlay · Tailscale mesh",
+                    tint: true,
+                    nodes: [
+                        {
+                            t: "grid",
+                            cards: [
+                                { title: "Own devices" },
+                                { title: "RaspiVision", lines: ["Raspberry Pi 4"] },
+                                { title: "G1 vision unit", lines: ["at events"] },
+                                { title: "NAS", lines: ["next revision"], planned: true },
+                            ],
+                        },
+                    ],
+                    note: "One mesh: every node reaches every other node directly.",
+                },
+                {
+                    t: "band",
+                    label: "RF segment",
+                    nodes: [
+                        {
+                            t: "card",
+                            card: { title: "ESP32-S3 handheld", lines: ["Wi-Fi · BLE · Sub-GHz 433 / 868 / 915 MHz · NFC / RFID"] },
+                        },
+                    ],
+                },
+            ],
+        },
+    } satisfies Figure,
+    segments: {
+        label: "Table 1",
+        caption: "Network segments",
+        columns: ["Segment", "Implementation", "Note"],
+        rows: [
+            { label: "Public DNS", value: "Cloudflare", note: "martinkoudela.com, laravix.com" },
+            { label: "Mail", value: "iCloud Mail", note: "Custom domain; MX, SPF, DKIM" },
+            { label: "Overlay", value: "Tailscale", note: "Remote access to RaspiVision and the G1 vision unit at events" },
+            { label: "RF", value: "ESP32-S3 handheld", note: "Wi-Fi, BLE, Sub-GHz and NFC recon" },
+            { label: "Storage", value: "NAS / home server", note: "Next revision; OpenMediaVault or TrueNAS", muted: true },
+        ],
+    } satisfies SpecTable,
 };
 
 export const footer = {
