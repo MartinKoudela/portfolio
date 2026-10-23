@@ -252,7 +252,7 @@ export const sections: Section[] = [
         label: "Networking",
         title: "Networking",
         summary:
-            "Own infrastructure: Cloudflare DNS, custom-domain mail with SPF/DKIM, and a private Tailscale mesh; home devices expose no ports to the internet.",
+            "Own infrastructure: DNS on Vercel (martinkoudela.com) and Cloudflare (laravix.com, proxied), custom-domain mail with SPF and DKIM, and a private Tailscale mesh; home devices expose no ports to the internet.",
     },
     {
         id: "eth2",
@@ -328,7 +328,7 @@ export const intro = {
     features: [
         {
             lead: "Networking.",
-            text: "Tailscale mesh across own devices; Cloudflare DNS for two domains; custom-domain mail with MX, SPF and DKIM.",
+            text: "Tailscale mesh across own devices; DNS on Vercel (martinkoudela.com) and Cloudflare (laravix.com); custom-domain mail with MX, SPF and DKIM.",
         },
         {
             lead: "Hardware & IoT.",
