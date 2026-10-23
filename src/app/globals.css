@@ -23,7 +23,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --paper: #161513;
     --ink: #ECE8DF;
     --grey: #A39E94;
@@ -34,6 +34,18 @@
 
     color-scheme: dark;
   }
+}
+
+:root[data-theme="dark"] {
+  --paper: #161513;
+  --ink: #ECE8DF;
+  --grey: #A39E94;
+  --rule: #36332E;
+  --tint: #211F1C;
+  --accent: #FF8A4C;
+  --led: #FF7A33;
+
+  color-scheme: dark;
 }
 
 @media (max-width: 767.98px) {
@@ -1567,6 +1579,100 @@ a.plain {
   .an-nav-next {
     text-align: left;
   }
+}
+
+/* Theme switch */
+
+.hdr-right {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.sw {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 14px;
+  border: 1px solid var(--rule);
+}
+
+.sw-group {
+  display: flex;
+}
+
+.sw-pos {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.sw-seg {
+  position: relative;
+  height: 18px;
+  border: 1px solid var(--ink);
+}
+
+.sw-pos + .sw-pos .sw-seg {
+  border-left: 0;
+}
+
+.sw-pos.on .sw-seg::after {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  background: var(--ink);
+}
+
+.sw-pos input:focus-visible + .sw-seg {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+.sw-label {
+  padding: 0 4px;
+  font-size: 10px;
+  line-height: 12px;
+  letter-spacing: 0.04em;
+  text-align: center;
+  color: var(--grey);
+}
+
+.sw-pos.on .sw-label {
+  color: var(--ink);
+}
+
+.sw-name {
+  font-size: 12px;
+  line-height: 14px;
+}
+
+.msw {
+  min-height: 64px;
+}
+
+.sw--compact {
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0;
+  width: 100%;
+  padding: 0;
+  border: 0;
+}
+
+.sw--compact .sw-name {
+  width: 76px;
+  font-size: 15px;
+  line-height: normal;
+}
+
+.sw--compact .sw-group {
+  margin-left: auto;
 }
 
 .sr-only {

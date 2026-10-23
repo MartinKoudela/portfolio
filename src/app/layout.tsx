@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Archivo, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import { identity, siteMeta } from "@/content/site";
+import { themeScript } from "@/lib/theme";
 
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
@@ -120,8 +121,9 @@ export default function RootLayout({
     children: React.ReactNode;
 }) {
     return (
-        <html lang="en" className={`${archivo.variable} ${plexMono.variable}`}>
+        <html lang="en" className={`${archivo.variable} ${plexMono.variable}`} suppressHydrationWarning>
         <head>
+            <script dangerouslySetInnerHTML={{ __html: themeScript }} />
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{

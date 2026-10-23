@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { identity, sections, section, type SectionId } from "@/content/site";
 import PortIcon from "./PortIcon";
+import ThemeSwitch from "./ThemeSwitch";
 
 type Props = { home: true } | { home?: false; current?: SectionId };
 
@@ -75,26 +76,29 @@ export default function SiteHeader(props: Props) {
                         )}
                         &nbsp;&nbsp;|&nbsp;&nbsp;{identity.name}
                     </p>
-                    <nav aria-label="Sections" className="panel">
-                        {sections.map((s) => {
-                            const on = s.id === active;
-                            return (
-                                <a
-                                    key={s.id}
-                                    className="port"
-                                    href={`${prefix}#${s.id}`}
-                                    aria-current={on ? "location" : undefined}
-                                >
-                                    <PortIcon console={s.id === "console"} />
-                                    <span className="port-code">
-                                        {on && <span className="led" aria-hidden="true" />}
-                                        <span className="mono">{s.code}</span>
-                                    </span>
-                                    <span className="pname">{s.port}</span>
-                                </a>
-                            );
-                        })}
-                    </nav>
+                    <div className="hdr-right">
+                        <ThemeSwitch />
+                        <nav aria-label="Sections" className="panel">
+                            {sections.map((s) => {
+                                const on = s.id === active;
+                                return (
+                                    <a
+                                        key={s.id}
+                                        className="port"
+                                        href={`${prefix}#${s.id}`}
+                                        aria-current={on ? "location" : undefined}
+                                    >
+                                        <PortIcon console={s.id === "console"} />
+                                        <span className="port-code">
+                                            {on && <span className="led" aria-hidden="true" />}
+                                            <span className="mono">{s.code}</span>
+                                        </span>
+                                        <span className="pname">{s.port}</span>
+                                    </a>
+                                );
+                            })}
+                        </nav>
+                    </div>
                 </div>
 
                 <div className="hdr-m">
@@ -129,25 +133,30 @@ export default function SiteHeader(props: Props) {
                         </button>
                     </div>
                     {open && (
-                        <nav id="m-nav" aria-label="Sections">
-                            {sections.map((s) => {
-                                const on = s.id === active;
-                                return (
-                                    <a
-                                        key={s.id}
-                                        className="mrow"
-                                        href={`${prefix}#${s.id}`}
-                                        aria-current={on ? "location" : undefined}
-                                        onClick={() => setOpen(false)}
-                                    >
-                                        <PortIcon console={s.id === "console"} compact />
-                                        <span className="mrow-code mono">{s.code}</span>
-                                        <span className={on ? "mrow-label on" : "mrow-label"}>{s.label}</span>
-                                        {on && <span className="led led-m" aria-hidden="true" />}
-                                    </a>
-                                );
-                            })}
-                        </nav>
+                        <div id="m-nav">
+                            <nav aria-label="Sections">
+                                {sections.map((s) => {
+                                    const on = s.id === active;
+                                    return (
+                                        <a
+                                            key={s.id}
+                                            className="mrow"
+                                            href={`${prefix}#${s.id}`}
+                                            aria-current={on ? "location" : undefined}
+                                            onClick={() => setOpen(false)}
+                                        >
+                                            <PortIcon console={s.id === "console"} compact />
+                                            <span className="mrow-code mono">{s.code}</span>
+                                            <span className={on ? "mrow-label on" : "mrow-label"}>{s.label}</span>
+                                            {on && <span className="led led-m" aria-hidden="true" />}
+                                        </a>
+                                    );
+                                })}
+                            </nav>
+                            <div className="mrow msw">
+                                <ThemeSwitch compact />
+                            </div>
+                        </div>
                     )}
                 </div>
             </div>
