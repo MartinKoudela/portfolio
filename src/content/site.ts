@@ -322,46 +322,12 @@ export const intro = {
         { lead: "Backend.", text: "FastAPI and Laravel services, REST APIs." },
         { lead: "Apps.", text: "Laravix multi-tenant CMS, Backlog iOS app, client websites." },
     ],
-    blockDiagram: {
-        id: "fig-1",
-        label: "Fig. 1",
-        caption: "Functional block diagram. Each layer feeds the next.",
-        mobileCaption: "Functional block diagram",
-        media: {
-            kind: "diagram",
-            width: 864,
-            height: 200,
-            arrows: [
-                { x: 168, y: 80, w: 63, h: 8, d: "M 0 4 L 60 4", head: true },
-                { x: 400, y: 80, w: 63, h: 8, d: "M 0 4 L 60 4", head: true },
-                { x: 632, y: 80, w: 63, h: 8, d: "M 0 4 L 60 4", head: true },
-                { x: 0, y: 156, w: 400, h: 8, d: "M 0 4 L 400 4", thin: true, muted: true },
-            ],
-            cards: [
-                { x: 0, y: 24, w: 168, h: 120, pad: "12px 14px", title: "Hardware", lines: ["Raspberry Pi 4 / 5, ESP32-S3, sensors, KiCad"] },
-                { x: 232, y: 24, w: 168, h: 120, pad: "12px 14px", title: "Network", lines: ["Tailscale mesh, Cloudflare DNS"] },
-                { x: 464, y: 24, w: 168, h: 120, pad: "12px 14px", title: "Backend", lines: ["FastAPI, Laravel, REST APIs"] },
-                { x: 696, y: 24, w: 168, h: 120, pad: "12px 14px", title: "Apps", lines: ["Web (Laravix), iOS (SwiftUI), Three.js"] },
-            ],
-            texts: [{ x: 0, y: 172, w: 320, text: "Security: spans hardware and network", size: [12, 16] }],
-            mobile: [
-                { t: "card", card: { title: "Hardware", lines: ["Raspberry Pi 4 / 5, ESP32-S3, sensors, KiCad"], inline: true } },
-                { t: "arrow", size: 28 },
-                { t: "card", card: { title: "Network", lines: ["Tailscale mesh, Cloudflare DNS"], inline: true } },
-                { t: "arrow", size: 28 },
-                { t: "card", card: { title: "Backend", lines: ["FastAPI, Laravel, REST APIs"], inline: true } },
-                { t: "arrow", size: 28 },
-                { t: "card", card: { title: "Apps", lines: ["Web (Laravix), iOS (SwiftUI), Three.js"], inline: true } },
-                { t: "note", text: "Security spans hardware and network." },
-            ],
-        },
-    } satisfies Figure,
 };
 
 export const network = {
     topology: {
         id: "fig-2",
-        label: "Fig. 2",
+        label: "Fig. 1",
         caption:
             "Network topology. Solid: in service. Dashed: next revision. The mesh is drawn as a bus; every node reaches every other node directly.",
         mobileCaption: "Network topology, simplified for small screens. Dashed: next revision.",
@@ -486,7 +452,7 @@ export const projects: Project[] = [
         figures: [
             {
                 id: "fig-3",
-                label: "Fig. 3",
+                label: "Fig. 2",
                 caption: "Unitree G1 EDU humanoid robot",
                 media: {
                     kind: "image",
@@ -518,7 +484,7 @@ export const projects: Project[] = [
         figures: [
             {
                 id: "fig-4",
-                label: "Fig. 4",
+                label: "Fig. 3",
                 caption: "Data flow. Shaded block runs on the Pi.",
                 mobileCaption: "Data flow, simplified. Shaded block runs on the Pi.",
                 media: {
@@ -606,13 +572,13 @@ export const projects: Project[] = [
             { label: "Live view", value: "MJPEG", note: "FastAPI backend, vanilla JS web UI" },
             { label: "Alerts", value: "Telegram", note: "With snapshot" },
             { label: "Remote access", value: "Tailscale", note: "No ports exposed to the internet" },
-            { label: "Schematic", value: "KiCad", note: "Fig. 5b" },
+            { label: "Schematic", value: "KiCad", note: "Fig. 4b" },
             { label: "Status", value: "Completed", note: "Annual school project" },
         ],
         figures: [
             {
                 id: "fig-5a",
-                label: "Fig. 5a",
+                label: "Fig. 4a",
                 caption: "Raspberry Pi 4 in its case during assembly; CSI ribbon to the camera, PIR wired to GPIO",
                 media: {
                     kind: "image",
@@ -624,7 +590,7 @@ export const projects: Project[] = [
             },
             {
                 id: "fig-5b",
-                label: "Fig. 5b",
+                label: "Fig. 4b",
                 caption: "KiCad schematic: Raspberry Pi 4 GPIO header, Camera Module 3 NoIR via 15-pin CSI ribbon, HW-416 PIR sensor",
                 media: {
                     kind: "image",
@@ -842,7 +808,7 @@ export const projects: Project[] = [
         figures: [
             {
                 id: "fig-6",
-                label: "Fig. 6",
+                label: "Fig. 5",
                 caption:
                     "hey-l0k1 schematic: ESP32-S3, ReSpeaker mic array, GC9A01 round touch display, MAX98357 amplifier, IP5306 power",
                 media: {
@@ -885,7 +851,7 @@ export const projects: Project[] = [
         figures: [
             {
                 id: "fig-7",
-                label: "Fig. 7",
+                label: "Fig. 6",
                 caption: "Root sheet: ESP32-S3 with ten subsystem sheets. Rev v0.1, schematic stage.",
                 noteCaption: "Root sheet: ESP32-S3 and subsystem hierarchy",
                 media: {
@@ -957,7 +923,7 @@ export const projects: Project[] = [
         figures: [
             {
                 id: "fig-8",
-                label: "Fig. 8a",
+                label: "Fig. 7a",
                 caption: "Laravix tenancy and delivery",
                 media: {
                     kind: "diagram",
@@ -1023,7 +989,7 @@ export const projects: Project[] = [
             },
             {
                 id: "fig-8b",
-                label: "Fig. 8b",
+                label: "Fig. 7b",
                 caption: "Visual page builder (GrapesJS): editing the homepage hero, style manager on the right",
                 homeOnly: true,
                 media: {
@@ -1095,7 +1061,7 @@ export const projects: Project[] = [
         figures: [
             {
                 id: "fig-9a",
-                label: "Fig. 9a",
+                label: "Fig. 8a",
                 caption: "Today: overdue tasks, progress, tasks grouped by project",
                 media: {
                     kind: "image",
@@ -1107,7 +1073,7 @@ export const projects: Project[] = [
             },
             {
                 id: "fig-9b",
-                label: "Fig. 9b",
+                label: "Fig. 8b",
                 caption: "Projects: recent pages and project list",
                 media: {
                     kind: "image",
@@ -1119,7 +1085,7 @@ export const projects: Project[] = [
             },
             {
                 id: "fig-9c",
-                label: "Fig. 9c",
+                label: "Fig. 8c",
                 caption: "Project: pages and tasks in one view",
                 media: {
                     kind: "image",
@@ -1210,7 +1176,7 @@ export const projects: Project[] = [
         figures: [
             {
                 id: "fig-10",
-                label: "Fig. 10",
+                label: "Fig. 9",
                 caption: "In-game OS terminal",
                 media: {
                     kind: "image",

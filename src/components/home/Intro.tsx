@@ -1,5 +1,4 @@
 import { footnotes, homeFootnoteNumbers, identity, intro } from "@/content/site";
-import FigureView from "../FigureView";
 import Footnotes from "../Footnotes";
 
 export default function Intro() {
@@ -37,8 +36,6 @@ export default function Intro() {
                     ))}
                 </ul>
             </div>
-
-            <FigureView figure={intro.blockDiagram} rail className="intro-fig" />
 
             <Footnotes items={[{ n: fn, text: footnotes[intro.taglineFn] }]} />
         </section>

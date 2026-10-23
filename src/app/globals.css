@@ -775,9 +775,6 @@ a.plain {
   line-height: 22px;
 }
 
-.features {
-  margin-bottom: 64px;
-}
 
 .features-title {
   margin: 0;
@@ -856,10 +853,6 @@ a.plain {
     line-height: 20px;
   }
 
-  .features {
-    margin-bottom: 0;
-  }
-
   .features-title {
     margin: 44px 0 8px;
   }
@@ -867,10 +860,6 @@ a.plain {
   .features-list {
     font-size: 14px;
     line-height: 21px;
-  }
-
-  .intro-fig {
-    margin-top: 44px;
   }
 }
 
