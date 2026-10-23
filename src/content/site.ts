@@ -1032,14 +1032,6 @@ export const projects: Project[] = [
         images: [
             {
                 kind: "image",
-                src: "/laravix.png",
-                width: 2940,
-                height: 1912,
-                alt: "Laravix admin panel listing pages with their site, language and status",
-                caption: "Admin, pages list",
-            },
-            {
-                kind: "image",
                 src: "/laravix2.png",
                 width: 2940,
                 height: 1912,
@@ -1053,6 +1045,22 @@ export const projects: Project[] = [
                 height: 1912,
                 alt: "Laravix admin SEO settings with meta title, description and OG image fields",
                 caption: "Admin, SEO settings",
+            },
+            {
+                kind: "image",
+                src: "/laravix-dashboard.png",
+                width: 2856,
+                height: 1712,
+                alt: "Laravix admin dashboard with counts for sites, published pages and posts, drafts and media files, above a Recent Content table listing titles, type, status and update time",
+                caption: "Admin dashboard: managed sites, published content, drafts and media counts, recent content",
+            },
+            {
+                kind: "image",
+                src: "/laravix-pages.png",
+                width: 2856,
+                height: 1712,
+                alt: "Laravix Pages list table with title, slug, language (CS or EN), published status and update time, and edit, preview, duplicate and delete actions on the highlighted row",
+                caption: "Pages list: slugs, CS/EN language versions, publish status and row actions",
             },
         ],
     },
