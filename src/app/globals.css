@@ -994,6 +994,10 @@ a.plain {
   font-weight: 600;
 }
 
+.mdl-note {
+  margin: -2px 0 10px;
+}
+
 .mdl {
   margin: 0;
   border-top: 2px solid var(--ink);

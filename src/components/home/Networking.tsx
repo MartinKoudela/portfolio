@@ -13,7 +13,7 @@ export default function Networking() {
             <SectionHead section={s} />
 
             <div className="row tbl-row hide-m">
-                <Caption id={diagId} label={diag.label} text={diag.caption} rail className="rail" />
+                <Caption id={diagId} label={diag.label} text={diag.caption} note={diag.note} rail className="rail" />
                 <div className="main">
                     <DataTable
                         columns={[{ label: diag.columns[0], width: "52%" }, { label: diag.columns[1] }]}
@@ -30,6 +30,7 @@ export default function Networking() {
                 <h3 className="mdl-title">
                     {diag.label} · {diag.caption}
                 </h3>
+                <p className="cap mdl-note">{diag.note}</p>
                 <dl className="mdl">
                     {diag.rows.map(([fn, tools]) => (
                         <div key={fn}>
