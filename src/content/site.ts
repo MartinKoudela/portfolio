@@ -229,7 +229,7 @@ export const sections: Section[] = [
         label: "Networking",
         title: "Networking",
         summary:
-            "Networks I build in Cisco Packet Tracer, and the tools I use to take real ones apart.",
+            "Home devices expose no ports to the internet; remote access runs only through a private Tailscale mesh. Custom-domain mail with SPF and DKIM.",
     },
     {
         id: "eth2",
@@ -328,7 +328,6 @@ export const network = {
     diagnostics: {
         label: "Table 1",
         caption: "Tools",
-        note: "Own setup: home devices expose no ports to the internet; remote access only via a private Tailscale mesh. Custom-domain mail with SPF and DKIM.",
         columns: ["Function", "Tools"],
         rows: [
             ["Network design and simulation", "Cisco Packet Tracer"],
@@ -337,7 +336,7 @@ export const network = {
             ["Raw TCP/UDP connections", "netcat"],
         ],
         monoColumn: 1,
-    } satisfies PlainTable & { note: string },
+    } satisfies PlainTable,
 };
 
 const arrowRight = (x: number, y: number): DiagramArrow => ({ x, y, w: 79, h: 8, d: "M 0 4 L 76 4", head: true });
