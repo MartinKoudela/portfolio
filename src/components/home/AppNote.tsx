@@ -128,6 +128,7 @@ export default function AppNote({ project }: { project: Project }) {
                 <h3 className="an">
                     {project.name}
                     {project.preliminary && <span className="prelim">Preliminary</span>}
+                    {project.endOfLife && <span className="prelim">End of life</span>}
                 </h3>
                 <p className="sum">{rich(project.summary)}</p>
                 <Body project={project} />

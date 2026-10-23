@@ -129,6 +129,7 @@ export default async function ProjectPage({ params }: { params: Promise<Params> 
                             <h1 id="an-title" className="an-title">
                                 {project.name}
                                 {project.preliminary && <span className="prelim">Preliminary</span>}
+                                {project.endOfLife && <span className="prelim">End of life</span>}
                             </h1>
                             <p className="an-sum">{rich(summaryOf(project))}</p>
                         </div>

@@ -128,6 +128,7 @@ export type Project = {
     family?: string;
     descriptor?: string;
     preliminary?: boolean;
+    endOfLife?: boolean;
     metaDescription?: string;
     icon?: string;
     summary: string;
@@ -372,7 +373,7 @@ export const projects: Project[] = [
             { label: "Events", value: "10+ public demonstrations, incl. Barum Czech Rally Zlín" },
             {
                 label: "Stack",
-                value: "Python; Raspberry Pi 5 [vision unit](/project/rpi-ai-vision): YOLO with ByteTrack, MediaPipe, OpenCV, FastAPI, cloud vision-language model",
+                value: "Python; built the original [vision unit](/project/rpi-ai-vision) (Raspberry Pi 5, YOLO with ByteTrack, MediaPipe, OpenCV, FastAPI, cloud VLM), since retired",
             },
             { label: "Since", value: "06/2026" },
         ],
@@ -383,16 +384,17 @@ export const projects: Project[] = [
         shortName: "G1 vision unit",
         category: "hardware",
         descriptor: "Raspberry Pi 5 · person detection and description",
+        endOfLife: true,
         summary:
-            "Vision unit for the [Unitree G1](/project/unitree-g1): a Raspberry Pi 5 detects and tracks people, then a cloud vision-language model generates natural-language descriptions and responses. Output is JSON for the G1 robot SDK.",
+            "Vision unit I built for the [Unitree G1](/project/unitree-g1): a Raspberry Pi 5 detected and tracked people, and a cloud vision-language model generated natural-language descriptions and responses, sent as JSON to the G1 robot SDK. Used at public events; since replaced on the robot by a different system.",
         links: {},
         layout: "diagram-specs",
         figures: [
             {
                 id: "fig-4",
                 label: "Fig. 2",
-                caption: "Data flow. Shaded block runs on the Pi.",
-                mobileCaption: "Data flow, simplified. Shaded block runs on the Pi.",
+                caption: "Data flow. Shaded block ran on the Pi. As deployed until retirement.",
+                mobileCaption: "Data flow, simplified. Shaded block ran on the Pi. As deployed until retirement.",
                 media: {
                     kind: "diagram",
                     width: 864,
@@ -450,7 +452,8 @@ export const projects: Project[] = [
             { label: "Detection", value: "YOLO; tracking with ByteTrack" },
             { label: "Output", value: "JSON for the G1 robot SDK; FastAPI stream" },
             { label: "Vision libraries", value: "MediaPipe, OpenCV" },
-            { label: "Remote access", value: "Tailscale, at events" },
+            { label: "Remote access", value: "Tailscale, used at events" },
+            { label: "Status", value: "END OF LIFE — replaced on the G1 by a different system (not my work)" },
         ],
     },
     {
