@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
@@ -80,6 +81,7 @@ export default async function ProjectPage({ params }: { params: Promise<Params> 
 
     const s = section(categorySection[project.category]);
     const { diagram, hardware, figures } = noteFigures(project);
+    const phones = figures.every((f) => f.media.kind === "image" && f.media.height > f.media.width);
     const specs = noteSpecs(project);
     const fnNumbers = noteFootnotes(project);
     const footnote = (row: { fn?: keyof typeof footnotes }) => (row.fn ? fnNumbers.get(row.fn) : undefined);
@@ -121,10 +123,15 @@ export default async function ProjectPage({ params }: { params: Promise<Params> 
                             {project.descriptor && <p className="mono family">{project.descriptor}</p>}
                         </div>
                         <div className="main">
-                            <h1 id="an-title" className="an-title">
-                                {project.name}
-                                {project.preliminary && <span className="prelim">Preliminary</span>}
-                            </h1>
+                            <div className="an-head">
+                                <h1 id="an-title" className="an-title">
+                                    {project.name}
+                                    {project.preliminary && <span className="prelim">Preliminary</span>}
+                                </h1>
+                                {project.icon && (
+                                    <Image src={project.icon} alt="" width={96} height={96} className="an-icon" />
+                                )}
+                            </div>
                             <p className="an-sum">{summaryOf(project)}</p>
                         </div>
                     </section>
@@ -210,7 +217,13 @@ export default async function ProjectPage({ params }: { params: Promise<Params> 
                     )}
 
                     {figures.length > 0 && (
-                        <div className="note-figs note-figs--2 an-figs an-gallery">
+                        <div
+                            className={
+                                phones
+                                    ? "note-figs note-figs--3 an-figs an-gallery an-gallery--phones"
+                                    : "note-figs note-figs--2 an-figs an-gallery"
+                            }
+                        >
                             {figures.map((f) => (
                                 <FigureView key={f.id} figure={f} />
                             ))}

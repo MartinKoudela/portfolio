@@ -34,14 +34,6 @@ function Body({ id, media, captionId }: { id: string; media: Media; captionId: s
                 </a>
             );
         }
-        case "set":
-            return (
-                <div className="ph-set">
-                    {media.items.map((item, i) => (
-                        <Placeholder key={i} media={item} />
-                    ))}
-                </div>
-            );
         case "diagram":
             return (
                 <>

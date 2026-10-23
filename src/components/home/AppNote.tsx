@@ -36,7 +36,15 @@ function Body({ project }: { project: Project }) {
         case "media-specs":
             return (
                 <div className="note-grid note-grid--media">
-                    <FigureView figure={first} />
+                    {project.figures.length > 1 ? (
+                        <div className="fig-strip">
+                            {project.figures.map((f) => (
+                                <FigureView key={f.id} figure={f} />
+                            ))}
+                        </div>
+                    ) : (
+                        <FigureView figure={first} />
+                    )}
                     <SpecList rows={project.specs} footnote={homeFootnote} />
                 </div>
             );

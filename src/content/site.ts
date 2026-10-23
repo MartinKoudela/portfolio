@@ -72,9 +72,7 @@ export type DiagramMedia = {
     mobileGap?: number;
 };
 
-export type SetMedia = { kind: "set"; items: PlaceholderMedia[] };
-
-export type Media = ImageMedia | PlaceholderMedia | DiagramMedia | SetMedia;
+export type Media = ImageMedia | PlaceholderMedia | DiagramMedia;
 
 export type Figure = {
     id: string;
@@ -131,6 +129,7 @@ export type Project = {
     descriptor?: string;
     preliminary?: boolean;
     metaDescription?: string;
+    icon?: string;
     summary: string;
     description?: string;
     status?: string;
@@ -1090,16 +1089,39 @@ export const projects: Project[] = [
         layout: "media-specs",
         figures: [
             {
-                id: "fig-9",
-                label: "Fig. 9a–c",
-                caption: "Backlog screens",
+                id: "fig-9a",
+                label: "Fig. 9a",
+                caption: "Today: overdue tasks, progress, tasks grouped by project",
                 media: {
-                    kind: "set",
-                    items: [
-                        { kind: "placeholder", label: "[PLACEHOLDER: screen]", aspect: "9 / 19.5" },
-                        { kind: "placeholder", label: "[PLACEHOLDER: screen]", aspect: "9 / 19.5" },
-                        { kind: "placeholder", label: "[PLACEHOLDER: screen]", aspect: "9 / 19.5" },
-                    ],
+                    kind: "image",
+                    src: "/backlog-today.png",
+                    width: 1206,
+                    height: 2622,
+                    alt: "Backlog Today screen for Friday 23 October with a 4 of 16 done progress bar, three overdue tasks in red, and tasks grouped under App Launch and Brand Identity",
+                },
+            },
+            {
+                id: "fig-9b",
+                label: "Fig. 9b",
+                caption: "Projects: recent pages and project list",
+                media: {
+                    kind: "image",
+                    src: "/backlog-projects.png",
+                    width: 1206,
+                    height: 2622,
+                    alt: "Backlog Projects screen with recently edited pages such as Color Palette, Timeline and README, and a project list with due dates, page counts and open task counts",
+                },
+            },
+            {
+                id: "fig-9c",
+                label: "Fig. 9c",
+                caption: "Project: pages and tasks in one view",
+                media: {
+                    kind: "image",
+                    src: "/backlog-project.png",
+                    width: 1206,
+                    height: 2622,
+                    alt: "Backlog App Launch project screen with due date, description, a Pages list with README, Launch Plan folder and Release Notes, and a Tasks list below",
                 },
             },
         ],
@@ -1109,6 +1131,65 @@ export const projects: Project[] = [
             { label: "Design", value: "Liquid Glass" },
             { label: "Data model", value: "Projects, tasks and reminders in one model" },
             { label: "Status", value: "Finished" },
+        ],
+        icon: "/backlog-icon.svg",
+        images: [
+            {
+                kind: "image",
+                src: "/backlog-reminders.png",
+                width: 1206,
+                height: 2622,
+                alt: "Backlog Reminders screen with three overdue tasks in red and a Today section listing tasks from App Launch, Brand Identity and without a project",
+                caption: "Reminders: overdue and today, across all projects",
+            },
+            {
+                kind: "image",
+                src: "/backlog-readme.png",
+                width: 1206,
+                height: 2622,
+                alt: "Backlog README page in the App Launch project, rendered with headings, bold and italic text, a Goals bullet list and two links",
+                caption: "Page: rendered Markdown",
+            },
+            {
+                kind: "image",
+                src: "/backlog-editor.png",
+                width: 1206,
+                height: 2622,
+                alt: "Backlog page editor showing the README as Markdown source, with a formatting toolbar for headings, bold, italic, strikethrough, lists, quote and code above the keyboard",
+                caption: "Page editor: Markdown source with formatting toolbar",
+            },
+            {
+                kind: "image",
+                src: "/backlog-nested-pages.png",
+                width: 1206,
+                height: 2622,
+                alt: "Backlog App Launch project with the Launch Plan folder expanded to show the nested pages Timeline, Press Kit and App Store Copy",
+                caption: "Nested pages: folder expanded inside a project",
+            },
+            {
+                kind: "image",
+                src: "/backlog-task-details.png",
+                width: 1206,
+                height: 2622,
+                alt: "Backlog task Details screen with Date set to Today, Time off, Repeat Never, Reminder off, Project App Launch, Priority set to two exclamation marks, and Archive and Delete Task actions",
+                caption: "Task details: date, time, repeat, reminder, project, priority",
+            },
+            {
+                kind: "image",
+                src: "/backlog-repeat.png",
+                width: 1206,
+                height: 2622,
+                alt: "Backlog Repeat screen with Custom selected, frequency Weekly, every 1 week, Friday highlighted in the weekday row, and End Repeat off",
+                caption: "Custom repeat: weekly on selected days",
+            },
+            {
+                kind: "image",
+                src: "/backlog-search.png",
+                width: 1206,
+                height: 2622,
+                alt: "Backlog search results for the query App, grouped into Projects, Pages and Tasks",
+                caption: "Search across projects, pages and tasks",
+            },
         ],
     },
     {
