@@ -25,7 +25,7 @@ export default function Footnotes({ items, ruled = false }: { items: FootnoteIte
         <div className={cx("row fn", ruled && "fn--ruled")}>
             <div className="rail">
                 {items.map((item) => (
-                    <p key={item.n} className="cap">
+                    <p key={item.n} id={`fn-${item.n}`} className="cap">
                         <sup>{item.n}</sup> {withLinks(item.text)}
                     </p>
                 ))}

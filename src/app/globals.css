@@ -430,6 +430,11 @@ a.plain {
   white-space: nowrap;
 }
 
+.cap-note {
+  display: block;
+  margin-top: 2px;
+}
+
 .prelim {
   display: inline-block;
   margin-left: 16px;

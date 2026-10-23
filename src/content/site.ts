@@ -247,7 +247,7 @@ export const sections: Section[] = [
         label: "Security",
         title: "Security",
         summary:
-            "RF hardware for recon and testing, plus forensic work on phishing mail and NFC cards. Kali Linux is the main toolkit.",
+            "RF hardware for recon and testing, plus phishing analysis.",
     },
     {
         id: "eth4",
@@ -317,7 +317,7 @@ export const intro = {
         },
         {
             lead: "Security.",
-            text: "ESP32-S3 RF handheld for Wi-Fi, BLE, Sub-GHz and NFC; phishing and NFC forensics.",
+            text: "ESP32-S3 RF handheld for Wi-Fi, BLE, Sub-GHz and NFC; phishing analysis.",
         },
         { lead: "Backend.", text: "FastAPI and Laravel services, REST APIs." },
         { lead: "Apps.", text: "Laravix multi-tenant CMS, Backlog iOS app, client websites." },
@@ -1412,19 +1412,40 @@ export const projects: Project[] = [
     },
 ];
 
-export const forensics: PlainTable = {
+export const analysis: PlainTable = {
     label: "Table 5",
-    caption: "Forensics and tooling",
+    caption: "Analysis",
     columns: ["Work", "Scope", "Tools"],
     rows: [
-        ["Phishing email forensics", "Headers, DNS, WHOIS", "URLScan, VirusTotal"],
-        ["MIFARE Classic NFC forensics", "CTF challenge", "[PLACEHOLDER]"],
-        ["Main toolkit", "Daily environment", "Kali Linux"],
+        [
+            "Phishing analysis",
+            "Regular: suspicious emails (headers, DNS, WHOIS) and phishing websites",
+            "URLScan, VirusTotal",
+        ],
     ],
     monoColumn: 2,
 };
 
-export const otherSoftware = { label: "Table 6", caption: "Other software", columns: ["Name", "Description", "Stack", "Link"] };
+export const offensiveTooling: PlainTable & { note: string; noteFn: FootnoteKey } = {
+    label: "Table 6",
+    caption: "Offensive tooling",
+    note: "Own network and lab only",
+    noteFn: "authorised",
+    columns: ["Tool", "Use"],
+    rows: [
+        ["nmap", "Port and service scanning"],
+        ["Burp Suite", "Web application testing"],
+        ["Gobuster, ffuf", "Content and directory discovery"],
+        ["Aircrack-ng", "Wi-Fi auditing"],
+        ["Metasploit", "Exploitation framework, lab use"],
+        ["Hydra", "Login brute-force testing against lab services"],
+        ["hashcat, John the Ripper", "Password hash cracking"],
+        ["Kali Linux", "Occasional use as the testing environment"],
+    ],
+    monoColumn: 0,
+};
+
+export const otherSoftware = { label: "Table 7", caption: "Other software", columns: ["Name", "Description", "Stack", "Link"] };
 
 export function projectsIn(category: Category): Project[] {
     return projects.filter((p) => p.category === category);
@@ -1494,7 +1515,7 @@ export function neighbours(project: Project): { previous: Project; next: Project
 
 export const specifications = {
     title: "Specifications",
-    label: "Table 7",
+    label: "Table 8",
     caption: "Skills and tools",
     columns: ["Parameter", "Values"],
     rows: [
@@ -1502,7 +1523,7 @@ export const specifications = {
         ["Languages", "Python · C/C++ · PHP · JavaScript/TypeScript · Swift"],
         ["Frameworks & platforms", "Laravel · Filament · Next.js/React · FastAPI · Three.js · SwiftUI · OpenCV · YOLO"],
         ["Hardware", "ESP32-S3 · Raspberry Pi 4/5 · sensors · soldering · KiCad"],
-        ["Tooling", "Git · Tailscale · Cloudflare · Kali Linux"],
+        ["Tooling", "Git · Tailscale · Cloudflare"],
         ["English", "B2, Cambridge B2 First"],
         ["Location", "Zlín, Czech Republic"],
         ["MTBF", "Depends on coffee supply"],
@@ -1511,7 +1532,7 @@ export const specifications = {
 
 export const revisions = {
     title: "Revision history",
-    label: "Table 8",
+    label: "Table 9",
     caption: "Milestones",
     columns: ["Rev", "Date", "Change"],
     rows: [
@@ -1526,7 +1547,7 @@ export const revisions = {
 
 export const ordering = {
     availability: "Open to networking, security, hardware and backend projects. Web projects selectively.",
-    label: "Table 9",
+    label: "Table 10",
     caption: "Ordering channels",
     columns: ["Channel", "Address"],
     channels: [

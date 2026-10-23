@@ -1,8 +1,10 @@
+import type { ReactNode } from "react";
 import { cx } from "@/lib/cx";
 
 type Props = {
     label: string;
     text?: string;
+    note?: ReactNode;
     mobileText?: string;
     rail?: boolean;
     as?: "p" | "figcaption";
@@ -14,6 +16,7 @@ type Props = {
 export default function Caption({
     label,
     text,
+    note,
     mobileText,
     rail = false,
     as: Tag = "p",
@@ -37,6 +40,7 @@ export default function Caption({
                     )}
                 </>
             )}
+            {note && <span className="cap-note">{note}</span>}
             {fullSize && (
                 <>
                     <span className="cap-sep">{"  "}</span>

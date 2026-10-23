@@ -7,7 +7,7 @@ import SectionHead from "./SectionHead";
 
 export default function Software() {
     const s = section("eth4");
-    const captionId = "table-6-caption";
+    const captionId = "table-7-caption";
     const [name, description, stack, link] = otherSoftware.columns;
 
     return (
