@@ -339,7 +339,7 @@ export const intro = {
             ],
             cards: [
                 { x: 0, y: 24, w: 168, h: 120, pad: "12px 14px", title: "Hardware", lines: ["Raspberry Pi 4 / 5, ESP32-S3, sensors, KiCad"] },
-                { x: 232, y: 24, w: 168, h: 120, pad: "12px 14px", title: "Network", lines: ["Tailscale mesh, Cloudflare DNS, RF segment"] },
+                { x: 232, y: 24, w: 168, h: 120, pad: "12px 14px", title: "Network", lines: ["Tailscale mesh, Cloudflare DNS"] },
                 { x: 464, y: 24, w: 168, h: 120, pad: "12px 14px", title: "Backend", lines: ["FastAPI, Laravel, REST APIs"] },
                 { x: 696, y: 24, w: 168, h: 120, pad: "12px 14px", title: "Apps", lines: ["Web (Laravix), iOS (SwiftUI), Three.js"] },
             ],
@@ -347,7 +347,7 @@ export const intro = {
             mobile: [
                 { t: "card", card: { title: "Hardware", lines: ["Raspberry Pi 4 / 5, ESP32-S3, sensors, KiCad"], inline: true } },
                 { t: "arrow", size: 28 },
-                { t: "card", card: { title: "Network", lines: ["Tailscale mesh, Cloudflare DNS, RF segment"], inline: true } },
+                { t: "card", card: { title: "Network", lines: ["Tailscale mesh, Cloudflare DNS"], inline: true } },
                 { t: "arrow", size: 28 },
                 { t: "card", card: { title: "Backend", lines: ["FastAPI, Laravel, REST APIs"], inline: true } },
                 { t: "arrow", size: 28 },
@@ -369,11 +369,10 @@ export const network = {
         media: {
             kind: "diagram",
             width: 1104,
-            height: 576,
+            height: 424,
             frames: [
                 { x: 0, y: 0, w: 1104, h: 216 },
                 { x: 0, y: 248, w: 1104, h: 176, tint: true },
-                { x: 0, y: 456, w: 1104, h: 120 },
             ],
             arrows: [
                 { x: 176, y: 112, w: 79, h: 8, d: "M 0 4 L 76 4", head: true },
@@ -385,7 +384,6 @@ export const network = {
                 { x: 856, y: 360, w: 8, h: 32, d: "M 4 0 L 4 32", thin: true, muted: true, dashed: true },
                 { x: 112, y: 388, w: 480, h: 8, d: "M 0 4 L 480 4", thin: true },
                 { x: 592, y: 388, w: 268, h: 8, d: "M 0 4 L 268 4", thin: true, muted: true, dashed: true },
-                { x: 232, y: 520, w: 80, h: 8, d: "M 0 4 L 80 4", thin: true },
             ],
             cards: [
                 { x: 24, y: 80, w: 152, h: 72, title: "Internet" },
@@ -396,13 +394,10 @@ export const network = {
                 { x: 264, y: 288, w: 176, h: 72, title: "RaspiVision", lines: ["Raspberry Pi 4"] },
                 { x: 504, y: 288, w: 176, h: 72, title: "G1 vision unit", lines: ["remote access at events"] },
                 { x: 744, y: 288, w: 232, h: 72, title: "NAS / home server", lines: ["OpenMediaVault or TrueNAS"], planned: true },
-                { x: 24, y: 496, w: 208, h: 56, title: "l0k1", lines: ["ESP32-S3 pentesting handheld"] },
-                { x: 312, y: 496, w: 456, h: 56, lines: ["Wi-Fi · BLE · Sub-GHz (CC1101, 433 MHz) · NFC / RFID"], center: true },
             ],
             texts: [
                 { x: 16, y: 12, w: 200, text: "Public · DNS and mail", label: true },
                 { x: 16, y: 260, w: 200, text: "Overlay · Tailscale mesh", label: true },
-                { x: 16, y: 468, w: 200, text: "RF segment", label: true },
                 { x: 472, y: 132, w: 32, text: "MX", label: true, center: true },
                 { x: 760, y: 264, w: 216, text: "next revision", label: true },
                 {
@@ -411,7 +406,6 @@ export const network = {
                     w: 240,
                     text: "Home devices expose no ports to the internet. Remote access goes through the overlay below.",
                 },
-                { x: 832, y: 500, w: 240, text: "Recon and testing. Details under ETH3." },
             ],
             mobileGap: 12,
             mobile: [
@@ -450,34 +444,31 @@ export const network = {
                     ],
                     note: "One mesh: every node reaches every other node directly.",
                 },
-                {
-                    t: "band",
-                    label: "RF segment",
-                    nodes: [
-                        {
-                            t: "card",
-                            card: {
-                                title: "l0k1",
-                                lines: ["ESP32-S3 pentesting handheld", "Wi-Fi · BLE · Sub-GHz (CC1101, 433 MHz) · NFC / RFID"],
-                            },
-                        },
-                    ],
-                },
             ],
         },
     } satisfies Figure,
     segments: {
         label: "Table 1",
-        caption: "Network segments",
-        columns: ["Segment", "Implementation", "Note"],
+        caption: "Infrastructure I run",
+        columns: ["Service", "Implementation", "Note"],
         rows: [
             { label: "Public DNS", value: "Cloudflare", note: "martinkoudela.com, laravix.com" },
             { label: "Mail", value: "iCloud Mail", note: "Custom domain; MX, SPF, DKIM" },
             { label: "Overlay", value: "Tailscale", note: "Remote access to RaspiVision and the G1 vision unit at events" },
-            { label: "RF", value: "l0k1", note: "Schematic stage; Wi-Fi, BLE, Sub-GHz, NFC" },
             { label: "Storage", value: "NAS / home server", note: "Next revision; OpenMediaVault or TrueNAS", muted: true },
         ],
     } satisfies SpecTable,
+    diagnostics: {
+        label: "Table 2",
+        caption: "Diagnostics",
+        columns: ["Function", "Tools"],
+        rows: [
+            ["Packet capture", "Wireshark, tcpdump"],
+            ["DNS and domain lookup", "dig, whois, nslookup"],
+            ["Raw TCP/UDP connections", "netcat"],
+        ],
+        monoColumn: 1,
+    } satisfies PlainTable,
 };
 
 const arrowRight = (x: number, y: number): DiagramArrow => ({ x, y, w: 79, h: 8, d: "M 0 4 L 76 4", head: true });
@@ -600,7 +591,7 @@ export const projects: Project[] = [
         links: { source: "https://github.com/MartinKoudela/rpi-cam" },
         layout: "table-media",
         specTable: {
-            label: "Table 2",
+            label: "Table 3",
             caption: "RaspiVision specifications",
             columns: ["Parameter", "Value", "Note"],
             minWidth: 600,
@@ -890,7 +881,7 @@ export const projects: Project[] = [
         status: "Schematic complete (Rev v0.1)",
         links: {},
         layout: "media-table",
-        specTable: { label: "Table 3", caption: "Interfaces and build", columns: ["Interface", "Function"], minWidth: 380 },
+        specTable: { label: "Table 4", caption: "Interfaces and build", columns: ["Interface", "Function"], minWidth: 380 },
         figures: [
             {
                 id: "fig-7",
@@ -1422,7 +1413,7 @@ export const projects: Project[] = [
 ];
 
 export const forensics: PlainTable = {
-    label: "Table 4",
+    label: "Table 5",
     caption: "Forensics and tooling",
     columns: ["Work", "Scope", "Tools"],
     rows: [
@@ -1433,7 +1424,7 @@ export const forensics: PlainTable = {
     monoColumn: 2,
 };
 
-export const otherSoftware = { label: "Table 5", caption: "Other software", columns: ["Name", "Description", "Stack", "Link"] };
+export const otherSoftware = { label: "Table 6", caption: "Other software", columns: ["Name", "Description", "Stack", "Link"] };
 
 export function projectsIn(category: Category): Project[] {
     return projects.filter((p) => p.category === category);
@@ -1503,7 +1494,7 @@ export function neighbours(project: Project): { previous: Project; next: Project
 
 export const specifications = {
     title: "Specifications",
-    label: "Table 6",
+    label: "Table 7",
     caption: "Skills and tools",
     columns: ["Parameter", "Values"],
     rows: [
@@ -1520,7 +1511,7 @@ export const specifications = {
 
 export const revisions = {
     title: "Revision history",
-    label: "Table 7",
+    label: "Table 8",
     caption: "Milestones",
     columns: ["Rev", "Date", "Change"],
     rows: [
@@ -1535,7 +1526,7 @@ export const revisions = {
 
 export const ordering = {
     availability: "Open to networking, security, hardware and backend projects. Web projects selectively.",
-    label: "Table 8",
+    label: "Table 9",
     caption: "Ordering channels",
     columns: ["Channel", "Address"],
     channels: [

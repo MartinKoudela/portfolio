@@ -7,7 +7,7 @@ import SectionHead from "./SectionHead";
 
 export default function Security() {
     const s = section("eth3");
-    const captionId = "table-4-caption";
+    const captionId = "table-5-caption";
 
     return (
         <section id={s.id} aria-labelledby={`h-${s.id}`} className="eth">
