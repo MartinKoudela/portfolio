@@ -4,6 +4,7 @@ import DataTable, { cell } from "../DataTable";
 import RequestTrace from "./RequestTrace";
 import SectionHead from "./SectionHead";
 import StatusPanel from "./StatusPanel";
+import SubnetCalculator from "./SubnetCalculator";
 
 export default function Networking() {
     const s = section("eth1");
@@ -17,6 +18,8 @@ export default function Networking() {
             {networking.features.requestTrace && <RequestTrace />}
 
             {networking.features.statusPanel && <StatusPanel />}
+
+            {networking.features.subnetCalculator && <SubnetCalculator />}
 
             <div className="row tbl-row hide-m">
                 <Caption id={diagId} label={diag.label} text={diag.caption} rail className="rail" />

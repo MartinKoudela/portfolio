@@ -166,6 +166,7 @@ export const networking = {
     features: {
         requestTrace: true,
         statusPanel: true,
+        subnetCalculator: true,
     },
 };
 
@@ -176,6 +177,7 @@ export const networkLabels = {
     traceFigure: "Fig. 1",
     traceTable: netFeatures.requestTrace ? `Table ${++netTables}` : "",
     status: netFeatures.statusPanel ? `Table ${++netTables}` : "",
+    subnet: netFeatures.subnetCalculator ? `Table ${++netTables}` : "",
     diagnostics: `Table ${++netTables}`,
 };
 

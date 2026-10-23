@@ -987,6 +987,60 @@ a.plain {
   margin-top: 56px;
 }
 
+/* Subnet calculator */
+
+.sn-form {
+  margin-bottom: 16px;
+}
+
+.sn-label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+}
+
+.sn-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.sn-input {
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 320px;
+  min-height: 40px;
+  padding: 0 10px;
+  border: 1px solid var(--ink);
+  border-radius: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 14px;
+}
+
+.sn-input[aria-invalid="true"] {
+  border-color: var(--accent);
+}
+
+.sn-btn {
+  flex: none;
+  min-height: 40px;
+  padding: 0 12px;
+  border: 1px solid var(--rule);
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  cursor: pointer;
+}
+
+.sn-error {
+  margin: 0 0 16px;
+  font-size: 13px;
+  line-height: 18px;
+  color: var(--accent);
+}
+
 /* Service status */
 
 .st-down {
