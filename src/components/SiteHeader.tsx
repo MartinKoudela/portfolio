@@ -5,7 +5,7 @@ import Link from "next/link";
 import { identity, sections, section, type SectionId } from "@/content/site";
 import PortIcon from "./PortIcon";
 
-type Props = { home: true } | { home?: false; current: SectionId };
+type Props = { home: true } | { home?: false; current?: SectionId };
 
 export default function SiteHeader(props: Props) {
     const [observed, setObserved] = useState<SectionId>("eth1");
@@ -59,7 +59,7 @@ export default function SiteHeader(props: Props) {
         return () => document.removeEventListener("keydown", onKey);
     }, [open]);
 
-    const current = section(active);
+    const current = section(active ?? "eth1");
 
     return (
         <header className="hdr">
@@ -118,7 +118,7 @@ export default function SiteHeader(props: Props) {
                                 </>
                             ) : (
                                 <>
-                                    <span className="led" aria-hidden="true" />
+                                    {active && <span className="led" aria-hidden="true" />}
                                     <span className="mono t10">{current.code}</span>
                                     <span className="t13">{current.label}</span>
                                     <svg width="10" height="6" viewBox="0 0 10 6" aria-hidden="true">

@@ -1192,6 +1192,54 @@ export function projectsIn(category: Category): Project[] {
     return projects.filter((p) => p.category === category);
 }
 
+export function noteFigures(project: Project): { diagram?: Figure; hardware: Figure[]; figures: Figure[] } {
+    const homeDiagram = project.figures.find((f) => f.media.kind === "diagram");
+    const diagram = project.note?.diagram ?? homeDiagram;
+    const hardware = project.note?.hardware.figures ?? [];
+    const source = project.note ? [] : project.figures.filter((f) => f !== homeDiagram);
+
+    const numbers = new Map<string, number>();
+    let next = 1;
+    const renumber = (label: string): string => {
+        const [, base, suffix] = label.match(/^Fig\. (\d+)(.*)$/)!;
+        if (!numbers.has(base)) numbers.set(base, next++);
+        return `Fig. ${numbers.get(base)}${suffix}`;
+    };
+
+    const renumbered = (f: Figure): Figure => ({ ...f, id: `an-${f.id}`, label: renumber(f.label) });
+    const first = diagram && renumbered(diagram);
+    const hw = hardware.map(renumbered);
+    const figures = source.map(renumbered);
+    const images = (project.images ?? []).map(({ caption, ...media }, i): Figure => ({
+        id: `an-img-${i}`,
+        label: `Fig. ${next++}`,
+        caption,
+        media,
+    }));
+
+    return { diagram: first, hardware: hw, figures: [...figures, ...images] };
+}
+
+export function noteSpecs(project: Project): SpecRow[] {
+    return project.note?.specs ?? project.specs;
+}
+
+export function noteFootnotes(project: Project): Map<FootnoteKey, number> {
+    const map = new Map<FootnoteKey, number>();
+    for (const row of noteSpecs(project)) {
+        if (row.fn && !map.has(row.fn)) map.set(row.fn, map.size + 1);
+    }
+    return map;
+}
+
+export function neighbours(project: Project): { previous: Project; next: Project } {
+    const i = projects.indexOf(project);
+    return {
+        previous: projects[(i - 1 + projects.length) % projects.length],
+        next: projects[(i + 1) % projects.length],
+    };
+}
+
 export const specifications = {
     title: "Specifications",
     label: "Table 6",

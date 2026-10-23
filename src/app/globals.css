@@ -1334,6 +1334,241 @@ a.plain {
   }
 }
 
+/* Application note pages */
+
+.an-back {
+  margin: 24px 0 0;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+.an-hero {
+  padding: 72px 0 56px;
+}
+
+.an-kick {
+  margin: 0;
+  font-size: 13px;
+  line-height: 18px;
+  color: var(--grey);
+}
+
+.an-title {
+  margin: 0;
+  font-size: clamp(56px, 9vw, 120px);
+  line-height: 0.9;
+  font-weight: 630;
+  font-stretch: 118%;
+  letter-spacing: -0.02em;
+}
+
+.an-sum {
+  margin: 28px 0 0;
+  max-width: 680px;
+  font-size: 20px;
+  line-height: 29px;
+}
+
+.an-meta {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+  margin: 0 0 88px;
+  padding-top: 12px;
+  border-top: 1px solid var(--ink);
+}
+
+.an-meta dt {
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--grey);
+}
+
+.an-meta dd {
+  margin: 4px 0 0;
+  font-size: 15px;
+  line-height: 22px;
+  overflow-wrap: anywhere;
+}
+
+.an-block {
+  margin-bottom: 88px;
+}
+
+.an-rail-title {
+  margin: 0;
+  font-size: 15px;
+  line-height: 22px;
+  font-weight: 600;
+}
+
+.an-rail-cap {
+  margin-top: 4px;
+}
+
+.an-h {
+  margin-bottom: 20px;
+}
+
+.an-hw .h-sub {
+  margin-bottom: 24px;
+}
+
+.hiw {
+  padding: 16px 0;
+  border-top: 1px solid var(--rule);
+}
+
+.hiw:last-child {
+  border-bottom: 1px solid var(--rule);
+}
+
+.hiw h3 {
+  margin: 0;
+  font-size: 15px;
+  line-height: 23px;
+  font-weight: 600;
+}
+
+.hiw p {
+  margin: 0;
+  max-width: 640px;
+  font-size: 16px;
+  line-height: 25px;
+}
+
+.hiw .tbd {
+  font-size: 13px;
+}
+
+.an-hw {
+  margin-bottom: 72px;
+}
+
+.an-figs {
+  margin-top: 0;
+}
+
+.an-parts {
+  margin-top: 48px;
+}
+
+.an-gallery {
+  margin-bottom: 72px;
+}
+
+.an-nav {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 40px;
+  margin-top: 72px;
+  padding-top: 14px;
+  border-top: 1px solid var(--ink);
+}
+
+.an-nav-next {
+  text-align: right;
+}
+
+.an-nav-label {
+  display: block;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--grey);
+}
+
+.an-nav-title {
+  display: block;
+  margin-top: 4px;
+  font-size: 20px;
+  line-height: 26px;
+  font-weight: 600;
+  font-stretch: 112%;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+@media (max-width: 767.98px) {
+  .an-back {
+    margin-top: 20px;
+  }
+
+  .an-hero {
+    padding: 40px 0 32px;
+  }
+
+  .an-title {
+    margin-top: 4px;
+    font-size: 40px;
+    line-height: 1;
+    overflow-wrap: break-word;
+  }
+
+  .an-sum {
+    margin-top: 16px;
+    font-size: 17px;
+    line-height: 25px;
+  }
+
+  .an-meta {
+    display: block;
+    margin-bottom: 56px;
+    padding-top: 0;
+  }
+
+  .an-meta > div {
+    display: flex;
+    gap: 12px;
+    padding: 9px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .an-meta dt {
+    flex: 0 0 104px;
+    line-height: 20px;
+  }
+
+  .an-meta dd {
+    margin: 0;
+    min-width: 0;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .an-block,
+  .an-hw,
+  .an-gallery {
+    margin-bottom: 56px;
+  }
+
+  .an-rail-cap {
+    margin-bottom: 8px;
+  }
+
+  .an-hw .h-sub {
+    margin-bottom: 20px;
+  }
+
+  .an-parts {
+    margin-top: 32px;
+  }
+
+  .hiw h3 {
+    margin-bottom: 4px;
+  }
+
+  .an-nav {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+    margin-top: 56px;
+  }
+
+  .an-nav-next {
+    text-align: left;
+  }
+}
+
 .sr-only {
   position: absolute;
   width: 1px;

@@ -1,5 +1,5 @@
 import { MetadataRoute } from "next";
-import { projects } from "@/data/projects";
+import { projects } from "@/content/site";
 
 const BASE_URL = "https://martinkoudela.com";
 
