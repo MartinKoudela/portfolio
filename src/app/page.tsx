@@ -4,6 +4,7 @@ import Intro from "@/components/home/Intro";
 import Networking from "@/components/home/Networking";
 import Hardware from "@/components/home/Hardware";
 import Security from "@/components/home/Security";
+import Software from "@/components/home/Software";
 
 export default function Page() {
     return (
@@ -15,6 +16,7 @@ export default function Page() {
                     <Networking />
                     <Hardware />
                     <Security />
+                    <Software />
                 </main>
                 <SiteFooter />
             </div>
