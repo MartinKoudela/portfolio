@@ -133,6 +133,8 @@ export type Project = {
     note?: NoteDetail;
 };
 
+export type PlainTable = { label: string; caption: string; columns: string[]; rows: string[][]; monoColumn: number };
+
 export const categorySection: Record<Category, SectionId> = {
     hardware: "eth2",
     security: "eth3",
@@ -766,7 +768,425 @@ export const projects: Project[] = [
             { label: "Status", value: "In active development" },
         ],
     },
+    {
+        slug: "esp32-pentesting-tool",
+        name: "ESP32-S3 handheld",
+        shortName: "ESP32-S3 handheld",
+        category: "security",
+        summary:
+            "Battery-powered, modular RF handheld with a built-in display and custom GUI, written in C++. Covers Wi-Fi, BLE, Sub-GHz, NFC/RFID and IR. In active development.",
+        status: "In active development",
+        links: {},
+        layout: "media-table",
+        specTable: { label: "Table 3", caption: "Interfaces and build", columns: ["Interface", "Function"], minWidth: 380 },
+        figures: [
+            {
+                id: "fig-7",
+                label: "Fig. 7",
+                caption: "ESP32-S3 handheld",
+                media: { kind: "placeholder", label: "[PLACEHOLDER: photo, handheld front]", aspect: "3 / 4" },
+            },
+        ],
+        specs: [
+            { label: "Wi-Fi", value: "Scanning" },
+            { label: "BLE", value: "Recon" },
+            { label: "Sub-GHz", value: "433 / 868 / 915 MHz" },
+            { label: "NFC / RFID", value: "Read, emulation" },
+            { label: "IR", value: "Supported" },
+            { label: "Display", value: "Built-in, custom GUI" },
+            { label: "Power", value: "Battery" },
+            { label: "Build", value: "Modular" },
+            { label: "Firmware", value: "C++" },
+            {
+                label: "MCU",
+                value: "ESP32-S3; Xtensa LX7 dual-core, 2.4 GHz Wi-Fi, Bluetooth 5 (LE)",
+                fn: "esp32Datasheet",
+                plain: true,
+            },
+            { label: "Next revision", value: "", group: true },
+            { label: "Packet injection", value: "Planned", fn: "authorised", muted: true },
+            { label: "Deauth detection", value: "Planned", muted: true },
+            { label: "BadUSB", value: "Planned", muted: true },
+        ],
+    },
+    {
+        slug: "laravix-cms",
+        name: "Laravix",
+        shortName: "Laravix",
+        category: "software",
+        summary:
+            "Open-source multi-tenant CMS. Each site is an isolated tenant with its own content, users, media and theme, delivered through a Blade theme or a token-authenticated REST API. In active development.",
+        status: "In active development",
+        links: { source: "https://github.com/MartinKoudela/laravix-cms", website: "https://laravix.com" },
+        layout: "diagram-specs",
+        figures: [
+            {
+                id: "fig-8",
+                label: "Fig. 8",
+                caption: "Laravix tenancy and delivery",
+                media: {
+                    kind: "diagram",
+                    width: 864,
+                    height: 256,
+                    arrows: [arrowRight(176, 32), arrowRight(176, 124), arrowRight(176, 216), arrowRight(544, 72), arrowRight(544, 176)],
+                    cards: [
+                        { x: 0, y: 0, w: 176, h: 72, title: "Tenant A", lines: ["content, users, media, theme"] },
+                        { x: 0, y: 92, w: 176, h: 72, title: "Tenant B", lines: ["content, users, media, theme"] },
+                        { x: 0, y: 184, w: 176, h: 72, title: "Tenant n", lines: ["isolated site"] },
+                        {
+                            x: 256,
+                            y: 0,
+                            w: 288,
+                            h: 256,
+                            title: "Laravix",
+                            lines: [
+                                "Laravel, PHP, Filament",
+                                "GrapesJS builder, 45+ extendable blocks",
+                                "Revisions, scheduled publishing",
+                                "Meilisearch, tenant-aware SEO",
+                                "Plugin registries",
+                            ],
+                            tint: true,
+                        },
+                        { x: 624, y: 40, w: 240, h: 72, title: "Blade theme", lines: ["server-rendered site"] },
+                        { x: 624, y: 144, w: 240, h: 72, title: "REST API", lines: ["headless, token-authenticated"] },
+                    ],
+                    mobile: [
+                        {
+                            t: "grid",
+                            cards: [
+                                { title: "Tenant A", lines: ["content, users, media, theme"] },
+                                { title: "Tenant B", lines: ["content, users, media, theme"] },
+                                { title: "Tenant n", lines: ["isolated site"] },
+                            ],
+                        },
+                        { t: "arrow" },
+                        {
+                            t: "card",
+                            card: {
+                                title: "Laravix",
+                                lines: [
+                                    "Laravel, PHP, Filament",
+                                    "GrapesJS builder, 45+ extendable blocks",
+                                    "Revisions, scheduled publishing",
+                                    "Meilisearch, tenant-aware SEO",
+                                    "Plugin registries",
+                                ],
+                                tint: true,
+                            },
+                        },
+                        { t: "arrow" },
+                        {
+                            t: "grid",
+                            cards: [
+                                { title: "Blade theme", lines: ["server-rendered site"] },
+                                { title: "REST API", lines: ["headless, token-authenticated"] },
+                            ],
+                        },
+                    ],
+                },
+            },
+        ],
+        specs: [
+            { label: "Type", value: "Open-source multi-tenant CMS" },
+            { label: "Stack", value: "Laravel, PHP, Filament" },
+            { label: "Builder", value: "GrapesJS, 45+ extendable blocks" },
+            { label: "Search", value: "Meilisearch" },
+            {
+                label: "Source",
+                value: "github.com/MartinKoudela/laravix-cms",
+                href: "https://github.com/MartinKoudela/laravix-cms",
+            },
+            { label: "Status", value: "In active development" },
+        ],
+        images: [
+            {
+                kind: "image",
+                src: "/laravix.png",
+                width: 2940,
+                height: 1912,
+                alt: "Laravix admin panel listing pages with their site, language and status",
+                caption: "Admin, pages list",
+            },
+            {
+                kind: "image",
+                src: "/laravix2.png",
+                width: 2940,
+                height: 1912,
+                alt: "Laravix visual page builder editing a homepage hero section",
+                caption: "Visual page builder",
+            },
+            {
+                kind: "image",
+                src: "/laravix3.png",
+                width: 2940,
+                height: 1912,
+                alt: "Laravix admin SEO settings with meta title, description and OG image fields",
+                caption: "Admin, SEO settings",
+            },
+        ],
+    },
+    {
+        slug: "backlog",
+        name: "Backlog",
+        shortName: "Backlog",
+        category: "software",
+        summary:
+            "iOS app that puts projects, tasks and reminders in one data model. Swift and SwiftUI, Liquid Glass design. Finished.",
+        status: "Finished",
+        links: {},
+        layout: "media-specs",
+        figures: [
+            {
+                id: "fig-9",
+                label: "Fig. 9a–c",
+                caption: "Backlog screens",
+                media: {
+                    kind: "set",
+                    items: [
+                        { kind: "placeholder", label: "[PLACEHOLDER: screen]", aspect: "9 / 19.5" },
+                        { kind: "placeholder", label: "[PLACEHOLDER: screen]", aspect: "9 / 19.5" },
+                        { kind: "placeholder", label: "[PLACEHOLDER: screen]", aspect: "9 / 19.5" },
+                    ],
+                },
+            },
+        ],
+        specs: [
+            { label: "Platform", value: "iOS" },
+            { label: "Language", value: "Swift, SwiftUI" },
+            { label: "Design", value: "Liquid Glass" },
+            { label: "Data model", value: "Projects, tasks and reminders in one model" },
+            { label: "Status", value: "Finished" },
+        ],
+    },
+    {
+        slug: "l0k1-game",
+        name: "l0k1 Game",
+        shortName: "l0k1 Game",
+        category: "software",
+        family: "l0k1 family · Game",
+        summary:
+            "Browser-based 3D horror game set in a hacker's apartment. The in-game OS has a terminal, a file manager and hacking tools.",
+        links: { source: "https://github.com/MartinKoudela/L0k1-game" },
+        layout: "specs-media",
+        figures: [
+            {
+                id: "fig-10",
+                label: "Fig. 10",
+                caption: "In-game OS terminal",
+                media: {
+                    kind: "image",
+                    src: "/l0k1.png",
+                    width: 2940,
+                    height: 1912,
+                    alt: "In-game view of the hacker's apartment, with a laptop showing the in-game OS terminal",
+                },
+            },
+        ],
+        specs: [
+            { label: "Genre", value: "3D horror, browser" },
+            { label: "In-game OS", value: "Terminal, file manager, hacking tools" },
+            { label: "Audio", value: "Positional" },
+            { label: "AI", value: "Enemy AI" },
+            { label: "Assets", value: "60+ GLTF models" },
+            { label: "Stack", value: "Three.js, TypeScript, Vite" },
+        ],
+    },
+    {
+        slug: "orbis-projects",
+        name: "Orbis Projects",
+        shortName: "Orbis Projects",
+        category: "compact",
+        summary:
+            "Student project showcase for ORBIS Zlín. Students build their own Blade/Tailwind themes; Filament admin, REST API. Personal initiative, not an assignment.",
+        description:
+            "A student project showcase platform built for ORBIS Zlín, designed to give students a professional stage to present their work. The platform features a unique theme system where students design and build their own custom Blade templates using Tailwind CSS, maintaining full creative control over how their projects are displayed. Administrators manage project data, taxonomies, and media through a modern Filament dashboard, while a REST API enables dynamic filtering and browsing. Built as a personal initiative during my studies — not a school assignment, but a real tool built to fill a real need.",
+        links: { source: "https://github.com/MartinKoudela/orbis-projects", website: "https://orbis.cz" },
+        row: {
+            description:
+                "Student project showcase for ORBIS Zlín. Students build their own Blade/Tailwind themes; Filament admin, REST API. Personal initiative, not an assignment.",
+            stack: "Laravel, PHP, Filament",
+        },
+        specs: [{ label: "Stack", value: "Laravel, PHP, Filament, Tailwind, REST API, Blade" }],
+        figures: [],
+        images: [
+            {
+                kind: "image",
+                src: "/orbis-projects.png",
+                width: 2940,
+                height: 1684,
+                alt: "Orbis Projects listing student projects as cards, with filters for year, class and project type",
+                caption: "Project listing with filters",
+            },
+        ],
+    },
+    {
+        slug: "football-photogallery",
+        name: "Football Photogallery",
+        shortName: "Football Photogallery",
+        category: "compact",
+        summary: "Client project. Match-based photo archive, curated highlights, photographer upload dashboard.",
+        description:
+            "A bespoke football photogallery platform developed for a client, designed to showcase match photography in an elegant and organized way. The platform features a photographer-focused dashboard for easy photo uploads and management, a curated highlights section displaying the best shots, and a comprehensive match-based photo archive where visitors can browse galleries organized by individual games. Built with performance in mind, the site handles large image collections efficiently while maintaining a clean, modern user interface.",
+        links: { website: "https://www.slavicinfotky.cz/" },
+        row: {
+            description: "Client project. Match-based photo archive, curated highlights, photographer upload dashboard.",
+            stack: "Laravel, MySQL, Tailwind",
+        },
+        specs: [{ label: "Stack", value: "Laravel, MySQL, Tailwind, PHP, Blade" }],
+        figures: [],
+        images: [
+            {
+                kind: "image",
+                src: "/fotbal.png",
+                width: 2940,
+                height: 1912,
+                alt: "Photogallery homepage with photo, match and comment counters and featured matches",
+                caption: "Homepage with featured matches",
+            },
+            {
+                kind: "image",
+                src: "/fotbal2.png",
+                width: 2940,
+                height: 1912,
+                alt: "Grid of match galleries, each with a cover photo, date and score",
+                caption: "Match archive",
+            },
+            {
+                kind: "image",
+                src: "/fotbal3.png",
+                width: 2940,
+                height: 1912,
+                alt: "Single match page with the score and a grid of photos",
+                caption: "Match gallery",
+            },
+            {
+                kind: "image",
+                src: "/fotbal4.png",
+                width: 2940,
+                height: 1912,
+                alt: "Full-screen photo viewer showing a goalkeeper diving, with thumbnails below",
+                caption: "Photo viewer",
+            },
+        ],
+    },
+    {
+        slug: "trackee",
+        name: "Trackee",
+        shortName: "Trackee",
+        category: "compact",
+        summary: "Team project management: teams, kanban boards, shared calendar, assignments, comments, notifications.",
+        description:
+            "A modern team collaboration and project management platform designed to streamline workflow and boost productivity. Users can create and join teams, set up projects with detailed task breakdowns, and track progress through intuitive kanban boards. The platform includes a shared calendar system for scheduling deadlines and meetings, customizable user profiles, and real-time collaboration features. Team members can assign tasks, set priorities, add comments, and receive notifications about updates. The clean, minimalist interface ensures users stay focused on what matters most - getting work done.",
+        links: {},
+        row: {
+            description: "Team project management: teams, kanban boards, shared calendar, assignments, comments, notifications.",
+            stack: "Laravel, Tailwind, MySQL",
+        },
+        specs: [{ label: "Stack", value: "Laravel, Tailwind, MySQL, JavaScript, Blade, REST API" }],
+        figures: [],
+        images: [
+            {
+                kind: "image",
+                src: "/trackee1.png",
+                width: 2908,
+                height: 1670,
+                alt: "Trackee dashboard with project, team, task and friend counters, projects and reminders",
+                caption: "Dashboard",
+            },
+            {
+                kind: "image",
+                src: "/trackee2.png",
+                width: 2908,
+                height: 1670,
+                alt: "Trackee user profile with avatar, about section and tags",
+                caption: "User profile",
+            },
+        ],
+    },
+    {
+        slug: "filmio",
+        name: "Filmio",
+        shortName: "Filmio",
+        category: "compact",
+        summary: "Film club web app: catalog, screening votes, ratings and reviews, role-based access.",
+        description:
+            "A school project that evolved into a fully functional film club web application. The platform allows movie enthusiasts to create accounts, join the club community, and participate in shared movie watching sessions. Members can browse the film catalog, vote on upcoming screenings, and discuss movies with other members. The admin dashboard provides complete control over the film database, user management, and scheduling of watch sessions. Features include user authentication with role-based access, a rating and review system, and a clean interface optimized for easy navigation.",
+        links: {},
+        row: {
+            description: "Film club web app: catalog, screening votes, ratings and reviews, role-based access.",
+            stack: "PHP, MySQL, Tailwind",
+        },
+        specs: [{ label: "Stack", value: "PHP, MySQL, Tailwind, HTML, Authentication" }],
+        figures: [],
+        images: [
+            {
+                kind: "image",
+                src: "/filmio1.png",
+                width: 2908,
+                height: 1670,
+                alt: "Filmio admin panel with a form for adding a film and a club health summary",
+                caption: "Admin panel",
+            },
+            {
+                kind: "image",
+                src: "/filmio2.png",
+                width: 2908,
+                height: 1670,
+                alt: "Filmio member dashboard with membership details and the film catalog",
+                caption: "Member dashboard",
+            },
+        ],
+    },
+    {
+        slug: "cafecheck",
+        name: "Cafecheck",
+        shortName: "Cafecheck",
+        category: "compact",
+        summary: "Private café review site for Zlín and surroundings.",
+        description:
+            "A personal passion project for documenting and sharing experiences at local coffee shops in Zlín and surrounding areas. The website features subjective reviews covering atmosphere, coffee quality, food options, and overall vibe of each location. Each review includes personal photos capturing the unique character of the cafes, along with practical information like opening hours and location. Built as a non-public platform for personal use and sharing with friends who share the same appreciation for good coffee and cozy spaces.",
+        links: {},
+        row: {
+            description: "Private café review site for Zlín and surroundings.",
+            stack: "JavaScript, Bootstrap, EmailJS",
+        },
+        specs: [{ label: "Stack", value: "JavaScript, Bootstrap, EmailJS, HTML, CSS" }],
+        figures: [],
+        images: [
+            {
+                kind: "image",
+                src: "/cafecheck1.png",
+                width: 2908,
+                height: 1670,
+                alt: "Cafecheck homepage reading Welcome to Café reviews, Zlín and surroundings",
+                caption: "Homepage",
+            },
+            {
+                kind: "image",
+                src: "/cafecheck2.png",
+                width: 2908,
+                height: 1670,
+                alt: "Cafecheck review page with filters and café photos",
+                caption: "Café review listing",
+            },
+        ],
+    },
 ];
+
+export const forensics: PlainTable = {
+    label: "Table 4",
+    caption: "Forensics and tooling",
+    columns: ["Work", "Scope", "Tools"],
+    rows: [
+        ["Phishing email forensics", "Headers, DNS, WHOIS", "URLScan, VirusTotal"],
+        ["MIFARE Classic NFC forensics", "CTF challenge", "[PLACEHOLDER]"],
+        ["Main toolkit", "Daily environment", "Kali Linux"],
+    ],
+    monoColumn: 2,
+};
+
+export const otherSoftware = { label: "Table 5", caption: "Other software", columns: ["Name", "Description", "Stack", "Link"] };
 
 export function projectsIn(category: Category): Project[] {
     return projects.filter((p) => p.category === category);
