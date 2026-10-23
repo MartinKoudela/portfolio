@@ -582,7 +582,7 @@ export const projects: Project[] = [
         specs: [
             { label: "Board", value: "Raspberry Pi 4 Model B", note: "BCM2711, 4× Cortex-A72 @ 1.8 GHz", fn: "piBriefs" },
             { label: "Camera", value: "Camera Module 3 NoIR" },
-            { label: "Motion sensor", value: "PIR" },
+            { label: "Motion sensor", value: "PIR", note: "HW-416" },
             { label: "Detection", value: "YOLOv8", note: "People, animals, vehicles" },
             { label: "Recording", value: "Circular H264 buffer", note: "Length [PLACEHOLDER]" },
             { label: "Live view", value: "MJPEG", note: "FastAPI backend, vanilla JS web UI" },
@@ -595,17 +595,45 @@ export const projects: Project[] = [
             {
                 id: "fig-5a",
                 label: "Fig. 5a",
-                caption: "RaspiVision unit",
-                media: { kind: "placeholder", label: "[PLACEHOLDER: photo]", aspect: "16 / 9" },
+                caption: "Raspberry Pi 4 in its case during assembly; CSI ribbon to the camera, PIR wired to GPIO.",
+                media: {
+                    kind: "image",
+                    src: "/raspivision-unit.jpg",
+                    width: 1932,
+                    height: 1087,
+                    alt: "Raspberry Pi 4 in a black case with the lid off, a flat CSI ribbon cable attached to the camera connector",
+                },
             },
             {
                 id: "fig-5b",
                 label: "Fig. 5b",
-                caption: "Schematic, KiCad",
-                media: { kind: "placeholder", label: "[PLACEHOLDER: KiCad export]", aspect: "16 / 9" },
+                caption: "KiCad schematic: Raspberry Pi 4 GPIO header, Camera Module 3 NoIR via 15-pin CSI ribbon, HW-416 PIR sensor.",
+                media: {
+                    kind: "image",
+                    src: "/raspivision-schematic.svg",
+                    width: 1600,
+                    height: 1000,
+                    alt: "KiCad schematic: Raspberry Pi 4 40-pin GPIO header, Camera Module 3 NoIR on a 15-pin CSI connector, and the HW-416 PIR sensor connected to +5V, GPIO17 and GND",
+                },
             },
         ],
         images: [
+            {
+                kind: "image",
+                src: "/raspivision-sample-frame.jpg",
+                width: 2576,
+                height: 1449,
+                alt: "Camera snapshot of a desk with a monitor, a laptop and posters on the wall, date and time stamped in the top-left corner",
+                caption: "Snapshot from the camera with timestamp overlay.",
+            },
+            {
+                kind: "image",
+                src: "/raspivision-live.png",
+                width: 2916,
+                height: 1735,
+                alt: "RaspiVision web UI in live view: camera stream of a desk with date, 42 FPS and 640×420 in the overlay, Snapshot and Record buttons on the right",
+                caption: "Web UI, live view: MJPEG stream, 640×420 at 42 FPS, snapshot and record controls.",
+            },
             {
                 kind: "image",
                 src: "/rpi.jpg",
@@ -616,27 +644,11 @@ export const projects: Project[] = [
             },
             {
                 kind: "image",
-                src: "/rpi3.png",
-                width: 2940,
-                height: 1912,
-                alt: "RaspiVision web UI showing the live camera stream with snapshot and record controls",
-                caption: "Web UI, live view",
-            },
-            {
-                kind: "image",
                 src: "/rpi2.png",
                 width: 2940,
                 height: 1912,
                 alt: "RaspiVision web UI listing recorded clips in a grid",
                 caption: "Web UI, recordings gallery",
-            },
-            {
-                kind: "image",
-                src: "/rpi4.jpg",
-                width: 4608,
-                height: 2592,
-                alt: "Frame from the camera showing a desk with a monitor and a laptop",
-                caption: "Camera frame",
             },
         ],
         note: {
@@ -719,10 +731,11 @@ export const projects: Project[] = [
                 { label: "Board", value: "Raspberry Pi 4 Model B", note: "BCM2711, quad-core Cortex-A72 @ 1.8 GHz", fn: "pi4Brief" },
                 { label: "Memory", value: "[PLACEHOLDER]" },
                 { label: "Camera", value: "Camera Module 3 NoIR" },
-                { label: "Motion sensor", value: "PIR", note: "Model [PLACEHOLDER]" },
+                { label: "Motion sensor", value: "PIR", note: "HW-416" },
                 { label: "Detection", value: "YOLOv8", note: "People, animals, vehicles" },
                 { label: "Recording", value: "Circular H264 buffer", note: "Length [PLACEHOLDER]" },
                 { label: "Live view", value: "MJPEG", note: "FastAPI backend" },
+                { label: "Stream", value: "640×420, 42 FPS", note: "Live view overlay" },
                 { label: "Web UI", value: "Vanilla JS" },
                 { label: "Alerts", value: "Telegram", note: "With snapshot" },
                 { label: "Remote access", value: "Tailscale", note: "No ports exposed to the internet" },
@@ -733,7 +746,7 @@ export const projects: Project[] = [
             howItWorks: [
                 {
                     title: "Capture",
-                    text: "A Raspberry Pi Camera Module 3 NoIR supplies the video feed. A PIR sensor reports motion.",
+                    text: "A Raspberry Pi Camera Module 3 NoIR supplies the video feed. An HW-416 PIR sensor reports motion.",
                 },
                 {
                     title: "Detection",
@@ -758,14 +771,26 @@ export const projects: Project[] = [
                     {
                         id: "an-fig-2",
                         label: "Fig. 2",
-                        caption: "RaspiVision unit",
-                        media: { kind: "placeholder", label: "[PLACEHOLDER: photo, assembled unit]", aspect: "4 / 3" },
+                        caption: "Front plate during assembly: Camera Module 3 NoIR and HW-416 PIR sensor.",
+                        media: {
+                            kind: "image",
+                            src: "/raspivision-front-plate.jpg",
+                            width: 1932,
+                            height: 1449,
+                            alt: "Black front plate held in a hand, with the camera module board and the blue HW-416 PIR sensor board mounted on the back, CSI ribbon and jumper wires attached",
+                        },
                     },
                     {
                         id: "an-fig-3",
                         label: "Fig. 3",
-                        caption: "Schematic, KiCad",
-                        media: { kind: "placeholder", label: "[PLACEHOLDER: KiCad schematic export]", aspect: "4 / 3" },
+                        caption: "KiCad schematic: Raspberry Pi 4 GPIO header, Camera Module 3 NoIR via 15-pin CSI ribbon, HW-416 PIR sensor.",
+                        media: {
+                            kind: "image",
+                            src: "/raspivision-schematic.svg",
+                            width: 1600,
+                            height: 1000,
+                            alt: "KiCad schematic: Raspberry Pi 4 40-pin GPIO header, Camera Module 3 NoIR on a 15-pin CSI connector, and the HW-416 PIR sensor connected to +5V, GPIO17 and GND",
+                        },
                     },
                 ],
                 parts: {
@@ -775,7 +800,7 @@ export const projects: Project[] = [
                     rows: [
                         { label: "Raspberry Pi 4 Model B", value: "Detection, recording, web server" },
                         { label: "Camera Module 3 NoIR", value: "Video input" },
-                        { label: "PIR motion sensor", value: "Motion input" },
+                        { label: "HW-416 PIR motion sensor", value: "Motion input" },
                         { label: "[PLACEHOLDER]", value: "Power, enclosure, other parts", muted: true },
                     ],
                 },
