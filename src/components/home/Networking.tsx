@@ -3,6 +3,7 @@ import Caption from "../Caption";
 import DataTable, { cell } from "../DataTable";
 import RequestTrace from "./RequestTrace";
 import SectionHead from "./SectionHead";
+import StatusPanel from "./StatusPanel";
 
 export default function Networking() {
     const s = section("eth1");
@@ -14,6 +15,8 @@ export default function Networking() {
             <SectionHead section={s} />
 
             {networking.features.requestTrace && <RequestTrace />}
+
+            {networking.features.statusPanel && <StatusPanel />}
 
             <div className="row tbl-row hide-m">
                 <Caption id={diagId} label={diag.label} text={diag.caption} rail className="rail" />

@@ -987,6 +987,16 @@ a.plain {
   margin-top: 56px;
 }
 
+/* Service status */
+
+.st-down {
+  color: var(--accent);
+}
+
+.st-foot .cap {
+  margin-top: 8px;
+}
+
 /* Request trace */
 
 .rt-path {

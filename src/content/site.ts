@@ -165,6 +165,7 @@ export type Section = {
 export const networking = {
     features: {
         requestTrace: true,
+        statusPanel: true,
     },
 };
 
@@ -174,6 +175,7 @@ let netTables = 0;
 export const networkLabels = {
     traceFigure: "Fig. 1",
     traceTable: netFeatures.requestTrace ? `Table ${++netTables}` : "",
+    status: netFeatures.statusPanel ? `Table ${++netTables}` : "",
     diagnostics: `Table ${++netTables}`,
 };
 
