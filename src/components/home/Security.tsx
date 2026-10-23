@@ -7,8 +7,8 @@ import SectionHead from "./SectionHead";
 
 export default function Security() {
     const s = section("eth3");
-    const analysisId = "table-5-caption";
-    const toolingId = "table-6-caption";
+    const analysisId = "table-analysis-caption";
+    const toolingId = "table-tooling-caption";
     const noteFn = homeFootnoteNumbers[offensiveTooling.noteFn]!;
 
     return (

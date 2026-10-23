@@ -5,7 +5,7 @@ import DataTable from "../DataTable";
 
 export default function Ordering() {
     const s = section("console");
-    const captionId = "table-10-caption";
+    const captionId = "table-ordering-caption";
 
     return (
         <section id={s.id} aria-labelledby={`h-${s.id}`} className="eth">

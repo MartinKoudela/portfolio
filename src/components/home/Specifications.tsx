@@ -3,8 +3,8 @@ import Caption from "../Caption";
 import DataTable, { cell } from "../DataTable";
 
 export default function Specifications() {
-    const specId = "table-8-caption";
-    const revId = "table-9-caption";
+    const specId = "table-skills-caption";
+    const revId = "table-revisions-caption";
 
     return (
         <>

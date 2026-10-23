@@ -229,7 +229,7 @@ export const sections: Section[] = [
         label: "Networking",
         title: "Networking",
         summary:
-            "What runs on the network today, and what comes next. Public DNS and mail go through Cloudflare and iCloud. Everything else sits on a private Tailscale mesh, with no ports exposed to the internet.",
+            "Own infrastructure: Cloudflare DNS, custom-domain mail with SPF/DKIM, and a private Tailscale mesh; home devices expose no ports to the internet.",
     },
     {
         id: "eth2",
@@ -325,107 +325,8 @@ export const intro = {
 };
 
 export const network = {
-    topology: {
-        id: "fig-2",
-        label: "Fig. 1",
-        caption:
-            "Network topology. Solid: in service. Dashed: next revision. The mesh is drawn as a bus; every node reaches every other node directly.",
-        mobileCaption: "Network topology, simplified for small screens. Dashed: next revision.",
-        captionGap: 12,
-        media: {
-            kind: "diagram",
-            width: 1104,
-            height: 424,
-            frames: [
-                { x: 0, y: 0, w: 1104, h: 216 },
-                { x: 0, y: 248, w: 1104, h: 176, tint: true },
-            ],
-            arrows: [
-                { x: 176, y: 112, w: 79, h: 8, d: "M 0 4 L 76 4", head: true },
-                { x: 448, y: 68, w: 79, h: 8, d: "M 0 4 L 76 4", head: true },
-                { x: 448, y: 156, w: 79, h: 8, d: "M 0 4 L 76 4", head: true },
-                { x: 108, y: 360, w: 8, h: 32, d: "M 4 0 L 4 32", thin: true },
-                { x: 348, y: 360, w: 8, h: 32, d: "M 4 0 L 4 32", thin: true },
-                { x: 588, y: 360, w: 8, h: 32, d: "M 4 0 L 4 32", thin: true },
-                { x: 856, y: 360, w: 8, h: 32, d: "M 4 0 L 4 32", thin: true, muted: true, dashed: true },
-                { x: 112, y: 388, w: 480, h: 8, d: "M 0 4 L 480 4", thin: true },
-                { x: 592, y: 388, w: 268, h: 8, d: "M 0 4 L 268 4", thin: true, muted: true, dashed: true },
-            ],
-            cards: [
-                { x: 24, y: 80, w: 152, h: 72, title: "Internet" },
-                { x: 256, y: 40, w: 192, h: 152, title: "Cloudflare", lines: ["DNS for martinkoudela.com and laravix.com"] },
-                { x: 528, y: 40, w: 240, h: 64, title: "Websites", lines: ["martinkoudela.com, laravix.com"] },
-                { x: 528, y: 128, w: 240, h: 64, title: "iCloud Mail", lines: ["custom domain: MX, SPF, DKIM"] },
-                { x: 24, y: 288, w: 176, h: 72, title: "Own devices" },
-                { x: 264, y: 288, w: 176, h: 72, title: "RaspiVision", lines: ["Raspberry Pi 4"] },
-                { x: 504, y: 288, w: 176, h: 72, title: "G1 vision unit", lines: ["remote access at events"] },
-                { x: 744, y: 288, w: 232, h: 72, title: "NAS / home server", lines: ["OpenMediaVault or TrueNAS"], planned: true },
-            ],
-            texts: [
-                { x: 16, y: 12, w: 200, text: "Public · DNS and mail", label: true },
-                { x: 16, y: 260, w: 200, text: "Overlay · Tailscale mesh", label: true },
-                { x: 472, y: 132, w: 32, text: "MX", label: true, center: true },
-                { x: 760, y: 264, w: 216, text: "next revision", label: true },
-                {
-                    x: 832,
-                    y: 48,
-                    w: 240,
-                    text: "Home devices expose no ports to the internet. Remote access goes through the overlay below.",
-                },
-            ],
-            mobileGap: 12,
-            mobile: [
-                {
-                    t: "band",
-                    label: "Public · DNS and mail",
-                    nodes: [
-                        { t: "card", card: { title: "Internet" } },
-                        { t: "arrow" },
-                        { t: "card", card: { title: "Cloudflare", lines: ["DNS for martinkoudela.com and laravix.com"], inline: true } },
-                        { t: "arrow" },
-                        {
-                            t: "grid",
-                            cards: [
-                                { title: "Websites", lines: ["both domains"] },
-                                { title: "iCloud Mail", lines: ["MX, SPF, DKIM"] },
-                            ],
-                        },
-                    ],
-                    note: "Home devices expose no ports to the internet.",
-                },
-                {
-                    t: "band",
-                    label: "Overlay · Tailscale mesh",
-                    tint: true,
-                    nodes: [
-                        {
-                            t: "grid",
-                            cards: [
-                                { title: "Own devices" },
-                                { title: "RaspiVision", lines: ["Raspberry Pi 4"] },
-                                { title: "G1 vision unit", lines: ["at events"] },
-                                { title: "NAS", lines: ["next revision"], planned: true },
-                            ],
-                        },
-                    ],
-                    note: "One mesh: every node reaches every other node directly.",
-                },
-            ],
-        },
-    } satisfies Figure,
-    segments: {
-        label: "Table 1",
-        caption: "Infrastructure I run",
-        columns: ["Service", "Implementation", "Note"],
-        rows: [
-            { label: "Public DNS", value: "Cloudflare", note: "martinkoudela.com, laravix.com" },
-            { label: "Mail", value: "iCloud Mail", note: "Custom domain; MX, SPF, DKIM" },
-            { label: "Overlay", value: "Tailscale", note: "Remote access to RaspiVision and the G1 vision unit at events" },
-            { label: "Storage", value: "NAS / home server", note: "Next revision; OpenMediaVault or TrueNAS", muted: true },
-        ],
-    } satisfies SpecTable,
     diagnostics: {
-        label: "Table 2",
+        label: "Table 1",
         caption: "Diagnostics",
         columns: ["Function", "Tools"],
         rows: [
@@ -452,7 +353,7 @@ export const projects: Project[] = [
         figures: [
             {
                 id: "fig-3",
-                label: "Fig. 2",
+                label: "Fig. 1",
                 caption: "Unitree G1 EDU humanoid robot",
                 media: {
                     kind: "image",
@@ -484,7 +385,7 @@ export const projects: Project[] = [
         figures: [
             {
                 id: "fig-4",
-                label: "Fig. 3",
+                label: "Fig. 2",
                 caption: "Data flow. Shaded block runs on the Pi.",
                 mobileCaption: "Data flow, simplified. Shaded block runs on the Pi.",
                 media: {
@@ -557,7 +458,7 @@ export const projects: Project[] = [
         links: { source: "https://github.com/MartinKoudela/rpi-cam" },
         layout: "table-media",
         specTable: {
-            label: "Table 3",
+            label: "Table 2",
             caption: "RaspiVision specifications",
             columns: ["Parameter", "Value", "Note"],
             minWidth: 600,
@@ -572,13 +473,13 @@ export const projects: Project[] = [
             { label: "Live view", value: "MJPEG", note: "FastAPI backend, vanilla JS web UI" },
             { label: "Alerts", value: "Telegram", note: "With snapshot" },
             { label: "Remote access", value: "Tailscale", note: "No ports exposed to the internet" },
-            { label: "Schematic", value: "KiCad", note: "Fig. 4b" },
+            { label: "Schematic", value: "KiCad", note: "Fig. 3b" },
             { label: "Status", value: "Completed", note: "Annual school project" },
         ],
         figures: [
             {
                 id: "fig-5a",
-                label: "Fig. 4a",
+                label: "Fig. 3a",
                 caption: "Raspberry Pi 4 in its case during assembly; CSI ribbon to the camera, PIR wired to GPIO",
                 media: {
                     kind: "image",
@@ -590,7 +491,7 @@ export const projects: Project[] = [
             },
             {
                 id: "fig-5b",
-                label: "Fig. 4b",
+                label: "Fig. 3b",
                 caption: "KiCad schematic: Raspberry Pi 4 GPIO header, Camera Module 3 NoIR via 15-pin CSI ribbon, HW-416 PIR sensor",
                 media: {
                     kind: "image",
@@ -808,7 +709,7 @@ export const projects: Project[] = [
         figures: [
             {
                 id: "fig-6",
-                label: "Fig. 5",
+                label: "Fig. 4",
                 caption:
                     "hey-l0k1 schematic: ESP32-S3, ReSpeaker mic array, GC9A01 round touch display, MAX98357 amplifier, IP5306 power",
                 media: {
@@ -847,11 +748,11 @@ export const projects: Project[] = [
         status: "Schematic complete (Rev v0.1)",
         links: {},
         layout: "media-table",
-        specTable: { label: "Table 4", caption: "Interfaces and build", columns: ["Interface", "Function"], minWidth: 380 },
+        specTable: { label: "Table 3", caption: "Interfaces and build", columns: ["Interface", "Function"], minWidth: 380 },
         figures: [
             {
                 id: "fig-7",
-                label: "Fig. 6",
+                label: "Fig. 5",
                 caption: "Root sheet: ESP32-S3 with ten subsystem sheets. Rev v0.1, schematic stage.",
                 noteCaption: "Root sheet: ESP32-S3 and subsystem hierarchy",
                 media: {
@@ -923,7 +824,7 @@ export const projects: Project[] = [
         figures: [
             {
                 id: "fig-8",
-                label: "Fig. 7a",
+                label: "Fig. 6a",
                 caption: "Laravix tenancy and delivery",
                 media: {
                     kind: "diagram",
@@ -989,7 +890,7 @@ export const projects: Project[] = [
             },
             {
                 id: "fig-8b",
-                label: "Fig. 7b",
+                label: "Fig. 6b",
                 caption: "Visual page builder (GrapesJS): editing the homepage hero, style manager on the right",
                 homeOnly: true,
                 media: {
@@ -1061,7 +962,7 @@ export const projects: Project[] = [
         figures: [
             {
                 id: "fig-9a",
-                label: "Fig. 8a",
+                label: "Fig. 7a",
                 caption: "Today: overdue tasks, progress, tasks grouped by project",
                 media: {
                     kind: "image",
@@ -1073,7 +974,7 @@ export const projects: Project[] = [
             },
             {
                 id: "fig-9b",
-                label: "Fig. 8b",
+                label: "Fig. 7b",
                 caption: "Projects: recent pages and project list",
                 media: {
                     kind: "image",
@@ -1085,7 +986,7 @@ export const projects: Project[] = [
             },
             {
                 id: "fig-9c",
-                label: "Fig. 8c",
+                label: "Fig. 7c",
                 caption: "Project: pages and tasks in one view",
                 media: {
                     kind: "image",
@@ -1176,7 +1077,7 @@ export const projects: Project[] = [
         figures: [
             {
                 id: "fig-10",
-                label: "Fig. 9",
+                label: "Fig. 8",
                 caption: "In-game OS terminal",
                 media: {
                     kind: "image",
@@ -1379,7 +1280,7 @@ export const projects: Project[] = [
 ];
 
 export const analysis: PlainTable = {
-    label: "Table 5",
+    label: "Table 4",
     caption: "Analysis",
     columns: ["Work", "Scope", "Tools"],
     rows: [
@@ -1393,7 +1294,7 @@ export const analysis: PlainTable = {
 };
 
 export const offensiveTooling: PlainTable & { note: string; noteFn: FootnoteKey } = {
-    label: "Table 6",
+    label: "Table 5",
     caption: "Offensive tooling",
     note: "Own network and lab only",
     noteFn: "authorised",
@@ -1411,7 +1312,7 @@ export const offensiveTooling: PlainTable & { note: string; noteFn: FootnoteKey 
     monoColumn: 0,
 };
 
-export const otherSoftware = { label: "Table 7", caption: "Other software", columns: ["Name", "Description", "Stack", "Link"] };
+export const otherSoftware = { label: "Table 6", caption: "Other software", columns: ["Name", "Description", "Stack", "Link"] };
 
 export function projectsIn(category: Category): Project[] {
     return projects.filter((p) => p.category === category);
@@ -1481,7 +1382,7 @@ export function neighbours(project: Project): { previous: Project; next: Project
 
 export const specifications = {
     title: "Specifications",
-    label: "Table 8",
+    label: "Table 7",
     caption: "Skills and tools",
     columns: ["Parameter", "Values"],
     rows: [
@@ -1498,7 +1399,7 @@ export const specifications = {
 
 export const revisions = {
     title: "Revision history",
-    label: "Table 9",
+    label: "Table 8",
     caption: "Milestones",
     columns: ["Rev", "Date", "Change"],
     rows: [
@@ -1513,7 +1414,7 @@ export const revisions = {
 
 export const ordering = {
     availability: "Open to networking, security, hardware and backend projects. Web projects selectively.",
-    label: "Table 10",
+    label: "Table 9",
     caption: "Ordering channels",
     columns: ["Channel", "Address"],
     channels: [
