@@ -16,17 +16,25 @@ function Body({ id, media, captionId }: { id: string; media: Media; captionId: s
     switch (media.kind) {
         case "placeholder":
             return <Placeholder media={media} />;
-        case "image":
-            return (
+        case "image": {
+            const image = (
                 <Image
                     src={media.src}
                     alt={media.alt}
                     width={media.width}
                     height={media.height}
                     sizes="(max-width: 767px) 100vw, 864px"
-                    className="fig-img"
+                    className={cx("fig-img", media.schematic && "fig-plate")}
                 />
             );
+            if (!media.schematic) return image;
+            return (
+                <a href={media.src} target="_blank" rel="noopener" className="plain">
+                    {image}
+                    <span className="sr-only"> (opens full size in a new tab)</span>
+                </a>
+            );
+        }
         case "set":
             return (
                 <div className="ph-set">

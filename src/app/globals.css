@@ -2,6 +2,7 @@
 
 :root {
   --paper: #F5F2EB;
+  --plate: #F5F2EB;
   --ink: #191816;
   --grey: #5F5C56;
   --rule: #D6D1C6;
@@ -506,6 +507,10 @@ a.plain {
   display: block;
   width: 100%;
   height: auto;
+}
+
+.fig-plate {
+  background: var(--plate);
 }
 
 @media (max-width: 767.98px) {

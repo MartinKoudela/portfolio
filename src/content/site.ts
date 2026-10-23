@@ -2,7 +2,14 @@ export type SectionId = "eth1" | "eth2" | "eth3" | "eth4" | "console";
 
 export type FootnoteKey = "reflow" | "piBriefs" | "esp32Datasheet" | "authorised" | "pi4Brief";
 
-export type ImageMedia = { kind: "image"; src: string; alt: string; width: number; height: number };
+export type ImageMedia = {
+    kind: "image";
+    src: string;
+    alt: string;
+    width: number;
+    height: number;
+    schematic?: boolean;
+};
 export type PlaceholderMedia = { kind: "placeholder"; label: string; aspect: string };
 
 export type DiagramCard = {
@@ -74,6 +81,7 @@ export type Figure = {
     label: string;
     caption: string;
     mobileCaption?: string;
+    noteCaption?: string;
     media: Media;
     captionGap?: number;
 };
@@ -380,7 +388,7 @@ export const network = {
                 { x: 504, y: 288, w: 176, h: 72, title: "G1 vision unit", lines: ["remote access at events"] },
                 { x: 744, y: 288, w: 232, h: 72, title: "NAS / home server", lines: ["OpenMediaVault or TrueNAS"], planned: true },
                 { x: 24, y: 496, w: 208, h: 56, title: "l0k1", lines: ["ESP32-S3 pentesting handheld"] },
-                { x: 312, y: 496, w: 456, h: 56, lines: ["Wi-Fi · BLE · Sub-GHz 433 / 868 / 915 MHz · NFC / RFID"], center: true },
+                { x: 312, y: 496, w: 456, h: 56, lines: ["Wi-Fi · BLE · Sub-GHz (CC1101, 433 MHz) · NFC / RFID"], center: true },
             ],
             texts: [
                 { x: 16, y: 12, w: 200, text: "Public · DNS and mail", label: true },
@@ -441,7 +449,7 @@ export const network = {
                             t: "card",
                             card: {
                                 title: "l0k1",
-                                lines: ["ESP32-S3 pentesting handheld", "Wi-Fi · BLE · Sub-GHz 433 / 868 / 915 MHz · NFC / RFID"],
+                                lines: ["ESP32-S3 pentesting handheld", "Wi-Fi · BLE · Sub-GHz (CC1101, 433 MHz) · NFC / RFID"],
                             },
                         },
                     ],
@@ -617,6 +625,7 @@ export const projects: Project[] = [
                     src: "/raspivision-schematic.svg",
                     width: 1600,
                     height: 1000,
+                    schematic: true,
                     alt: "KiCad schematic: Raspberry Pi 4 40-pin GPIO header, Camera Module 3 NoIR on a 15-pin CSI connector, and the HW-416 PIR sensor connected to +5V, GPIO17 and GND",
                 },
             },
@@ -793,6 +802,7 @@ export const projects: Project[] = [
                             src: "/raspivision-schematic.svg",
                             width: 1600,
                             height: 1000,
+                            schematic: true,
                             alt: "KiCad schematic: Raspberry Pi 4 40-pin GPIO header, Camera Module 3 NoIR on a 15-pin CSI connector, and the HW-416 PIR sensor connected to +5V, GPIO17 and GND",
                         },
                     },
@@ -866,26 +876,65 @@ export const projects: Project[] = [
             {
                 id: "fig-7",
                 label: "Fig. 7",
-                caption: "l0k1",
-                media: { kind: "placeholder", label: "[PLACEHOLDER: photo, handheld front]", aspect: "3 / 4" },
+                caption: "Root sheet: ESP32-S3 with ten subsystem sheets. Rev v0.1, schematic stage.",
+                noteCaption: "Root sheet: ESP32-S3 and subsystem hierarchy",
+                media: {
+                    kind: "image",
+                    src: "/L0k1-scheme.svg",
+                    width: 1485,
+                    height: 1050,
+                    alt: "KiCad root sheet of l0k1: ESP32-S3 module U1 with its GPIO nets, connected to hierarchical sheets for NFC, 2.4 GHz, Sub-GHz, IR, LED FX, display, storage, audio, buttons and power",
+                    schematic: true,
+                },
+            },
+        ],
+        images: [
+            {
+                    kind: "image",
+                    src: "/L0k1-scheme-Power.svg",
+                    width: 1485,
+                    height: 1050,
+                    alt: "KiCad power sheet of l0k1: battery cell with TP4056 charger, SPDT power switch, MT3608 step-up to 5 V, and a 100 kΩ divider for battery voltage sensing",
+                    schematic: true,
+                caption: "Power: battery cell, power switch, battery voltage sensing",
+            },
+            {
+                    kind: "image",
+                    src: "/L0k1-scheme-SubGHz.svg",
+                    width: 1485,
+                    height: 1050,
+                    alt: "KiCad Sub-GHz sheet of l0k1: CC1101 433 MHz transceiver with a 100 nF decoupling capacitor, connected to the ESP32-S3 over SPI with chip select and GDO0",
+                    schematic: true,
+                caption: "Sub-GHz: CC1101 transceiver, 433 MHz, SPI",
+            },
+            {
+                    kind: "image",
+                    src: "/L0k1-scheme-NFC.svg",
+                    width: 1485,
+                    height: 1050,
+                    alt: "KiCad NFC sheet of l0k1: PN532 module connected to the ESP32-S3 over I2C, with reset and IRQ lines",
+                    schematic: true,
+                caption: "NFC: PN532 over I2C",
             },
         ],
         specs: [
+            { label: "MCU", value: "ESP32-S3", fn: "esp32Datasheet", plain: true },
             { label: "Wi-Fi", value: "Scanning" },
             { label: "BLE", value: "Recon" },
-            { label: "Sub-GHz", value: "433 / 868 / 915 MHz" },
-            { label: "NFC / RFID", value: "Read, emulation" },
-            { label: "IR", value: "Supported" },
-            { label: "Display", value: "Built-in, custom GUI" },
-            { label: "Power", value: "Battery" },
+            { label: "Sub-GHz", value: "CC1101, 433 MHz" },
+            { label: "2.4 GHz", value: "nRF24L01" },
+            { label: "NFC", value: "PN532 (I2C)" },
+            { label: "IR", value: "940 nm TX + RX" },
+            { label: "Display", value: "ST7789 TFT (SPI)" },
+            { label: "Audio", value: "PAM8403 amplifier, 1 W 8 ohm speaker" },
+            { label: "Storage", value: "MicroSD (SPI)" },
+            { label: "LED FX", value: "WS2812B" },
+            { label: "UI", value: "7 buttons" },
+            { label: "Power", value: "Battery cell, power switch, battery voltage sensing" },
             { label: "Build", value: "Modular" },
             { label: "Firmware", value: "C++" },
-            {
-                label: "MCU",
-                value: "ESP32-S3; Xtensa LX7 dual-core, 2.4 GHz Wi-Fi, Bluetooth 5 (LE)",
-                fn: "esp32Datasheet",
-                plain: true,
-            },
+            { label: "Schematic", value: "KiCad 10, 11 sheets, Rev v0.1" },
+            { label: "Status", value: "PRELIMINARY: schematic complete, hardware not assembled, firmware not started" },
             { label: "Next revision", value: "", group: true },
             { label: "Packet injection", value: "Planned", fn: "authorised", muted: true },
             { label: "Deauth detection", value: "Planned", muted: true },
@@ -1289,7 +1338,12 @@ export function noteFigures(project: Project): { diagram?: Figure; hardware: Fig
         return `Fig. ${numbers.get(base)}${suffix}`;
     };
 
-    const renumbered = (f: Figure): Figure => ({ ...f, id: `an-${f.id}`, label: renumber(f.label) });
+    const renumbered = (f: Figure): Figure => ({
+        ...f,
+        id: `an-${f.id}`,
+        label: renumber(f.label),
+        caption: f.noteCaption ?? f.caption,
+    });
     const first = diagram && renumbered(diagram);
     const hw = hardware.map(renumbered);
     const figures = source.map(renumbered);
