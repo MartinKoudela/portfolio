@@ -622,7 +622,7 @@ export const projects: Project[] = [
             },
             specs: [
                 { label: "Board", value: "Raspberry Pi 4 Model B", note: "BCM2711, quad-core Cortex-A72 @ 1.8 GHz", fn: "pi4Brief" },
-                { label: "Memory", value: "[PLACEHOLDER]" },
+                { label: "Memory", value: "4 GB" },
                 { label: "Camera", value: "Camera Module 3 NoIR", note: "12 MP Sony IMX708, no IR filter; CSI-2 via 15-pin ribbon" },
                 { label: "Motion sensor", value: "HW-416 PIR" },
                 { label: "Detection", value: "YOLOv8", note: "People, animals, vehicles" },
