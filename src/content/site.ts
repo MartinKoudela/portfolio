@@ -129,6 +129,7 @@ export type Project = {
     family?: string;
     descriptor?: string;
     preliminary?: boolean;
+    metaDescription?: string;
     summary: string;
     description?: string;
     status?: string;
@@ -173,7 +174,7 @@ export const siteMeta = {
     title: "Martin Koudela | Networking, Hardware & Security",
     shareTitle: "Martin Koudela · MK-01",
     description:
-        "Martin Koudela: networking, hardware/IoT and security from Zlín. Raspberry Pi vision, ESP32-S3 RF tools, G1 humanoid robotics, Laravel and FastAPI backends.",
+        "Martin Koudela: networking, hardware/IoT and security from Zlín. Raspberry Pi vision, ESP32-S3 RF hardware design, G1 humanoid robotics, Laravel and FastAPI.",
     imageAlt: "MK-01, Martin Koudela",
     ogLine: "Networking, hardware/IoT and security from Zlín.",
     keywords: [
@@ -859,6 +860,8 @@ export const projects: Project[] = [
         preliminary: true,
         summary:
             "Battery-powered RF handheld, designed around the ESP32-S3: 2.4 GHz, Sub-GHz, NFC, IR, display, audio and storage. Schematic complete (Rev v0.1); hardware and firmware not started.",
+        metaDescription:
+            "Battery-powered RF handheld designed around the ESP32-S3. Schematic complete (Rev v0.1); hardware and firmware not started.",
         status: "Schematic complete (Rev v0.1)",
         links: {},
         layout: "media-table",

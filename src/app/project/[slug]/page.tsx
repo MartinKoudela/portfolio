@@ -51,7 +51,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
 
     if (!project) return { title: "Project not found" };
 
-    const description = excerpt(summaryOf(project));
+    const description = project.metaDescription ?? excerpt(summaryOf(project));
     const url = `/project/${project.slug}`;
 
     return {

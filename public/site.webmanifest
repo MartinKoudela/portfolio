@@ -1,7 +1,7 @@
 {
   "name": "Martin Koudela · MK-01",
   "short_name": "MK-01",
-  "description": "Martin Koudela: networking, hardware/IoT and security from Zlín. Raspberry Pi vision, ESP32-S3 RF tools, G1 humanoid robotics, Laravel and FastAPI backends.",
+  "description": "Martin Koudela: networking, hardware/IoT and security from Zlín. Raspberry Pi vision, ESP32-S3 RF hardware design, G1 humanoid robotics, Laravel and FastAPI.",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",
