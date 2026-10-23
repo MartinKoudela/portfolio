@@ -10,7 +10,7 @@ export default function SpecList({ rows, columns = 1, footnote }: Props) {
             {rows.map((row) => {
                 const n = footnote(row);
                 return (
-                    <div key={row.label} className="sp">
+                    <div key={row.label} className={cx("sp", row.wide && "sp--wide")}>
                         <dt>{row.label}</dt>
                         <dd>
                             {row.href ? <a href={row.href}>{row.value}</a> : rich(row.value)}

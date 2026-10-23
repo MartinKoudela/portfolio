@@ -552,6 +552,11 @@ a.plain {
     order: 2;
     margin-top: 10px;
   }
+
+  .fig--rail > .main,
+  .fig--rail > figcaption {
+    flex: none;
+  }
 }
 
 /* Diagrams */
@@ -1173,8 +1178,13 @@ a.plain {
   margin-top: 28px;
 }
 
-.sp-list--2 .sp:nth-last-child(2):nth-child(odd) {
+.sp-list--2 .sp:nth-last-child(2):nth-child(odd),
+.sp-list--2 .sp--wide ~ .sp:nth-last-child(2):nth-child(even) {
   border-bottom: 1px solid var(--rule);
+}
+
+.sp-list--2 .sp--wide {
+  grid-column: 1 / -1;
 }
 
 @media (max-width: 767.98px) {
@@ -1233,7 +1243,8 @@ a.plain {
     margin-top: 20px;
   }
 
-  .sp-list--2 .sp:nth-last-child(2):nth-child(odd) {
+  .sp-list--2 .sp:nth-last-child(2):nth-child(odd),
+  .sp-list--2 .sp--wide ~ .sp:nth-last-child(2):nth-child(even) {
     border-bottom: 0;
   }
 }

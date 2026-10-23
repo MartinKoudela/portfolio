@@ -94,6 +94,7 @@ export type SpecRow = {
     href?: string;
     group?: boolean;
     plain?: boolean;
+    wide?: boolean;
 };
 
 export type Fact = { label: string; value: string; href?: string };
@@ -420,7 +421,7 @@ export const projects: Project[] = [
                     ],
                     texts: [
                         { x: 452, y: 160, w: 40, text: "JSON", label: true, center: true },
-                        { x: 712, y: 168, w: 152, text: "Remote access at events over Tailscale.", size: [12, 17] },
+                        { x: 712, y: 168, w: 152, text: "Remote access at events was over Tailscale.", size: [12, 17] },
                     ],
                     mobile: [
                         { t: "narrow", nodes: [{ t: "card", card: { title: "Camera", lines: ["Camera Module 3 NoIR"] } }, { t: "arrow" }] },
@@ -437,11 +438,13 @@ export const projects: Project[] = [
                                 { title: "Browser", lines: ["FastAPI stream"] },
                             ],
                         },
+                        { t: "note", text: "Remote access at events was over Tailscale." },
                     ],
                 },
             },
         ],
         specs: [
+            { label: "Status", value: "END OF LIFE — replaced on the G1 by a separate system I did not build", wide: true },
             { label: "Board", value: "Raspberry Pi 5; BCM2712, 4× Cortex-A76 @ 2.4 GHz", fn: "piBriefs" },
             { label: "Language", value: "Python" },
             { label: "Camera", value: "Raspberry Pi Camera Module 3 NoIR" },
@@ -450,7 +453,6 @@ export const projects: Project[] = [
             { label: "Output", value: "JSON for the G1 robot SDK; FastAPI stream" },
             { label: "Vision libraries", value: "MediaPipe, OpenCV" },
             { label: "Remote access", value: "Tailscale, used at events" },
-            { label: "Status", value: "END OF LIFE — replaced on the G1 by a different system (not my work)" },
         ],
     },
     {
