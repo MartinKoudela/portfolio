@@ -81,7 +81,7 @@ export default async function ProjectPage({ params }: { params: Promise<Params> 
 
     const s = section(categorySection[project.category]);
     const { diagram, hardware, figures } = noteFigures(project);
-    const phones = figures.every((f) => f.media.kind === "image" && f.media.height > f.media.width);
+    const phones = figures.every((f) => f.media.kind === "image" && f.media.height > f.media.width * 1.8);
     const specs = noteSpecs(project);
     const fnNumbers = noteFootnotes(project);
     const footnote = (row: { fn?: keyof typeof footnotes }) => (row.fn ? fnNumbers.get(row.fn) : undefined);

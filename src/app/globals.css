@@ -1109,6 +1109,10 @@ a.plain {
   grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
 }
 
+.note-grid--portrait {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.45fr);
+}
+
 .note-grid--specs {
   grid-template-columns: minmax(0, 1fr) minmax(0, 1.45fr);
 }
@@ -1507,7 +1511,7 @@ a.plain {
 
 .an-icon {
   flex: none;
-  width: 96px;
+  width: auto;
   height: 96px;
 }
 
@@ -1603,7 +1607,6 @@ a.plain {
   }
 
   .an-icon {
-    width: 48px;
     height: 48px;
   }
 

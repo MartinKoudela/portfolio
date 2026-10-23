@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { homeFootnoteNumbers, type Project, type SpecRow } from "@/content/site";
+import { homeFootnoteNumbers, type Figure, type Project, type SpecRow } from "@/content/site";
 import Caption from "../Caption";
 import DataTable, { specRows } from "../DataTable";
 import FigureView from "../FigureView";
@@ -29,13 +29,23 @@ function SpecTableBlock({ project }: { project: Project }) {
     );
 }
 
+function isPortrait(figure?: Figure): boolean {
+    return figure?.media.kind === "image" && figure.media.height > figure.media.width;
+}
+
 function Body({ project }: { project: Project }) {
     const [first] = project.figures;
 
     switch (project.layout) {
         case "media-specs":
             return (
-                <div className="note-grid note-grid--media">
+                <div
+                    className={
+                        project.figures.length === 1 && isPortrait(first)
+                            ? "note-grid note-grid--portrait"
+                            : "note-grid note-grid--media"
+                    }
+                >
                     {project.figures.length > 1 ? (
                         <div className="fig-strip">
                             {project.figures.map((f) => (

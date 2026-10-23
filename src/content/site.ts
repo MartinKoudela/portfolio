@@ -489,8 +489,14 @@ export const projects: Project[] = [
             {
                 id: "fig-3",
                 label: "Fig. 3",
-                caption: "Unitree G1 at a public event",
-                media: { kind: "placeholder", label: "[PLACEHOLDER: photo, G1 at a public event]", aspect: "16 / 10" },
+                caption: "Unitree G1 EDU humanoid robot",
+                media: {
+                    kind: "image",
+                    src: "/g1-robot.jpg",
+                    width: 1449,
+                    height: 1811,
+                    alt: "Unitree G1 humanoid robot shown from the waist up, with a black head ringed by a blue light strip, a silver torso with an Orbis logo, and jointed silver arms, standing indoors in front of a painted forest backdrop",
+                },
             },
         ],
         specs: [
@@ -948,6 +954,7 @@ export const projects: Project[] = [
             "Open-source multi-tenant CMS. Each site is an isolated tenant with its own content, users, media and theme, delivered through a Blade theme or a token-authenticated REST API. In active development.",
         status: "In active development",
         links: { source: "https://github.com/MartinKoudela/laravix-cms", website: "https://laravix.com" },
+        icon: "/laravix-icon.png",
         layout: "diagram-specs",
         figures: [
             {
