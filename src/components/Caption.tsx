@@ -8,9 +8,19 @@ type Props = {
     as?: "p" | "figcaption";
     id?: string;
     className?: string;
+    fullSize?: string;
 };
 
-export default function Caption({ label, text, mobileText, rail = false, as: Tag = "p", id, className }: Props) {
+export default function Caption({
+    label,
+    text,
+    mobileText,
+    rail = false,
+    as: Tag = "p",
+    id,
+    className,
+    fullSize,
+}: Props) {
     return (
         <Tag id={id} className={cx("cap", rail && "cap--rail", className)}>
             <b>{label}</b>
@@ -25,6 +35,14 @@ export default function Caption({ label, text, mobileText, rail = false, as: Tag
                     ) : (
                         text
                     )}
+                </>
+            )}
+            {fullSize && (
+                <>
+                    <span className="cap-sep">{"  "}</span>
+                    <a href={fullSize} target="_blank" rel="noopener" className="cap-open">
+                        Open full size<span className="sr-only"> (opens in a new tab)</span>
+                    </a>
                 </>
             )}
         </Tag>

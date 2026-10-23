@@ -99,7 +99,10 @@ export default function AppNote({ project }: { project: Project }) {
                 {project.descriptor && <p className="mono family">{project.descriptor}</p>}
             </div>
             <div className="main">
-                <h3 className="an">{project.name}</h3>
+                <h3 className="an">
+                    {project.name}
+                    {project.preliminary && <span className="prelim">Preliminary</span>}
+                </h3>
                 <p className="sum">{project.summary}</p>
                 <Body project={project} />
                 <p className="more">

@@ -128,6 +128,7 @@ export type Project = {
     category: Category;
     family?: string;
     descriptor?: string;
+    preliminary?: boolean;
     summary: string;
     description?: string;
     status?: string;
@@ -465,7 +466,7 @@ export const network = {
             { label: "Public DNS", value: "Cloudflare", note: "martinkoudela.com, laravix.com" },
             { label: "Mail", value: "iCloud Mail", note: "Custom domain; MX, SPF, DKIM" },
             { label: "Overlay", value: "Tailscale", note: "Remote access to RaspiVision and the G1 vision unit at events" },
-            { label: "RF", value: "l0k1", note: "Wi-Fi, BLE, Sub-GHz and NFC recon" },
+            { label: "RF", value: "l0k1", note: "Schematic stage; Wi-Fi, BLE, Sub-GHz, NFC" },
             { label: "Storage", value: "NAS / home server", note: "Next revision; OpenMediaVault or TrueNAS", muted: true },
         ],
     } satisfies SpecTable,
@@ -827,36 +828,25 @@ export const projects: Project[] = [
         shortName: "hey-l0k1",
         category: "hardware",
         family: "l0k1 family · Assistant",
+        preliminary: true,
         summary:
-            "Personal voice assistant with an animated face display. The face has three states: idle, listening and speaking. In active development.",
-        status: "In active development",
+            "Personal voice assistant with a display for an animated face (planned). Schematic complete; hardware partially soldered; software not started.",
+        status: "Schematic complete, hardware partially soldered",
         links: {},
-        layout: "strip-specs",
+        layout: "media-specs",
         figures: [
             {
-                id: "fig-6a",
-                label: "Fig. 6a",
-                caption: "Idle",
-                media: { kind: "placeholder", label: "[PLACEHOLDER: idle frame]", aspect: "1 / 1" },
-            },
-            {
-                id: "fig-6b",
-                label: "Fig. 6b",
-                caption: "Listening",
-                media: { kind: "placeholder", label: "[PLACEHOLDER: listening frame]", aspect: "1 / 1" },
-            },
-            {
-                id: "fig-6c",
-                label: "Fig. 6c",
-                caption: "Speaking",
-                media: { kind: "placeholder", label: "[PLACEHOLDER: speaking frame]", aspect: "1 / 1" },
+                id: "fig-6",
+                label: "Fig. 6",
+                caption: "hey-l0k1 schematic",
+                media: { kind: "placeholder", label: "[PLACEHOLDER: KiCad schematic export]", aspect: "297 / 210" },
             },
         ],
         specs: [
             { label: "Type", value: "Personal voice assistant" },
-            { label: "Display", value: "Animated face; idle, listening, speaking" },
+            { label: "Display", value: "[PLACEHOLDER], for an animated face (planned)" },
             { label: "Hardware", value: "[PLACEHOLDER]" },
-            { label: "Status", value: "In active development" },
+            { label: "Status", value: "PRELIMINARY: schematic complete, hardware partially soldered, software not started" },
         ],
     },
     {
@@ -866,9 +856,10 @@ export const projects: Project[] = [
         category: "security",
         family: "l0k1 family · Hardware",
         descriptor: "ESP32-S3 pentesting handheld",
+        preliminary: true,
         summary:
-            "Battery-powered, modular RF handheld with a built-in display and custom GUI, written in C++. Covers Wi-Fi, BLE, Sub-GHz, NFC/RFID and IR. In active development.",
-        status: "In active development",
+            "Battery-powered RF handheld, designed around the ESP32-S3: 2.4 GHz, Sub-GHz, NFC, IR, display, audio and storage. Schematic complete (Rev v0.1); hardware and firmware not started.",
+        status: "Schematic complete (Rev v0.1)",
         links: {},
         layout: "media-table",
         specTable: { label: "Table 3", caption: "Interfaces and build", columns: ["Interface", "Function"], minWidth: 380 },
@@ -919,26 +910,18 @@ export const projects: Project[] = [
         ],
         specs: [
             { label: "MCU", value: "ESP32-S3", fn: "esp32Datasheet", plain: true },
-            { label: "Wi-Fi", value: "Scanning" },
-            { label: "BLE", value: "Recon" },
-            { label: "Sub-GHz", value: "CC1101, 433 MHz" },
+            { label: "Sub-GHz", value: "CC1101, 433 MHz", fn: "authorised" },
             { label: "2.4 GHz", value: "nRF24L01" },
             { label: "NFC", value: "PN532 (I2C)" },
             { label: "IR", value: "940 nm TX + RX" },
             { label: "Display", value: "ST7789 TFT (SPI)" },
-            { label: "Audio", value: "PAM8403 amplifier, 1 W 8 ohm speaker" },
+            { label: "Audio", value: "PAM8403 amplifier, 1 W 8 Ω speaker" },
             { label: "Storage", value: "MicroSD (SPI)" },
             { label: "LED FX", value: "WS2812B" },
             { label: "UI", value: "7 buttons" },
             { label: "Power", value: "Battery cell, power switch, battery voltage sensing" },
-            { label: "Build", value: "Modular" },
-            { label: "Firmware", value: "C++" },
             { label: "Schematic", value: "KiCad 10, 11 sheets, Rev v0.1" },
             { label: "Status", value: "PRELIMINARY: schematic complete, hardware not assembled, firmware not started" },
-            { label: "Next revision", value: "", group: true },
-            { label: "Packet injection", value: "Planned", fn: "authorised", muted: true },
-            { label: "Deauth detection", value: "Planned", muted: true },
-            { label: "BadUSB", value: "Planned", muted: true },
         ],
     },
     {

@@ -2,7 +2,6 @@
 
 :root {
   --paper: #F5F2EB;
-  --plate: #F5F2EB;
   --ink: #191816;
   --grey: #5F5C56;
   --rule: #D6D1C6;
@@ -10,8 +9,8 @@
   --accent: #BF3F0B;
   --led: #F06418;
 
-  --font-text: var(--font-archivo), system-ui, sans-serif;
-  --font-code: var(--font-plex-mono), ui-monospace, monospace;
+  --font-text: var(--font-text-symbols), var(--font-archivo), system-ui, sans-serif;
+  --font-code: var(--font-mono-symbols), var(--font-plex-mono), ui-monospace, monospace;
 
   --container: 1200px;
   --gutter: 48px;
@@ -426,6 +425,24 @@ a.plain {
   font-size: 13px;
 }
 
+.cap-open {
+  white-space: nowrap;
+}
+
+.prelim {
+  display: inline-block;
+  margin-left: 16px;
+  font-family: var(--font-code);
+  font-size: 13px;
+  line-height: 1;
+  font-weight: 500;
+  font-stretch: normal;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  vertical-align: middle;
+  color: var(--accent);
+}
+
 @media (min-width: 768px) {
   .cap--rail b {
     display: block;
@@ -507,10 +524,6 @@ a.plain {
   display: block;
   width: 100%;
   height: auto;
-}
-
-.fig-plate {
-  background: var(--plate);
 }
 
 @media (max-width: 767.98px) {

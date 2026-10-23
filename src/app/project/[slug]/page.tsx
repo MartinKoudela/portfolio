@@ -123,6 +123,7 @@ export default async function ProjectPage({ params }: { params: Promise<Params> 
                         <div className="main">
                             <h1 id="an-title" className="an-title">
                                 {project.name}
+                                {project.preliminary && <span className="prelim">Preliminary</span>}
                             </h1>
                             <p className="an-sum">{summaryOf(project)}</p>
                         </div>

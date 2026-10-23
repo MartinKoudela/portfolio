@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Archivo, IBM_Plex_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { identity, siteMeta } from "@/content/site";
 import { themeScript } from "@/lib/theme";
@@ -19,6 +20,22 @@ const plexMono = IBM_Plex_Mono({
     subsets: ["latin", "latin-ext"],
     weight: ["400", "500"],
     display: "swap",
+});
+
+const textSymbols = localFont({
+    src: "../fonts/text-symbols.woff",
+    variable: "--font-text-symbols",
+    display: "swap",
+    adjustFontFallback: false,
+    declarations: [{ prop: "unicode-range", value: "U+2190, U+2192, U+2126, U+03A9" }],
+});
+
+const monoSymbols = localFont({
+    src: "../fonts/mono-symbols.woff",
+    variable: "--font-mono-symbols",
+    display: "swap",
+    adjustFontFallback: false,
+    declarations: [{ prop: "unicode-range", value: "U+2190, U+2192, U+2126, U+03A9" }],
 });
 
 export const metadata: Metadata = {
@@ -112,7 +129,7 @@ export default function RootLayout({
     children: React.ReactNode;
 }) {
     return (
-        <html lang="en" className={`${archivo.variable} ${plexMono.variable}`} suppressHydrationWarning>
+        <html lang="en" className={`${archivo.variable} ${plexMono.variable} ${textSymbols.variable} ${monoSymbols.variable}`} suppressHydrationWarning>
         <head>
             <script dangerouslySetInnerHTML={{ __html: themeScript }} />
             <script

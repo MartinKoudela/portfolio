@@ -24,14 +24,13 @@ function Body({ id, media, captionId }: { id: string; media: Media; captionId: s
                     width={media.width}
                     height={media.height}
                     sizes="(max-width: 767px) 100vw, 864px"
-                    className={cx("fig-img", media.schematic && "fig-plate")}
+                    className="fig-img"
                 />
             );
             if (!media.schematic) return image;
             return (
-                <a href={media.src} target="_blank" rel="noopener" className="plain">
+                <a href={media.src} target="_blank" rel="noopener" tabIndex={-1} className="plain">
                     {image}
-                    <span className="sr-only"> (opens full size in a new tab)</span>
                 </a>
             );
         }
@@ -71,6 +70,7 @@ export default function FigureView({ figure, rail = false, className }: Props) {
             mobileText={figure.mobileCaption}
             rail={rail}
             className={rail ? "rail" : `cap-gap-${gap}`}
+            fullSize={figure.media.kind === "image" && figure.media.schematic ? figure.media.src : undefined}
         />
     );
 
