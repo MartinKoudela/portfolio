@@ -278,6 +278,13 @@ export const footnotes: Record<FootnoteKey, string> = {
     pi4Brief: "Raspberry Pi 4 Model B product brief.",
 };
 
+export const footnoteLinks: { text: string; href: string }[] = [
+    {
+        text: "ESP32-S3 Series datasheet",
+        href: "https://www.espressif.com/documentation/esp32-s3_datasheet_en.pdf",
+    },
+];
+
 export const homeFootnoteNumbers: Partial<Record<FootnoteKey, number>> = {
     reflow: 1,
     piBriefs: 2,
