@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Archivo, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
+import { identity, siteMeta } from "@/content/site";
 
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
@@ -20,13 +21,13 @@ const plexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-    metadataBase: new URL("https://martinkoudela.com"),
+    metadataBase: new URL(siteMeta.url),
 
     title: {
-        default: "Martin Koudela | Full-stack Developer",
+        default: siteMeta.title,
         template: "%s | Martin Koudela",
     },
-    description: "Junior Full-stack developer focused on modern software solutions.",
+    description: siteMeta.description,
 
     robots: {
         index: true,
@@ -45,16 +46,16 @@ export const metadata: Metadata = {
     manifest: "/site.webmanifest",
 
     openGraph: {
-        title: "Martin Koudela | Full-stack Developer",
-        description: "Junior Full-stack developer focused on modern software solutions.",
+        title: siteMeta.shareTitle,
+        description: siteMeta.description,
         locale: "en_US",
-        url: "https://martinkoudela.com",
+        url: siteMeta.url,
         siteName: "Martin Koudela",
         type: "website",
         images: [
             {
                 url: "/og-image.png",
-                alt: "Martin Koudela – Full-stack Developer",
+                alt: siteMeta.imageAlt,
                 width: 1200,
                 height: 630,
             },
@@ -62,54 +63,42 @@ export const metadata: Metadata = {
     },
     twitter: {
         card: "summary_large_image",
-        title: "Martin Koudela | Full-stack Developer",
-        description: "Junior Full-stack developer focused on modern software solutions.",
+        title: siteMeta.shareTitle,
+        description: siteMeta.description,
         images: ["/og-image.png"],
     },
 
+    keywords: siteMeta.keywords,
 
-    keywords: [
-        "Martin Koudela",
-        "Full-stack developer",
-        "Web developer",
-        "Laravel developer",
-        "Next.js developer",
-        "Software engineer",
-        "Python developer",
-        "Embedded systems",
-        "React",
-        "PHP",
-    ],
-
-    authors: [{ name: "Martin Koudela", url: "https://martinkoudela.com" }],
-    creator: "Martin Koudela",
-    publisher: "Martin Koudela",
+    authors: [{ name: identity.name, url: siteMeta.url }],
+    creator: identity.name,
+    publisher: identity.name,
 
     alternates: {
-        canonical: "https://martinkoudela.com",
+        canonical: siteMeta.url,
     },
-
 };
 
 export const viewport: Viewport = {
     width: "device-width",
     initialScale: 1,
     themeColor: [
-        { media: "(prefers-color-scheme: light)", color: "#F5F2EB" },
-        { media: "(prefers-color-scheme: dark)", color: "#161513" },
+        { media: "(prefers-color-scheme: light)", color: siteMeta.themeColor.light },
+        { media: "(prefers-color-scheme: dark)", color: siteMeta.themeColor.dark },
     ],
 };
 
 const personStructuredData = {
     "@context": "https://schema.org",
     "@type": "Person",
-    name: "Martin Koudela",
-    url: "https://martinkoudela.com",
-    email: "mk@martinkoudela.com",
-    jobTitle: "Full-stack Developer",
-    knowsAbout: ["Python", "C", "Laravel", "PHP", "C++", "TypeScript", "JavaScript", "IoT", "Embedded"],
-    description: "Junior Full-stack developer focused on modern software solutions.",
-    image: "https://martinkoudela.com/og-image.png",
+    name: identity.name,
+    url: siteMeta.url,
+    email: identity.email,
+    jobTitle: siteMeta.jobTitle,
+    worksFor: { "@type": "Organization", name: siteMeta.worksFor },
+    knowsAbout: siteMeta.knowsAbout,
+    description: siteMeta.description,
+    image: `${siteMeta.url}/og-image.png`,
     sameAs: [
         "https://www.linkedin.com/in/martin-koudela-a5b645343/",
         "https://github.com/martinkoudela",
@@ -120,11 +109,10 @@ const personStructuredData = {
 const websiteStructuredData = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    url: "https://martinkoudela.com",
-    name: "Martin Koudela | Full-stack Developer",
-    alternateName: "Martin Koudela",
+    url: siteMeta.url,
+    name: siteMeta.shareTitle,
+    alternateName: identity.name,
 };
-
 
 export default function RootLayout({
                                        children,

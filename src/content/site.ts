@@ -158,6 +158,57 @@ export const identity = {
     email: "mk@martinkoudela.com",
 };
 
+export const siteMeta = {
+    url: "https://martinkoudela.com",
+    title: "Martin Koudela | Networking, Hardware & Security",
+    shareTitle: "Martin Koudela · MK-01",
+    description:
+        "Martin Koudela: networking, hardware/IoT and security from Zlín. Raspberry Pi vision, ESP32-S3 RF tools, G1 humanoid robotics, Laravel and FastAPI backends.",
+    imageAlt: "MK-01, Martin Koudela",
+    keywords: [
+        "Martin Koudela",
+        "networking",
+        "Tailscale",
+        "Cloudflare",
+        "hardware",
+        "IoT",
+        "Raspberry Pi",
+        "ESP32-S3",
+        "KiCad",
+        "security",
+        "RF",
+        "NFC",
+        "backend",
+        "FastAPI",
+        "Laravel",
+        "Unitree G1",
+        "robotics",
+        "Next.js",
+        "SwiftUI",
+    ],
+    jobTitle: "Robotics programmer",
+    worksFor: "SYNOT ICT",
+    knowsAbout: [
+        "Networking",
+        "Tailscale",
+        "Cloudflare DNS",
+        "Raspberry Pi",
+        "ESP32-S3",
+        "KiCad",
+        "IoT",
+        "Security",
+        "Kali Linux",
+        "Python",
+        "C/C++",
+        "FastAPI",
+        "Laravel",
+        "PHP",
+        "TypeScript",
+        "Swift",
+    ],
+    themeColor: { light: "#F5F2EB", dark: "#161513" },
+};
+
 export const sections: Section[] = [
     {
         id: "eth1",

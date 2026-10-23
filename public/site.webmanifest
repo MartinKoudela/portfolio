@@ -1,7 +1,7 @@
 {
-  "name": "Martin Koudela | Full-stack Developer",
-  "short_name": "M. Koudela",
-  "description": "Junior Full-stack developer focused on modern software solutions.",
+  "name": "Martin Koudela · MK-01",
+  "short_name": "MK-01",
+  "description": "Martin Koudela: networking, hardware/IoT and security from Zlín. Raspberry Pi vision, ESP32-S3 RF tools, G1 humanoid robotics, Laravel and FastAPI backends.",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",
@@ -14,8 +14,8 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#050505",
-  "background_color": "#050505",
+  "theme_color": "#F5F2EB",
+  "background_color": "#F5F2EB",
   "display": "standalone",
   "start_url": "/",
   "scope": "/"
