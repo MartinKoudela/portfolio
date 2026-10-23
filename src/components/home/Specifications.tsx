@@ -4,7 +4,7 @@ import DataTable, { cell } from "../DataTable";
 
 export default function Specifications() {
     const specId = "table-skills-caption";
-    const revId = "table-revisions-caption";
+   // const revId = "table-revisions-caption";
 
     return (
         <>
@@ -45,6 +45,7 @@ export default function Specifications() {
                 </div>
             </section>
 
+            {/*
             <section id="revisions" aria-labelledby="h-rev" className="revisions">
                 <div className="row">
                     <Caption id={revId} label={revisions.label} text={revisions.caption} rail className="rail hide-m" />
@@ -69,6 +70,7 @@ export default function Specifications() {
                     </div>
                 </div>
             </section>
+            */}
         </>
     );
 }
