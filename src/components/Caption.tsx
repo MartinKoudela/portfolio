@@ -43,7 +43,7 @@ export default function Caption({
             {note && <span className="cap-note">{note}</span>}
             {fullSize && (
                 <>
-                    <span className="cap-sep">{"  "}</span>
+                    <span className="cap-dot"> · </span>
                     <a href={fullSize} target="_blank" rel="noopener" className="cap-open">
                         Open full size<span className="sr-only"> (opens in a new tab)</span>
                     </a>

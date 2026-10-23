@@ -5,17 +5,19 @@ import { cx } from "@/lib/cx";
 export type FootnoteItem = { n: number; text: string };
 
 function withLinks(text: string): ReactNode {
-    const link = footnoteLinks.find((l) => text.includes(l.text));
+    const link = footnoteLinks
+        .filter((l) => text.includes(l.text))
+        .sort((a, b) => text.indexOf(a.text) - text.indexOf(b.text))[0];
     if (!link) return text;
-    const [before, after] = text.split(link.text);
+    const at = text.indexOf(link.text);
     return (
         <>
-            {before}
+            {text.slice(0, at)}
             <a href={link.href} target="_blank" rel="noopener">
                 {link.text}
                 <span className="sr-only"> (opens in a new tab)</span>
             </a>
-            {after}
+            {withLinks(text.slice(at + link.text.length))}
         </>
     );
 }

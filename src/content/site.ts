@@ -282,6 +282,14 @@ export const footnotes: Record<FootnoteKey, string> = {
 
 export const footnoteLinks: { text: string; href: string }[] = [
     {
+        text: "Raspberry Pi 4 Model B",
+        href: "https://datasheets.raspberrypi.com/rpi4/raspberry-pi-4-product-brief.pdf",
+    },
+    {
+        text: "Raspberry Pi 5",
+        href: "https://datasheets.raspberrypi.com/rpi5/raspberry-pi-5-product-brief.pdf",
+    },
+    {
         text: "ESP32-S3 Series datasheet",
         href: "https://www.espressif.com/documentation/esp32-s3_datasheet_en.pdf",
     },
@@ -707,7 +715,7 @@ export const projects: Project[] = [
         family: "l0k1 family · Assistant",
         preliminary: true,
         summary:
-            "Personal voice assistant with a display for an animated face (planned). Schematic complete; hardware partially soldered; software not started.",
+            "Personal voice assistant built around an ESP32-S3: ReSpeaker mic array, I2S speaker amplifier and a round touch display for an animated face (planned).",
         status: "Schematic complete, hardware partially soldered",
         links: {},
         layout: "media-specs",
@@ -728,7 +736,6 @@ export const projects: Project[] = [
             },
         ],
         specs: [
-            { label: "Type", value: "Personal voice assistant" },
             { label: "MCU", value: "ESP32-S3" },
             { label: "Microphones", value: "ReSpeaker (XMOS XU316), I2S" },
             { label: "Display", value: "GC9A01 round display with touch (SPI, touch over I2C), for an animated face (planned)" },
