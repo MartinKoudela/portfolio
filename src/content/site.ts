@@ -460,6 +460,7 @@ export const projects: Project[] = [
         name: "RaspiVision",
         shortName: "RaspiVision",
         category: "hardware",
+        descriptor: "Raspberry Pi 4 · security camera",
         metaDescription: "Security camera on a Raspberry Pi 4: detects people, animals and vehicles with YOLOv8, streams live MJPEG and sends Telegram alerts with snapshots.",
         summary:
             "Security camera on a Raspberry Pi 4. Detects people, animals and vehicles with YOLOv8, streams live MJPEG to a browser and sends Telegram alerts with snapshots.",
@@ -476,14 +477,10 @@ export const projects: Project[] = [
         },
         specs: [
             { label: "Board", value: "Raspberry Pi 4 Model B", note: "BCM2711, 4× Cortex-A72 @ 1.8 GHz", fn: "piBriefs" },
-            { label: "Camera", value: "Camera Module 3 NoIR" },
-            { label: "Motion sensor", value: "PIR", note: "HW-416" },
+            { label: "Camera", value: "Camera Module 3 NoIR", note: "12 MP Sony IMX708, no IR filter; CSI-2 via 15-pin ribbon" },
             { label: "Detection", value: "YOLOv8", note: "People, animals, vehicles" },
-            { label: "Recording", value: "Circular H264 buffer", note: "Length [PLACEHOLDER]" },
-            { label: "Live view", value: "MJPEG", note: "FastAPI backend, vanilla JS web UI" },
             { label: "Alerts", value: "Telegram", note: "With snapshot" },
             { label: "Remote access", value: "Tailscale", note: "No ports exposed to the internet" },
-            { label: "Schematic", value: "KiCad", note: "Fig. 3b" },
             { label: "Status", value: "Completed", note: "Annual school project" },
         ],
         figures: [
@@ -626,10 +623,10 @@ export const projects: Project[] = [
             specs: [
                 { label: "Board", value: "Raspberry Pi 4 Model B", note: "BCM2711, quad-core Cortex-A72 @ 1.8 GHz", fn: "pi4Brief" },
                 { label: "Memory", value: "[PLACEHOLDER]" },
-                { label: "Camera", value: "Camera Module 3 NoIR" },
-                { label: "Motion sensor", value: "PIR", note: "HW-416" },
+                { label: "Camera", value: "Camera Module 3 NoIR", note: "12 MP Sony IMX708, no IR filter; CSI-2 via 15-pin ribbon" },
+                { label: "Motion sensor", value: "HW-416 PIR" },
                 { label: "Detection", value: "YOLOv8", note: "People, animals, vehicles" },
-                { label: "Recording", value: "Circular H264 buffer", note: "Length [PLACEHOLDER]" },
+                { label: "Recording", value: "Circular H264 buffer" },
                 { label: "Live view", value: "MJPEG", note: "FastAPI backend" },
                 { label: "Stream", value: "640×420, 42 FPS", note: "Live view overlay" },
                 { label: "Web UI", value: "Vanilla JS" },
