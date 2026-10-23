@@ -53,7 +53,6 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
 
     const description = excerpt(summaryOf(project));
     const url = `/project/${project.slug}`;
-    const image = project.images?.[0]?.src ?? "/og-image.png";
 
     return {
         title: project.name,
@@ -64,13 +63,11 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
             description,
             url,
             type: "article",
-            images: [{ url: image, alt: project.name }],
         },
         twitter: {
             card: "summary_large_image",
             title: `${project.name} | Martin Koudela`,
             description,
-            images: [image],
         },
     };
 }

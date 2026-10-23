@@ -53,20 +53,11 @@ export const metadata: Metadata = {
         url: siteMeta.url,
         siteName: "Martin Koudela",
         type: "website",
-        images: [
-            {
-                url: "/og-image.png",
-                alt: siteMeta.imageAlt,
-                width: 1200,
-                height: 630,
-            },
-        ],
     },
     twitter: {
         card: "summary_large_image",
         title: siteMeta.shareTitle,
         description: siteMeta.description,
-        images: ["/og-image.png"],
     },
 
     keywords: siteMeta.keywords,
@@ -99,7 +90,7 @@ const personStructuredData = {
     worksFor: { "@type": "Organization", name: siteMeta.worksFor },
     knowsAbout: siteMeta.knowsAbout,
     description: siteMeta.description,
-    image: `${siteMeta.url}/og-image.png`,
+    image: `${siteMeta.url}/opengraph-image`,
     sameAs: [
         "https://www.linkedin.com/in/martin-koudela-a5b645343/",
         "https://github.com/martinkoudela",

@@ -165,6 +165,7 @@ export const siteMeta = {
     description:
         "Martin Koudela: networking, hardware/IoT and security from Zlín. Raspberry Pi vision, ESP32-S3 RF tools, G1 humanoid robotics, Laravel and FastAPI backends.",
     imageAlt: "MK-01, Martin Koudela",
+    ogLine: "Networking, hardware/IoT and security from Zlín.",
     keywords: [
         "Martin Koudela",
         "networking",
