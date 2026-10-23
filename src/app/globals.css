@@ -210,9 +210,16 @@ a.plain {
 }
 
 .port-code {
+  position: relative;
   display: flex;
   align-items: center;
-  gap: 5px;
+  padding: 0 11px;
+}
+
+.port-code .led {
+  position: absolute;
+  top: 3px;
+  left: 0;
 }
 
 .port-code .mono {
