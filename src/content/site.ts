@@ -1230,10 +1230,10 @@ export const projects: Project[] = [
         name: "Filmio",
         shortName: "Filmio",
         category: "compact",
-        metaDescription: "Film club web app that grew out of a school project: film catalog, screening votes, ratings and reviews, role-based access.",
+        metaDescription: "Film club web app built as a school project: film catalog, screening votes, ratings and reviews, role-based access.",
         summary: "Film club web app: catalog, screening votes, ratings and reviews, role-based access.",
         description:
-            "A school project that evolved into a fully functional film club web application. The platform allows movie enthusiasts to create accounts, join the club community, and participate in shared movie watching sessions. Members can browse the film catalog, vote on upcoming screenings, and discuss movies with other members. The admin dashboard provides complete control over the film database, user management, and scheduling of watch sessions. Features include user authentication with role-based access, a rating and review system, and a clean interface optimized for easy navigation.",
+            "A school project: a film club web application. The platform allows movie enthusiasts to create accounts, join the club community, and participate in shared movie watching sessions. Members can browse the film catalog, vote on upcoming screenings, and discuss movies with other members. The admin dashboard provides complete control over the film database, user management, and scheduling of watch sessions. Features include user authentication with role-based access, a rating and review system, and a clean interface optimized for easy navigation.",
         links: {},
         row: {
             description: "Film club web app: catalog, screening votes, ratings and reviews, role-based access.",
