@@ -6,7 +6,7 @@ import FigureView from "../FigureView";
 import { rich } from "../Rich";
 import SpecList from "../SpecList";
 
-const homeFootnote = (row: SpecRow) => (row.fn ? homeFootnoteNumbers[row.fn] : undefined);
+const homeFootnote = (row: SpecRow) => (row.fn && !row.fnDetailOnly ? homeFootnoteNumbers[row.fn] : undefined);
 const homeSpecs = (project: Project) => project.specs.filter((row) => !row.detailOnly);
 
 function SpecTableBlock({ project }: { project: Project }) {

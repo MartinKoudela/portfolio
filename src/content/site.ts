@@ -96,6 +96,7 @@ export type SpecRow = {
     plain?: boolean;
     wide?: boolean;
     detailOnly?: boolean;
+    fnDetailOnly?: boolean;
 };
 
 export type Fact = { label: string; value: string; href?: string };
@@ -742,7 +743,7 @@ export const projects: Project[] = [
             },
         ],
         specs: [
-            { label: "MCU", value: "ESP32-S3" },
+            { label: "MCU", value: "ESP32-S3", fn: "esp32Datasheet", fnDetailOnly: true },
             { label: "Microphones", value: "ReSpeaker (XMOS XU316), I2S" },
             { label: "Display", value: "GC9A01 round display with touch (SPI, touch over I2C), for an animated face (planned)" },
             { label: "Audio", value: "MAX98357 I2S amplifier, 1 W 8 Ω speaker" },
