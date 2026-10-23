@@ -58,6 +58,13 @@ function Body({ project }: { project: Project }) {
             return (
                 <>
                     <FigureView figure={first} className="note-block" />
+                    {project.figures.length > 1 && (
+                        <div className="note-figs note-figs--2">
+                            {project.figures.slice(1).map((f) => (
+                                <FigureView key={f.id} figure={f} />
+                            ))}
+                        </div>
+                    )}
                     <SpecList rows={project.specs} columns={2} footnote={homeFootnote} />
                 </>
             );

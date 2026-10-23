@@ -82,6 +82,7 @@ export type Figure = {
     caption: string;
     mobileCaption?: string;
     noteCaption?: string;
+    homeOnly?: boolean;
     media: Media;
     captionGap?: number;
 };
@@ -952,7 +953,7 @@ export const projects: Project[] = [
         figures: [
             {
                 id: "fig-8",
-                label: "Fig. 8",
+                label: "Fig. 8a",
                 caption: "Laravix tenancy and delivery",
                 media: {
                     kind: "diagram",
@@ -1016,6 +1017,19 @@ export const projects: Project[] = [
                     ],
                 },
             },
+            {
+                id: "fig-8b",
+                label: "Fig. 8b",
+                caption: "Visual page builder (GrapesJS): editing the homepage hero, style manager on the right",
+                homeOnly: true,
+                media: {
+                    kind: "image",
+                    src: "/laravix-builder.png",
+                    width: 2856,
+                    height: 1712,
+                    alt: "Laravix visual page builder with the homepage hero headline selected for editing, a text toolbar above it and a style manager panel with layout, spacing, typography and background sections on the right",
+                },
+            },
         ],
         specs: [
             { label: "Type", value: "Open-source multi-tenant CMS" },
@@ -1032,22 +1046,6 @@ export const projects: Project[] = [
         images: [
             {
                 kind: "image",
-                src: "/laravix2.png",
-                width: 2940,
-                height: 1912,
-                alt: "Laravix visual page builder editing a homepage hero section",
-                caption: "Visual page builder",
-            },
-            {
-                kind: "image",
-                src: "/laravix3.png",
-                width: 2940,
-                height: 1912,
-                alt: "Laravix admin SEO settings with meta title, description and OG image fields",
-                caption: "Admin, SEO settings",
-            },
-            {
-                kind: "image",
                 src: "/laravix-dashboard.png",
                 width: 2856,
                 height: 1712,
@@ -1061,6 +1059,22 @@ export const projects: Project[] = [
                 height: 1712,
                 alt: "Laravix Pages list table with title, slug, language (CS or EN), published status and update time, and edit, preview, duplicate and delete actions on the highlighted row",
                 caption: "Pages list: slugs, CS/EN language versions, publish status and row actions",
+            },
+            {
+                kind: "image",
+                src: "/laravix-builder.png",
+                width: 2856,
+                height: 1712,
+                alt: "Laravix visual page builder with the homepage hero headline selected for editing, a text toolbar above it and a style manager panel with layout, spacing, typography and background sections on the right",
+                caption: "Visual page builder (GrapesJS): editing the homepage hero, style manager on the right",
+            },
+            {
+                kind: "image",
+                src: "/laravix-seo.png",
+                width: 2856,
+                height: 1685,
+                alt: "Laravix SEO settings form with meta title, default meta description, OG image, Google site verification and robots.txt fields",
+                caption: "SEO settings: default meta description, OG image, robots.txt",
             },
         ],
     },
@@ -1334,14 +1348,23 @@ export function noteFigures(project: Project): { diagram?: Figure; hardware: Fig
     const homeDiagram = project.figures.find((f) => f.media.kind === "diagram");
     const diagram = project.note?.diagram ?? homeDiagram;
     const hardware = project.note?.hardware.figures ?? [];
-    const source = project.note ? [] : project.figures.filter((f) => f !== homeDiagram);
+    const source = project.note ? [] : project.figures.filter((f) => f !== homeDiagram && !f.homeOnly);
+
+    const parse = (label: string) => label.match(/^Fig\. (\d+)(.*)$/)!.slice(1) as [string, string];
+    const baseCount = new Map<string, number>();
+    for (const f of [diagram, ...hardware, ...source]) {
+        if (!f) continue;
+        const [base] = parse(f.label);
+        baseCount.set(base, (baseCount.get(base) ?? 0) + 1);
+    }
 
     const numbers = new Map<string, number>();
     let next = 1;
     const renumber = (label: string): string => {
-        const [, base, suffix] = label.match(/^Fig\. (\d+)(.*)$/)!;
+        const [base, suffix] = parse(label);
         if (!numbers.has(base)) numbers.set(base, next++);
-        return `Fig. ${numbers.get(base)}${suffix}`;
+        const keep = !/^[a-z]$/.test(suffix) || baseCount.get(base)! > 1;
+        return `Fig. ${numbers.get(base)}${keep ? suffix : ""}`;
     };
 
     const renumbered = (f: Figure): Figure => ({
