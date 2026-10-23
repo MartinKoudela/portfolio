@@ -5,6 +5,8 @@ import Networking from "@/components/home/Networking";
 import Hardware from "@/components/home/Hardware";
 import Security from "@/components/home/Security";
 import Software from "@/components/home/Software";
+import Specifications from "@/components/home/Specifications";
+import Ordering from "@/components/home/Ordering";
 
 export default function Page() {
     return (
@@ -17,6 +19,8 @@ export default function Page() {
                     <Hardware />
                     <Security />
                     <Software />
+                    <Specifications />
+                    <Ordering />
                 </main>
                 <SiteFooter />
             </div>

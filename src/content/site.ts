@@ -1192,6 +1192,59 @@ export function projectsIn(category: Category): Project[] {
     return projects.filter((p) => p.category === category);
 }
 
+export const specifications = {
+    title: "Specifications",
+    label: "Table 6",
+    caption: "Skills and tools",
+    columns: ["Parameter", "Values"],
+    rows: [
+        ["Interfaces & protocols", "TCP/IP · DNS · Wi-Fi · BLE · Sub-GHz · NFC/RFID · IR · REST · MJPEG streaming"],
+        ["Languages", "Python · C/C++ · PHP · JavaScript/TypeScript · Swift"],
+        ["Frameworks & platforms", "Laravel · Filament · Next.js/React · FastAPI · Three.js · SwiftUI · OpenCV · YOLO"],
+        ["Hardware", "ESP32-S3 · Raspberry Pi 4/5 · sensors · soldering · KiCad"],
+        ["Tooling", "Git · Tailscale · Cloudflare · Kali Linux"],
+        ["English", "B2, Cambridge B2 First"],
+        ["Location", "Zlín, Czech Republic"],
+        ["MTBF", "Depends on coffee supply"],
+    ],
+};
+
+export const revisions = {
+    title: "Revision history",
+    label: "Table 7",
+    caption: "Milestones",
+    columns: ["Rev", "Date", "Change"],
+    rows: [
+        ["1", "[DATE]", "Cambridge B2 First (FCE)"],
+        ["2", "[DATE]", "Two-week internship at MarketSoul, web development"],
+        ["3", "[DATE]", "Part-time robotics programmer at SYNOT ICT (Unitree G1)"],
+        ["4", "[DATE]", "RaspiVision completed as annual school project"],
+        ["5", "[DATE]", "Backlog iOS app finished"],
+        ["6", "[DATE]", "Laravix in active development"],
+    ],
+};
+
+export const ordering = {
+    availability: "Open to networking, security, hardware and backend projects. Web projects selectively.",
+    label: "Table 8",
+    caption: "Ordering channels",
+    columns: ["Channel", "Address"],
+    channels: [
+        { label: "Email", value: identity.email, href: `mailto:${identity.email}` },
+        { label: "GitHub", value: "github.com/MartinKoudela", href: "https://github.com/MartinKoudela" },
+        {
+            label: "LinkedIn",
+            value: "linkedin.com/in/martin-koudela-a5b645343",
+            href: "https://www.linkedin.com/in/martin-koudela-a5b645343/",
+        },
+    ] satisfies Fact[],
+    also: [
+        { label: "Instagram", href: "https://www.instagram.com/koudy_martin/" },
+        { label: "Facebook", href: "https://www.facebook.com/koudela.martin.9?locale=cs_CZ" },
+        { label: "Buy Me a Coffee", href: "https://buymeacoffee.com/martinkoudela" },
+    ],
+};
+
 export const footer = {
     line: "MK-01 · Martin Koudela · Zlín, Czech Republic",
     builtWith: "Built with Next.js",
