@@ -32,7 +32,7 @@ export function specRows(rows: SpecRow[], columns: number, footnote: (row: SpecR
                     {columns === 2 && sup}
                 </>
             ),
-            mono: true,
+            mono: !row.plain,
         };
         const cells: Cell[] = [cell(row.label), value];
         if (columns === 3) {

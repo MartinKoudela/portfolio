@@ -86,11 +86,59 @@ export type SpecRow = {
     muted?: boolean;
     href?: string;
     group?: boolean;
+    plain?: boolean;
 };
 
 export type Fact = { label: string; value: string; href?: string };
 
 export type SpecTable = { label: string; caption: string; columns: string[]; rows: SpecRow[] };
+
+export type Category = "hardware" | "security" | "software" | "compact";
+
+export type NoteLayout =
+    | "media-specs"
+    | "specs-media"
+    | "media-table"
+    | "diagram-specs"
+    | "table-media"
+    | "strip-specs";
+
+export type ExtraImage = ImageMedia & { caption: string };
+
+export type NoteDetail = {
+    summary: string;
+    diagram: Figure;
+    specs: SpecRow[];
+    howItWorks: { title: string; text: string }[];
+    hardware: { figures: Figure[]; parts: SpecTable };
+};
+
+export type Project = {
+    slug: string;
+    name: string;
+    shortName: string;
+    category: Category;
+    family?: string;
+    summary: string;
+    description?: string;
+    status?: string;
+    context?: string;
+    links: { source?: string; website?: string };
+    layout?: NoteLayout;
+    specs: SpecRow[];
+    specTable?: { label: string; caption: string; columns: string[]; minWidth: number; mobileMinWidth?: number };
+    figures: Figure[];
+    images?: ExtraImage[];
+    row?: { description: string; stack: string };
+    note?: NoteDetail;
+};
+
+export const categorySection: Record<Category, SectionId> = {
+    hardware: "eth2",
+    security: "eth3",
+    software: "eth4",
+    compact: "eth4",
+};
 
 export type Section = {
     id: SectionId;
@@ -356,6 +404,373 @@ export const network = {
         ],
     } satisfies SpecTable,
 };
+
+const arrowRight = (x: number, y: number): DiagramArrow => ({ x, y, w: 79, h: 8, d: "M 0 4 L 76 4", head: true });
+
+export const projects: Project[] = [
+    {
+        slug: "unitree-g1",
+        name: "Unitree G1 humanoid",
+        shortName: "Unitree G1",
+        category: "hardware",
+        summary:
+            "Part-time role at SYNOT ICT: programming and developing a Unitree G1 humanoid robot, and representing it at public events such as Barum Czech Rally Zlín.",
+        links: {},
+        layout: "media-specs",
+        figures: [
+            {
+                id: "fig-3",
+                label: "Fig. 3",
+                caption: "Unitree G1 at a public event",
+                media: { kind: "placeholder", label: "[PLACEHOLDER: photo, G1 at a public event]", aspect: "16 / 10" },
+            },
+        ],
+        specs: [
+            { label: "Platform", value: "Unitree G1 EDU humanoid" },
+            { label: "Employer", value: "SYNOT ICT, Uherské Hradiště" },
+            { label: "Role", value: "Programming, development, public demonstrations" },
+            { label: "Events", value: "Barum Czech Rally Zlín, others" },
+            { label: "Stack", value: "[PLACEHOLDER]" },
+            { label: "Since", value: "[DATE]" },
+        ],
+    },
+    {
+        slug: "rpi-ai-vision",
+        name: "RPi AI vision & response",
+        shortName: "RPi AI vision & response",
+        category: "hardware",
+        summary:
+            "Raspberry Pi 5 system that detects and tracks people, then generates natural-language descriptions and responses through a cloud vision-language model. Output is JSON for a robot SDK.",
+        links: {},
+        layout: "diagram-specs",
+        figures: [
+            {
+                id: "fig-4",
+                label: "Fig. 4",
+                caption: "Data flow. Shaded block runs on the Pi.",
+                mobileCaption: "Data flow, simplified. Shaded block runs on the Pi.",
+                media: {
+                    kind: "diagram",
+                    width: 864,
+                    height: 288,
+                    arrows: [
+                        { x: 289, y: 73, w: 8, h: 79, d: "M 4 79 L 4 3", head: true },
+                        { x: 359, y: 72, w: 8, h: 79, d: "M 4 0 L 4 76", head: true },
+                        arrowRight(144, 212),
+                        arrowRight(432, 184),
+                        arrowRight(432, 248),
+                    ],
+                    cards: [
+                        { x: 224, y: 0, w: 208, h: 72, title: "Cloud vision-language model", lines: ["descriptions, responses"] },
+                        { x: 0, y: 180, w: 144, h: 72, title: "Camera" },
+                        {
+                            x: 224,
+                            y: 152,
+                            w: 208,
+                            h: 128,
+                            title: "Raspberry Pi 5",
+                            lines: ["YOLO + ByteTrack", "MediaPipe, OpenCV", "FastAPI"],
+                            tint: true,
+                        },
+                        { x: 512, y: 160, w: 168, h: 56, title: "Robot SDK" },
+                        { x: 512, y: 224, w: 168, h: 56, title: "Browser", lines: ["FastAPI stream"] },
+                    ],
+                    texts: [
+                        { x: 452, y: 160, w: 40, text: "JSON", label: true, center: true },
+                        { x: 712, y: 168, w: 152, text: "Remote access at events over Tailscale.", size: [12, 17] },
+                    ],
+                    mobile: [
+                        { t: "narrow", nodes: [{ t: "card", card: { title: "Camera" } }, { t: "arrow" }] },
+                        {
+                            t: "pair",
+                            left: { title: "Raspberry Pi 5", lines: ["YOLO + ByteTrack", "MediaPipe, OpenCV", "FastAPI"], tint: true },
+                            right: { title: "Cloud VLM", lines: ["descriptions, responses"] },
+                        },
+                        { t: "narrow", nodes: [{ t: "arrow" }] },
+                        {
+                            t: "grid",
+                            cards: [
+                                { title: "Robot SDK", lines: ["JSON"], mono: true },
+                                { title: "Browser", lines: ["FastAPI stream"] },
+                            ],
+                        },
+                    ],
+                },
+            },
+        ],
+        specs: [
+            { label: "Board", value: "Raspberry Pi 5; BCM2712, 4× Cortex-A76 @ 2.4 GHz", fn: "piBriefs" },
+            { label: "Detection", value: "YOLO; tracking with ByteTrack" },
+            { label: "Vision libraries", value: "MediaPipe, OpenCV" },
+            { label: "Language", value: "Cloud vision-language model" },
+            { label: "Output", value: "JSON for a robot SDK; FastAPI stream" },
+            { label: "Remote access", value: "Tailscale, at events" },
+        ],
+    },
+    {
+        slug: "rpi-cam",
+        name: "RaspiVision",
+        shortName: "RaspiVision",
+        category: "hardware",
+        summary:
+            "Security camera on a Raspberry Pi 4. Detects people, animals and vehicles with YOLOv8, streams live MJPEG to a browser and sends Telegram alerts with snapshots.",
+        status: "Completed",
+        context: "Annual school project",
+        links: { source: "https://github.com/MartinKoudela/rpi-cam" },
+        layout: "table-media",
+        specTable: {
+            label: "Table 2",
+            caption: "RaspiVision specifications",
+            columns: ["Parameter", "Value", "Note"],
+            minWidth: 600,
+            mobileMinWidth: 520,
+        },
+        specs: [
+            { label: "Board", value: "Raspberry Pi 4 Model B", note: "BCM2711, 4× Cortex-A72 @ 1.8 GHz", fn: "piBriefs" },
+            { label: "Camera", value: "Camera Module 3 NoIR" },
+            { label: "Motion sensor", value: "PIR" },
+            { label: "Detection", value: "YOLOv8", note: "People, animals, vehicles" },
+            { label: "Recording", value: "Circular H264 buffer", note: "Length [PLACEHOLDER]" },
+            { label: "Live view", value: "MJPEG", note: "FastAPI backend, vanilla JS web UI" },
+            { label: "Alerts", value: "Telegram", note: "With snapshot" },
+            { label: "Remote access", value: "Tailscale", note: "No ports exposed to the internet" },
+            { label: "Schematic", value: "KiCad", note: "Fig. 5b" },
+            { label: "Status", value: "Completed", note: "Annual school project" },
+        ],
+        figures: [
+            {
+                id: "fig-5a",
+                label: "Fig. 5a",
+                caption: "RaspiVision unit",
+                media: { kind: "placeholder", label: "[PLACEHOLDER: photo]", aspect: "16 / 9" },
+            },
+            {
+                id: "fig-5b",
+                label: "Fig. 5b",
+                caption: "Schematic, KiCad",
+                media: { kind: "placeholder", label: "[PLACEHOLDER: KiCad export]", aspect: "16 / 9" },
+            },
+        ],
+        images: [
+            {
+                kind: "image",
+                src: "/rpi.jpg",
+                width: 496,
+                height: 300,
+                alt: "Camera frame with YOLOv8 bounding boxes labelled Martin, Phone and Cup",
+                caption: "Detection output with labelled bounding boxes",
+            },
+            {
+                kind: "image",
+                src: "/rpi3.png",
+                width: 2940,
+                height: 1912,
+                alt: "RaspiVision web UI showing the live camera stream with snapshot and record controls",
+                caption: "Web UI, live view",
+            },
+            {
+                kind: "image",
+                src: "/rpi2.png",
+                width: 2940,
+                height: 1912,
+                alt: "RaspiVision web UI listing recorded clips in a grid",
+                caption: "Web UI, recordings gallery",
+            },
+            {
+                kind: "image",
+                src: "/rpi4.jpg",
+                width: 4608,
+                height: 2592,
+                alt: "Frame from the camera showing a desk with a monitor and a laptop",
+                caption: "Camera frame",
+            },
+        ],
+        note: {
+            summary:
+                "Security camera on a Raspberry Pi 4. Detects people, animals and vehicles with YOLOv8, streams live MJPEG to a browser and sends Telegram alerts with snapshots. Remote access runs over Tailscale.",
+            diagram: {
+                id: "an-fig-1",
+                label: "Fig. 1",
+                caption: "System diagram. Shaded block runs on the Pi.",
+                media: {
+                    kind: "diagram",
+                    width: 864,
+                    height: 264,
+                    arrows: [
+                        arrowRight(152, 72),
+                        arrowRight(152, 200),
+                        arrowRight(408, 72),
+                        arrowRight(408, 200),
+                        arrowRight(640, 72),
+                        arrowRight(640, 200),
+                    ],
+                    cards: [
+                        { x: 0, y: 40, w: 152, h: 72, title: "Camera", lines: ["Camera Module 3 NoIR"] },
+                        { x: 0, y: 168, w: 152, h: 72, title: "Motion", lines: ["PIR sensor"] },
+                        {
+                            x: 232,
+                            y: 40,
+                            w: 176,
+                            h: 200,
+                            title: "Raspberry Pi 4",
+                            lines: ["YOLOv8 detection:", "people, animals, vehicles", "", "Circular H264 buffer", "", "FastAPI"],
+                            tint: true,
+                        },
+                        { x: 488, y: 40, w: 152, h: 72, title: "Live view", lines: ["MJPEG stream"] },
+                        { x: 488, y: 168, w: 152, h: 72, title: "Alert", lines: ["Telegram + snapshot"] },
+                        { x: 720, y: 40, w: 144, h: 72, title: "Web UI", lines: ["vanilla JS"] },
+                        { x: 720, y: 168, w: 144, h: 72, title: "Client", lines: ["Telegram"] },
+                    ],
+                    texts: [
+                        { x: 160, y: 176, w: 64, text: "motion", label: true, center: true },
+                        { x: 644, y: 88, w: 72, text: "Tailscale", label: true, center: true },
+                    ],
+                    mobile: [
+                        {
+                            t: "grid",
+                            cards: [
+                                { title: "Camera", lines: ["Camera Module 3 NoIR"] },
+                                { title: "Motion", lines: ["PIR sensor"] },
+                            ],
+                        },
+                        { t: "arrow" },
+                        {
+                            t: "card",
+                            card: {
+                                title: "Raspberry Pi 4",
+                                lines: ["YOLOv8 detection:", "people, animals, vehicles", "", "Circular H264 buffer", "", "FastAPI"],
+                                tint: true,
+                            },
+                        },
+                        { t: "arrow" },
+                        {
+                            t: "grid",
+                            cards: [
+                                { title: "Live view", lines: ["MJPEG stream"] },
+                                { title: "Alert", lines: ["Telegram + snapshot"] },
+                            ],
+                        },
+                        { t: "arrow" },
+                        {
+                            t: "grid",
+                            cards: [
+                                { title: "Web UI", lines: ["vanilla JS"] },
+                                { title: "Client", lines: ["Telegram"] },
+                            ],
+                        },
+                    ],
+                },
+            },
+            specs: [
+                { label: "Board", value: "Raspberry Pi 4 Model B", note: "BCM2711, quad-core Cortex-A72 @ 1.8 GHz", fn: "pi4Brief" },
+                { label: "Memory", value: "[PLACEHOLDER]" },
+                { label: "Camera", value: "Camera Module 3 NoIR" },
+                { label: "Motion sensor", value: "PIR", note: "Model [PLACEHOLDER]" },
+                { label: "Detection", value: "YOLOv8", note: "People, animals, vehicles" },
+                { label: "Recording", value: "Circular H264 buffer", note: "Length [PLACEHOLDER]" },
+                { label: "Live view", value: "MJPEG", note: "FastAPI backend" },
+                { label: "Web UI", value: "Vanilla JS" },
+                { label: "Alerts", value: "Telegram", note: "With snapshot" },
+                { label: "Remote access", value: "Tailscale", note: "No ports exposed to the internet" },
+                { label: "Schematic", value: "KiCad", note: "Fig. 3" },
+                { label: "Operating temperature", value: "0 to 50 °C", note: "Board rating", fn: "pi4Brief" },
+                { label: "Status", value: "Completed", note: "Annual school project" },
+            ],
+            howItWorks: [
+                {
+                    title: "Capture",
+                    text: "A Raspberry Pi Camera Module 3 NoIR supplies the video feed. A PIR sensor reports motion.",
+                },
+                {
+                    title: "Detection",
+                    text: "YOLOv8 runs on the Pi 4 and sorts detections into three classes: people, animals and vehicles.",
+                },
+                {
+                    title: "Recording",
+                    text: "Footage goes into a circular H264 buffer, so the most recent stretch is always kept. Buffer length: [PLACEHOLDER].",
+                },
+                {
+                    title: "Live view",
+                    text: "A FastAPI backend serves a live MJPEG stream to a web UI written in vanilla JavaScript.",
+                },
+                { title: "Alerts", text: "Detections send a Telegram message with a snapshot attached." },
+                {
+                    title: "Remote access",
+                    text: "The web UI is reached over Tailscale. No ports are exposed to the internet.",
+                },
+            ],
+            hardware: {
+                figures: [
+                    {
+                        id: "an-fig-2",
+                        label: "Fig. 2",
+                        caption: "RaspiVision unit",
+                        media: { kind: "placeholder", label: "[PLACEHOLDER: photo, assembled unit]", aspect: "4 / 3" },
+                    },
+                    {
+                        id: "an-fig-3",
+                        label: "Fig. 3",
+                        caption: "Schematic, KiCad",
+                        media: { kind: "placeholder", label: "[PLACEHOLDER: KiCad schematic export]", aspect: "4 / 3" },
+                    },
+                ],
+                parts: {
+                    label: "Table 2",
+                    caption: "Parts",
+                    columns: ["Part", "Role"],
+                    rows: [
+                        { label: "Raspberry Pi 4 Model B", value: "Detection, recording, web server" },
+                        { label: "Camera Module 3 NoIR", value: "Video input" },
+                        { label: "PIR motion sensor", value: "Motion input" },
+                        { label: "[PLACEHOLDER]", value: "Power, enclosure, other parts", muted: true },
+                    ],
+                },
+            },
+        },
+    },
+    {
+        slug: "l0k1",
+        name: "l0k1 (Loki)",
+        shortName: "l0k1",
+        category: "hardware",
+        family: "l0k1 family · Assistant",
+        summary:
+            "Personal voice assistant with an animated face display. The face has three states: idle, listening and speaking. In active development.",
+        status: "In active development",
+        links: {},
+        layout: "strip-specs",
+        figures: [
+            {
+                id: "fig-6a",
+                label: "Fig. 6a",
+                caption: "Idle",
+                media: { kind: "placeholder", label: "[PLACEHOLDER: idle frame]", aspect: "1 / 1" },
+            },
+            {
+                id: "fig-6b",
+                label: "Fig. 6b",
+                caption: "Listening",
+                media: { kind: "placeholder", label: "[PLACEHOLDER: listening frame]", aspect: "1 / 1" },
+            },
+            {
+                id: "fig-6c",
+                label: "Fig. 6c",
+                caption: "Speaking",
+                media: { kind: "placeholder", label: "[PLACEHOLDER: speaking frame]", aspect: "1 / 1" },
+            },
+        ],
+        specs: [
+            { label: "Type", value: "Personal voice assistant" },
+            { label: "Display", value: "Animated face; idle, listening, speaking" },
+            { label: "Hardware", value: "[PLACEHOLDER]" },
+            { label: "Status", value: "In active development" },
+        ],
+    },
+];
+
+export function projectsIn(category: Category): Project[] {
+    return projects.filter((p) => p.category === category);
+}
 
 export const footer = {
     line: "MK-01 · Martin Koudela · Zlín, Czech Republic",
