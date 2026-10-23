@@ -1,6 +1,6 @@
 export type SectionId = "eth1" | "eth2" | "eth3" | "eth4" | "console";
 
-export type FootnoteKey = "reflow" | "piBriefs" | "esp32Datasheet" | "authorised" | "pi4Brief";
+export type FootnoteKey = "reflow" | "piBriefs" | "esp32Datasheet" | "authorised" | "pi4Brief" | "pi5Brief";
 
 export type ImageMedia = {
     kind: "image";
@@ -95,6 +95,7 @@ export type SpecRow = {
     group?: boolean;
     plain?: boolean;
     wide?: boolean;
+    detailOnly?: boolean;
 };
 
 export type Fact = { label: string; value: string; href?: string };
@@ -278,6 +279,7 @@ export const footnotes: Record<FootnoteKey, string> = {
     esp32Datasheet: "ESP32-S3 Series datasheet, version 2.2.",
     authorised: "For authorised testing only. A datasheet is not a licence.",
     pi4Brief: "Raspberry Pi 4 Model B product brief.",
+    pi5Brief: "Raspberry Pi 5 product brief.",
 };
 
 export const footnoteLinks: { text: string; href: string }[] = [
@@ -298,6 +300,8 @@ export const footnoteLinks: { text: string; href: string }[] = [
 export const homeFootnoteNumbers: Partial<Record<FootnoteKey, number>> = {
     reflow: 1,
     piBriefs: 2,
+    pi4Brief: 2,
+    pi5Brief: 2,
     esp32Datasheet: 3,
     authorised: 4,
 };
@@ -453,7 +457,9 @@ export const projects: Project[] = [
         ],
         specs: [
             { label: "Status", value: "END OF LIFE — replaced on the G1 by a separate system I did not build", wide: true },
-            { label: "Board", value: "Raspberry Pi 5; BCM2712, 4× Cortex-A76 @ 2.4 GHz", fn: "piBriefs" },
+            { label: "Board", value: "Raspberry Pi 5; BCM2712, 4× Cortex-A76 @ 2.4 GHz", fn: "pi5Brief" },
+            { label: "Memory", value: "16 GB", detailOnly: true },
+            { label: "Storage", value: "500 GB HDD", detailOnly: true },
             { label: "Language", value: "Python" },
             { label: "Camera", value: "Raspberry Pi Camera Module 3 NoIR" },
             { label: "VLM", value: "OpenAI Vision, with a context prompt system" },
@@ -484,7 +490,7 @@ export const projects: Project[] = [
             mobileMinWidth: 520,
         },
         specs: [
-            { label: "Board", value: "Raspberry Pi 4 Model B", note: "BCM2711, 4× Cortex-A72 @ 1.8 GHz", fn: "piBriefs" },
+            { label: "Board", value: "Raspberry Pi 4 Model B", note: "BCM2711, 4× Cortex-A72 @ 1.8 GHz", fn: "pi4Brief" },
             { label: "Camera", value: "Camera Module 3 NoIR", note: "12 MP Sony IMX708, no IR filter; CSI-2 via 15-pin ribbon" },
             { label: "Detection", value: "YOLOv8", note: "People, animals and objects; runs when the PIR sensor detects motion" },
             { label: "Recording", value: "Circular H264 buffer", note: "Web gallery" },

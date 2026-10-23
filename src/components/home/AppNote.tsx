@@ -7,6 +7,7 @@ import { rich } from "../Rich";
 import SpecList from "../SpecList";
 
 const homeFootnote = (row: SpecRow) => (row.fn ? homeFootnoteNumbers[row.fn] : undefined);
+const homeSpecs = (project: Project) => project.specs.filter((row) => !row.detailOnly);
 
 function SpecTableBlock({ project }: { project: Project }) {
     const t = project.specTable!;
@@ -21,7 +22,7 @@ function SpecTableBlock({ project }: { project: Project }) {
                     width: widths[i],
                     mobileWidth: t.columns.length === 3 ? ["26%", "34%"][i] : widths[i],
                 }))}
-                rows={specRows(project.specs, t.columns.length, homeFootnote)}
+                rows={specRows(homeSpecs(project), t.columns.length, homeFootnote)}
                 minWidth={t.minWidth}
                 mobileMinWidth={t.mobileMinWidth}
                 labelledBy={id}
@@ -56,13 +57,13 @@ function Body({ project }: { project: Project }) {
                     ) : (
                         <FigureView figure={first} />
                     )}
-                    <SpecList rows={project.specs} footnote={homeFootnote} />
+                    <SpecList rows={homeSpecs(project)} footnote={homeFootnote} />
                 </div>
             );
         case "specs-media":
             return (
                 <div className="note-grid note-grid--specs">
-                    <SpecList rows={project.specs} footnote={homeFootnote} />
+                    <SpecList rows={homeSpecs(project)} footnote={homeFootnote} />
                     <FigureView figure={first} />
                 </div>
             );
@@ -84,7 +85,7 @@ function Body({ project }: { project: Project }) {
                             ))}
                         </div>
                     )}
-                    <SpecList rows={project.specs} columns={2} footnote={homeFootnote} />
+                    <SpecList rows={homeSpecs(project)} columns={2} footnote={homeFootnote} />
                 </>
             );
         case "table-media":
@@ -108,7 +109,7 @@ function Body({ project }: { project: Project }) {
                             <FigureView key={f.id} figure={f} />
                         ))}
                     </div>
-                    <SpecList rows={project.specs} columns={2} footnote={homeFootnote} />
+                    <SpecList rows={homeSpecs(project)} columns={2} footnote={homeFootnote} />
                 </>
             );
         default:
