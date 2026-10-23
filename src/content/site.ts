@@ -383,6 +383,7 @@ export const projects: Project[] = [
         name: "G1 vision unit",
         shortName: "G1 vision unit",
         category: "hardware",
+        metaDescription: "Retired vision unit for the Unitree G1: Raspberry Pi 5 person detection and tracking with a cloud VLM for descriptions, JSON output to the robot SDK.",
         descriptor: "Raspberry Pi 5 · person detection and description",
         endOfLife: true,
         summary:
@@ -461,6 +462,7 @@ export const projects: Project[] = [
         name: "RaspiVision",
         shortName: "RaspiVision",
         category: "hardware",
+        metaDescription: "Security camera on a Raspberry Pi 4: detects people, animals and vehicles with YOLOv8, streams live MJPEG and sends Telegram alerts with snapshots.",
         summary:
             "Security camera on a Raspberry Pi 4. Detects people, animals and vehicles with YOLOv8, streams live MJPEG to a browser and sends Telegram alerts with snapshots.",
         status: "Completed",
@@ -825,6 +827,7 @@ export const projects: Project[] = [
         name: "Laravix",
         shortName: "Laravix",
         category: "software",
+        metaDescription: "Open-source multi-tenant CMS: each site is an isolated tenant, delivered through a Blade theme or a token-authenticated REST API. In active development.",
         summary:
             "Open-source multi-tenant CMS. Each site is an isolated tenant with its own content, users, media and theme, delivered through a Blade theme or a token-authenticated REST API. In active development.",
         status: "In active development",
@@ -1112,6 +1115,7 @@ export const projects: Project[] = [
         name: "Orbis Projects",
         shortName: "Orbis Projects",
         category: "compact",
+        metaDescription: "Student project showcase for ORBIS Zlín. Students build their own Blade/Tailwind themes; Filament admin, REST API. Personal initiative, not an assignment.",
         summary:
             "Student project showcase for ORBIS Zlín. Students build their own Blade/Tailwind themes; Filament admin, REST API. Personal initiative, not an assignment.",
         description:
@@ -1140,6 +1144,7 @@ export const projects: Project[] = [
         name: "Football Photogallery",
         shortName: "Football Photogallery",
         category: "compact",
+        metaDescription: "Client football photogallery: match-based photo archive, curated highlights and a photographer upload dashboard.",
         summary: "Client project. Match-based photo archive, curated highlights, photographer upload dashboard.",
         description:
             "A bespoke football photogallery platform developed for a client, designed to showcase match photography in an elegant and organized way. The platform features a photographer-focused dashboard for easy photo uploads and management, a curated highlights section displaying the best shots, and a comprehensive match-based photo archive where visitors can browse galleries organized by individual games. Built with performance in mind, the site handles large image collections efficiently while maintaining a clean, modern user interface.",
@@ -1190,6 +1195,7 @@ export const projects: Project[] = [
         name: "Trackee",
         shortName: "Trackee",
         category: "compact",
+        metaDescription: "Team project management platform: teams, kanban boards, shared calendar, task assignments, comments and notifications.",
         summary: "Team project management: teams, kanban boards, shared calendar, assignments, comments, notifications.",
         description:
             "A modern team collaboration and project management platform designed to streamline workflow and boost productivity. Users can create and join teams, set up projects with detailed task breakdowns, and track progress through intuitive kanban boards. The platform includes a shared calendar system for scheduling deadlines and meetings, customizable user profiles, and real-time collaboration features. Team members can assign tasks, set priorities, add comments, and receive notifications about updates. The clean, minimalist interface ensures users stay focused on what matters most - getting work done.",
@@ -1224,6 +1230,7 @@ export const projects: Project[] = [
         name: "Filmio",
         shortName: "Filmio",
         category: "compact",
+        metaDescription: "Film club web app that grew out of a school project: film catalog, screening votes, ratings and reviews, role-based access.",
         summary: "Film club web app: catalog, screening votes, ratings and reviews, role-based access.",
         description:
             "A school project that evolved into a fully functional film club web application. The platform allows movie enthusiasts to create accounts, join the club community, and participate in shared movie watching sessions. Members can browse the film catalog, vote on upcoming screenings, and discuss movies with other members. The admin dashboard provides complete control over the film database, user management, and scheduling of watch sessions. Features include user authentication with role-based access, a rating and review system, and a clean interface optimized for easy navigation.",
@@ -1258,6 +1265,7 @@ export const projects: Project[] = [
         name: "Cafecheck",
         shortName: "Cafecheck",
         category: "compact",
+        metaDescription: "Private café review site for Zlín and surroundings: atmosphere, coffee, food and overall vibe, with personal photos.",
         summary: "Private café review site for Zlín and surroundings.",
         description:
             "A personal passion project for documenting and sharing experiences at local coffee shops in Zlín and surrounding areas. The website features subjective reviews covering atmosphere, coffee quality, food options, and overall vibe of each location. Each review includes personal photos capturing the unique character of the cafes, along with practical information like opening hours and location. Built as a non-public platform for personal use and sharing with friends who share the same appreciation for good coffee and cozy spaces.",

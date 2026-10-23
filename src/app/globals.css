@@ -435,9 +435,15 @@ a.plain {
   margin-top: 2px;
 }
 
+.marked {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 16px;
+}
+
 .prelim {
   display: inline-block;
-  margin-left: 16px;
   font-family: var(--font-code);
   font-size: 13px;
   line-height: 1;
@@ -445,7 +451,6 @@ a.plain {
   font-stretch: normal;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  vertical-align: middle;
   color: var(--accent);
 }
 

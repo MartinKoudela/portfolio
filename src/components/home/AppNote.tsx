@@ -125,7 +125,7 @@ export default function AppNote({ project }: { project: Project }) {
                 {project.descriptor && <p className="mono family">{project.descriptor}</p>}
             </div>
             <div className="main">
-                <h3 className="an">
+                <h3 className={project.preliminary || project.endOfLife ? "an marked" : "an"}>
                     {project.name}
                     {project.preliminary && <span className="prelim">Preliminary</span>}
                     {project.endOfLife && <span className="prelim">End of life</span>}

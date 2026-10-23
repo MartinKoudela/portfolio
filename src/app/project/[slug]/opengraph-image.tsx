@@ -25,7 +25,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
     const s = section(categorySection[project.category]);
 
     return ogImage({
-        kicker: `${project.preliminary ? "Preliminary application note" : "Application note"} · ${s.code} · ${s.title}`,
+        kicker: `${project.preliminary ? "Preliminary application note" : project.endOfLife ? "End-of-life application note" : "Application note"} · ${s.code} · ${s.title}`,
         title: project.name,
         titleSize: titleSize(project.name),
         subtitle: project.descriptor,

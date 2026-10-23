@@ -126,7 +126,7 @@ export default async function ProjectPage({ params }: { params: Promise<Params> 
                             {project.descriptor && <p className="mono family">{project.descriptor}</p>}
                         </div>
                         <div className="main">
-                            <h1 id="an-title" className="an-title">
+                            <h1 id="an-title" className={project.preliminary || project.endOfLife ? "an-title marked" : "an-title"}>
                                 {project.name}
                                 {project.preliminary && <span className="prelim">Preliminary</span>}
                                 {project.endOfLife && <span className="prelim">End of life</span>}
