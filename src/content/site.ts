@@ -707,7 +707,6 @@ export const projects: Project[] = [
                         { label: "Raspberry Pi 4 Model B", value: "Detection, recording, web server" },
                         { label: "Camera Module 3 NoIR", value: "Video input" },
                         { label: "HW-416 PIR motion sensor", value: "Motion input" },
-                        { label: "[PLACEHOLDER]", value: "Power, enclosure, other parts", muted: true },
                     ],
                 },
             },
