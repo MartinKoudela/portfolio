@@ -1394,24 +1394,9 @@ export const specifications = {
     ],
 };
 
-export const revisions = {
-    title: "Revision history",
-    label: "Table 7",
-    caption: "Milestones",
-    columns: ["Rev", "Date", "Change"],
-    rows: [
-        ["1", "[DATE]", "Cambridge B2 First (FCE)"],
-        ["2", "[DATE]", "Two-week internship at MarketSoul, web development"],
-        ["3", "06/2026", "Part-time robotics programmer at SYNOT ICT (Unitree G1)"],
-        ["4", "[DATE]", "RaspiVision completed as annual school project"],
-        ["5", "[DATE]", "Backlog iOS app finished"],
-        ["6", "[DATE]", "Laravix in active development"],
-    ],
-};
-
 export const ordering = {
     availability: "Open to networking, security, hardware and backend projects. Web projects selectively.",
-    label: "Table 8",
+    label: "Table 7",
     caption: "Ordering channels",
     columns: ["Channel", "Address"],
     channels: [

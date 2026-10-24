@@ -1257,14 +1257,10 @@ a.plain {
   }
 }
 
-/* Specifications, revisions, ordering */
+/* Specifications, ordering */
 
 .spec-head {
   margin-bottom: 32px;
-}
-
-.revisions {
-  margin-top: 112px;
 }
 
 .h-sub {
@@ -1349,18 +1345,10 @@ a.plain {
     margin-top: 20px;
   }
 
-  .revisions {
-    margin-top: 64px;
-  }
-
   .h-sub {
     margin: 0;
     font-size: 26px;
     line-height: 32px;
-  }
-
-  .revisions .m-cap {
-    margin: 14px 0 8px;
   }
 
   .order-email {
