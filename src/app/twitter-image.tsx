@@ -7,9 +7,8 @@ export const contentType = ogContentType;
 
 export default function Image() {
     return ogImage({
-        title: identity.device,
-        titleSize: 230,
-        subtitle: identity.name,
+        title: identity.name,
+        titleSize: 112,
         line: siteMeta.ogLine,
         active: "eth1",
     });

@@ -9,9 +9,8 @@ export default function Intro() {
         <section id="top" aria-labelledby="mk-title">
             <div className="intro-head">
                 <h1 id="mk-title" className="intro-title">
-                    {identity.device}
+                    {identity.name}
                 </h1>
-                <p className="intro-name">{identity.name}</p>
                 <p className="intro-tagline">
                     {intro.tagline}
                     <FootnoteRef n={fn} />

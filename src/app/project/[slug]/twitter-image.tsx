@@ -3,7 +3,7 @@ import { categorySection, projects, section } from "@/content/site";
 import { plain } from "@/components/Rich";
 import { ogContentType, ogImage, ogSize } from "@/lib/og";
 
-export const alt = "MK-01 application note";
+export const alt = "Martin Koudela application note";
 export const size = ogSize;
 export const contentType = ogContentType;
 

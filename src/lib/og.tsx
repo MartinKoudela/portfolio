@@ -28,7 +28,6 @@ type Props = {
 };
 
 export async function ogImage({ kicker, title, titleSize, subtitle, line, active }: Props) {
-    const brand = `\u00a0\u00a0|\u00a0\u00a0${identity.name}`;
     const [display, bold, regular, medium, code] = await Promise.all([
         loadFont("Archivo-ExpandedSemiBold.ttf"),
         loadFont("Archivo-Bold.ttf"),
@@ -61,10 +60,7 @@ export async function ogImage({ kicker, title, titleSize, subtitle, line, active
                         fontSize: 22,
                     }}
                 >
-                    <div style={{ display: "flex" }}>
-                        <span style={{ fontWeight: 700 }}>{identity.device}</span>
-                        <span>{brand}</span>
-                    </div>
+                    <div style={{ display: "flex", fontWeight: 700 }}>{identity.name}</div>
                     <div style={{ display: "flex", fontFamily: "Plex Mono", fontSize: 18, color: grey }}>{domain}</div>
                 </div>
 

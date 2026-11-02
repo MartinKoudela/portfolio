@@ -1,6 +1,6 @@
 {
-  "name": "Martin Koudela — MK-01",
-  "short_name": "MK-01",
+  "name": "Martin Koudela",
+  "short_name": "Martin Koudela",
   "icons": [
     { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
     { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" },

@@ -68,13 +68,12 @@ export default function SiteHeader(props: Props) {
                 <div className="hdr-d">
                     <p className="hdr-brand">
                         {props.home ? (
-                            <b>{identity.device}</b>
+                            <b>{identity.name}</b>
                         ) : (
                             <Link href="/" className="plain">
-                                <b>{identity.device}</b>
+                                <b>{identity.name}</b>
                             </Link>
                         )}
-                        &nbsp;&nbsp;|&nbsp;&nbsp;{identity.name}
                     </p>
                     <div className="hdr-right">
                         <ThemeSwitch />
@@ -104,7 +103,7 @@ export default function SiteHeader(props: Props) {
                 <div className="hdr-m">
                     <div className="hdr-m-bar">
                         <a href={props.home ? "#top" : "/"} className="hdr-m-brand plain">
-                            {identity.device}
+                            {identity.name}
                         </a>
                         <button
                             type="button"

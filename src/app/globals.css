@@ -753,15 +753,8 @@ a.plain {
   letter-spacing: -0.025em;
 }
 
-.intro-name {
-  margin: 32px 0 0;
-  font-size: 36px;
-  line-height: 42px;
-  font-weight: 500;
-}
-
 .intro-tagline {
-  margin: 10px 0 0;
+  margin: 32px 0 0;
   max-width: 620px;
   font-size: 20px;
   line-height: 28px;
@@ -825,18 +818,12 @@ a.plain {
 
   .intro-title {
     margin: 56px 0 0;
-    font-size: min(84px, 21.5vw);
+    font-size: min(84px, calc((100vw - 32px) / 4.8));
     line-height: 0.86;
   }
 
-  .intro-name {
-    margin-top: 22px;
-    font-size: 26px;
-    line-height: 32px;
-  }
-
   .intro-tagline {
-    margin-top: 8px;
+    margin-top: 22px;
     font-size: 17px;
     line-height: 25px;
   }

@@ -167,7 +167,6 @@ export type Section = {
 };
 
 export const identity = {
-    device: "MK-01",
     name: "Martin Koudela",
     location: "Zlín, Czech Republic",
     email: "mk@martinkoudela.com",
@@ -176,10 +175,10 @@ export const identity = {
 export const siteMeta = {
     url: "https://martinkoudela.com",
     title: "Martin Koudela | Networking, Hardware & Security",
-    shareTitle: "Martin Koudela · MK-01",
+    shareTitle: "Martin Koudela",
     description:
         "Martin Koudela: networking, hardware/IoT and security from Zlín. Raspberry Pi vision, ESP32-S3 RF hardware design, G1 humanoid robotics, Laravel and FastAPI.",
-    imageAlt: "MK-01, Martin Koudela",
+    imageAlt: "Martin Koudela",
     ogLine: "Networking, hardware/IoT and security from Zlín.",
     keywords: [
         "Martin Koudela",
@@ -1415,7 +1414,7 @@ export const ordering = {
 };
 
 export const footer = {
-    line: "MK-01 · Martin Koudela · Zlín, Czech Republic",
+    line: "Martin Koudela · Zlín, Czech Republic",
     builtWith: "Built with Next.js",
     back: "Back to the datasheet",
 };
