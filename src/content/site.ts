@@ -174,14 +174,20 @@ export const identity = {
 
 export const siteMeta = {
     url: "https://martinkoudela.com",
-    title: "Martin Koudela | Networking, Hardware & Security",
+    title: "Martin Koudela | Web Apps, Networking, Hardware & Security",
     shareTitle: "Martin Koudela",
     description:
-        "Martin Koudela: networking, hardware/IoT and security from Zlín. Raspberry Pi vision, ESP32-S3 RF hardware design, G1 humanoid robotics, Laravel and FastAPI.",
+        "Martin Koudela: web apps, networking, hardware/IoT and security from Zlín. Laravel and Next.js web apps, Laravix multi-tenant CMS, Raspberry Pi vision, ESP32-S3 RF hardware design, G1 humanoid robotics.",
     imageAlt: "Martin Koudela",
-    ogLine: "Networking, hardware/IoT and security from Zlín.",
+    ogLine: "Web apps, networking, hardware/IoT and security from Zlín.",
     keywords: [
         "Martin Koudela",
+        "Laravel",
+        "Laravel developer",
+        "PHP",
+        "Filament",
+        "web development",
+        "web applications",
         "networking",
         "Tailscale",
         "Cloudflare",
@@ -195,15 +201,19 @@ export const siteMeta = {
         "NFC",
         "backend",
         "FastAPI",
-        "Laravel",
         "Unitree G1",
         "robotics",
         "Next.js",
+        "React",
         "SwiftUI",
     ],
     jobTitle: "Robotics programmer",
     worksFor: "SYNOT ICT",
     knowsAbout: [
+        "Laravel",
+        "PHP",
+        "Filament",
+        "Web development",
         "Networking",
         "Tailscale",
         "Cloudflare DNS",
@@ -216,8 +226,6 @@ export const siteMeta = {
         "Python",
         "C/C++",
         "FastAPI",
-        "Laravel",
-        "PHP",
         "TypeScript",
         "Swift",
     ],
@@ -255,10 +263,11 @@ export const sections: Section[] = [
     {
         id: "eth4",
         code: "ETH4",
-        port: "Software & Apps",
-        label: "Software & Apps",
-        title: "Software & Apps",
-        summary: "An open-source CMS, an iOS app, a browser game and client websites.",
+        port: "Web & Apps",
+        label: "Web & Apps",
+        title: "Web & Apps",
+        summary:
+            "Web applications first: an open-source multi-tenant Laravel CMS and a student showcase platform. Plus client websites, an iOS app and a browser game.",
     },
     {
         id: "console",
@@ -308,7 +317,7 @@ export const homeFootnoteNumbers: Partial<Record<FootnoteKey, number>> = {
 
 export const intro = {
     tagline:
-        "One engineer, documented as a device. Hardware, networks and security, up through backend, web and iOS.",
+        "Engineer building web apps and backends, networks, hardware and security, up to iOS.",
     taglineFn: "reflow" as FootnoteKey,
     facts: [
         { label: "Location", value: "Zlín, Czech Republic" },
@@ -317,6 +326,10 @@ export const intro = {
     ] satisfies Fact[],
     featuresTitle: "Features",
     features: [
+        {
+            lead: "Web.",
+            text: "Laravel and Filament web apps and REST APIs, plus FastAPI and Next.js: Laravix multi-tenant CMS, Orbis Projects, client websites.",
+        },
         {
             lead: "Networking.",
             text: "Networks designed in Cisco Packet Tracer; analysis with Wireshark, tcpdump, dig and netcat; own setup exposes no ports to the internet.",
@@ -333,8 +346,7 @@ export const intro = {
             lead: "Security.",
             text: "l0k1 RF handheld (schematic stage); phishing analysis; lab testing with nmap, Burp Suite and Metasploit.",
         },
-        { lead: "Backend.", text: "FastAPI and Laravel services, REST APIs." },
-        { lead: "Apps.", text: "Laravix multi-tenant CMS, Backlog iOS app, client websites." },
+        { lead: "iOS.", text: "Backlog app in SwiftUI." },
     ],
 };
 
@@ -1393,7 +1405,7 @@ export const specifications = {
 };
 
 export const ordering = {
-    availability: "Open to networking, security, hardware and backend projects. Web projects selectively.",
+    availability: "Open to projects of all kinds.",
     label: "Table 7",
     caption: "Ordering channels",
     columns: ["Channel", "Address"],
