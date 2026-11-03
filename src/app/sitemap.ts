@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 import { projects } from "@/content/site";
 
-const BASE_URL = "https://martinkoudela.com";
+const BASE_URL = "https://docs.martinkoudela.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
     const lastModified = new Date();
