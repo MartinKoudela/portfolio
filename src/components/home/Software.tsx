@@ -6,7 +6,7 @@ import AppNote from "./AppNote";
 import SectionHead from "./SectionHead";
 
 export default function Software() {
-    const s = section("eth4");
+    const s = section("eth1");
     const captionId = "table-software-caption";
     const [name, description, stack, link] = otherSoftware.columns;
 

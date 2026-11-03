@@ -15,10 +15,10 @@ export default function Page() {
             <div className="page">
                 <main>
                     <Intro />
+                    <Software />
                     <Networking />
                     <Hardware />
                     <Security />
-                    <Software />
                     <Specifications />
                     <Ordering />
                 </main>

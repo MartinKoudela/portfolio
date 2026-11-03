@@ -151,10 +151,10 @@ export type Project = {
 export type PlainTable = { label: string; caption: string; columns: string[]; rows: string[][]; monoColumn: number };
 
 export const categorySection: Record<Category, SectionId> = {
-    hardware: "eth2",
-    security: "eth3",
-    software: "eth4",
-    compact: "eth4",
+    software: "eth1",
+    compact: "eth1",
+    hardware: "eth3",
+    security: "eth4",
 };
 
 export type Section = {
@@ -236,6 +236,15 @@ export const sections: Section[] = [
     {
         id: "eth1",
         code: "ETH1",
+        port: "Web & Apps",
+        label: "Web & Apps",
+        title: "Web & Apps",
+        summary:
+            "Web applications first: an open-source multi-tenant Laravel CMS and a student showcase platform. Plus client websites, an iOS app and a browser game.",
+    },
+    {
+        id: "eth2",
+        code: "ETH2",
         port: "Networking",
         label: "Networking",
         title: "Networking",
@@ -243,8 +252,8 @@ export const sections: Section[] = [
             "Home devices expose no ports to the internet; remote access runs only through a private Tailscale mesh. Custom-domain mail with SPF and DKIM.",
     },
     {
-        id: "eth2",
-        code: "ETH2",
+        id: "eth3",
+        code: "ETH3",
         port: "Hardware",
         label: "Hardware & IoT",
         title: "Hardware & IoT",
@@ -252,22 +261,13 @@ export const sections: Section[] = [
             "Robotics, computer vision and embedded builds. Four application notes, each linked to its full version.",
     },
     {
-        id: "eth3",
-        code: "ETH3",
+        id: "eth4",
+        code: "ETH4",
         port: "Security",
         label: "Security",
         title: "Security",
         summary:
             "Lab testing with standard offensive tools, regular phishing analysis, and an RF handheld in design.",
-    },
-    {
-        id: "eth4",
-        code: "ETH4",
-        port: "Web & Apps",
-        label: "Web & Apps",
-        title: "Web & Apps",
-        summary:
-            "Web applications first: an open-source multi-tenant Laravel CMS and a student showcase platform. Plus client websites, an iOS app and a browser game.",
     },
     {
         id: "console",
@@ -352,7 +352,7 @@ export const intro = {
 
 export const network = {
     diagnostics: {
-        label: "Table 1",
+        label: "Table 2",
         caption: "Tools",
         columns: ["Function", "Tools"],
         rows: [
@@ -369,6 +369,467 @@ const arrowRight = (x: number, y: number): DiagramArrow => ({ x, y, w: 79, h: 8,
 
 export const projects: Project[] = [
     {
+        slug: "laravix-cms",
+        name: "Laravix",
+        shortName: "Laravix",
+        category: "software",
+        descriptor: "Laravel · multi-tenant CMS",
+        metaDescription: "Open-source multi-tenant CMS: each site is an isolated tenant, delivered through a Blade theme or a token-authenticated REST API.",
+        summary:
+            "Open-source multi-tenant CMS. Each site is an isolated tenant with its own content, users, media and theme, delivered through a Blade theme or a token-authenticated REST API.",
+        status: "In active development",
+        links: { source: "https://github.com/MartinKoudela/laravix-cms", website: "https://laravix.com" },
+        icon: "/laravix-icon.png",
+        layout: "diagram-specs",
+        figures: [
+            {
+                id: "fig-8",
+                label: "Fig. 1",
+                caption: "Laravix tenancy and delivery",
+                media: {
+                    kind: "diagram",
+                    width: 864,
+                    height: 256,
+                    arrows: [arrowRight(176, 32), arrowRight(176, 124), arrowRight(176, 216), arrowRight(544, 72), arrowRight(544, 176)],
+                    cards: [
+                        { x: 0, y: 0, w: 176, h: 72, title: "Tenant A", lines: ["content, users, media, theme"] },
+                        { x: 0, y: 92, w: 176, h: 72, title: "Tenant B", lines: ["content, users, media, theme"] },
+                        { x: 0, y: 184, w: 176, h: 72, title: "Tenant n", lines: ["isolated site"] },
+                        {
+                            x: 256,
+                            y: 0,
+                            w: 288,
+                            h: 256,
+                            title: "Laravix",
+                            lines: [
+                                "Laravel, PHP, Filament",
+                                "GrapesJS builder, 45+ extendable blocks",
+                                "Revisions, scheduled publishing",
+                                "Meilisearch, tenant-aware SEO",
+                                "Plugin registries",
+                            ],
+                            tint: true,
+                        },
+                        { x: 624, y: 40, w: 240, h: 72, title: "Blade theme", lines: ["server-rendered site"] },
+                        { x: 624, y: 144, w: 240, h: 72, title: "REST API", lines: ["headless, token-authenticated"] },
+                    ],
+                    mobile: [
+                        {
+                            t: "grid",
+                            cards: [
+                                { title: "Tenant A", lines: ["content, users, media, theme"] },
+                                { title: "Tenant B", lines: ["content, users, media, theme"] },
+                                { title: "Tenant n", lines: ["isolated site"] },
+                            ],
+                        },
+                        { t: "arrow" },
+                        {
+                            t: "card",
+                            card: {
+                                title: "Laravix",
+                                lines: [
+                                    "Laravel, PHP, Filament",
+                                    "GrapesJS builder, 45+ extendable blocks",
+                                    "Revisions, scheduled publishing",
+                                    "Meilisearch, tenant-aware SEO",
+                                    "Plugin registries",
+                                ],
+                                tint: true,
+                            },
+                        },
+                        { t: "arrow" },
+                        {
+                            t: "grid",
+                            cards: [
+                                { title: "Blade theme", lines: ["server-rendered site"] },
+                                { title: "REST API", lines: ["headless, token-authenticated"] },
+                            ],
+                        },
+                    ],
+                },
+            },
+        ],
+        specs: [
+            { label: "Stack", value: "Laravel, PHP, Filament" },
+            { label: "Builder", value: "GrapesJS, 45+ extendable blocks" },
+            { label: "Search", value: "Meilisearch" },
+            {
+                label: "Source",
+                value: "github.com/MartinKoudela/laravix-cms",
+                href: "https://github.com/MartinKoudela/laravix-cms",
+            },
+            { label: "Status", value: "In active development" },
+        ],
+        images: [
+            {
+                kind: "image",
+                src: "/laravix-dashboard.png",
+                width: 2856,
+                height: 1712,
+                alt: "Laravix admin dashboard with counts for sites, published pages and posts, drafts and media files, above a Recent Content table listing titles, type, status and update time",
+                caption: "Admin dashboard: managed sites, published content, drafts and media counts, recent content",
+            },
+            {
+                kind: "image",
+                src: "/laravix-pages.png",
+                width: 2856,
+                height: 1712,
+                alt: "Laravix Pages list table with title, slug, language (CS or EN), published status and update time, and edit, preview, duplicate and delete actions on the highlighted row",
+                caption: "Pages list: slugs, CS/EN language versions, publish status and row actions",
+            },
+            {
+                kind: "image",
+                src: "/laravix-builder.png",
+                width: 2856,
+                height: 1712,
+                alt: "Laravix visual page builder with the homepage hero headline selected for editing, a text toolbar above it and a style manager panel with layout, spacing, typography and background sections on the right",
+                caption: "Visual page builder (GrapesJS): editing the homepage hero, style manager on the right",
+            },
+            {
+                kind: "image",
+                src: "/laravix-seo.png",
+                width: 2856,
+                height: 1685,
+                alt: "Laravix SEO settings form with meta title, default meta description, OG image, Google site verification and robots.txt fields",
+                caption: "SEO settings: default meta description, OG image, robots.txt",
+            },
+        ],
+    },
+    {
+        slug: "backlog",
+        name: "Backlog",
+        shortName: "Backlog",
+        category: "software",
+        descriptor: "Swift · SwiftUI · iOS",
+        summary:
+            "iOS app that puts projects, tasks and reminders in one data model. Swift and SwiftUI, Liquid Glass design.",
+        status: "Finished",
+        links: {},
+        layout: "media-specs",
+        figures: [
+            {
+                id: "fig-9a",
+                label: "Fig. 2a",
+                caption: "Today: overdue tasks, progress, tasks grouped by project",
+                media: {
+                    kind: "image",
+                    src: "/backlog-today.png",
+                    width: 1206,
+                    height: 2622,
+                    alt: "Backlog Today screen for Friday 23 October with a 4 of 16 done progress bar, three overdue tasks in red, and tasks grouped under App Launch and Brand Identity",
+                },
+            },
+            {
+                id: "fig-9b",
+                label: "Fig. 2b",
+                caption: "Projects: recent pages and project list",
+                media: {
+                    kind: "image",
+                    src: "/backlog-projects.png",
+                    width: 1206,
+                    height: 2622,
+                    alt: "Backlog Projects screen with recently edited pages such as Color Palette, Timeline and README, and a project list with due dates, page counts and open task counts",
+                },
+            },
+            {
+                id: "fig-9c",
+                label: "Fig. 2c",
+                caption: "Project: pages and tasks in one view",
+                media: {
+                    kind: "image",
+                    src: "/backlog-project.png",
+                    width: 1206,
+                    height: 2622,
+                    alt: "Backlog App Launch project screen with due date, description, a Pages list with README, Launch Plan folder and Release Notes, and a Tasks list below",
+                },
+            },
+        ],
+        specs: [
+            { label: "Platform", value: "iOS" },
+            { label: "Language", value: "Swift, SwiftUI" },
+            { label: "Design", value: "Liquid Glass" },
+            { label: "Data model", value: "Projects, tasks and reminders in one model" },
+            { label: "Status", value: "Finished" },
+        ],
+        icon: "/backlog-icon.svg",
+        images: [
+            {
+                kind: "image",
+                src: "/backlog-reminders.png",
+                width: 1206,
+                height: 2622,
+                alt: "Backlog Reminders screen with three overdue tasks in red and a Today section listing tasks from App Launch, Brand Identity and without a project",
+                caption: "Reminders: overdue and today, across all projects",
+            },
+            {
+                kind: "image",
+                src: "/backlog-readme.png",
+                width: 1206,
+                height: 2622,
+                alt: "Backlog README page in the App Launch project, rendered with headings, bold and italic text, a Goals bullet list and two links",
+                caption: "Page: rendered Markdown",
+            },
+            {
+                kind: "image",
+                src: "/backlog-editor.png",
+                width: 1206,
+                height: 2622,
+                alt: "Backlog page editor showing the README as Markdown source, with a formatting toolbar for headings, bold, italic, strikethrough, lists, quote and code above the keyboard",
+                caption: "Page editor: Markdown source with formatting toolbar",
+            },
+            {
+                kind: "image",
+                src: "/backlog-nested-pages.png",
+                width: 1206,
+                height: 2622,
+                alt: "Backlog App Launch project with the Launch Plan folder expanded to show the nested pages Timeline, Press Kit and App Store Copy",
+                caption: "Nested pages: folder expanded inside a project",
+            },
+            {
+                kind: "image",
+                src: "/backlog-task-details.png",
+                width: 1206,
+                height: 2622,
+                alt: "Backlog task Details screen with Date set to Today, Time off, Repeat Never, Reminder off, Project App Launch, Priority set to two exclamation marks, and Archive and Delete Task actions",
+                caption: "Task details: date, time, repeat, reminder, project, priority",
+            },
+            {
+                kind: "image",
+                src: "/backlog-repeat.png",
+                width: 1206,
+                height: 2622,
+                alt: "Backlog Repeat screen with Custom selected, frequency Weekly, every 1 week, Friday highlighted in the weekday row, and End Repeat off",
+                caption: "Custom repeat: weekly on selected days",
+            },
+            {
+                kind: "image",
+                src: "/backlog-search.png",
+                width: 1206,
+                height: 2622,
+                alt: "Backlog search results for the query App, grouped into Projects, Pages and Tasks",
+                caption: "Search across projects, pages and tasks",
+            },
+        ],
+    },
+    {
+        slug: "l0k1-game",
+        name: "l0k1 Game",
+        shortName: "l0k1 Game",
+        category: "software",
+        family: "l0k1 family · Game",
+        summary:
+            "Browser-based 3D horror game set in a hacker's apartment. The in-game OS has a terminal, a file manager and hacking tools.",
+        links: { source: "https://github.com/MartinKoudela/L0k1-game" },
+        layout: "specs-media",
+        figures: [
+            {
+                id: "fig-10",
+                label: "Fig. 3",
+                caption: "In-game OS terminal",
+                media: {
+                    kind: "image",
+                    src: "/l0k1.png",
+                    width: 2940,
+                    height: 1912,
+                    alt: "In-game view of the hacker's apartment, with a laptop showing the in-game OS terminal",
+                },
+            },
+        ],
+        specs: [
+            { label: "Genre", value: "3D horror, browser" },
+            { label: "In-game OS", value: "Terminal, file manager, hacking tools" },
+            { label: "Audio", value: "Positional" },
+            { label: "AI", value: "Enemy AI" },
+            { label: "Assets", value: "60+ GLTF models" },
+            { label: "Stack", value: "Three.js, TypeScript, Vite" },
+        ],
+    },
+    {
+        slug: "orbis-projects",
+        name: "Orbis Projects",
+        shortName: "Orbis Projects",
+        category: "compact",
+        metaDescription: "Student project showcase for ORBIS Zlín. Students build their own Blade/Tailwind themes; Filament admin, REST API. Personal initiative, not an assignment.",
+        summary:
+            "Student project showcase for ORBIS Zlín. Students build their own Blade/Tailwind themes; Filament admin, REST API. Personal initiative, not an assignment.",
+        description:
+            "A student project showcase platform built for ORBIS Zlín, designed to give students a professional stage to present their work. The platform features a unique theme system where students design and build their own custom Blade templates using Tailwind CSS, maintaining full creative control over how their projects are displayed. Administrators manage project data, taxonomies, and media through a modern Filament dashboard, while a REST API enables dynamic filtering and browsing. Built as a personal initiative during my studies — not a school assignment, but a real tool built to fill a real need.",
+        links: { source: "https://github.com/MartinKoudela/orbis-projects", website: "https://orbis.cz" },
+        row: {
+            description:
+                "Student project showcase for ORBIS Zlín. Students build their own Blade/Tailwind themes; Filament admin, REST API. Personal initiative, not an assignment.",
+            stack: "Laravel, PHP, Filament",
+        },
+        specs: [{ label: "Stack", value: "Laravel, PHP, Filament, Tailwind, REST API, Blade" }],
+        figures: [],
+        images: [
+            {
+                kind: "image",
+                src: "/orbis-projects.png",
+                width: 2940,
+                height: 1684,
+                alt: "Orbis Projects listing student projects as cards, with filters for year, class and project type",
+                caption: "Project listing with filters",
+            },
+        ],
+    },
+    {
+        slug: "football-photogallery",
+        name: "Football Photogallery",
+        shortName: "Football Photogallery",
+        category: "compact",
+        metaDescription: "Client football photogallery: match-based photo archive, curated highlights and a photographer upload dashboard.",
+        summary: "Client project. Match-based photo archive, curated highlights, photographer upload dashboard.",
+        description:
+            "A bespoke football photogallery platform developed for a client, designed to showcase match photography in an elegant and organized way. The platform features a photographer-focused dashboard for easy photo uploads and management, a curated highlights section displaying the best shots, and a comprehensive match-based photo archive where visitors can browse galleries organized by individual games. Built with performance in mind, the site handles large image collections efficiently while maintaining a clean, modern user interface.",
+        links: { website: "https://www.slavicinfotky.cz/" },
+        row: {
+            description: "Client project. Match-based photo archive, curated highlights, photographer upload dashboard.",
+            stack: "Laravel, MySQL, Tailwind",
+        },
+        specs: [{ label: "Stack", value: "Laravel, MySQL, Tailwind, PHP, Blade" }],
+        figures: [],
+        images: [
+            {
+                kind: "image",
+                src: "/fotbal.png",
+                width: 2940,
+                height: 1912,
+                alt: "Photogallery homepage with photo, match and comment counters and featured matches",
+                caption: "Homepage with featured matches",
+            },
+            {
+                kind: "image",
+                src: "/fotbal2.png",
+                width: 2940,
+                height: 1912,
+                alt: "Grid of match galleries, each with a cover photo, date and score",
+                caption: "Match archive",
+            },
+            {
+                kind: "image",
+                src: "/fotbal3.png",
+                width: 2940,
+                height: 1912,
+                alt: "Single match page with the score and a grid of photos",
+                caption: "Match gallery",
+            },
+            {
+                kind: "image",
+                src: "/fotbal4.png",
+                width: 2940,
+                height: 1912,
+                alt: "Full-screen photo viewer showing a goalkeeper diving, with thumbnails below",
+                caption: "Photo viewer",
+            },
+        ],
+    },
+    {
+        slug: "trackee",
+        name: "Trackee",
+        shortName: "Trackee",
+        category: "compact",
+        metaDescription: "Team project management platform: teams, kanban boards, shared calendar, task assignments, comments and notifications.",
+        summary: "Team project management: teams, kanban boards, shared calendar, assignments, comments, notifications.",
+        description:
+            "A modern team collaboration and project management platform designed to streamline workflow and boost productivity. Users can create and join teams, set up projects with detailed task breakdowns, and track progress through intuitive kanban boards. The platform includes a shared calendar system for scheduling deadlines and meetings, customizable user profiles, and real-time collaboration features. Team members can assign tasks, set priorities, add comments, and receive notifications about updates. The clean, minimalist interface ensures users stay focused on what matters most - getting work done.",
+        links: {},
+        row: {
+            description: "Team project management: teams, kanban boards, shared calendar, assignments, comments, notifications.",
+            stack: "Laravel, Tailwind, MySQL",
+        },
+        specs: [{ label: "Stack", value: "Laravel, Tailwind, MySQL, JavaScript, Blade, REST API" }],
+        figures: [],
+        images: [
+            {
+                kind: "image",
+                src: "/trackee1.png",
+                width: 2908,
+                height: 1670,
+                alt: "Trackee dashboard with project, team, task and friend counters, projects and reminders",
+                caption: "Dashboard",
+            },
+            {
+                kind: "image",
+                src: "/trackee2.png",
+                width: 2908,
+                height: 1670,
+                alt: "Trackee user profile with avatar, about section and tags",
+                caption: "User profile",
+            },
+        ],
+    },
+    {
+        slug: "filmio",
+        name: "Filmio",
+        shortName: "Filmio",
+        category: "compact",
+        metaDescription: "Film club web app built as a school project: film catalog, screening votes, ratings and reviews, role-based access.",
+        summary: "Film club web app: catalog, screening votes, ratings and reviews, role-based access.",
+        description:
+            "A school project: a film club web application. The platform allows movie enthusiasts to create accounts, join the club community, and participate in shared movie watching sessions. Members can browse the film catalog, vote on upcoming screenings, and discuss movies with other members. The admin dashboard provides complete control over the film database, user management, and scheduling of watch sessions. Features include user authentication with role-based access, a rating and review system, and a clean interface optimized for easy navigation.",
+        links: {},
+        row: {
+            description: "Film club web app: catalog, screening votes, ratings and reviews, role-based access.",
+            stack: "PHP, MySQL, Tailwind",
+        },
+        specs: [{ label: "Stack", value: "PHP, MySQL, Tailwind, HTML, Authentication" }],
+        figures: [],
+        images: [
+            {
+                kind: "image",
+                src: "/filmio1.png",
+                width: 2908,
+                height: 1670,
+                alt: "Filmio admin panel with a form for adding a film and a club health summary",
+                caption: "Admin panel",
+            },
+            {
+                kind: "image",
+                src: "/filmio2.png",
+                width: 2908,
+                height: 1670,
+                alt: "Filmio member dashboard with membership details and the film catalog",
+                caption: "Member dashboard",
+            },
+        ],
+    },
+    {
+        slug: "cafecheck",
+        name: "Cafecheck",
+        shortName: "Cafecheck",
+        category: "compact",
+        metaDescription: "Private café review site for Zlín and surroundings: atmosphere, coffee, food and overall vibe, with personal photos.",
+        summary: "Private café review site for Zlín and surroundings.",
+        description:
+            "A personal passion project for documenting and sharing experiences at local coffee shops in Zlín and surrounding areas. The website features subjective reviews covering atmosphere, coffee quality, food options, and overall vibe of each location. Each review includes personal photos capturing the unique character of the cafes, along with practical information like opening hours and location. Built as a non-public platform for personal use and sharing with friends who share the same appreciation for good coffee and cozy spaces.",
+        links: {},
+        row: {
+            description: "Private café review site for Zlín and surroundings.",
+            stack: "JavaScript, Bootstrap, EmailJS",
+        },
+        specs: [{ label: "Stack", value: "JavaScript, Bootstrap, EmailJS, HTML, CSS" }],
+        figures: [],
+        images: [
+            {
+                kind: "image",
+                src: "/cafecheck1.png",
+                width: 2908,
+                height: 1670,
+                alt: "Cafecheck homepage reading Welcome to Café reviews, Zlín and surroundings",
+                caption: "Homepage",
+            },
+            {
+                kind: "image",
+                src: "/cafecheck2.png",
+                width: 2908,
+                height: 1670,
+                alt: "Cafecheck review page with filters and café photos",
+                caption: "Café review listing",
+            },
+        ],
+    },
+    {
         slug: "unitree-g1",
         name: "Unitree G1 humanoid",
         shortName: "Unitree G1",
@@ -380,7 +841,7 @@ export const projects: Project[] = [
         figures: [
             {
                 id: "fig-3",
-                label: "Fig. 1",
+                label: "Fig. 4",
                 caption: "Unitree G1 EDU humanoid robot",
                 media: {
                     kind: "image",
@@ -414,7 +875,7 @@ export const projects: Project[] = [
         figures: [
             {
                 id: "fig-4",
-                label: "Fig. 2",
+                label: "Fig. 5",
                 caption: "Data flow. Shaded block ran on the Pi. As deployed until retirement.",
                 mobileCaption: "Data flow, simplified. Shaded block ran on the Pi. As deployed until retirement.",
                 media: {
@@ -495,7 +956,7 @@ export const projects: Project[] = [
         links: { source: "https://github.com/MartinKoudela/rpi-cam" },
         layout: "table-media",
         specTable: {
-            label: "Table 2",
+            label: "Table 3",
             caption: "RaspiVision specifications",
             columns: ["Parameter", "Value", "Note"],
             minWidth: 600,
@@ -512,7 +973,7 @@ export const projects: Project[] = [
         figures: [
             {
                 id: "fig-5a",
-                label: "Fig. 3a",
+                label: "Fig. 6a",
                 caption: "Raspberry Pi 4 in its case during assembly; CSI ribbon to the camera, PIR wired to GPIO",
                 media: {
                     kind: "image",
@@ -524,7 +985,7 @@ export const projects: Project[] = [
             },
             {
                 id: "fig-5b",
-                label: "Fig. 3b",
+                label: "Fig. 6b",
                 caption: "KiCad schematic: Raspberry Pi 4 GPIO header, Camera Module 3 NoIR via 15-pin CSI ribbon, HW-416 PIR sensor",
                 media: {
                     kind: "image",
@@ -738,7 +1199,7 @@ export const projects: Project[] = [
         figures: [
             {
                 id: "fig-6",
-                label: "Fig. 4",
+                label: "Fig. 7",
                 caption:
                     "hey-l0k1 schematic: ESP32-S3, ReSpeaker mic array, GC9A01 round touch display, MAX98357 amplifier, IP5306 power",
                 media: {
@@ -774,11 +1235,11 @@ export const projects: Project[] = [
         status: "Schematic complete (Rev v0.1)",
         links: {},
         layout: "media-table",
-        specTable: { label: "Table 3", caption: "Subsystems", columns: ["Subsystem", "Part"], minWidth: 380 },
+        specTable: { label: "Table 4", caption: "Subsystems", columns: ["Subsystem", "Part"], minWidth: 380 },
         figures: [
             {
                 id: "fig-7",
-                label: "Fig. 5",
+                label: "Fig. 8",
                 caption: "Root sheet: ESP32-S3 with ten subsystem sheets. Rev v0.1, schematic stage.",
                 noteCaption: "Root sheet: ESP32-S3 and subsystem hierarchy",
                 media: {
@@ -836,471 +1297,10 @@ export const projects: Project[] = [
             { label: "Status", value: "PRELIMINARY: schematic complete, hardware not assembled, firmware not started" },
         ],
     },
-    {
-        slug: "laravix-cms",
-        name: "Laravix",
-        shortName: "Laravix",
-        category: "software",
-        descriptor: "Laravel · multi-tenant CMS",
-        metaDescription: "Open-source multi-tenant CMS: each site is an isolated tenant, delivered through a Blade theme or a token-authenticated REST API.",
-        summary:
-            "Open-source multi-tenant CMS. Each site is an isolated tenant with its own content, users, media and theme, delivered through a Blade theme or a token-authenticated REST API.",
-        status: "In active development",
-        links: { source: "https://github.com/MartinKoudela/laravix-cms", website: "https://laravix.com" },
-        icon: "/laravix-icon.png",
-        layout: "diagram-specs",
-        figures: [
-            {
-                id: "fig-8",
-                label: "Fig. 6",
-                caption: "Laravix tenancy and delivery",
-                media: {
-                    kind: "diagram",
-                    width: 864,
-                    height: 256,
-                    arrows: [arrowRight(176, 32), arrowRight(176, 124), arrowRight(176, 216), arrowRight(544, 72), arrowRight(544, 176)],
-                    cards: [
-                        { x: 0, y: 0, w: 176, h: 72, title: "Tenant A", lines: ["content, users, media, theme"] },
-                        { x: 0, y: 92, w: 176, h: 72, title: "Tenant B", lines: ["content, users, media, theme"] },
-                        { x: 0, y: 184, w: 176, h: 72, title: "Tenant n", lines: ["isolated site"] },
-                        {
-                            x: 256,
-                            y: 0,
-                            w: 288,
-                            h: 256,
-                            title: "Laravix",
-                            lines: [
-                                "Laravel, PHP, Filament",
-                                "GrapesJS builder, 45+ extendable blocks",
-                                "Revisions, scheduled publishing",
-                                "Meilisearch, tenant-aware SEO",
-                                "Plugin registries",
-                            ],
-                            tint: true,
-                        },
-                        { x: 624, y: 40, w: 240, h: 72, title: "Blade theme", lines: ["server-rendered site"] },
-                        { x: 624, y: 144, w: 240, h: 72, title: "REST API", lines: ["headless, token-authenticated"] },
-                    ],
-                    mobile: [
-                        {
-                            t: "grid",
-                            cards: [
-                                { title: "Tenant A", lines: ["content, users, media, theme"] },
-                                { title: "Tenant B", lines: ["content, users, media, theme"] },
-                                { title: "Tenant n", lines: ["isolated site"] },
-                            ],
-                        },
-                        { t: "arrow" },
-                        {
-                            t: "card",
-                            card: {
-                                title: "Laravix",
-                                lines: [
-                                    "Laravel, PHP, Filament",
-                                    "GrapesJS builder, 45+ extendable blocks",
-                                    "Revisions, scheduled publishing",
-                                    "Meilisearch, tenant-aware SEO",
-                                    "Plugin registries",
-                                ],
-                                tint: true,
-                            },
-                        },
-                        { t: "arrow" },
-                        {
-                            t: "grid",
-                            cards: [
-                                { title: "Blade theme", lines: ["server-rendered site"] },
-                                { title: "REST API", lines: ["headless, token-authenticated"] },
-                            ],
-                        },
-                    ],
-                },
-            },
-        ],
-        specs: [
-            { label: "Stack", value: "Laravel, PHP, Filament" },
-            { label: "Builder", value: "GrapesJS, 45+ extendable blocks" },
-            { label: "Search", value: "Meilisearch" },
-            {
-                label: "Source",
-                value: "github.com/MartinKoudela/laravix-cms",
-                href: "https://github.com/MartinKoudela/laravix-cms",
-            },
-            { label: "Status", value: "In active development" },
-        ],
-        images: [
-            {
-                kind: "image",
-                src: "/laravix-dashboard.png",
-                width: 2856,
-                height: 1712,
-                alt: "Laravix admin dashboard with counts for sites, published pages and posts, drafts and media files, above a Recent Content table listing titles, type, status and update time",
-                caption: "Admin dashboard: managed sites, published content, drafts and media counts, recent content",
-            },
-            {
-                kind: "image",
-                src: "/laravix-pages.png",
-                width: 2856,
-                height: 1712,
-                alt: "Laravix Pages list table with title, slug, language (CS or EN), published status and update time, and edit, preview, duplicate and delete actions on the highlighted row",
-                caption: "Pages list: slugs, CS/EN language versions, publish status and row actions",
-            },
-            {
-                kind: "image",
-                src: "/laravix-builder.png",
-                width: 2856,
-                height: 1712,
-                alt: "Laravix visual page builder with the homepage hero headline selected for editing, a text toolbar above it and a style manager panel with layout, spacing, typography and background sections on the right",
-                caption: "Visual page builder (GrapesJS): editing the homepage hero, style manager on the right",
-            },
-            {
-                kind: "image",
-                src: "/laravix-seo.png",
-                width: 2856,
-                height: 1685,
-                alt: "Laravix SEO settings form with meta title, default meta description, OG image, Google site verification and robots.txt fields",
-                caption: "SEO settings: default meta description, OG image, robots.txt",
-            },
-        ],
-    },
-    {
-        slug: "backlog",
-        name: "Backlog",
-        shortName: "Backlog",
-        category: "software",
-        descriptor: "Swift · SwiftUI · iOS",
-        summary:
-            "iOS app that puts projects, tasks and reminders in one data model. Swift and SwiftUI, Liquid Glass design.",
-        status: "Finished",
-        links: {},
-        layout: "media-specs",
-        figures: [
-            {
-                id: "fig-9a",
-                label: "Fig. 7a",
-                caption: "Today: overdue tasks, progress, tasks grouped by project",
-                media: {
-                    kind: "image",
-                    src: "/backlog-today.png",
-                    width: 1206,
-                    height: 2622,
-                    alt: "Backlog Today screen for Friday 23 October with a 4 of 16 done progress bar, three overdue tasks in red, and tasks grouped under App Launch and Brand Identity",
-                },
-            },
-            {
-                id: "fig-9b",
-                label: "Fig. 7b",
-                caption: "Projects: recent pages and project list",
-                media: {
-                    kind: "image",
-                    src: "/backlog-projects.png",
-                    width: 1206,
-                    height: 2622,
-                    alt: "Backlog Projects screen with recently edited pages such as Color Palette, Timeline and README, and a project list with due dates, page counts and open task counts",
-                },
-            },
-            {
-                id: "fig-9c",
-                label: "Fig. 7c",
-                caption: "Project: pages and tasks in one view",
-                media: {
-                    kind: "image",
-                    src: "/backlog-project.png",
-                    width: 1206,
-                    height: 2622,
-                    alt: "Backlog App Launch project screen with due date, description, a Pages list with README, Launch Plan folder and Release Notes, and a Tasks list below",
-                },
-            },
-        ],
-        specs: [
-            { label: "Platform", value: "iOS" },
-            { label: "Language", value: "Swift, SwiftUI" },
-            { label: "Design", value: "Liquid Glass" },
-            { label: "Data model", value: "Projects, tasks and reminders in one model" },
-            { label: "Status", value: "Finished" },
-        ],
-        icon: "/backlog-icon.svg",
-        images: [
-            {
-                kind: "image",
-                src: "/backlog-reminders.png",
-                width: 1206,
-                height: 2622,
-                alt: "Backlog Reminders screen with three overdue tasks in red and a Today section listing tasks from App Launch, Brand Identity and without a project",
-                caption: "Reminders: overdue and today, across all projects",
-            },
-            {
-                kind: "image",
-                src: "/backlog-readme.png",
-                width: 1206,
-                height: 2622,
-                alt: "Backlog README page in the App Launch project, rendered with headings, bold and italic text, a Goals bullet list and two links",
-                caption: "Page: rendered Markdown",
-            },
-            {
-                kind: "image",
-                src: "/backlog-editor.png",
-                width: 1206,
-                height: 2622,
-                alt: "Backlog page editor showing the README as Markdown source, with a formatting toolbar for headings, bold, italic, strikethrough, lists, quote and code above the keyboard",
-                caption: "Page editor: Markdown source with formatting toolbar",
-            },
-            {
-                kind: "image",
-                src: "/backlog-nested-pages.png",
-                width: 1206,
-                height: 2622,
-                alt: "Backlog App Launch project with the Launch Plan folder expanded to show the nested pages Timeline, Press Kit and App Store Copy",
-                caption: "Nested pages: folder expanded inside a project",
-            },
-            {
-                kind: "image",
-                src: "/backlog-task-details.png",
-                width: 1206,
-                height: 2622,
-                alt: "Backlog task Details screen with Date set to Today, Time off, Repeat Never, Reminder off, Project App Launch, Priority set to two exclamation marks, and Archive and Delete Task actions",
-                caption: "Task details: date, time, repeat, reminder, project, priority",
-            },
-            {
-                kind: "image",
-                src: "/backlog-repeat.png",
-                width: 1206,
-                height: 2622,
-                alt: "Backlog Repeat screen with Custom selected, frequency Weekly, every 1 week, Friday highlighted in the weekday row, and End Repeat off",
-                caption: "Custom repeat: weekly on selected days",
-            },
-            {
-                kind: "image",
-                src: "/backlog-search.png",
-                width: 1206,
-                height: 2622,
-                alt: "Backlog search results for the query App, grouped into Projects, Pages and Tasks",
-                caption: "Search across projects, pages and tasks",
-            },
-        ],
-    },
-    {
-        slug: "l0k1-game",
-        name: "l0k1 Game",
-        shortName: "l0k1 Game",
-        category: "software",
-        family: "l0k1 family · Game",
-        summary:
-            "Browser-based 3D horror game set in a hacker's apartment. The in-game OS has a terminal, a file manager and hacking tools.",
-        links: { source: "https://github.com/MartinKoudela/L0k1-game" },
-        layout: "specs-media",
-        figures: [
-            {
-                id: "fig-10",
-                label: "Fig. 8",
-                caption: "In-game OS terminal",
-                media: {
-                    kind: "image",
-                    src: "/l0k1.png",
-                    width: 2940,
-                    height: 1912,
-                    alt: "In-game view of the hacker's apartment, with a laptop showing the in-game OS terminal",
-                },
-            },
-        ],
-        specs: [
-            { label: "Genre", value: "3D horror, browser" },
-            { label: "In-game OS", value: "Terminal, file manager, hacking tools" },
-            { label: "Audio", value: "Positional" },
-            { label: "AI", value: "Enemy AI" },
-            { label: "Assets", value: "60+ GLTF models" },
-            { label: "Stack", value: "Three.js, TypeScript, Vite" },
-        ],
-    },
-    {
-        slug: "orbis-projects",
-        name: "Orbis Projects",
-        shortName: "Orbis Projects",
-        category: "compact",
-        metaDescription: "Student project showcase for ORBIS Zlín. Students build their own Blade/Tailwind themes; Filament admin, REST API. Personal initiative, not an assignment.",
-        summary:
-            "Student project showcase for ORBIS Zlín. Students build their own Blade/Tailwind themes; Filament admin, REST API. Personal initiative, not an assignment.",
-        description:
-            "A student project showcase platform built for ORBIS Zlín, designed to give students a professional stage to present their work. The platform features a unique theme system where students design and build their own custom Blade templates using Tailwind CSS, maintaining full creative control over how their projects are displayed. Administrators manage project data, taxonomies, and media through a modern Filament dashboard, while a REST API enables dynamic filtering and browsing. Built as a personal initiative during my studies — not a school assignment, but a real tool built to fill a real need.",
-        links: { source: "https://github.com/MartinKoudela/orbis-projects", website: "https://orbis.cz" },
-        row: {
-            description:
-                "Student project showcase for ORBIS Zlín. Students build their own Blade/Tailwind themes; Filament admin, REST API. Personal initiative, not an assignment.",
-            stack: "Laravel, PHP, Filament",
-        },
-        specs: [{ label: "Stack", value: "Laravel, PHP, Filament, Tailwind, REST API, Blade" }],
-        figures: [],
-        images: [
-            {
-                kind: "image",
-                src: "/orbis-projects.png",
-                width: 2940,
-                height: 1684,
-                alt: "Orbis Projects listing student projects as cards, with filters for year, class and project type",
-                caption: "Project listing with filters",
-            },
-        ],
-    },
-    {
-        slug: "football-photogallery",
-        name: "Football Photogallery",
-        shortName: "Football Photogallery",
-        category: "compact",
-        metaDescription: "Client football photogallery: match-based photo archive, curated highlights and a photographer upload dashboard.",
-        summary: "Client project. Match-based photo archive, curated highlights, photographer upload dashboard.",
-        description:
-            "A bespoke football photogallery platform developed for a client, designed to showcase match photography in an elegant and organized way. The platform features a photographer-focused dashboard for easy photo uploads and management, a curated highlights section displaying the best shots, and a comprehensive match-based photo archive where visitors can browse galleries organized by individual games. Built with performance in mind, the site handles large image collections efficiently while maintaining a clean, modern user interface.",
-        links: { website: "https://www.slavicinfotky.cz/" },
-        row: {
-            description: "Client project. Match-based photo archive, curated highlights, photographer upload dashboard.",
-            stack: "Laravel, MySQL, Tailwind",
-        },
-        specs: [{ label: "Stack", value: "Laravel, MySQL, Tailwind, PHP, Blade" }],
-        figures: [],
-        images: [
-            {
-                kind: "image",
-                src: "/fotbal.png",
-                width: 2940,
-                height: 1912,
-                alt: "Photogallery homepage with photo, match and comment counters and featured matches",
-                caption: "Homepage with featured matches",
-            },
-            {
-                kind: "image",
-                src: "/fotbal2.png",
-                width: 2940,
-                height: 1912,
-                alt: "Grid of match galleries, each with a cover photo, date and score",
-                caption: "Match archive",
-            },
-            {
-                kind: "image",
-                src: "/fotbal3.png",
-                width: 2940,
-                height: 1912,
-                alt: "Single match page with the score and a grid of photos",
-                caption: "Match gallery",
-            },
-            {
-                kind: "image",
-                src: "/fotbal4.png",
-                width: 2940,
-                height: 1912,
-                alt: "Full-screen photo viewer showing a goalkeeper diving, with thumbnails below",
-                caption: "Photo viewer",
-            },
-        ],
-    },
-    {
-        slug: "trackee",
-        name: "Trackee",
-        shortName: "Trackee",
-        category: "compact",
-        metaDescription: "Team project management platform: teams, kanban boards, shared calendar, task assignments, comments and notifications.",
-        summary: "Team project management: teams, kanban boards, shared calendar, assignments, comments, notifications.",
-        description:
-            "A modern team collaboration and project management platform designed to streamline workflow and boost productivity. Users can create and join teams, set up projects with detailed task breakdowns, and track progress through intuitive kanban boards. The platform includes a shared calendar system for scheduling deadlines and meetings, customizable user profiles, and real-time collaboration features. Team members can assign tasks, set priorities, add comments, and receive notifications about updates. The clean, minimalist interface ensures users stay focused on what matters most - getting work done.",
-        links: {},
-        row: {
-            description: "Team project management: teams, kanban boards, shared calendar, assignments, comments, notifications.",
-            stack: "Laravel, Tailwind, MySQL",
-        },
-        specs: [{ label: "Stack", value: "Laravel, Tailwind, MySQL, JavaScript, Blade, REST API" }],
-        figures: [],
-        images: [
-            {
-                kind: "image",
-                src: "/trackee1.png",
-                width: 2908,
-                height: 1670,
-                alt: "Trackee dashboard with project, team, task and friend counters, projects and reminders",
-                caption: "Dashboard",
-            },
-            {
-                kind: "image",
-                src: "/trackee2.png",
-                width: 2908,
-                height: 1670,
-                alt: "Trackee user profile with avatar, about section and tags",
-                caption: "User profile",
-            },
-        ],
-    },
-    {
-        slug: "filmio",
-        name: "Filmio",
-        shortName: "Filmio",
-        category: "compact",
-        metaDescription: "Film club web app built as a school project: film catalog, screening votes, ratings and reviews, role-based access.",
-        summary: "Film club web app: catalog, screening votes, ratings and reviews, role-based access.",
-        description:
-            "A school project: a film club web application. The platform allows movie enthusiasts to create accounts, join the club community, and participate in shared movie watching sessions. Members can browse the film catalog, vote on upcoming screenings, and discuss movies with other members. The admin dashboard provides complete control over the film database, user management, and scheduling of watch sessions. Features include user authentication with role-based access, a rating and review system, and a clean interface optimized for easy navigation.",
-        links: {},
-        row: {
-            description: "Film club web app: catalog, screening votes, ratings and reviews, role-based access.",
-            stack: "PHP, MySQL, Tailwind",
-        },
-        specs: [{ label: "Stack", value: "PHP, MySQL, Tailwind, HTML, Authentication" }],
-        figures: [],
-        images: [
-            {
-                kind: "image",
-                src: "/filmio1.png",
-                width: 2908,
-                height: 1670,
-                alt: "Filmio admin panel with a form for adding a film and a club health summary",
-                caption: "Admin panel",
-            },
-            {
-                kind: "image",
-                src: "/filmio2.png",
-                width: 2908,
-                height: 1670,
-                alt: "Filmio member dashboard with membership details and the film catalog",
-                caption: "Member dashboard",
-            },
-        ],
-    },
-    {
-        slug: "cafecheck",
-        name: "Cafecheck",
-        shortName: "Cafecheck",
-        category: "compact",
-        metaDescription: "Private café review site for Zlín and surroundings: atmosphere, coffee, food and overall vibe, with personal photos.",
-        summary: "Private café review site for Zlín and surroundings.",
-        description:
-            "A personal passion project for documenting and sharing experiences at local coffee shops in Zlín and surrounding areas. The website features subjective reviews covering atmosphere, coffee quality, food options, and overall vibe of each location. Each review includes personal photos capturing the unique character of the cafes, along with practical information like opening hours and location. Built as a non-public platform for personal use and sharing with friends who share the same appreciation for good coffee and cozy spaces.",
-        links: {},
-        row: {
-            description: "Private café review site for Zlín and surroundings.",
-            stack: "JavaScript, Bootstrap, EmailJS",
-        },
-        specs: [{ label: "Stack", value: "JavaScript, Bootstrap, EmailJS, HTML, CSS" }],
-        figures: [],
-        images: [
-            {
-                kind: "image",
-                src: "/cafecheck1.png",
-                width: 2908,
-                height: 1670,
-                alt: "Cafecheck homepage reading Welcome to Café reviews, Zlín and surroundings",
-                caption: "Homepage",
-            },
-            {
-                kind: "image",
-                src: "/cafecheck2.png",
-                width: 2908,
-                height: 1670,
-                alt: "Cafecheck review page with filters and café photos",
-                caption: "Café review listing",
-            },
-        ],
-    },
 ];
 
 export const tooling: PlainTable & { note: string; noteFn: FootnoteKey } = {
-    label: "Table 4",
+    label: "Table 5",
     caption: "Tooling",
     note: "Offensive tools: own devices\u00a0only",
     noteFn: "authorised",
@@ -1319,7 +1319,7 @@ export const tooling: PlainTable & { note: string; noteFn: FootnoteKey } = {
     monoColumn: 0,
 };
 
-export const otherSoftware = { label: "Table 5", caption: "Other software", columns: ["Name", "Description", "Stack", "Link"] };
+export const otherSoftware = { label: "Table 1", caption: "Other software", columns: ["Name", "Description", "Stack", "Link"] };
 
 export function projectsIn(category: Category): Project[] {
     return projects.filter((p) => p.category === category);

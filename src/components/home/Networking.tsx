@@ -4,7 +4,7 @@ import DataTable, { cell } from "../DataTable";
 import SectionHead from "./SectionHead";
 
 export default function Networking() {
-    const s = section("eth1");
+    const s = section("eth2");
     const diag = network.diagnostics;
     const diagId = "table-diagnostics-caption";
 

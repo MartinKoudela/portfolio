@@ -4,7 +4,7 @@ import AppNote from "./AppNote";
 import SectionHead from "./SectionHead";
 
 export default function Hardware() {
-    const s = section("eth2");
+    const s = section("eth3");
 
     return (
         <section id={s.id} aria-labelledby={`h-${s.id}`} className="eth">

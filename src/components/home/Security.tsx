@@ -7,7 +7,7 @@ import AppNote from "./AppNote";
 import SectionHead from "./SectionHead";
 
 export default function Security() {
-    const s = section("eth3");
+    const s = section("eth4");
     const toolingId = "table-tooling-caption";
     const noteFn = homeFootnoteNumbers[tooling.noteFn]!;
 
