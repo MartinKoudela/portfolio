@@ -173,7 +173,7 @@ export const identity = {
 };
 
 export const siteMeta = {
-    url: "https://martinkoudela.com",
+    url: "https://docs.martinkoudela.com",
     title: "Martin Koudela | Web Apps, Networking, Hardware & Security",
     shareTitle: "Martin Koudela",
     description:
